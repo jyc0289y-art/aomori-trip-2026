@@ -48,83 +48,46 @@
   .hero h1 { font-size: 2.2em; font-weight: 700; margin-bottom: 8px; letter-spacing: -1px; }
   .hero .subtitle { font-size: 1.1em; font-weight: 300; opacity: 0.9; margin-bottom: 24px; }
   .hero-meta {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 16px;
-    font-size: 0.9em;
-    opacity: 0.85;
+    display: flex; flex-wrap: wrap; justify-content: center;
+    gap: 16px; font-size: 0.9em; opacity: 0.85;
   }
-  .hero-meta span { display: flex; align-items: center; gap: 6px; }
 
   /* Nav tabs */
   .tab-nav {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: var(--card);
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
+    position: sticky; top: 0; z-index: 100;
+    background: var(--card); border-bottom: 1px solid var(--border);
+    display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
   .tab-nav::-webkit-scrollbar { display: none; }
   .tab-btn {
-    flex-shrink: 0;
-    padding: 14px 20px;
-    border: none;
-    background: none;
-    font-family: inherit;
-    font-size: 0.9em;
-    font-weight: 400;
-    color: var(--text-light);
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    transition: all 0.2s;
-    white-space: nowrap;
+    flex-shrink: 0; padding: 14px 20px; border: none; background: none;
+    font-family: inherit; font-size: 0.9em; font-weight: 400;
+    color: var(--text-light); cursor: pointer;
+    border-bottom: 2px solid transparent; transition: all 0.2s; white-space: nowrap;
   }
   .tab-btn:hover { color: var(--accent); }
   .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); font-weight: 500; }
 
-  /* Container */
   .container { max-width: 800px; margin: 0 auto; padding: 24px 16px 80px; }
-
-  /* Tab content */
   .tab-content { display: none; }
   .tab-content.active { display: block; }
 
   /* Cards */
   .card {
-    background: var(--card);
-    border-radius: 12px;
-    padding: 28px;
-    margin-bottom: 20px;
-    border: 1px solid var(--border);
+    background: var(--card); border-radius: 12px; padding: 28px;
+    margin-bottom: 20px; border: 1px solid var(--border);
   }
   .card h2 {
-    font-size: 1.3em;
-    font-weight: 700;
-    color: var(--accent);
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    font-size: 1.3em; font-weight: 700; color: var(--accent);
+    margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
   }
-  .card h3 {
-    font-size: 1.05em;
-    font-weight: 500;
-    margin: 20px 0 10px;
-    color: var(--text);
-  }
+  .card h3 { font-size: 1.05em; font-weight: 500; margin: 20px 0 10px; }
 
   /* Day header */
   .day-header {
-    background: var(--accent);
-    color: white;
-    border-radius: 12px 12px 0 0;
-    padding: 20px 28px;
-    margin-bottom: 0;
+    background: var(--accent); color: white;
+    border-radius: 12px 12px 0 0; padding: 20px 28px;
   }
   .day-header + .card { border-radius: 0 0 12px 12px; margin-top: 0; border-top: none; }
   .day-header h2 { color: white; margin: 0; font-size: 1.2em; }
@@ -133,73 +96,64 @@
   /* Timeline */
   .timeline { position: relative; padding-left: 24px; }
   .timeline::before {
-    content: '';
-    position: absolute;
-    left: 6px;
-    top: 8px;
-    bottom: 8px;
-    width: 2px;
-    background: var(--border);
+    content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px;
+    width: 2px; background: var(--border);
   }
   .tl-item {
-    position: relative;
-    padding: 8px 0 16px 16px;
+    position: relative; padding: 8px 0 16px 16px; cursor: pointer;
+    border-radius: 8px; transition: background 0.2s;
   }
+  .tl-item:hover { background: var(--accent-light); margin: 0 -8px; padding-left: 24px; padding-right: 8px; }
   .tl-item::before {
-    content: '';
-    position: absolute;
-    left: -21px;
-    top: 16px;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--accent);
-    border: 2px solid var(--card);
+    content: ''; position: absolute; left: -21px; top: 16px;
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--accent); border: 2px solid var(--card);
   }
+  .tl-item:hover::before { left: -13px; }
   .tl-item.meal::before { background: var(--warm); }
   .tl-time {
-    font-size: 0.85em;
-    font-weight: 500;
-    color: var(--accent);
-    display: inline-block;
-    min-width: 50px;
+    font-size: 0.85em; font-weight: 500; color: var(--accent);
+    display: inline-block; min-width: 50px;
   }
   .tl-item.meal .tl-time { color: var(--warm); }
   .tl-title { font-weight: 500; }
   .tl-desc { font-size: 0.88em; color: var(--text-light); margin-top: 2px; }
+  .tl-map-hint {
+    font-size: 0.75em; color: var(--accent); opacity: 0;
+    transition: opacity 0.2s; margin-top: 2px;
+  }
+  .tl-item:hover .tl-map-hint { opacity: 1; }
 
   /* Spot list */
   .spot {
-    padding: 16px 0;
-    border-bottom: 1px solid var(--border);
+    padding: 16px 0; border-bottom: 1px solid var(--border);
+    cursor: pointer; border-radius: 8px; transition: background 0.15s;
   }
+  .spot:hover { background: var(--accent-light); margin: 0 -12px; padding: 16px 12px; }
   .spot:last-child { border-bottom: none; }
   .spot-name { font-weight: 500; font-size: 1.05em; }
   .spot-name-ja { font-size: 0.85em; color: var(--text-light); margin-left: 6px; }
   .spot-meta { font-size: 0.85em; color: var(--text-light); margin-top: 4px; }
   .spot-desc { font-size: 0.92em; margin-top: 6px; }
+  .spot-tap-hint {
+    font-size: 0.75em; color: var(--accent); opacity: 0;
+    transition: opacity 0.2s; margin-top: 4px;
+  }
+  .spot:hover .spot-tap-hint { opacity: 1; }
 
   /* Tags */
   .tag {
-    display: inline-block;
-    background: var(--tag-bg);
-    color: var(--warm);
-    font-size: 0.78em;
-    font-weight: 500;
-    padding: 2px 10px;
-    border-radius: 20px;
-    margin: 2px 4px 2px 0;
+    display: inline-block; background: var(--tag-bg); color: var(--warm);
+    font-size: 0.78em; font-weight: 500; padding: 2px 10px;
+    border-radius: 20px; margin: 2px 4px 2px 0;
   }
   .tag.green { background: var(--accent-light); color: var(--accent); }
 
   /* Budget table */
   .budget-table { width: 100%; border-collapse: collapse; font-size: 0.92em; }
   .budget-table th {
-    text-align: left;
-    padding: 10px 12px;
-    border-bottom: 2px solid var(--accent);
-    font-weight: 500;
-    color: var(--accent);
+    text-align: left; padding: 10px 12px;
+    border-bottom: 2px solid var(--accent); font-weight: 500; color: var(--accent);
   }
   .budget-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); }
   .budget-table tr:last-child td { border-bottom: 2px solid var(--accent); font-weight: 700; }
@@ -208,29 +162,18 @@
   /* Checklist */
   .checklist { list-style: none; }
   .checklist li {
-    padding: 8px 0;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 0.95em;
+    padding: 8px 0; border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px; font-size: 0.95em;
   }
   .checklist li:last-child { border-bottom: none; }
   .check-box {
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--border);
-    border-radius: 4px;
-    flex-shrink: 0;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
+    width: 20px; height: 20px; border: 2px solid var(--border);
+    border-radius: 4px; flex-shrink: 0; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; transition: all 0.2s;
   }
   .check-box.checked { background: var(--accent); border-color: var(--accent); }
   .check-box.checked::after { content: '\2713'; color: white; font-size: 14px; }
-  .checklist li.done { text-decoration: line-through; opacity: 0.5; }
+  .checklist li.done span { text-decoration: line-through; opacity: 0.5; }
 
   /* Distance tree */
   .distance-tree { font-family: monospace; font-size: 0.88em; line-height: 2; }
@@ -238,44 +181,122 @@
 
   /* Tips */
   .tip {
-    background: var(--accent-light);
-    border-left: 3px solid var(--accent);
-    padding: 14px 18px;
-    border-radius: 0 8px 8px 0;
-    margin: 12px 0;
-    font-size: 0.9em;
+    background: var(--accent-light); border-left: 3px solid var(--accent);
+    padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 12px 0; font-size: 0.9em;
   }
 
   /* Flight card */
-  .flight-card {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    padding: 16px 0;
-    border-bottom: 1px solid var(--border);
-  }
+  .flight-card { padding: 16px 0; border-bottom: 1px solid var(--border); }
   .flight-card:last-child { border-bottom: none; }
-  .flight-route {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex: 1;
-  }
+  .flight-route { display: flex; align-items: center; gap: 12px; flex: 1; }
   .flight-code { font-size: 1.4em; font-weight: 700; }
   .flight-arrow { color: var(--text-light); }
   .flight-info { font-size: 0.85em; color: var(--text-light); }
 
-  /* Section divider */
   .section-title {
-    font-size: 0.8em;
-    font-weight: 500;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin: 28px 0 12px;
-    padding-bottom: 8px;
+    font-size: 0.8em; font-weight: 500; color: var(--accent);
+    text-transform: uppercase; letter-spacing: 2px;
+    margin: 28px 0 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border);
+  }
+
+  /* ===== MAP OVERLAY ===== */
+  .map-overlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 9999; display: none; flex-direction: column;
+    background: rgba(0,0,0,0.6); animation: fadeIn 0.2s;
+  }
+  .map-overlay.show { display: flex; }
+  .map-header {
+    background: var(--accent); color: white;
+    padding: 16px 20px; display: flex; align-items: center; gap: 12px;
+    flex-shrink: 0;
+  }
+  .map-header h3 { flex: 1; font-size: 1em; font-weight: 500; }
+  .map-close {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(255,255,255,0.2); border: none;
+    color: white; font-size: 1.4em; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .map-close:hover { background: rgba(255,255,255,0.3); }
+  .map-body { flex: 1; position: relative; }
+  .map-body iframe { width: 100%; height: 100%; border: none; }
+  .map-footer {
+    background: var(--card); padding: 16px 20px;
+    border-top: 1px solid var(--border); flex-shrink: 0;
+    max-height: 40vh; overflow-y: auto;
+  }
+  .map-footer .spot-name { font-size: 1em; }
+  .map-footer .spot-meta { margin-top: 4px; }
+  .map-footer .spot-desc { margin-top: 8px; }
+  .map-open-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    margin-top: 10px; padding: 8px 16px;
+    background: var(--accent); color: white; border: none;
+    border-radius: 8px; font-family: inherit; font-size: 0.85em;
+    cursor: pointer; text-decoration: none;
+  }
+  .map-open-btn:hover { opacity: 0.9; }
+
+  /* ===== DETAIL MODAL ===== */
+  .detail-overlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 9998; display: none;
+    background: rgba(0,0,0,0.5); animation: fadeIn 0.2s;
+    justify-content: center; align-items: flex-end;
+  }
+  .detail-overlay.show { display: flex; }
+  .detail-sheet {
+    background: var(--card); width: 100%; max-width: 800px;
+    max-height: 85vh; border-radius: 16px 16px 0 0;
+    overflow-y: auto; animation: slideUp 0.3s;
+    -webkit-overflow-scrolling: touch;
+  }
+  .detail-handle {
+    width: 40px; height: 4px; background: var(--border);
+    border-radius: 2px; margin: 12px auto;
+  }
+  .detail-content { padding: 0 24px 32px; }
+  .detail-content h2 { font-size: 1.3em; margin-bottom: 4px; color: var(--text); }
+  .detail-content .detail-ja { font-size: 0.95em; color: var(--text-light); margin-bottom: 16px; }
+  .detail-section { margin-top: 20px; }
+  .detail-section h4 {
+    font-size: 0.8em; font-weight: 500; color: var(--accent);
+    text-transform: uppercase; letter-spacing: 1px;
+    margin-bottom: 8px; padding-bottom: 6px;
     border-bottom: 1px solid var(--border);
   }
+  .detail-row {
+    display: flex; gap: 8px; padding: 6px 0;
+    font-size: 0.92em;
+  }
+  .detail-label { font-weight: 500; min-width: 70px; flex-shrink: 0; color: var(--text-light); }
+  .detail-val { flex: 1; }
+  .detail-tip {
+    background: #fff8e7; border-left: 3px solid var(--warm);
+    padding: 12px 16px; border-radius: 0 8px 8px 0;
+    margin-top: 12px; font-size: 0.9em;
+  }
+  .detail-tip strong { color: var(--warm); }
+  .detail-actions { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+  .detail-actions a, .detail-actions button {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 10px 18px; border-radius: 10px; font-family: inherit;
+    font-size: 0.9em; cursor: pointer; text-decoration: none; border: none;
+  }
+  .btn-map { background: var(--accent); color: white; }
+  .btn-map:hover { opacity: 0.9; }
+  .btn-search { background: var(--tag-bg); color: var(--warm); }
+  .btn-close-detail { background: var(--border); color: var(--text); }
+
+  .detail-photo-placeholder {
+    width: 100%; height: 160px; background: linear-gradient(135deg, var(--accent-light), var(--tag-bg));
+    border-radius: 12px; display: flex; align-items: center; justify-content: center;
+    font-size: 2.5em; margin-bottom: 20px;
+  }
+
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
 
   /* Responsive */
   @media (max-width: 600px) {
@@ -283,9 +304,15 @@
     .hero h1 { font-size: 1.6em; }
     .card { padding: 20px; }
     .tab-btn { padding: 12px 14px; font-size: 0.82em; }
+    .detail-content { padding: 0 16px 24px; }
+    .map-footer { padding: 12px 16px; }
   }
 
-  /* Print */
+  @media (min-width: 601px) {
+    .detail-overlay { align-items: center; }
+    .detail-sheet { border-radius: 16px; max-height: 80vh; }
+  }
+
   @media print {
     .tab-nav { display: none; }
     .tab-content { display: block !important; }
@@ -325,22 +352,15 @@
 
 <!-- ===== 개요 ===== -->
 <div id="overview" class="tab-content active">
-
   <div class="card">
     <h2>비행편</h2>
     <div class="flight-card">
       <div>
         <div style="font-weight:500; margin-bottom:4px;">4/2 (목) 가는 편</div>
         <div class="flight-route">
-          <div>
-            <div class="flight-code">ICN</div>
-            <div class="flight-info">09:05</div>
-          </div>
+          <div><div class="flight-code">ICN</div><div class="flight-info">09:05</div></div>
           <div class="flight-arrow">&#10230; 2시간 30분 &#10230;</div>
-          <div>
-            <div class="flight-code">AOJ</div>
-            <div class="flight-info">11:35</div>
-          </div>
+          <div><div class="flight-code">AOJ</div><div class="flight-info">11:35</div></div>
         </div>
         <div class="flight-info" style="margin-top:6px;">KE2193 | A321neo | T 클래스</div>
       </div>
@@ -349,15 +369,9 @@
       <div>
         <div style="font-weight:500; margin-bottom:4px;">4/5 (일) 오는 편</div>
         <div class="flight-route">
-          <div>
-            <div class="flight-code">AOJ</div>
-            <div class="flight-info">12:45</div>
-          </div>
+          <div><div class="flight-code">AOJ</div><div class="flight-info">12:45</div></div>
           <div class="flight-arrow">&#10230; 2시간 45분 &#10230;</div>
-          <div>
-            <div class="flight-code">ICN</div>
-            <div class="flight-info">15:30</div>
-          </div>
+          <div><div class="flight-code">ICN</div><div class="flight-info">15:30</div></div>
         </div>
         <div class="flight-info" style="margin-top:6px;">KE2194 | A321neo | Q 클래스</div>
       </div>
@@ -366,24 +380,26 @@
 
   <div class="card">
     <h2>숙소</h2>
-    <div class="spot-name">아오모리시의 아파트 (에어비앤비)</div>
-    <div class="spot-meta">호스트: 三橋 님</div>
-    <div class="spot-meta" style="margin-top:8px;">
-      3-chome-7-12 Nagashima バンビハウス3階302<br>
-      Aomori, 030-0861, Japan
-    </div>
-    <div style="margin-top:12px; font-size:0.9em;">
-      <span class="tag green">체크인 4:00 PM 이후</span>
-      <span class="tag green">체크아웃 10:00 AM</span>
-      <span class="tag green">아오모리역 도보 10분</span>
+    <div class="spot" onclick="showMap('accommodation')">
+      <div class="spot-name">아오모리시의 아파트 (에어비앤비)</div>
+      <div class="spot-meta">호스트: 三橋 님 | 3-chome-7-12 Nagashima バンビハウス3階302</div>
+      <div style="margin-top:12px;">
+        <span class="tag green">체크인 4:00 PM</span>
+        <span class="tag green">체크아웃 10:00 AM</span>
+        <span class="tag green">아오모리역 도보 10분</span>
+      </div>
+      <div class="spot-tap-hint">탭하여 지도 보기</div>
     </div>
   </div>
 
   <div class="card">
     <h2>공항 &#10231; 숙소</h2>
-    <h3>JR 버스 리무진</h3>
-    <p>AOJ 공항 &#8594; 아오모리역: 약 35분, 860~980엔</p>
-    <p style="font-size:0.9em; color:var(--text-light);">1일 3회 항공편 연동 운행. 아오모리역에서 숙소까지 도보 10분.</p>
+    <div class="spot" onclick="showMap('aoj_airport')">
+      <h3>JR 버스 리무진</h3>
+      <p>AOJ 공항 &#8594; 아오모리역: 약 35분, 860~980엔</p>
+      <p style="font-size:0.9em; color:var(--text-light);">1일 3회 항공편 연동 운행. 아오모리역에서 숙소까지 도보 10분.</p>
+      <div class="spot-tap-hint">탭하여 공항 지도 보기</div>
+    </div>
     <div class="tip">놓치면 택시뿐 (6,000~7,000엔). 버스 시간 반드시 미리 확인!</div>
   </div>
 
@@ -426,71 +442,70 @@
   <div class="card">
     <div class="section-title">이동 & 동네 파악</div>
     <div class="timeline">
-      <div class="tl-item">
+      <div class="tl-item" onclick="showMap('aoj_airport')">
         <span class="tl-time">09:05</span>
         <span class="tl-title">ICN T2 출발 (KE2193)</span>
       </div>
-      <div class="tl-item">
+      <div class="tl-item" onclick="showMap('aoj_airport')">
         <span class="tl-time">11:35</span>
         <span class="tl-title">AOJ 아오모리 공항 도착</span>
+        <div class="tl-map-hint">탭하여 지도 보기</div>
       </div>
-      <div class="tl-item">
+      <div class="tl-item" onclick="showMap('aomori_station')">
         <span class="tl-time">12:00</span>
         <span class="tl-title">JR 버스로 아오모리역 이동</span>
         <div class="tl-desc">35분, ~980엔</div>
+        <div class="tl-map-hint">탭하여 지도 보기</div>
       </div>
-      <div class="tl-item">
+      <div class="tl-item" onclick="showMap('accommodation')">
         <span class="tl-time">12:40</span>
         <span class="tl-title">아오모리역 도착 &#8594; 숙소에 짐 맡기기</span>
         <div class="tl-desc">체크인 16:00이므로 짐만 보관</div>
+        <div class="tl-map-hint">탭하여 지도 보기</div>
       </div>
-      <div class="tl-item meal">
+      <div class="tl-item meal" onclick="showDetail('niboshi_ramen')">
         <span class="tl-time">13:00</span>
         <span class="tl-title">점심: 煮干しラーメン (니보시 라멘)</span>
         <div class="tl-desc">아오모리의 소울푸드. 시내 라멘집 9할이 니보시.</div>
+        <div class="tl-map-hint">탭하여 상세 보기</div>
       </div>
-      <div class="tl-item">
+      <div class="tl-item" onclick="showDetail('warasse')">
         <span class="tl-time">14:00</span>
         <span class="tl-title">ねぶたの家 ワ・ラッセ</span>
         <div class="tl-desc">실물 대형 네부타 전시. 아오모리의 정체성을 이해하는 첫걸음.</div>
+        <div class="tl-map-hint">탭하여 상세 보기</div>
       </div>
-      <div class="tl-item">
+      <div class="tl-item" onclick="showDetail('a_factory')">
         <span class="tl-time">15:30</span>
         <span class="tl-title">A-FACTORY 시드르 테이스팅</span>
-        <div class="tl-desc">아오모리 사과로 만든 시드르 시음 (300엔~). 토산물 구경.</div>
+        <div class="tl-desc">아오모리 사과로 만든 시드르 시음 (300엔~).</div>
+        <div class="tl-map-hint">탭하여 상세 보기</div>
       </div>
-      <div class="tl-item">
+      <div class="tl-item" onclick="showMap('accommodation')">
         <span class="tl-time">16:00</span>
         <span class="tl-title">숙소 체크인 & 짐 정리</span>
       </div>
-      <div class="tl-item">
+      <div class="tl-item" onclick="showMap('bay_area')">
         <span class="tl-time">16:30</span>
-        <span class="tl-title">동네 산책</span>
-        <div class="tl-desc">편의점, 슈퍼 위치 파악. 아오모리만 워터프론트 산책.</div>
+        <span class="tl-title">동네 산책 &mdash; 아오모리만 워터프론트</span>
+        <div class="tl-desc">편의점, 슈퍼 위치 파악.</div>
+        <div class="tl-map-hint">탭하여 지도 보기</div>
       </div>
     </div>
 
     <div class="section-title">저녁: 첫날밤은 동네 이자카야에서</div>
     <div class="timeline">
-      <div class="tl-item">
+      <div class="tl-item" onclick="showDetail('sanfuri')">
         <span class="tl-time">18:00</span>
         <span class="tl-title">さんふり横丁 (산후리 요코초)</span>
-        <div class="tl-desc">昭和풍 포장마차촌 15곳. 8~12석 소규모 가게에서 주인&middot;단골과 대화.</div>
+        <div class="tl-desc">昭和풍 포장마차촌 15곳. 주인&middot;단골과 대화.</div>
+        <div class="tl-map-hint">탭하여 상세 보기</div>
       </div>
-      <div class="tl-item meal">
-        <span class="tl-time"></span>
-        <span class="tl-title">1차: 향토 어패류 + 地酒</span>
-        <div class="tl-desc">호타테(가리비), 야리이카(창꼴뚜기) 등 봄 제철 해산물.</div>
-      </div>
-      <div class="tl-item meal">
-        <span class="tl-time"></span>
-        <span class="tl-title">2차: 옆 가게로 하시고</span>
-        <div class="tl-desc">현지 스타일 = 한 곳에서 2~3잔 &#8594; 다음 가게.</div>
-      </div>
-      <div class="tl-item meal">
+      <div class="tl-item meal" onclick="showDetail('shoga_miso_oden')">
         <span class="tl-time">20:30</span>
         <span class="tl-title">生姜味噌おでん (쇼가미소 오뎅)</span>
-        <div class="tl-desc">아오모리 고유의 오뎅. 쌀쌀한 밤에 딱 맞는 마무리.</div>
+        <div class="tl-desc">아오모리 고유의 오뎅. 쌀쌀한 밤에 딱.</div>
+        <div class="tl-map-hint">탭하여 상세 보기</div>
       </div>
       <div class="tl-item">
         <span class="tl-time">21:30</span>
@@ -510,52 +525,58 @@
   <div class="card">
     <div class="section-title">아침: 아오모리 주민의 아침 루틴</div>
     <div class="timeline">
-      <div class="tl-item">
+      <div class="tl-item" onclick="showDetail('machinaka_onsen')">
         <span class="tl-time">06:00</span>
         <span class="tl-title">朝風呂 (아침 목욕) @ まちなか温泉</span>
-        <div class="tl-desc">480엔, 6시 오픈. 천연 온천 가케나가시. 수건 세트 250엔 대여.</div>
+        <div class="tl-desc">480엔, 6시 오픈. 천연 온천 가케나가시.</div>
+        <div class="tl-map-hint">탭하여 상세 보기</div>
       </div>
-      <div class="tl-item meal">
+      <div class="tl-item meal" onclick="showDetail('nokkedon')">
         <span class="tl-time">07:30</span>
         <span class="tl-title">のっけ丼 아침식사 @ 古川市場</span>
-        <div class="tl-desc">식권 12매 2,200엔 &#8594; 30곳 가게에서 원하는 해산물 골라 나만의 덮밥 완성.</div>
+        <div class="tl-desc">식권 12매 2,200엔 &#8594; 나만의 해산물 덮밥.</div>
+        <div class="tl-map-hint">탭하여 상세 보기</div>
       </div>
-      <div class="tl-item">
+      <div class="tl-item" onclick="showDetail('kissaten_maron')">
         <span class="tl-time">09:00</span>
         <span class="tl-title">킷사텐 커피 @ 喫茶 マロン</span>
-        <div class="tl-desc">1970년 창업 노포. 넬 드립 커피. 자메이칸 카레도 명물.</div>
+        <div class="tl-desc">1970년 창업 노포. 넬 드립 커피.</div>
+        <div class="tl-map-hint">탭하여 상세 보기</div>
       </div>
     </div>
     <div class="tip">이것이 아오모리 현지인의 진짜 아침 &mdash; <strong>온천 &#8594; 시장 &#8594; 킷사텐</strong></div>
 
     <div class="section-title">낮: 느긋한 동네 산책</div>
     <div class="timeline">
-      <div class="tl-item">
+      <div class="tl-item" onclick="showMap('shinmachi')">
         <span class="tl-time">10:30</span>
         <span class="tl-title">新町 (신마치) 상점가 산책</span>
-        <div class="tl-desc">아오모리역 동쪽의 상업가. 로컬 상점&middot;카페 구경.</div>
+        <div class="tl-map-hint">탭하여 지도 보기</div>
       </div>
-      <div class="tl-item">
+      <div class="tl-item" onclick="showDetail('auga')">
         <span class="tl-time">11:30</span>
         <span class="tl-title">AUGA 新鮮市場 구경</span>
-        <div class="tl-desc">지하 1층 신선시장. 고천시장보다 현지인 장보기 분위기.</div>
+        <div class="tl-desc">지하 1층 신선시장. 현지인 장보기 분위기.</div>
+        <div class="tl-map-hint">탭하여 상세 보기</div>
       </div>
-      <div class="tl-item meal">
+      <div class="tl-item meal" onclick="showDetail('miso_curry_milk_ramen')">
         <span class="tl-time">12:30</span>
         <span class="tl-title">점심: 味噌カレー牛乳ラーメン</span>
-        <div class="tl-desc">아오모리 고유 B급 구르메. 미소+카레+우유+버터의 묘한 조합.</div>
+        <div class="tl-desc">아오모리 고유 B급 구르메.</div>
+        <div class="tl-map-hint">탭하여 상세 보기</div>
       </div>
-      <div class="tl-item">
+      <div class="tl-item" onclick="showMap('bay_area')">
         <span class="tl-time">14:00</span>
         <span class="tl-title">베이에리어 산책</span>
-        <div class="tl-desc">아오모리만 워터프론트, 베이브리지 조망.</div>
+        <div class="tl-map-hint">탭하여 지도 보기</div>
       </div>
-      <div class="tl-item">
+      <div class="tl-item" onclick="showDetail('kissaten_cleopatra')">
         <span class="tl-time">15:30</span>
         <span class="tl-title">喫茶 クレオパトラ에서 오후 티타임</span>
-        <div class="tl-desc">1969년 창업. 꿀로 먹는 커피, 뜨거운 애플파이 명물.</div>
+        <div class="tl-desc">1969년 창업. 꿀로 먹는 커피, 애플파이.</div>
+        <div class="tl-map-hint">탭하여 상세 보기</div>
       </div>
-      <div class="tl-item">
+      <div class="tl-item" onclick="showMap('accommodation')">
         <span class="tl-time">17:00</span>
         <span class="tl-title">숙소 휴식</span>
       </div>
@@ -563,32 +584,24 @@
 
     <div class="section-title">저녁: 本町 환락가 탐험</div>
     <div class="timeline">
-      <div class="tl-item">
+      <div class="tl-item" onclick="showDetail('joppari')">
         <span class="tl-time">18:30</span>
         <span class="tl-title">本町 이자카야 거리</span>
         <div class="tl-desc">아오모리 최대의 음식&middot;술집 밀집 지역.</div>
+        <div class="tl-map-hint">탭하여 상세 보기</div>
       </div>
-      <div class="tl-item meal">
-        <span class="tl-time"></span>
-        <span class="tl-title">추천: 津軽じょっぱり漁屋酒場</span>
-        <div class="tl-desc">향토 어패류 + 津軽三味線 라이브 연주.</div>
-      </div>
-      <div class="tl-item meal">
-        <span class="tl-time"></span>
-        <span class="tl-title">또는: 旬肴 ひでか</span>
-        <div class="tl-desc">지역 생선 + 현에서만 구할 수 있는 희귀 地酒.</div>
-      </div>
-      <div class="tl-item">
+      <div class="tl-item" onclick="showDetail('be_easy')">
         <span class="tl-time">20:30</span>
         <span class="tl-title">Be Easy Brewing</span>
-        <div class="tl-desc">셀프 탭 크래프트 비어 8종. 아오모리 사과 활용 한정 비어.</div>
+        <div class="tl-desc">셀프 탭 크래프트 비어 8종.</div>
+        <div class="tl-map-hint">탭하여 상세 보기</div>
       </div>
       <div class="tl-item">
         <span class="tl-time">22:00</span>
-        <span class="tl-title">동네 편의점 들러 귀가</span>
+        <span class="tl-title">편의점 들러 귀가</span>
       </div>
     </div>
-    <div class="tip">둘째날 포인트: 아침부터 밤까지 "현지인 24시"를 완전 체험. 킷사텐 2곳 방문으로 노포 문화 만끽.</div>
+    <div class="tip">둘째날 포인트: 아침부터 밤까지 "현지인 24시"를 완전 체험.</div>
   </div>
 </div>
 
@@ -599,82 +612,82 @@
     <div class="day-sub">주말의 아오모리</div>
   </div>
   <div class="card">
-    <div class="section-title">아침: 어제 좋았던 루틴 반복 (이것이 현지인 스타일)</div>
+    <div class="section-title">아침: 어제 좋았던 루틴 반복</div>
     <div class="timeline">
-      <div class="tl-item">
+      <div class="tl-item" onclick="showDetail('machinaka_onsen')">
         <span class="tl-time">06:30</span>
         <span class="tl-title">朝風呂 @ まちなか温泉</span>
-        <div class="tl-desc">같은 시간에 가면 어제 본 얼굴을 다시 만남 &mdash; 이것이 동네 목욕탕.</div>
+        <div class="tl-desc">같은 시간에 가면 어제 본 얼굴을 다시 만남.</div>
+        <div class="tl-map-hint">탭하여 상세 보기</div>
       </div>
-      <div class="tl-item meal">
+      <div class="tl-item meal" onclick="showDetail('nokkedon')">
         <span class="tl-time">07:30</span>
         <span class="tl-title">古川市場 のっけ丼</span>
-        <div class="tl-desc">어제와 다른 네타 조합으로. 단골 가게 주인과 인사.</div>
+        <div class="tl-desc">어제와 다른 네타 조합으로.</div>
+        <div class="tl-map-hint">탭하여 상세 보기</div>
       </div>
-      <div class="tl-item">
+      <div class="tl-item" onclick="showDetail('kissaten_bankamu')">
         <span class="tl-time">09:00</span>
         <span class="tl-title">喫茶 ばんかむ</span>
-        <div class="tl-desc">1962년 개업, 60년 넘은 노포. 넬 드립 커피 + 16종 빵 런치 세트.</div>
+        <div class="tl-desc">1962년 개업, 60년 넘은 노포.</div>
+        <div class="tl-map-hint">탭하여 상세 보기</div>
       </div>
     </div>
 
     <div class="section-title">낮: 토요일 여유</div>
     <div class="timeline">
-      <div class="tl-item">
+      <div class="tl-item" onclick="showMap('yanagimachi')">
         <span class="tl-time">10:30</span>
         <span class="tl-title">柳町 (야나기마치) 산책</span>
-        <div class="tl-desc">넓은 보도의 남북 대로. 주말엔 이벤트가 열리기도.</div>
+        <div class="tl-map-hint">탭하여 지도 보기</div>
       </div>
       <div class="tl-item meal">
         <span class="tl-time">12:00</span>
         <span class="tl-title">점심: 이자카야 런치 또는 현지 식당</span>
-        <div class="tl-desc">토요일 점심은 느긋하게.</div>
       </div>
-      <div class="tl-item">
+      <div class="tl-item" onclick="showDetail('auga')">
         <span class="tl-time">13:30</span>
         <span class="tl-title">AUGA 시장에서 기념 쇼핑</span>
-        <div class="tl-desc">아오모리 절임류, 사과 가공품, 해산물 건어물 등.</div>
+        <div class="tl-map-hint">탭하여 상세 보기</div>
       </div>
-      <div class="tl-item">
+      <div class="tl-item" onclick="showDetail('a_factory')">
         <span class="tl-time">15:00</span>
         <span class="tl-title">A-FACTORY 재방문</span>
-        <div class="tl-desc">어제 못 해본 시드르 종류 추가 시음. 토산물 선물 구매.</div>
+        <div class="tl-desc">시드르 추가 시음. 토산물 선물 구매.</div>
+        <div class="tl-map-hint">탭하여 상세 보기</div>
       </div>
-      <div class="tl-item">
+      <div class="tl-item" onclick="showMap('accommodation')">
         <span class="tl-time">16:30</span>
-        <span class="tl-title">숙소 휴식 & 짐 정리 시작</span>
-        <div class="tl-desc">내일 체크아웃 대비.</div>
+        <span class="tl-title">숙소 휴식 & 짐 정리</span>
       </div>
     </div>
 
     <div class="section-title">저녁: 마지막 밤 &mdash; 가장 깊이</div>
     <div class="timeline">
-      <div class="tl-item">
+      <div class="tl-item" onclick="showDetail('zenigata')">
         <span class="tl-time">18:00</span>
-        <span class="tl-title">本町 숨은 이자카야 탐험</span>
-        <div class="tl-desc">추천: 銭形平次 (지역 주민 사이 유명).</div>
+        <span class="tl-title">本町 숨은 이자카야: 銭形平次</span>
+        <div class="tl-desc">지역 주민 사이 유명한 숨은 명가.</div>
+        <div class="tl-map-hint">탭하여 상세 보기</div>
       </div>
-      <div class="tl-item meal">
+      <div class="tl-item meal" onclick="showDetail('denshu')">
         <span class="tl-time"></span>
-        <span class="tl-title">地酒 탐방</span>
-        <div class="tl-desc">田酒 (덴슈), 豊盃 (호우하이), 陸奥八仙 (무츠핫센). "田酒ありますか?" 꼭 물어보기.</div>
+        <span class="tl-title">地酒 탐방: 田酒, 豊盃, 陸奥八仙</span>
+        <div class="tl-map-hint">탭하여 상세 보기</div>
       </div>
-      <div class="tl-item">
+      <div class="tl-item" onclick="showDetail('sanfuri')">
         <span class="tl-time">20:00</span>
         <span class="tl-title">さんふり横丁 재방문</span>
-        <div class="tl-desc">첫날 좋았던 가게에 다시 가면 "어, 또 왔어?" &mdash; 3일만의 단골.</div>
+        <div class="tl-desc">"어, 또 왔어?" &mdash; 3일만의 단골.</div>
+        <div class="tl-map-hint">탭하여 상세 보기</div>
       </div>
-      <div class="tl-item">
+      <div class="tl-item" onclick="showMap('bay_area')">
         <span class="tl-time">21:30</span>
-        <span class="tl-title">마지막 밤 산책 &mdash; 아오모리만</span>
-        <div class="tl-desc">야간 베이에리어, 베이브리지 야경.</div>
-      </div>
-      <div class="tl-item">
-        <span class="tl-time">22:30</span>
-        <span class="tl-title">귀가 & 짐 최종 정리</span>
+        <span class="tl-title">마지막 밤 산책 &mdash; 아오모리만 야경</span>
+        <div class="tl-map-hint">탭하여 지도 보기</div>
       </div>
     </div>
-    <div class="tip">셋째날 포인트: 반복이야말로 현지인의 리듬. 같은 곳을 다시 찾아가는 것이 "동네 사람"이 되는 방법.</div>
+    <div class="tip">반복이야말로 현지인의 리듬. 같은 곳을 다시 찾아가는 것이 "동네 사람"이 되는 방법.</div>
   </div>
 </div>
 
@@ -686,33 +699,37 @@
   </div>
   <div class="card">
     <div class="timeline">
-      <div class="tl-item">
+      <div class="tl-item" onclick="showDetail('machinaka_onsen')">
         <span class="tl-time">07:00</span>
         <span class="tl-title">마지막 朝風呂 @ まちなか温泉</span>
         <div class="tl-desc">세 번째 아침 &mdash; 이제 정말 단골.</div>
+        <div class="tl-map-hint">탭하여 상세 보기</div>
       </div>
-      <div class="tl-item meal">
+      <div class="tl-item meal" onclick="showDetail('nokkedon')">
         <span class="tl-time">08:00</span>
         <span class="tl-title">古川市場 마지막 のっけ丼</span>
         <div class="tl-desc">가게 주인에게 "또 올게요" 인사.</div>
+        <div class="tl-map-hint">탭하여 상세 보기</div>
       </div>
-      <div class="tl-item">
+      <div class="tl-item" onclick="showMap('accommodation')">
         <span class="tl-time">09:30</span>
         <span class="tl-title">숙소 최종 정리 & 체크아웃 (10:00)</span>
       </div>
-      <div class="tl-item">
+      <div class="tl-item" onclick="showMap('aomori_station')">
         <span class="tl-time">10:00</span>
         <span class="tl-title">아오모리역 코인로커에 짐 보관</span>
+        <div class="tl-map-hint">탭하여 지도 보기</div>
       </div>
-      <div class="tl-item">
+      <div class="tl-item" onclick="showDetail('a_factory')">
         <span class="tl-time">10:15</span>
-        <span class="tl-title">역 주변 마지막 산책</span>
-        <div class="tl-desc">A-FACTORY에서 마지막 시드르 한잔 또는 토산물 추가 구매.</div>
+        <span class="tl-title">A-FACTORY 마지막 시드르 한잔</span>
+        <div class="tl-map-hint">탭하여 상세 보기</div>
       </div>
-      <div class="tl-item">
+      <div class="tl-item" onclick="showMap('aoj_airport')">
         <span class="tl-time">10:45</span>
         <span class="tl-title">아오모리역 &#8594; AOJ 공항 (JR 버스)</span>
         <div class="tl-desc">35분 소요.</div>
+        <div class="tl-map-hint">탭하여 지도 보기</div>
       </div>
       <div class="tl-item">
         <span class="tl-time">11:20</span>
@@ -732,140 +749,124 @@
 
 <!-- ===== 스폿 ===== -->
 <div id="spots" class="tab-content">
-
   <div class="card">
     <h2>이자카야 & 바</h2>
-
-    <div class="spot">
+    <div class="spot" onclick="showDetail('sanfuri')">
       <div class="spot-name">さんふり横丁 <span class="spot-name-ja">산후리 요코초</span></div>
-      <div class="spot-meta">本町 3-8-3 | 숙소에서 도보 10분</div>
-      <div class="spot-desc">昭和30년대 분위기의 소규모 이자카야 15곳 밀집 屋台村. 8~12석 규모의 아담한 가게에서 주인&middot;단골과 대화. 한 곳에서 2~3잔 &#8594; 옆 가게로 이동하는 하시고 스타일이 현지 방식.</div>
+      <div class="spot-meta">本町 3-8-3 | 도보 10분</div>
+      <div class="spot-desc">昭和풍 포장마차촌 15곳. 하시고 스타일 추천.</div>
       <div><span class="tag">하시고</span><span class="tag">향토요리</span><span class="tag">地酒</span></div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
     </div>
-
-    <div class="spot">
+    <div class="spot" onclick="showDetail('joppari')">
       <div class="spot-name">津軽じょっぱり漁屋酒場</div>
-      <div class="spot-meta">本町 | 숙소에서 도보 10~15분</div>
-      <div class="spot-desc">향토 어패류 + 매일 津軽三味線 라이브 연주.</div>
-      <div><span class="tag">라이브 연주</span><span class="tag">해산물</span></div>
+      <div class="spot-meta">本町 | 도보 10~15분</div>
+      <div class="spot-desc">향토 어패류 + 津軽三味線 라이브.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
     </div>
-
-    <div class="spot">
+    <div class="spot" onclick="showDetail('hideka')">
       <div class="spot-name">旬肴 ひでか</div>
-      <div class="spot-meta">本町 | 숙소에서 도보 10~15분</div>
-      <div class="spot-desc">지역 생선 + 타 현에서 구할 수 없는 희귀 地酒.</div>
-      <div><span class="tag">희귀 地酒</span><span class="tag">지역 생선</span></div>
+      <div class="spot-meta">本町 | 도보 10~15분</div>
+      <div class="spot-desc">지역 생선 + 희귀 地酒.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
     </div>
-
-    <div class="spot">
+    <div class="spot" onclick="showDetail('zenigata')">
       <div class="spot-name">銭形平次</div>
-      <div class="spot-meta">本町 | 숙소에서 도보 10~15분</div>
-      <div class="spot-desc">숨은 명가 이자카야. 지역 주민들 사이에서 유명.</div>
-      <div><span class="tag">현지인 단골</span><span class="tag">숨은 맛집</span></div>
+      <div class="spot-meta">本町 | 도보 10~15분</div>
+      <div class="spot-desc">숨은 명가. 지역 주민들 사이에서 유명.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
     </div>
-
-    <div class="spot">
+    <div class="spot" onclick="showDetail('be_easy')">
       <div class="spot-name">Be Easy Brewing</div>
-      <div class="spot-meta">아오모리역 근처 | 숙소에서 도보 10분</div>
-      <div class="spot-desc">셀프 탭 방식으로 상시 8종 크래프트 비어. 아오모리 사과 활용 한정 비어.</div>
-      <div><span class="tag green">크래프트 비어</span><span class="tag green">셀프 탭</span></div>
+      <div class="spot-meta">아오모리역 근처 | 도보 10분</div>
+      <div class="spot-desc">셀프 탭 크래프트 비어 8종.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
     </div>
   </div>
 
   <div class="card">
     <h2>아침 시장</h2>
-
-    <div class="spot">
+    <div class="spot" onclick="showDetail('nokkedon')">
       <div class="spot-name">古川市場 <span class="spot-name-ja">のっけ丼</span></div>
-      <div class="spot-meta">古川 1-11-16 | 도보 8분 | 07:00~16:00 | 화요일 휴무</div>
-      <div class="spot-desc">식권 12매(2,200엔) 구매 &#8594; 밥 받기 &#8594; 약 30곳 가게에서 원하는 해산물/토핑 교환 &#8594; 나만의 덮밥 완성.</div>
+      <div class="spot-meta">古川 1-11-16 | 도보 8분 | 07:00~16:00</div>
+      <div class="spot-desc">식권으로 나만의 해산물 덮밥 완성.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
     </div>
-
-    <div class="spot">
-      <div class="spot-name">AUGA 新鮮市場 <span class="spot-name-ja">아우가 신선시장</span></div>
+    <div class="spot" onclick="showDetail('auga')">
+      <div class="spot-name">AUGA 新鮮市場</div>
       <div class="spot-meta">아우가 빌딩 B1 | 도보 10분</div>
-      <div class="spot-desc">고천시장보다 관광색이 적고 현지인 장보기 분위기. 해산물, 채소, 절임류.</div>
+      <div class="spot-desc">현지인 장보기 분위기. 절임류&middot;산채.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
     </div>
   </div>
 
   <div class="card">
     <h2>온천</h2>
-    <div class="spot">
-      <div class="spot-name">青森まちなか温泉 <span class="spot-name-ja">아오모리 마치나카 온센</span></div>
+    <div class="spot" onclick="showDetail('machinaka_onsen')">
+      <div class="spot-name">青森まちなか温泉</div>
       <div class="spot-meta">古川 | 도보 10분 | 06:00~24:00 | 480엔</div>
-      <div class="spot-desc">천연 온천 가케나가시(掛け流し). 대욕장, 노천탕, 사우나. 수건 세트 250엔 대여. 아침 6시 오픈으로 朝風呂 가능.</div>
+      <div class="spot-desc">천연 온천 가케나가시. 朝風呂 가능.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
     </div>
   </div>
 
   <div class="card">
     <h2>킷사텐 (喫茶店)</h2>
-
-    <div class="spot">
-      <div class="spot-name">喫茶 マロン <span class="spot-name-ja">킷사텐 마론</span></div>
+    <div class="spot" onclick="showDetail('kissaten_maron')">
+      <div class="spot-name">喫茶 マロン</div>
       <div class="spot-meta">安方 | 도보 8분 | 1970년 창업</div>
-      <div class="spot-desc">넬 드립 커피, 안티크 인테리어. 명물: 자메이칸 카레.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
     </div>
-
-    <div class="spot">
-      <div class="spot-name">喫茶 クレオパトラ <span class="spot-name-ja">킷사텐 클레오파트라</span></div>
+    <div class="spot" onclick="showDetail('kissaten_cleopatra')">
+      <div class="spot-name">喫茶 クレオパトラ</div>
       <div class="spot-meta">新町 | 도보 10분 | 1969년 창업</div>
-      <div class="spot-desc">커피에 꿀 제공. 명물: 뜨거운 애플파이, 프렌치토스트.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
     </div>
-
-    <div class="spot">
-      <div class="spot-name">喫茶 ばんかむ <span class="spot-name-ja">킷사텐 반카무</span></div>
+    <div class="spot" onclick="showDetail('kissaten_bankamu')">
+      <div class="spot-name">喫茶 ばんかむ</div>
       <div class="spot-meta">中央 | 1962년 개업</div>
-      <div class="spot-desc">60년 이상 역사. 넬 드립 커피 + 16종 빵 런치 세트.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
     </div>
   </div>
 
   <div class="card">
     <h2>랜드마크</h2>
-
-    <div class="spot">
+    <div class="spot" onclick="showDetail('warasse')">
       <div class="spot-name">ねぶたの家 ワ・ラッセ</div>
       <div class="spot-meta">安方 1-1-1 | 도보 10분 | 09:00~18:00</div>
-      <div class="spot-desc">실제 대형 네부타 전시. 네부타 축제(8월)의 박진감을 연중 체험.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
     </div>
-
-    <div class="spot">
+    <div class="spot" onclick="showDetail('a_factory')">
       <div class="spot-name">A-FACTORY</div>
       <div class="spot-meta">아오모리역 도보 2분 | 도보 10분</div>
-      <div class="spot-desc">아오모리현 특산물 마켓 + 시드르 공방. 시드르 테이스팅 300엔~.</div>
-    </div>
-
-    <div class="spot">
-      <div class="spot-name">아오모리 베이에리어</div>
-      <div class="spot-meta">도보 10분</div>
-      <div class="spot-desc">워터프론트 산책로, ASPAM 전망대, 베이브리지. 석양 뷰 포인트.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
     </div>
   </div>
 </div>
 
 <!-- ===== 음식 ===== -->
 <div id="food" class="tab-content">
-
   <div class="card">
     <h2>아오모리 소울푸드</h2>
-
-    <div class="spot">
+    <div class="spot" onclick="showDetail('niboshi_ramen')">
       <div class="spot-name">煮干しラーメン <span class="spot-name-ja">니보시 라멘</span></div>
-      <div class="spot-desc">시내 100곳 이상 라멘점 중 8~9할이 니보시(멸치) 라멘. 현지인은 주 1~2회 방문하는 진정한 소울푸드.</div>
+      <div class="spot-desc">시내 라멘점 9할이 니보시. 현지인의 진짜 소울푸드.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
     </div>
-
-    <div class="spot">
+    <div class="spot" onclick="showDetail('miso_curry_milk_ramen')">
       <div class="spot-name">味噌カレー牛乳ラーメン <span class="spot-name-ja">미소카레규뉴 라멘</span></div>
-      <div class="spot-desc">아오모리 고유 B급 구르메. 미소+카레+우유+버터의 절묘한 조합. 1978년 味の札幌에서 정식 메뉴화.</div>
+      <div class="spot-desc">아오모리 고유 B급 구르메. 미소+카레+우유+버터.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
     </div>
-
-    <div class="spot">
+    <div class="spot" onclick="showDetail('shoga_miso_oden')">
       <div class="spot-name">生姜味噌おでん <span class="spot-name-ja">쇼가미소 오뎅</span></div>
-      <div class="spot-desc">아오모리 고유 오뎅 스타일. 미소 + 갈은 생강. 쌀쌀한 4월 초에 딱.</div>
+      <div class="spot-desc">미소 + 갈은 생강. 4월 초 쌀쌀한 날씨에 딱.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
     </div>
-
-    <div class="spot">
+    <div class="spot" onclick="showDetail('nokkedon')">
       <div class="spot-name">のっけ丼 <span class="spot-name-ja">놋케동</span></div>
-      <div class="spot-desc">고천시장에서 직접 만드는 나만의 해산물 덮밥. 식권제.</div>
+      <div class="spot-desc">古川시장에서 직접 만드는 나만의 해산물 덮밥.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
     </div>
   </div>
 
@@ -876,41 +877,39 @@
 
   <div class="card">
     <h2>地酒 & 크래프트 비어</h2>
-
-    <h3>일본주 3대 명주</h3>
-    <div class="spot">
+    <div class="spot" onclick="showDetail('denshu')">
       <div class="spot-name">田酒 <span class="spot-name-ja">덴슈</span></div>
-      <div class="spot-desc">아오모리시 서전주조. 전국적 인기, 현지에서도 입수 어려운 프리미엄. 이자카야에서 "田酒ありますか?" 꼭 물어보기.</div>
+      <div class="spot-desc">아오모리 최고 地酒. 전국적 인기, 현지에서도 입수 어려운 프리미엄.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
     </div>
-    <div class="spot">
-      <div class="spot-name">豊盃 <span class="spot-name-ja">호우하이</span></div>
-      <div class="spot-desc">히로사키시 미우라주조. 풍부한 과실향.</div>
+    <div class="spot" onclick="showDetail('be_easy')">
+      <div class="spot-name">Be Easy Brewing</div>
+      <div class="spot-desc">셀프 탭 크래프트 비어 8종 + 아오모리 사과 한정 비어.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
     </div>
-    <div class="spot">
-      <div class="spot-name">陸奥八仙 <span class="spot-name-ja">무츠핫센</span></div>
-      <div class="spot-desc">하치노헤시 핫노헤주조. 신선한 과실향.</div>
+    <div class="spot" onclick="showDetail('a_factory')">
+      <div class="spot-name">A-FACTORY 시드르</div>
+      <div class="spot-desc">아오모리 사과 시드르 공방. 시음 300엔~.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
     </div>
-
-    <h3>크래프트 비어 & 시드르</h3>
-    <p>Be Easy Brewing (셀프 탭 8종) | A-FACTORY 시드르 공방 (시음 300엔~)</p>
   </div>
 
   <div class="card">
     <h2>음식 체크리스트</h2>
     <ul class="checklist" id="food-checklist">
-      <li><div class="check-box" onclick="toggleCheck(this)"></div>煮干しラーメン &mdash; 아오모리의 소울푸드</li>
-      <li><div class="check-box" onclick="toggleCheck(this)"></div>味噌カレー牛乳ラーメン &mdash; B급 구르메의 정점</li>
-      <li><div class="check-box" onclick="toggleCheck(this)"></div>のっけ丼 &mdash; 나만의 해산물 덮밥</li>
-      <li><div class="check-box" onclick="toggleCheck(this)"></div>生姜味噌おでん &mdash; 아오모리식 오뎅</li>
-      <li><div class="check-box" onclick="toggleCheck(this)"></div>ホタテ (가리비) &mdash; 봄 제철</li>
-      <li><div class="check-box" onclick="toggleCheck(this)"></div>ヤリイカ (창꼴뚜기) &mdash; 봄 제철</li>
-      <li><div class="check-box" onclick="toggleCheck(this)"></div>田酒 (덴슈) &mdash; 아오모리 최고 地酒</li>
-      <li><div class="check-box" onclick="toggleCheck(this)"></div>豊盃 (호우하이) &mdash; 히로사키의 명주</li>
-      <li><div class="check-box" onclick="toggleCheck(this)"></div>陸奥八仙 (무츠핫센) &mdash; 하치노헤의 명주</li>
-      <li><div class="check-box" onclick="toggleCheck(this)"></div>아오모리 시드르 &mdash; A-FACTORY</li>
-      <li><div class="check-box" onclick="toggleCheck(this)"></div>크래프트 비어 &mdash; Be Easy Brewing</li>
-      <li><div class="check-box" onclick="toggleCheck(this)"></div>킷사텐 넬 드립 커피</li>
-      <li><div class="check-box" onclick="toggleCheck(this)"></div>아오모리 사과 (생과, 쥬스, 파이)</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span>煮干しラーメン &mdash; 소울푸드</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span>味噌カレー牛乳ラーメン &mdash; B급 구르메</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span>のっけ丼 &mdash; 해산물 덮밥</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span>生姜味噌おでん &mdash; 아오모리식 오뎅</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span>ホタテ (가리비)</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span>ヤリイカ (창꼴뚜기)</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span>田酒 (덴슈)</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span>豊盃 (호우하이)</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span>陸奥八仙 (무츠핫센)</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span>아오모리 시드르</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span>크래프트 비어</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span>킷사텐 넬 드립 커피</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span>아오모리 사과</span></li>
     </ul>
   </div>
 </div>
@@ -920,9 +919,7 @@
   <div class="card">
     <h2>예산 가이드 (1인 기준)</h2>
     <table class="budget-table">
-      <thead>
-        <tr><th>항목</th><th>예상 금액</th><th>비고</th></tr>
-      </thead>
+      <thead><tr><th>항목</th><th>예상 금액</th><th>비고</th></tr></thead>
       <tbody>
         <tr><td>공항버스 (왕복)</td><td>~2,000엔</td><td>860~980엔 x 2</td></tr>
         <tr><td>온천 (3회)</td><td>~1,440엔</td><td>480엔 x 3</td></tr>
@@ -932,7 +929,7 @@
         <tr><td>킷사텐 (3회)</td><td>~2,400엔</td><td>~800엔 x 3</td></tr>
         <tr><td>시드르/비어</td><td>~2,000엔</td><td></td></tr>
         <tr><td>토산물/기념품</td><td>~5,000엔</td><td></td></tr>
-        <tr><td>기타 (간식/편의점)</td><td>~3,000엔</td><td></td></tr>
+        <tr><td>기타</td><td>~3,000엔</td><td></td></tr>
         <tr><td><strong>합계</strong></td><td><strong>~39,000엔</strong></td><td><strong>약 35~45만원</strong></td></tr>
       </tbody>
     </table>
@@ -942,57 +939,471 @@
 
 <!-- ===== 준비물 & 팁 ===== -->
 <div id="tips" class="tab-content">
-
   <div class="card">
     <h2>4월 초 아오모리 날씨</h2>
     <p><strong>낮 5~10&#8451; / 밤 영하~0&#8451;</strong> &mdash; 아직 겨울 끝자락</p>
-    <p style="margin-top:6px; font-size:0.92em; color:var(--text-light);">간헐적 눈 가능성 있음. 벚꽃은 4/15경 개화 예측 (이 일정에선 아직).</p>
-    <div class="tip">도쿄의 4월과 완전히 다름. 현지인도 아직 겨울 코트 착용!</div>
+    <p style="margin-top:6px; font-size:0.92em; color:var(--text-light);">간헐적 눈 가능. 벚꽃은 4/15경 개화 예측.</p>
+    <div class="tip">도쿄의 4월과 완전히 다름. 현지인도 아직 겨울 코트!</div>
   </div>
-
   <div class="card">
     <h2>필수 준비물</h2>
     <ul class="checklist">
-      <li><div class="check-box" onclick="toggleCheck(this)"></div>겨울 코트 또는 두꺼운 다운자켓</li>
-      <li><div class="check-box" onclick="toggleCheck(this)"></div>히트텍 등 보온 이너</li>
-      <li><div class="check-box" onclick="toggleCheck(this)"></div>머플러, 장갑 (아침저녁 필수)</li>
-      <li><div class="check-box" onclick="toggleCheck(this)"></div>방수 운동화 (눈/비 + 도보 이동 대비)</li>
-      <li><div class="check-box" onclick="toggleCheck(this)"></div>현금 4~5만엔</li>
-      <li><div class="check-box" onclick="toggleCheck(this)"></div>작은 수건 (센토용)</li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span>겨울 코트 또는 두꺼운 다운자켓</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span>히트텍 등 보온 이너</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span>머플러, 장갑</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span>방수 운동화</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span>현금 4~5만엔</span></li>
+      <li><div class="check-box" onclick="toggleCheck(this)"></div><span>작은 수건 (센토용)</span></li>
     </ul>
   </div>
-
   <div class="card">
     <h2>알아두면 좋은 팁</h2>
-
-    <h3>현금 준비가 핵심</h3>
-    <p>시장, 센토, 산후리 요코초 등 핵심 스폿 대부분이 현금 전용. IC카드는 교통&middot;편의점만. 공항 환전 또는 편의점 ATM 이용.</p>
-
-    <h3>공항버스 시간 확인</h3>
-    <p>AOJ 공항 리무진은 1일 3회 항공편 연동. 놓치면 택시(6,000~7,000엔)뿐.</p>
-
+    <h3>현금이 핵심</h3>
+    <p>시장, 센토, 요코초 대부분 현금 전용. 편의점 ATM 이용 가능.</p>
+    <h3>공항버스 1일 3회</h3>
+    <p>놓치면 택시 6,000~7,000엔. 시간 반드시 확인.</p>
     <h3>이자카야 라스트오더</h3>
-    <p>대부분 22:00~23:00. 소규모 이자카야는 일찍 닫음. 18:00~18:30 시작 권장.</p>
-
+    <p>대부분 22:00~23:00. 18:00~18:30 시작 권장.</p>
     <h3>津軽弁 (쓰가루 사투리)</h3>
-    <p>일본에서도 가장 알아듣기 어려운 방언. 표준어로 말하면 맞춰줌. "おすすめは?" 한마디면 OK.</p>
-
+    <p>일본 최난해 방언. 표준어로 말하면 맞춰줌. "おすすめは?" 한마디면 OK.</p>
     <h3>센토 에티켓</h3>
     <ul style="margin-top:6px; padding-left:20px; font-size:0.92em;">
       <li>입욕 전 반드시 세신</li>
-      <li>수건은 탕에 넣지 않음 (머리 위에 올림)</li>
-      <li>타투가 있으면 사전 확인 필요</li>
+      <li>수건은 탕에 넣지 않음 (머리 위에)</li>
+      <li>타투 있으면 사전 확인</li>
     </ul>
-
-    <h3>여행의 핵심은 "반복"</h3>
-    <p>관광지를 많이 돌아다니는 것이 아니라, 같은 곳을 매일 찾아가는 것이 이번 여행의 본질. 3일 연속 같은 온천, 같은 시장에 가면 주인이 얼굴을 기억하고 대화가 깊어짐.</p>
   </div>
 </div>
 
 </div><!-- container -->
 
+<!-- ===== MAP OVERLAY ===== -->
+<div class="map-overlay" id="mapOverlay">
+  <div class="map-header">
+    <h3 id="mapTitle"></h3>
+    <button class="map-close" onclick="closeMap()">&times;</button>
+  </div>
+  <div class="map-body">
+    <iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+  <div class="map-footer" id="mapFooter"></div>
+</div>
+
+<!-- ===== DETAIL OVERLAY ===== -->
+<div class="detail-overlay" id="detailOverlay" onclick="if(event.target===this)closeDetail()">
+  <div class="detail-sheet" id="detailSheet">
+    <div class="detail-handle"></div>
+    <div class="detail-content" id="detailContent"></div>
+  </div>
+</div>
+
 <script>
-// Tab navigation
+// ===== SPOT DATABASE =====
+const SPOTS = {
+  // --- Locations (map only) ---
+  accommodation: {
+    name: '숙소 (バンビハウス 302)',
+    nameJa: '長島 3-7-12 バンビハウス3階302',
+    query: '青森市長島3丁目7-12',
+    address: '3-chome-7-12 Nagashima, Aomori 030-0861',
+    icon: '🏠',
+  },
+  aoj_airport: {
+    name: '아오모리 공항 (AOJ)',
+    nameJa: '青森空港',
+    query: '青森空港',
+    address: '아오모리현 아오모리시 오오타니 코마츠',
+    desc: 'JR 버스 리무진으로 아오모리역까지 35분, 860~980엔. 1일 3회 항공편 연동.',
+    icon: '✈️',
+  },
+  aomori_station: {
+    name: '아오모리역',
+    nameJa: 'JR青森駅',
+    query: 'JR青森駅',
+    address: '아오모리시 야나카와 1-1-1',
+    desc: '코인로커 이용 가능. 숙소까지 도보 10분.',
+    icon: '🚉',
+  },
+  bay_area: {
+    name: '아오모리 베이에리어',
+    nameJa: '青森ベイエリア',
+    query: '青森ベイエリア',
+    desc: '워터프론트 산책로, ASPAM 전망대, 베이브리지. 석양&야경 포인트.',
+    icon: '🌊',
+  },
+  shinmachi: {
+    name: '新町 상점가',
+    nameJa: '新町通り 青森',
+    query: '青森市新町通り',
+    desc: '아오모리역 동쪽 상업가. 상점, 카페, 이자카야 혼재. 이른 시간부터 영업하는 가게 다수.',
+    icon: '🛍️',
+  },
+  yanagimachi: {
+    name: '柳町 (야나기마치)',
+    nameJa: '柳町通り 青森',
+    query: '青森市柳町通り',
+    desc: '시내 중심 남북 대로. 넓은 보도로 산책에 적합. 주말 이벤트가 열리기도.',
+    icon: '🚶',
+  },
+
+  // --- Detail spots ---
+  sanfuri: {
+    name: 'さんふり横丁',
+    nameJa: '산후리 요코초',
+    query: 'さんふり横丁 青森',
+    address: '青森市本町 3-8-3',
+    walk: '숙소에서 도보 10분',
+    icon: '🏮',
+    category: '이자카야 / 요코초',
+    hours: '가게마다 다름 (대부분 17:00~23:00)',
+    price: '1인 2,000~4,000엔/가게',
+    desc: '昭和30년대 분위기의 소규모 이자카야 15곳이 밀집한 屋台村. 8~12석 규모의 아담한 가게에서 주인, 단골과 자연스럽게 대화할 수 있다.',
+    menu: '각 가게마다 특색 — 향토 어패류, 꼬치구이, 오뎅, 地酒 등',
+    tips: '한 곳에서 2~3잔 마시고 옆 가게로 이동하는 "하시고(はしご)" 스타일이 현지 방식. 관광객도 오지만 현지 단골이 많은 곳이라 분위기가 좋다. 일본어를 못해도 주인이 친절하게 대해준다.',
+    tags: ['하시고', '향토요리', '地酒', '현지인 단골'],
+  },
+  joppari: {
+    name: '津軽じょっぱり漁屋酒場',
+    nameJa: '쓰가루 좃파리 이사카야',
+    query: '津軽じょっぱり漁屋酒場 青森本町店',
+    address: '青森市本町',
+    walk: '숙소에서 도보 10~15분',
+    icon: '🎵',
+    category: '이자카야',
+    hours: '17:00~23:00 (요일별 변동)',
+    price: '1인 3,000~5,000엔',
+    desc: '아오모리 향토 어패류를 즐기며 津軽三味線 라이브 연주를 감상할 수 있는 이자카야. 매일 연주가 있어 아오모리의 문화를 깊이 체험 가능.',
+    menu: '호타테(가리비) 버터구이, 이카(오징어) 회, 향토 해산물 모듬, 地酒 각종',
+    tips: '津軽三味線 라이브는 일본 전통 현악기 연주. 박력 있는 소리에 감동받을 것. 예약 없이도 가능하지만 주말은 혼잡할 수 있다.',
+    tags: ['라이브 연주', '해산물', '津軽三味線'],
+  },
+  hideka: {
+    name: '旬肴 ひでか',
+    nameJa: '순코우 히데카',
+    query: '旬肴ひでか 青森',
+    address: '青森市本町',
+    walk: '숙소에서 도보 10~15분',
+    icon: '🍶',
+    category: '이자카야',
+    hours: '17:30~23:00頃',
+    price: '1인 4,000~6,000엔',
+    desc: '아오모리 현지 생선과 타 현에서는 구할 수 없는 희귀 地酒를 전문으로 하는 이자카야. 주인의 사케 추천이 탁월.',
+    menu: '당일 입하 지역 생선 회/구이, 희귀 地酒 (田酒, 豊盃 등 입수 시 제공)',
+    tips: '地酒를 좋아한다면 여기가 최적. 주인에게 "おすすめの地酒ください" (추천 지주 주세요)라고 하면 상태 좋은 술을 골라줌. 田酒가 입하되는 날이면 꼭 주문.',
+    tags: ['희귀 地酒', '지역 생선', '주인 추천'],
+  },
+  zenigata: {
+    name: '銭形平次',
+    nameJa: '제니가타 헤이지',
+    query: '銭形平次 青森市',
+    address: '青森市本町',
+    walk: '숙소에서 도보 10~15분',
+    icon: '🥢',
+    category: '이자카야',
+    hours: '18:00~23:00頃',
+    price: '1인 3,000~5,000엔',
+    desc: '관광 가이드에는 잘 나오지 않지만 지역 주민들 사이에서 유명한 숨은 명가 이자카야. 아오모리 향토 요리를 정통으로 즐길 수 있다.',
+    menu: '향토 가정식 스타일 요리, 계절 해산물, 地酒',
+    tips: '관광객이 적어 진짜 현지 분위기를 느낄 수 있는 곳. 마지막 밤에 방문하기 좋다. 주인이 따뜻하게 맞아줌.',
+    tags: ['현지인 단골', '숨은 맛집', '향토 가정식'],
+  },
+  be_easy: {
+    name: 'Be Easy Brewing',
+    nameJa: '비 이지 브루잉',
+    query: 'Be Easy Brewing 青森',
+    address: '青森市安方 1-4-10',
+    walk: '숙소에서 도보 10분',
+    icon: '🍺',
+    category: '크래프트 비어 펍',
+    hours: '15:00~22:00 (요일별 변동)',
+    price: '1잔 600~900엔',
+    desc: '히로사키 기반 브루어리(2016년 설립). 상시 8종 크래프트 비어를 셀프 탭으로 직접 따라 마실 수 있다. 국내외 수상 다수.',
+    menu: 'IPA, 페일에일, 스타우트, 시즌널 에일 등 8종 로테이션. 아오모리 사과 활용 한정 비어가 인기.',
+    tips: '셀프 탭 시스템이 재미있다. 소량씩 여러 종류를 시도하는 것을 추천. 안주는 간단한 것만 있으니 이자카야 2차로 가기 좋다.',
+    tags: ['크래프트 비어', '셀프 탭', '사과 비어'],
+  },
+  nokkedon: {
+    name: '古川市場 のっけ丼',
+    nameJa: '후루카와 시장 놋케동',
+    query: '青森魚菜センター のっけ丼',
+    address: '青森市古川 1-11-16',
+    walk: '숙소에서 도보 8분',
+    icon: '🐟',
+    category: '아침 시장 / 해산물 덮밥',
+    hours: '07:00~16:00',
+    closed: '매주 화요일 (이번 일정에는 해당 없음)',
+    price: '식권 12매 2,200엔 / 1매 190엔',
+    desc: '약 30곳 해산물 가게가 입점한 시장에서 식권으로 원하는 해산물을 골라 나만의 덮밥을 완성하는 시스템.',
+    menu: '참치, 연어, 가리비, 새우, 성게, 이쿠라 등 — 계절에 따라 변동. 4월은 호타테, 야리이카가 제철.',
+    tips: '입구에서 식권(12매 2,200엔)을 구매 → 밥 가게에서 밥 받기(식권 1매) → 나머지 11매로 원하는 네타 선택. 인기 네타는 오전 중 소진되니 일찍 방문. 2층에 120석 휴게 공간.',
+    order: '① 식권 구매 (입구) → ② 밥 받기 (1매) → ③ 가게 돌며 네타 선택 (1~3매/네타) → ④ 2층에서 식사',
+    tags: ['놋케동', '해산물', '아침식사', '시장'],
+  },
+  auga: {
+    name: 'AUGA 新鮮市場',
+    nameJa: '아우가 신선시장',
+    query: 'アウガ新鮮市場 青森',
+    address: '青森市新町 1-3-7 (아우가 빌딩 B1)',
+    walk: '숙소에서 도보 10분',
+    icon: '🥬',
+    category: '시장',
+    hours: '05:00~18:30 (가게별 상이)',
+    desc: 'JR 아오모리역에서 가장 가까운 시장. 고천시장보다 관광색이 적고 현지인들이 실제로 장보는 분위기. 해산물, 채소, 절임류(漬物) 등.',
+    menu: '아오모리 특산 절임류, 산채, 건어물, 사과 가공품 — 기념 쇼핑에도 좋다.',
+    tips: '기념품 쇼핑은 여기가 좋다. 아오모리 절임류(쓰케모노), 사과칩, 건어물 등 현지인이 실제로 먹는 식품을 살 수 있다. のっけ丼은 고천시장에서, 장보기/기념품은 아우가에서.',
+    tags: ['장보기', '기념품', '현지인 스타일'],
+  },
+  machinaka_onsen: {
+    name: '青森まちなか温泉',
+    nameJa: '아오모리 마치나카 온센',
+    query: '青森まちなか温泉',
+    address: '青森市古川 1-10-14 (센터호텔 내)',
+    walk: '숙소에서 도보 10분',
+    icon: '♨️',
+    category: '천연 온천',
+    hours: '06:00~24:00 (최종 입장 23:30)',
+    price: '어른 480엔 | 수건 세트 250엔 | 핸드프리 세트 400엔',
+    desc: '아오모리역 앞 유일한 자가 원천 가케나가시(掛け流し) 천연 온천. 고천온천(나트륨-염화물천, 약알칼리성, 45.1°C).',
+    menu: '대욕장, 노천탕, 약탕, 어린이탕, 수풍탕, 대형 사우나 완비.',
+    tips: '아침 6시 오픈이므로 朝風呂(아침 목욕) 가능 — 이것이 현지인 아침 루틴의 핵심! 수건이 없어도 250엔에 세트 대여 가능. 센토 에티켓: 입욕 전 세신 필수, 수건은 탕에 넣지 말 것.',
+    tags: ['朝風呂', '천연 온천', '가케나가시', '사우나'],
+  },
+  warasse: {
+    name: 'ねぶたの家 ワ・ラッセ',
+    nameJa: '네부타노이에 와랏세',
+    query: 'ねぶたの家 ワ・ラッセ',
+    address: '青森市安方 1-1-1',
+    walk: '숙소에서 도보 10분',
+    icon: '🎭',
+    category: '뮤지엄',
+    hours: '09:00~18:00 (최종 입장 17:30) | 숍 ~18:30',
+    price: '어른 620엔 (2024년 기준)',
+    desc: '매년 8월에 열리는 아오모리 네부타 축제의 실제 대형 네부타를 연중 전시. 높이 5m, 폭 9m의 거대한 네부타를 바로 앞에서 감상할 수 있다.',
+    menu: '네부타 전시, 네부타 체험 코너 (하야시 악기 연주 체험), 숍 (네부타 그림 엽서, 기념품), 식사처 (11:00~19:00)',
+    tips: '8월 네부타 축제를 못 와도 여기서 박진감을 체험 가능. 체험 코너에서 네부타 하야시 리듬을 직접 쳐볼 수 있다. 아오모리의 정체성을 이해하는 첫 걸음으로 첫날 방문 추천.',
+    tags: ['네부타', '뮤지엄', '체험'],
+  },
+  a_factory: {
+    name: 'A-FACTORY',
+    nameJa: '에이팩토리',
+    query: 'A-FACTORY 青森',
+    address: '青森市柳川 1-4-2',
+    walk: '숙소에서 도보 10분 (역에서 2분)',
+    icon: '🍎',
+    category: '시드르 공방 / 토산물 마켓',
+    hours: '09:00~20:00 (시즌별 변동)',
+    price: '시드르 테이스팅 300엔~ | 입장 무료',
+    desc: '아오모리현 특산물 마켓 + 시드르 공방 복합 시설. 8기 양조 탱크에서 각종 시드르 & 애플소다를 양조하며 유리벽 너머로 공정 견학 가능.',
+    menu: '시드르 테이스팅 (드라이~스위트 여러 종류), 사과 젤라또, 사과 파이, 아오모리현 토산물 (공예품, 식품)',
+    tips: '시드르 테이스팅은 자판기에서 카드를 구매한 후 탭에서 직접 따르는 시스템. 소량씩 여러 종류를 시도 가능. 토산물 코너에서 선물용 사과 과자, 시드르를 사기 좋다.',
+    tags: ['시드르', '사과', '토산물', '테이스팅'],
+  },
+  kissaten_maron: {
+    name: '喫茶 マロン',
+    nameJa: '킷사텐 마론',
+    query: '喫茶マロン 青森市安方',
+    address: '青森市安方',
+    walk: '숙소에서 도보 8분',
+    icon: '☕',
+    category: '노포 킷사텐 (1970년 창업)',
+    hours: '08:00~18:00頃 (요일별 변동)',
+    price: '커피 500~600엔 | 자메이칸 카레 800엔대',
+    desc: '1970년 창업 노포 킷사텐. 2층에는 안티크 시계, 양철 장난감 등 독특한 인테리어. 자가 배전 원두를 넬 드립(布ドリップ) 방식으로 추출.',
+    menu: '넬 드립 커피 (오리지널 로고 머그컵), 자메이칸 카레 (양파+합비끼 고기, 드링크+샐러드 포함), 토스트, 케이크류',
+    tips: '자메이칸 카레가 숨은 명물 — 런치로 추천. 넬 드립 커피는 천으로 거르는 방식이라 부드럽고 깊은 맛. 2층 안티크 인테리어도 꼭 둘러보기.',
+    tags: ['넬 드립', '1970년 창업', '자메이칸 카레', '안티크'],
+  },
+  kissaten_cleopatra: {
+    name: '喫茶 クレオパトラ',
+    nameJa: '킷사텐 클레오파트라',
+    query: '喫茶クレオパトラ 青森市新町',
+    address: '青森市新町',
+    walk: '숙소에서 도보 10분',
+    icon: '☕',
+    category: '노포 킷사텐 (1969년 창업)',
+    hours: '09:00~18:00頃',
+    price: '커피 500~600엔',
+    desc: '1969년 창업 노포. 안티크 가구에 클래식 음악이 흐르는 우아한 공간. 커피에 설탕 대신 꿀을 제공하는 독특한 스타일.',
+    menu: '카페 로와이얄 (브랜디 불꽃 커피), 뜨거운 애플파이 (매일 점내 제빵), 프렌치토스트, 넬 드립 커피',
+    tips: '뜨거운 애플파이가 절대 명물 — 갓 구운 것을 먹을 수 있다. 커피에 꿀을 넣어 마시는 경험도 독특. 오후 티타임에 방문하기 좋은 분위기.',
+    tags: ['1969년 창업', '애플파이', '꿀 커피', '클래식 음악'],
+  },
+  kissaten_bankamu: {
+    name: '喫茶 ばんかむ',
+    nameJa: '킷사텐 반카무',
+    query: '喫茶ばんかむ 青森',
+    address: '青森市中央',
+    walk: '숙소에서 도보 약 12분',
+    icon: '☕',
+    category: '노포 킷사텐 (1962년 개업)',
+    hours: '08:00~17:00頃',
+    price: '커피 500엔대 | 런치 세트 800엔대',
+    desc: '1962년(昭和37년) 개업, 60년 이상의 역사. 이름은 아라비아어 "ばん(콩)+かむ(액체)"의 합성어. 아오모리에서 가장 오래된 킷사텐 중 하나.',
+    menu: '넬 드립 커피, 런치 세트 (16종 빵 중 선택 가능), 토스트, 케이크류',
+    tips: '런치 세트의 16종 빵 선택이 재미있다. 세 킷사텐 중 가장 로컬 느낌이 강하고 단골이 많다. DAY 3 아침에 방문하면 마론, 클레오파트라와의 비교도 재미있다.',
+    tags: ['1962년 개업', '60년 역사', '16종 빵', '아라비아어 이름'],
+  },
+
+  // --- Food items ---
+  niboshi_ramen: {
+    name: '煮干しラーメン',
+    nameJa: '니보시 라멘 (멸치 라멘)',
+    query: '煮干しラーメン 青森駅前',
+    icon: '🍜',
+    category: '아오모리의 소울푸드',
+    price: '700~1,000엔',
+    desc: '아오모리시 100곳 이상 라멘점 중 8~9할이 니보시(멸치) 라멘을 제공. 津軽 지방은 근해 정어리가 풍부하여 옛부터 니보시 육수 문화가 발달.',
+    menu: '진한 니보시 (농후한 멸치 풍미, 걸쭉) vs 맑은 니보시 (깔끔한 멸치 다시, 투명한 국물) — 가게마다 스타일이 다르다. 면은 중태면~세면.',
+    tips: '현지인은 주 1~2회 라멘집을 방문하는 진짜 소울푸드. 관광객용이 아님! 역 주변에 다수 있으니 외관이 오래되고 현지인이 줄 서는 곳을 선택하면 됨. "あっさり(깔끔)와 こってり(진한) 중 어느 쪽?" 물어보면 추천해줌.',
+    tags: ['소울푸드', '멸치 육수', '현지인 주 1~2회'],
+  },
+  miso_curry_milk_ramen: {
+    name: '味噌カレー牛乳ラーメン',
+    nameJa: '미소카레규뉴 라멘',
+    query: '味噌カレー牛乳ラーメン 味の札幌大西 青森',
+    icon: '🍛',
+    category: 'B급 구르메',
+    price: '850~1,000엔',
+    desc: '아오모리시 고유 B급 구르메. 1978년 「味の札幌」에서 정식 메뉴화. 미소 라멘에 카레 가루, 우유, 버터를 토핑한 절묘한 조합.',
+    menu: '미소 베이스 국물 + 카레 스파이스 + 우유의 마일드함 + 버터 토핑. 중태 축면(ちぢれ麺). 토핑: 콩나물, 숙주, 파',
+    tips: '유명 가게는 「味の札幌 大西」(아오모리역 근처). 스파이시하면서도 우유 덕분에 마일드한 것이 특징. 1970년대 중고생들이 라멘에 이것저것 넣어 먹는 유행에서 탄생한 B급 구르메의 역사가 재미있다.',
+    order: '"味噌カレー牛乳ラーメンください" (미소카레규뉴라멘 쿠다사이)',
+    tags: ['B급 구르메', '1978년 탄생', '미소+카레+우유+버터'],
+  },
+  shoga_miso_oden: {
+    name: '生姜味噌おでん',
+    nameJa: '쇼가미소 오뎅',
+    query: '生姜味噌おでん 青森',
+    icon: '🍢',
+    category: '아오모리 향토 요리',
+    price: '1개 100~200엔대',
+    desc: '아오모리 고유의 오뎅 스타일. 일반 오뎅에 미소(된장) + 갈은 생강을 얹어 먹는다. 추운 겨울~봄 초에 특히 인기.',
+    menu: '다이콘(무), 곤약, 치쿠와, 계란, 한펜 등 일반 오뎅 재료 + 생강미소 소스',
+    tips: '포장마차(屋台) 스타일의 가게가 아오모리역 근처에 있다. 이자카야에서도 제공하는 곳이 많으니 "生姜味噌おでんありますか?"라고 물어보기. 4월 초는 아직 쌀쌀하므로 딱 맞는 음식!',
+    order: '"生姜味噌おでんください" (쇼가미소오뎅 쿠다사이)',
+    tags: ['향토 요리', '생강+미소', '포장마차', '추운 날 필수'],
+  },
+  denshu: {
+    name: '아오모리 3대 地酒',
+    nameJa: '田酒・豊盃・陸奥八仙',
+    query: '西田酒造店 青森',
+    icon: '🍶',
+    category: '일본주 (地酒)',
+    price: '1잔(90ml) 500~1,000엔',
+    desc: '아오모리현의 3대 명주. 이자카야에서 반드시 시도해볼 것.',
+    menu: '<strong>田酒 (덴슈)</strong> — 아오모리시 서전주조. 전국적 프리미엄. 현지에서도 입수 어려움. "田酒ありますか?"로 물어보기.<br><strong>豊盃 (호우하이)</strong> — 히로사키시 미우라주조. 풍부한 과실향과 깊은 맛.<br><strong>陸奥八仙 (무츠핫센)</strong> — 하치노헤시. 신선한 과실향, 가볍고 깔끔.',
+    tips: '田酒는 프리미엄이라 있는 날과 없는 날이 있다. 이자카야에서 "田酒ありますか?"(덴슈 아리마스카? = 덴슈 있어요?) 꼭 물어보기. 없으면 豊盃나 陸奥八仙도 훌륭. 3종을 비교 시음하는 것이 최고의 경험.',
+    order: '"おすすめの地酒をください" (오스스메노 지자케오 쿠다사이 = 추천 지주 주세요)',
+    tags: ['田酒', '豊盃', '陸奥八仙', '프리미엄'],
+  },
+};
+
+// ===== MAP FUNCTIONS =====
+function showMap(spotId) {
+  const spot = SPOTS[spotId];
+  if (!spot) return;
+  // If it has detailed info, show detail instead
+  if (spot.tips && spot.category) {
+    showDetail(spotId);
+    return;
+  }
+  const overlay = document.getElementById('mapOverlay');
+  document.getElementById('mapTitle').textContent = spot.icon + ' ' + spot.name;
+  const q = encodeURIComponent(spot.query || spot.name);
+  document.getElementById('mapFrame').src = 'https://www.google.com/maps?q=' + q + '&output=embed&hl=ja';
+  let footerHtml = '';
+  if (spot.address) footerHtml += '<div class="spot-meta">📍 ' + spot.address + '</div>';
+  if (spot.desc) footerHtml += '<div class="spot-desc" style="margin-top:8px;">' + spot.desc + '</div>';
+  if (spot.walk) footerHtml += '<div class="spot-meta" style="margin-top:6px;">🚶 ' + spot.walk + '</div>';
+  footerHtml += '<a class="map-open-btn" href="https://www.google.com/maps/search/' + q + '" target="_blank" rel="noopener">📱 Google Maps 앱으로 열기</a>';
+  document.getElementById('mapFooter').innerHTML = footerHtml;
+  overlay.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMap() {
+  const overlay = document.getElementById('mapOverlay');
+  overlay.classList.remove('show');
+  document.getElementById('mapFrame').src = '';
+  document.body.style.overflow = '';
+}
+
+// ===== DETAIL FUNCTIONS =====
+function showDetail(spotId) {
+  const s = SPOTS[spotId];
+  if (!s) return;
+  const overlay = document.getElementById('detailOverlay');
+  const q = encodeURIComponent(s.query || s.name);
+  let h = '';
+  h += '<div class="detail-photo-placeholder">' + (s.icon || '📍') + '</div>';
+  h += '<h2>' + s.name + '</h2>';
+  if (s.nameJa) h += '<div class="detail-ja">' + s.nameJa + '</div>';
+  if (s.tags) {
+    h += '<div style="margin-bottom:16px;">';
+    s.tags.forEach(t => { h += '<span class="tag">' + t + '</span>'; });
+    h += '</div>';
+  }
+
+  // Basic info
+  h += '<div class="detail-section"><h4>기본 정보</h4>';
+  if (s.category) h += '<div class="detail-row"><span class="detail-label">분류</span><span class="detail-val">' + s.category + '</span></div>';
+  if (s.address) h += '<div class="detail-row"><span class="detail-label">주소</span><span class="detail-val">' + s.address + '</span></div>';
+  if (s.walk) h += '<div class="detail-row"><span class="detail-label">거리</span><span class="detail-val">' + s.walk + '</span></div>';
+  if (s.hours) h += '<div class="detail-row"><span class="detail-label">영업시간</span><span class="detail-val">' + s.hours + '</span></div>';
+  if (s.closed) h += '<div class="detail-row"><span class="detail-label">정기휴일</span><span class="detail-val">' + s.closed + '</span></div>';
+  if (s.price) h += '<div class="detail-row"><span class="detail-label">가격</span><span class="detail-val">' + s.price + '</span></div>';
+  h += '</div>';
+
+  // Description
+  if (s.desc) {
+    h += '<div class="detail-section"><h4>소개</h4>';
+    h += '<p style="font-size:0.95em;">' + s.desc + '</p></div>';
+  }
+
+  // Menu / What to try
+  if (s.menu) {
+    h += '<div class="detail-section"><h4>메뉴 / 뭘 먹을까</h4>';
+    h += '<p style="font-size:0.95em;">' + s.menu + '</p></div>';
+  }
+
+  // How to order
+  if (s.order) {
+    h += '<div class="detail-section"><h4>주문 방법</h4>';
+    h += '<div style="background:var(--accent-light);padding:12px 16px;border-radius:8px;font-size:0.95em;">' + s.order + '</div></div>';
+  }
+
+  // Tips
+  if (s.tips) {
+    h += '<div class="detail-tip"><strong>💡 현장 팁</strong><br>' + s.tips + '</div>';
+  }
+
+  // Map embed
+  h += '<div class="detail-section"><h4>위치</h4>';
+  h += '<div style="border-radius:12px;overflow:hidden;height:200px;margin-top:8px;">';
+  h += '<iframe src="https://www.google.com/maps?q=' + q + '&output=embed&hl=ja" style="width:100%;height:100%;border:none;" loading="lazy"></iframe>';
+  h += '</div></div>';
+
+  // Action buttons
+  h += '<div class="detail-actions">';
+  h += '<a class="btn-map" href="https://www.google.com/maps/search/' + q + '" target="_blank" rel="noopener">📱 Google Maps로 길찾기</a>';
+  h += '<button class="btn-close-detail" onclick="closeDetail()">닫기</button>';
+  h += '</div>';
+
+  document.getElementById('detailContent').innerHTML = h;
+  overlay.classList.add('show');
+  document.getElementById('detailSheet').scrollTop = 0;
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDetail() {
+  document.getElementById('detailOverlay').classList.remove('show');
+  document.body.style.overflow = '';
+  // Clean up iframes
+  const iframes = document.getElementById('detailContent').querySelectorAll('iframe');
+  iframes.forEach(f => f.src = '');
+}
+
+// ===== TABS =====
 document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -1003,13 +1414,12 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
   });
 });
 
-// Checklist with localStorage persistence
+// ===== CHECKLIST =====
 function toggleCheck(el) {
   el.classList.toggle('checked');
   el.parentElement.classList.toggle('done');
   saveChecklist();
 }
-
 function saveChecklist() {
   const state = {};
   document.querySelectorAll('.check-box').forEach((box, i) => {
@@ -1017,21 +1427,24 @@ function saveChecklist() {
   });
   localStorage.setItem('aomori-checklist', JSON.stringify(state));
 }
-
 function loadChecklist() {
   try {
     const state = JSON.parse(localStorage.getItem('aomori-checklist'));
     if (!state) return;
     document.querySelectorAll('.check-box').forEach((box, i) => {
-      if (state[i]) {
-        box.classList.add('checked');
-        box.parentElement.classList.add('done');
-      }
+      if (state[i]) { box.classList.add('checked'); box.parentElement.classList.add('done'); }
     });
   } catch(e) {}
 }
-
 loadChecklist();
+
+// ESC to close overlays
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeMap(); closeDetail(); }
+});
+
+// Back button handling
+window.addEventListener('popstate', () => { closeMap(); closeDetail(); });
 </script>
 
 </body>
