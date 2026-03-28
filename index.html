@@ -295,6 +295,58 @@
     font-size: 2.5em; margin-bottom: 20px;
   }
 
+  /* Photo gallery */
+  .photo-hero {
+    width: calc(100% + 48px); margin: -0 -24px 0; position: relative;
+    background: #111; overflow: hidden;
+  }
+  .photo-hero iframe {
+    width: 100%; height: 280px; border: none; display: block;
+  }
+  .photo-hero-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.7));
+    padding: 40px 24px 16px; color: white;
+  }
+  .photo-hero-overlay h2 { color: white; font-size: 1.2em; margin: 0; }
+  .photo-hero-overlay .detail-ja { color: rgba(255,255,255,0.8); margin: 4px 0 0; font-size: 0.85em; }
+
+  .photo-strip {
+    display: flex; gap: 8px; overflow-x: auto; padding: 12px 0;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none;
+  }
+  .photo-strip::-webkit-scrollbar { display: none; }
+  .photo-strip a {
+    flex-shrink: 0; display: block;
+    width: 140px; height: 100px; border-radius: 8px; overflow: hidden;
+    background: var(--tag-bg); position: relative;
+  }
+  .photo-strip a img {
+    width: 100%; height: 100%; object-fit: cover;
+  }
+  .photo-strip .photo-more {
+    width: 100px; height: 100px; border-radius: 8px;
+    background: var(--accent-light); display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 4px;
+    color: var(--accent); font-size: 0.8em; font-weight: 500;
+    text-decoration: none; flex-shrink: 0;
+  }
+  .photo-strip .photo-more span { font-size: 1.5em; }
+
+  .photo-cta {
+    display: flex; gap: 8px; margin: 8px 0 4px; flex-wrap: wrap;
+  }
+  .photo-cta a {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 10px 16px; border-radius: 10px;
+    font-family: inherit; font-size: 0.88em; font-weight: 500;
+    text-decoration: none; transition: opacity 0.15s;
+  }
+  .photo-cta a:hover { opacity: 0.85; }
+  .photo-cta .cta-maps { background: #1a73e8; color: white; }
+  .photo-cta .cta-images { background: var(--tag-bg); color: var(--warm); }
+  .photo-cta .cta-tabelog { background: #ffeedd; color: #c4541a; }
+
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
   @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
 
@@ -1002,328 +1054,256 @@
 const SPOTS = {
   // --- Locations (map only) ---
   accommodation: {
-    name: '숙소 (バンビハウス 302)',
-    nameJa: '長島 3-7-12 バンビハウス3階302',
-    query: '青森市長島3丁目7-12',
-    address: '3-chome-7-12 Nagashima, Aomori 030-0861',
-    icon: '🏠',
+    name: '숙소 (バンビハウス 302)', nameJa: '長島 3-7-12 バンビハウス3階302',
+    query: '青森市長島3丁目7-12', address: '3-chome-7-12 Nagashima, Aomori 030-0861', icon: '🏠',
   },
   aoj_airport: {
-    name: '아오모리 공항 (AOJ)',
-    nameJa: '青森空港',
-    query: '青森空港',
-    address: '아오모리현 아오모리시 오오타니 코마츠',
+    name: '아오모리 공항 (AOJ)', nameJa: '青森空港', query: '青森空港',
+    address: '아오모리현 아오모리시 오오타니 코마츠', icon: '✈️',
     desc: 'JR 버스 리무진으로 아오모리역까지 35분, 860~980엔. 1일 3회 항공편 연동.',
-    icon: '✈️',
+    placeId: 'ChIJETzseBgKm18RM4HUYjOI6Hk',
   },
   aomori_station: {
-    name: '아오모리역',
-    nameJa: 'JR青森駅',
-    query: 'JR青森駅',
-    address: '아오모리시 야나카와 1-1-1',
+    name: '아오모리역', nameJa: 'JR青森駅', query: 'JR青森駅',
+    address: '아오모리시 야나카와 1-1-1', icon: '🚉',
     desc: '코인로커 이용 가능. 숙소까지 도보 10분.',
-    icon: '🚉',
+    placeId: 'ChIJVUs2Ch-fm18RXiFq2VxC9HQ',
   },
   bay_area: {
-    name: '아오모리 베이에리어',
-    nameJa: '青森ベイエリア',
-    query: '青森ベイエリア',
+    name: '아오모리 베이에리어', nameJa: '青森ベイエリア', query: '青森ベイエリア', icon: '🌊',
     desc: '워터프론트 산책로, ASPAM 전망대, 베이브리지. 석양&야경 포인트.',
-    icon: '🌊',
   },
   shinmachi: {
-    name: '新町 상점가',
-    nameJa: '新町通り 青森',
-    query: '青森市新町通り',
-    desc: '아오모리역 동쪽 상업가. 상점, 카페, 이자카야 혼재. 이른 시간부터 영업하는 가게 다수.',
-    icon: '🛍️',
+    name: '新町 상점가', nameJa: '新町通り 青森', query: '青森市新町通り', icon: '🛍️',
+    desc: '아오모리역 동쪽 상업가. 상점, 카페, 이자카야 혼재.',
   },
   yanagimachi: {
-    name: '柳町 (야나기마치)',
-    nameJa: '柳町通り 青森',
-    query: '青森市柳町通り',
-    desc: '시내 중심 남북 대로. 넓은 보도로 산책에 적합. 주말 이벤트가 열리기도.',
-    icon: '🚶',
+    name: '柳町 (야나기마치)', nameJa: '柳町通り 青森', query: '青森市柳町通り', icon: '🚶',
+    desc: '시내 중심 남북 대로. 넓은 보도로 산책에 적합.',
   },
 
-  // --- Detail spots ---
+  // --- Detail spots (with placeId for Google Maps photos) ---
   sanfuri: {
-    name: 'さんふり横丁',
-    nameJa: '산후리 요코초',
-    query: 'さんふり横丁 青森',
-    address: '青森市本町 3-8-3',
-    walk: '숙소에서 도보 10분',
-    icon: '🏮',
-    category: '이자카야 / 요코초',
-    hours: '가게마다 다름 (대부분 17:00~23:00)',
-    price: '1인 2,000~4,000엔/가게',
+    name: 'さんふり横丁', nameJa: '산후리 요코초',
+    query: 'さんふり横丁 青森', address: '青森市本町 3-8-3', walk: '숙소에서 도보 10분',
+    icon: '🏮', category: '이자카야 / 요코초',
+    hours: '가게마다 다름 (대부분 17:00~23:00)', price: '1인 2,000~4,000엔/가게',
+    placeId: 'ChIJ56EJY-Oem18RQbKrrxx23fM',
     desc: '昭和30년대 분위기의 소규모 이자카야 15곳이 밀집한 屋台村. 8~12석 규모의 아담한 가게에서 주인, 단골과 자연스럽게 대화할 수 있다.',
     menu: '각 가게마다 특색 — 향토 어패류, 꼬치구이, 오뎅, 地酒 등',
     tips: '한 곳에서 2~3잔 마시고 옆 가게로 이동하는 "하시고(はしご)" 스타일이 현지 방식. 관광객도 오지만 현지 단골이 많은 곳이라 분위기가 좋다. 일본어를 못해도 주인이 친절하게 대해준다.',
     tags: ['하시고', '향토요리', '地酒', '현지인 단골'],
   },
   joppari: {
-    name: '津軽じょっぱり漁屋酒場',
-    nameJa: '쓰가루 좃파리 이사카야',
-    query: '津軽じょっぱり漁屋酒場 青森本町店',
-    address: '青森市本町',
-    walk: '숙소에서 도보 10~15분',
-    icon: '🎵',
-    category: '이자카야',
-    hours: '17:00~23:00 (요일별 변동)',
-    price: '1인 3,000~5,000엔',
+    name: '津軽じょっぱり漁屋酒場', nameJa: '쓰가루 좃파리 이사카야',
+    query: '津軽じょっぱり漁屋酒場 青森本町店', address: '青森市本町', walk: '숙소에서 도보 10~15분',
+    icon: '🎵', category: '이자카야',
+    hours: '17:00~23:00 (요일별 변동)', price: '1인 3,000~5,000엔',
+    placeId: 'ChIJ0_vYt-Kem18ROyingA9hNec',
     desc: '아오모리 향토 어패류를 즐기며 津軽三味線 라이브 연주를 감상할 수 있는 이자카야. 매일 연주가 있어 아오모리의 문화를 깊이 체험 가능.',
     menu: '호타테(가리비) 버터구이, 이카(오징어) 회, 향토 해산물 모듬, 地酒 각종',
     tips: '津軽三味線 라이브는 일본 전통 현악기 연주. 박력 있는 소리에 감동받을 것. 예약 없이도 가능하지만 주말은 혼잡할 수 있다.',
     tags: ['라이브 연주', '해산물', '津軽三味線'],
   },
   hideka: {
-    name: '旬肴 ひでか',
-    nameJa: '순코우 히데카',
-    query: '旬肴ひでか 青森',
-    address: '青森市本町',
-    walk: '숙소에서 도보 10~15분',
-    icon: '🍶',
-    category: '이자카야',
-    hours: '17:30~23:00頃',
-    price: '1인 4,000~6,000엔',
+    name: '旬肴 ひでか', nameJa: '순코우 히데카',
+    query: '旬肴ひでか 青森', address: '青森市新町1-5-8', walk: '숙소에서 도보 10~15분',
+    icon: '🍶', category: '이자카야',
+    hours: '17:30~23:00頃', price: '1인 4,000~6,000엔',
     desc: '아오모리 현지 생선과 타 현에서는 구할 수 없는 희귀 地酒를 전문으로 하는 이자카야. 주인의 사케 추천이 탁월.',
     menu: '당일 입하 지역 생선 회/구이, 희귀 地酒 (田酒, 豊盃 등 입수 시 제공)',
     tips: '地酒를 좋아한다면 여기가 최적. 주인에게 "おすすめの地酒ください" (추천 지주 주세요)라고 하면 상태 좋은 술을 골라줌. 田酒가 입하되는 날이면 꼭 주문.',
     tags: ['희귀 地酒', '지역 생선', '주인 추천'],
   },
   zenigata: {
-    name: '銭形平次',
-    nameJa: '제니가타 헤이지',
-    query: '銭形平次 青森市',
-    address: '青森市本町',
-    walk: '숙소에서 도보 10~15분',
-    icon: '🥢',
-    category: '이자카야',
-    hours: '18:00~23:00頃',
-    price: '1인 3,000~5,000엔',
-    desc: '관광 가이드에는 잘 나오지 않지만 지역 주민들 사이에서 유명한 숨은 명가 이자카야. 아오모리 향토 요리를 정통으로 즐길 수 있다.',
+    name: '銭形平次', nameJa: '제니가타 헤이지',
+    query: '銭形平次 青森市', address: '青森市本町', walk: '숙소에서 도보 10~15분',
+    icon: '🥢', category: '이자카야',
+    hours: '18:00~23:00頃', price: '1인 3,000~5,000엔',
+    desc: '관광 가이드에는 잘 나오지 않지만 지역 주민들 사이에서 유명한 숨은 명가 이자카야.',
     menu: '향토 가정식 스타일 요리, 계절 해산물, 地酒',
-    tips: '관광객이 적어 진짜 현지 분위기를 느낄 수 있는 곳. 마지막 밤에 방문하기 좋다. 주인이 따뜻하게 맞아줌.',
+    tips: '관광객이 적어 진짜 현지 분위기를 느낄 수 있는 곳. 마지막 밤에 방문하기 좋다.',
     tags: ['현지인 단골', '숨은 맛집', '향토 가정식'],
   },
   be_easy: {
-    name: 'Be Easy Brewing',
-    nameJa: '비 이지 브루잉',
-    query: 'Be Easy Brewing 青森',
-    address: '青森市安方 1-4-10',
-    walk: '숙소에서 도보 10분',
-    icon: '🍺',
-    category: '크래프트 비어 펍',
-    hours: '15:00~22:00 (요일별 변동)',
-    price: '1잔 600~900엔',
-    desc: '히로사키 기반 브루어리(2016년 설립). 상시 8종 크래프트 비어를 셀프 탭으로 직접 따라 마실 수 있다. 국내외 수상 다수.',
+    name: 'Be Easy Brewing', nameJa: '비 이지 브루잉',
+    query: 'Be Easy Brewing 青森', address: '青森市安方 1-4-10', walk: '숙소에서 도보 10분',
+    icon: '🍺', category: '크래프트 비어 펍',
+    hours: '15:00~22:00 (요일별 변동)', price: '1잔 600~900엔',
+    placeId: 'ChIJYwOARAyfm18RXyd5TS2Nx30',
+    desc: '히로사키 기반 브루어리(2016년 설립). 상시 8종 크래프트 비어를 셀프 탭으로 직접 따라 마실 수 있다.',
     menu: 'IPA, 페일에일, 스타우트, 시즌널 에일 등 8종 로테이션. 아오모리 사과 활용 한정 비어가 인기.',
     tips: '셀프 탭 시스템이 재미있다. 소량씩 여러 종류를 시도하는 것을 추천. 안주는 간단한 것만 있으니 이자카야 2차로 가기 좋다.',
     tags: ['크래프트 비어', '셀프 탭', '사과 비어'],
   },
   nokkedon: {
-    name: '古川市場 のっけ丼',
-    nameJa: '후루카와 시장 놋케동',
-    query: '青森魚菜センター のっけ丼',
-    address: '青森市古川 1-11-16',
-    walk: '숙소에서 도보 8분',
-    icon: '🐟',
-    category: '아침 시장 / 해산물 덮밥',
-    hours: '07:00~16:00',
-    closed: '매주 화요일 (이번 일정에는 해당 없음)',
+    name: '古川市場 のっけ丼', nameJa: '후루카와 시장 놋케동',
+    query: '青森魚菜センター のっけ丼', address: '青森市古川 1-11-16', walk: '숙소에서 도보 8분',
+    icon: '🐟', category: '아침 시장 / 해산물 덮밥',
+    hours: '07:00~16:00', closed: '매주 화요일 (이번 일정에는 해당 없음)',
     price: '식권 12매 2,200엔 / 1매 190엔',
+    placeId: 'ChIJ3bJcqB6fm18RruCZ6EBTv-Q',
     desc: '약 30곳 해산물 가게가 입점한 시장에서 식권으로 원하는 해산물을 골라 나만의 덮밥을 완성하는 시스템.',
-    menu: '참치, 연어, 가리비, 새우, 성게, 이쿠라 등 — 계절에 따라 변동. 4월은 호타테, 야리이카가 제철.',
-    tips: '입구에서 식권(12매 2,200엔)을 구매 → 밥 가게에서 밥 받기(식권 1매) → 나머지 11매로 원하는 네타 선택. 인기 네타는 오전 중 소진되니 일찍 방문. 2층에 120석 휴게 공간.',
+    menu: '참치, 연어, 가리비, 새우, 성게, 이쿠라 등 — 4월은 호타테, 야리이카가 제철.',
+    tips: '입구에서 식권(12매 2,200엔)을 구매 → 밥 가게에서 밥 받기(식권 1매) → 나머지 11매로 원하는 네타 선택. 인기 네타는 오전 중 소진되니 일찍 방문.',
     order: '① 식권 구매 (입구) → ② 밥 받기 (1매) → ③ 가게 돌며 네타 선택 (1~3매/네타) → ④ 2층에서 식사',
     tags: ['놋케동', '해산물', '아침식사', '시장'],
   },
   auga: {
-    name: 'AUGA 新鮮市場',
-    nameJa: '아우가 신선시장',
-    query: 'アウガ新鮮市場 青森',
-    address: '青森市新町 1-3-7 (아우가 빌딩 B1)',
-    walk: '숙소에서 도보 10분',
-    icon: '🥬',
-    category: '시장',
-    hours: '05:00~18:30 (가게별 상이)',
-    desc: 'JR 아오모리역에서 가장 가까운 시장. 고천시장보다 관광색이 적고 현지인들이 실제로 장보는 분위기. 해산물, 채소, 절임류(漬物) 등.',
+    name: 'AUGA 新鮮市場', nameJa: '아우가 신선시장',
+    query: 'アウガ新鮮市場 青森', address: '青森市新町 1-3-7 (아우가 빌딩 B1)', walk: '숙소에서 도보 10분',
+    icon: '🥬', category: '시장', hours: '05:00~18:30 (가게별 상이)',
+    desc: 'JR 아오모리역에서 가장 가까운 시장. 현지인들이 실제로 장보는 분위기.',
     menu: '아오모리 특산 절임류, 산채, 건어물, 사과 가공품 — 기념 쇼핑에도 좋다.',
-    tips: '기념품 쇼핑은 여기가 좋다. 아오모리 절임류(쓰케모노), 사과칩, 건어물 등 현지인이 실제로 먹는 식품을 살 수 있다. のっけ丼은 고천시장에서, 장보기/기념품은 아우가에서.',
+    tips: '기념품 쇼핑은 여기가 좋다. のっけ丼은 고천시장에서, 장보기/기념품은 아우가에서.',
     tags: ['장보기', '기념품', '현지인 스타일'],
   },
   machinaka_onsen: {
-    name: '青森まちなか温泉',
-    nameJa: '아오모리 마치나카 온센',
-    query: '青森まちなか温泉',
-    address: '青森市古川 1-10-14 (센터호텔 내)',
-    walk: '숙소에서 도보 10분',
-    icon: '♨️',
-    category: '천연 온천',
-    hours: '06:00~24:00 (최종 입장 23:30)',
-    price: '어른 480엔 | 수건 세트 250엔 | 핸드프리 세트 400엔',
-    desc: '아오모리역 앞 유일한 자가 원천 가케나가시(掛け流し) 천연 온천. 고천온천(나트륨-염화물천, 약알칼리성, 45.1°C).',
+    name: '青森まちなか温泉', nameJa: '아오모리 마치나카 온센',
+    query: '青森まちなか温泉', address: '青森市古川 1-10-14 (센터호텔 내)', walk: '숙소에서 도보 10분',
+    icon: '♨️', category: '천연 온천',
+    hours: '06:00~24:00 (최종 입장 23:30)', price: '어른 480엔 | 수건 세트 250엔',
+    placeId: 'ChIJx0uv7xufm18R8FccsqqrM08',
+    desc: '아오모리역 앞 유일한 자가 원천 가케나가시(掛け流し) 천연 온천. 나트륨-염화물천, 약알칼리성, 45.1°C.',
     menu: '대욕장, 노천탕, 약탕, 어린이탕, 수풍탕, 대형 사우나 완비.',
-    tips: '아침 6시 오픈이므로 朝風呂(아침 목욕) 가능 — 이것이 현지인 아침 루틴의 핵심! 수건이 없어도 250엔에 세트 대여 가능. 센토 에티켓: 입욕 전 세신 필수, 수건은 탕에 넣지 말 것.',
+    tips: '아침 6시 오픈이므로 朝風呂(아침 목욕) 가능 — 이것이 현지인 아침 루틴의 핵심! 수건이 없어도 250엔에 세트 대여. 센토 에티켓: 입욕 전 세신 필수, 수건은 탕에 넣지 말 것.',
     tags: ['朝風呂', '천연 온천', '가케나가시', '사우나'],
   },
   warasse: {
-    name: 'ねぶたの家 ワ・ラッセ',
-    nameJa: '네부타노이에 와랏세',
-    query: 'ねぶたの家 ワ・ラッセ',
-    address: '青森市安方 1-1-1',
-    walk: '숙소에서 도보 10분',
-    icon: '🎭',
-    category: '뮤지엄',
-    hours: '09:00~18:00 (최종 입장 17:30) | 숍 ~18:30',
-    price: '어른 620엔 (2024년 기준)',
-    desc: '매년 8월에 열리는 아오모리 네부타 축제의 실제 대형 네부타를 연중 전시. 높이 5m, 폭 9m의 거대한 네부타를 바로 앞에서 감상할 수 있다.',
-    menu: '네부타 전시, 네부타 체험 코너 (하야시 악기 연주 체험), 숍 (네부타 그림 엽서, 기념품), 식사처 (11:00~19:00)',
-    tips: '8월 네부타 축제를 못 와도 여기서 박진감을 체험 가능. 체험 코너에서 네부타 하야시 리듬을 직접 쳐볼 수 있다. 아오모리의 정체성을 이해하는 첫 걸음으로 첫날 방문 추천.',
+    name: 'ねぶたの家 ワ・ラッセ', nameJa: '네부타노이에 와랏세',
+    query: 'ねぶたの家 ワ・ラッセ', address: '青森市安方 1-1-1', walk: '숙소에서 도보 10분',
+    icon: '🎭', category: '뮤지엄',
+    hours: '09:00~18:00 (최종 입장 17:30)', price: '어른 620엔',
+    placeId: 'ChIJgaL-zx-fm18RQjx7oW_kNcY',
+    desc: '매년 8월의 아오모리 네부타 축제의 실제 대형 네부타를 연중 전시. 높이 5m, 폭 9m.',
+    menu: '네부타 전시, 하야시 악기 연주 체험, 숍, 식사처 (11:00~19:00)',
+    tips: '체험 코너에서 네부타 하야시 리듬을 직접 쳐볼 수 있다. 아오모리의 정체성을 이해하는 첫 걸음으로 첫날 방문 추천.',
     tags: ['네부타', '뮤지엄', '체험'],
   },
   a_factory: {
-    name: 'A-FACTORY',
-    nameJa: '에이팩토리',
-    query: 'A-FACTORY 青森',
-    address: '青森市柳川 1-4-2',
-    walk: '숙소에서 도보 10분 (역에서 2분)',
-    icon: '🍎',
-    category: '시드르 공방 / 토산물 마켓',
-    hours: '09:00~20:00 (시즌별 변동)',
-    price: '시드르 테이스팅 300엔~ | 입장 무료',
-    desc: '아오모리현 특산물 마켓 + 시드르 공방 복합 시설. 8기 양조 탱크에서 각종 시드르 & 애플소다를 양조하며 유리벽 너머로 공정 견학 가능.',
-    menu: '시드르 테이스팅 (드라이~스위트 여러 종류), 사과 젤라또, 사과 파이, 아오모리현 토산물 (공예품, 식품)',
-    tips: '시드르 테이스팅은 자판기에서 카드를 구매한 후 탭에서 직접 따르는 시스템. 소량씩 여러 종류를 시도 가능. 토산물 코너에서 선물용 사과 과자, 시드르를 사기 좋다.',
+    name: 'A-FACTORY', nameJa: '에이팩토리',
+    query: 'A-FACTORY 青森', address: '青森市柳川 1-4-2', walk: '숙소에서 도보 10분 (역에서 2분)',
+    icon: '🍎', category: '시드르 공방 / 토산물 마켓',
+    hours: '09:00~20:00 (시즌별 변동)', price: '시드르 테이스팅 300엔~ | 입장 무료',
+    placeId: 'ChIJQcC39R-fm18R6j9xV-cGqBM',
+    desc: '아오모리현 특산물 마켓 + 시드르 공방. 8기 양조 탱크에서 시드르 & 애플소다 양조. 유리벽 공정 견학.',
+    menu: '시드르 테이스팅 (드라이~스위트), 사과 젤라또, 사과 파이, 토산물',
+    tips: '시드르 테이스팅은 자판기에서 카드를 구매한 후 탭에서 직접 따르는 시스템. 소량씩 여러 종류를 시도 가능. 선물용 사과 과자, 시드르 구매 적합.',
     tags: ['시드르', '사과', '토산물', '테이스팅'],
   },
   kissaten_maron: {
-    name: '喫茶 マロン',
-    nameJa: '킷사텐 마론',
-    query: '喫茶マロン 青森市安方',
-    address: '青森市安方',
-    walk: '숙소에서 도보 8분',
-    icon: '☕',
-    category: '노포 킷사텐 (1970년 창업)',
-    hours: '08:00~18:00頃 (요일별 변동)',
-    price: '커피 500~600엔 | 자메이칸 카레 800엔대',
-    desc: '1970년 창업 노포 킷사텐. 2층에는 안티크 시계, 양철 장난감 등 독특한 인테리어. 자가 배전 원두를 넬 드립(布ドリップ) 방식으로 추출.',
-    menu: '넬 드립 커피 (오리지널 로고 머그컵), 자메이칸 카레 (양파+합비끼 고기, 드링크+샐러드 포함), 토스트, 케이크류',
-    tips: '자메이칸 카레가 숨은 명물 — 런치로 추천. 넬 드립 커피는 천으로 거르는 방식이라 부드럽고 깊은 맛. 2층 안티크 인테리어도 꼭 둘러보기.',
+    name: '喫茶 マロン', nameJa: '킷사텐 마론',
+    query: '喫茶マロン 青森市安方', address: '青森市安方', walk: '숙소에서 도보 8분',
+    icon: '☕', category: '노포 킷사텐 (1970년 창업)',
+    hours: '08:00~18:00頃', price: '커피 500~600엔 | 자메이칸 카레 800엔대',
+    placeId: 'ChIJz2RD8R2fm18RJ4yubyVdZHk',
+    desc: '1970년 창업 노포. 2층 안티크 시계, 양철 장난감 인테리어. 자가 배전 원두를 넬 드립(布ドリップ)으로 추출.',
+    menu: '넬 드립 커피 (오리지널 머그컵), 자메이칸 카레 (양파+합비끼, 드링크+샐러드), 토스트, 케이크',
+    tips: '자메이칸 카레가 숨은 명물 — 런치로 추천. 넬 드립 커피는 부드럽고 깊은 맛. 2층 안티크 인테리어도 꼭 둘러보기.',
     tags: ['넬 드립', '1970년 창업', '자메이칸 카레', '안티크'],
   },
   kissaten_cleopatra: {
-    name: '喫茶 クレオパトラ',
-    nameJa: '킷사텐 클레오파트라',
-    query: '喫茶クレオパトラ 青森市新町',
-    address: '青森市新町',
-    walk: '숙소에서 도보 10분',
-    icon: '☕',
-    category: '노포 킷사텐 (1969년 창업)',
-    hours: '09:00~18:00頃',
-    price: '커피 500~600엔',
-    desc: '1969년 창업 노포. 안티크 가구에 클래식 음악이 흐르는 우아한 공간. 커피에 설탕 대신 꿀을 제공하는 독특한 스타일.',
-    menu: '카페 로와이얄 (브랜디 불꽃 커피), 뜨거운 애플파이 (매일 점내 제빵), 프렌치토스트, 넬 드립 커피',
-    tips: '뜨거운 애플파이가 절대 명물 — 갓 구운 것을 먹을 수 있다. 커피에 꿀을 넣어 마시는 경험도 독특. 오후 티타임에 방문하기 좋은 분위기.',
+    name: '喫茶 クレオパトラ', nameJa: '킷사텐 클레오파트라',
+    query: '喫茶クレオパトラ 青森市新町', address: '青森市新町', walk: '숙소에서 도보 10분',
+    icon: '☕', category: '노포 킷사텐 (1969년 창업)',
+    hours: '09:00~18:00頃', price: '커피 500~600엔',
+    placeId: 'ChIJeyE_Xh2fm18RRv7Qb7bOlaU',
+    desc: '1969년 창업 노포. 안티크 가구에 클래식 음악. 커피에 설탕 대신 꿀을 제공.',
+    menu: '카페 로와이얄 (브랜디 불꽃 커피), 뜨거운 애플파이 (매일 점내 제빵), 프렌치토스트',
+    tips: '뜨거운 애플파이가 절대 명물 — 갓 구운 것을 먹을 수 있다. 꿀 커피 경험도 독특. 오후 티타임에 적합.',
     tags: ['1969년 창업', '애플파이', '꿀 커피', '클래식 음악'],
   },
   kissaten_bankamu: {
-    name: '喫茶 ばんかむ',
-    nameJa: '킷사텐 반카무',
-    query: '喫茶ばんかむ 青森',
-    address: '青森市中央',
-    walk: '숙소에서 도보 약 12분',
-    icon: '☕',
-    category: '노포 킷사텐 (1962년 개업)',
-    hours: '08:00~17:00頃',
-    price: '커피 500엔대 | 런치 세트 800엔대',
-    desc: '1962년(昭和37년) 개업, 60년 이상의 역사. 이름은 아라비아어 "ばん(콩)+かむ(액체)"의 합성어. 아오모리에서 가장 오래된 킷사텐 중 하나.',
-    menu: '넬 드립 커피, 런치 세트 (16종 빵 중 선택 가능), 토스트, 케이크류',
-    tips: '런치 세트의 16종 빵 선택이 재미있다. 세 킷사텐 중 가장 로컬 느낌이 강하고 단골이 많다. DAY 3 아침에 방문하면 마론, 클레오파트라와의 비교도 재미있다.',
+    name: '喫茶 ばんかむ', nameJa: '킷사텐 반카무',
+    query: '喫茶ばんかむ 青森', address: '青森市中央', walk: '숙소에서 도보 약 12분',
+    icon: '☕', category: '노포 킷사텐 (1962년 개업)',
+    hours: '08:00~17:00頃', price: '커피 500엔대 | 런치 세트 800엔대',
+    placeId: 'ChIJYZ_5awKfm18R0NJJMZi_F5I',
+    desc: '1962년(昭和37년) 개업, 60년+ 역사. 이름은 아라비아어 "ばん(콩)+かむ(액체)".',
+    menu: '넬 드립 커피, 런치 세트 (16종 빵 중 선택), 토스트, 케이크',
+    tips: '런치 세트의 16종 빵 선택이 재미있다. 세 킷사텐 중 가장 로컬 느낌.',
     tags: ['1962년 개업', '60년 역사', '16종 빵', '아라비아어 이름'],
   },
 
   // --- Food items ---
   niboshi_ramen: {
-    name: '煮干しラーメン',
-    nameJa: '니보시 라멘 (멸치 라멘)',
-    query: '煮干しラーメン 青森駅前',
-    icon: '🍜',
-    category: '아오모리의 소울푸드',
-    price: '700~1,000엔',
-    desc: '아오모리시 100곳 이상 라멘점 중 8~9할이 니보시(멸치) 라멘을 제공. 津軽 지방은 근해 정어리가 풍부하여 옛부터 니보시 육수 문화가 발달.',
-    menu: '진한 니보시 (농후한 멸치 풍미, 걸쭉) vs 맑은 니보시 (깔끔한 멸치 다시, 투명한 국물) — 가게마다 스타일이 다르다. 면은 중태면~세면.',
-    tips: '현지인은 주 1~2회 라멘집을 방문하는 진짜 소울푸드. 관광객용이 아님! 역 주변에 다수 있으니 외관이 오래되고 현지인이 줄 서는 곳을 선택하면 됨. "あっさり(깔끔)와 こってり(진한) 중 어느 쪽?" 물어보면 추천해줌.',
+    name: '煮干しラーメン', nameJa: '니보시 라멘 (멸치 라멘)',
+    query: '煮干しラーメン 青森駅前', icon: '🍜', category: '아오모리의 소울푸드',
+    price: '700~1,000엔', imageSearch: '青森 煮干しラーメン',
+    desc: '아오모리시 100곳+ 라멘점 중 8~9할이 니보시(멸치) 라멘. 津軽 지방의 소울푸드.',
+    menu: '진한 니보시 (농후, 걸쭉) vs 맑은 니보시 (깔끔, 투명) — 가게마다 스타일이 다르다.',
+    tips: '현지인은 주 1~2회 방문하는 진짜 소울푸드. 역 주변에 다수. "あっさり(깔끔)와 こってり(진한) 중 어느 쪽?" 물어보면 추천해줌.',
     tags: ['소울푸드', '멸치 육수', '현지인 주 1~2회'],
   },
   miso_curry_milk_ramen: {
-    name: '味噌カレー牛乳ラーメン',
-    nameJa: '미소카레규뉴 라멘',
-    query: '味噌カレー牛乳ラーメン 味の札幌大西 青森',
-    icon: '🍛',
-    category: 'B급 구르메',
-    price: '850~1,000엔',
-    desc: '아오모리시 고유 B급 구르메. 1978년 「味の札幌」에서 정식 메뉴화. 미소 라멘에 카레 가루, 우유, 버터를 토핑한 절묘한 조합.',
-    menu: '미소 베이스 국물 + 카레 스파이스 + 우유의 마일드함 + 버터 토핑. 중태 축면(ちぢれ麺). 토핑: 콩나물, 숙주, 파',
-    tips: '유명 가게는 「味の札幌 大西」(아오모리역 근처). 스파이시하면서도 우유 덕분에 마일드한 것이 특징. 1970년대 중고생들이 라멘에 이것저것 넣어 먹는 유행에서 탄생한 B급 구르메의 역사가 재미있다.',
+    name: '味噌カレー牛乳ラーメン', nameJa: '미소카레규뉴 라멘',
+    query: '味の札幌大西 青森', icon: '🍛', category: 'B급 구르메',
+    price: '850~1,000엔', imageSearch: '味噌カレー牛乳ラーメン 青森',
+    placeId: 'ChIJ8RSfihufm18RbYfiZDGnKD0',
+    desc: '아오모리 고유 B급 구르메. 1978년 「味の札幌」에서 정식 메뉴화. 미소+카레+우유+버터.',
+    menu: '미소 베이스 국물 + 카레 스파이스 + 우유 + 버터 토핑. 중태 축면(ちぢれ麺).',
+    tips: '유명 가게는 「味の札幌 大西」(아오모리역 근처). 1970년대 중고생 유행에서 탄생.',
     order: '"味噌カレー牛乳ラーメンください" (미소카레규뉴라멘 쿠다사이)',
     tags: ['B급 구르메', '1978년 탄생', '미소+카레+우유+버터'],
   },
   shoga_miso_oden: {
-    name: '生姜味噌おでん',
-    nameJa: '쇼가미소 오뎅',
-    query: '生姜味噌おでん 青森',
-    icon: '🍢',
-    category: '아오모리 향토 요리',
-    price: '1개 100~200엔대',
-    desc: '아오모리 고유의 오뎅 스타일. 일반 오뎅에 미소(된장) + 갈은 생강을 얹어 먹는다. 추운 겨울~봄 초에 특히 인기.',
-    menu: '다이콘(무), 곤약, 치쿠와, 계란, 한펜 등 일반 오뎅 재료 + 생강미소 소스',
-    tips: '포장마차(屋台) 스타일의 가게가 아오모리역 근처에 있다. 이자카야에서도 제공하는 곳이 많으니 "生姜味噌おでんありますか?"라고 물어보기. 4월 초는 아직 쌀쌀하므로 딱 맞는 음식!',
+    name: '生姜味噌おでん', nameJa: '쇼가미소 오뎅',
+    query: '生姜味噌おでん 青森', icon: '🍢', category: '아오모리 향토 요리',
+    price: '1개 100~200엔대', imageSearch: '青森 生姜味噌おでん',
+    desc: '아오모리 고유 오뎅. 미소(된장) + 갈은 생강. 4월 초 쌀쌀한 날씨에 딱.',
+    menu: '다이콘(무), 곤약, 치쿠와, 계란, 한펜 + 생강미소 소스',
+    tips: '이자카야에서도 제공하는 곳이 많으니 "生姜味噌おでんありますか?"라고 물어보기.',
     order: '"生姜味噌おでんください" (쇼가미소오뎅 쿠다사이)',
     tags: ['향토 요리', '생강+미소', '포장마차', '추운 날 필수'],
   },
   denshu: {
-    name: '아오모리 3대 地酒',
-    nameJa: '田酒・豊盃・陸奥八仙',
-    query: '西田酒造店 青森',
-    icon: '🍶',
-    category: '일본주 (地酒)',
-    price: '1잔(90ml) 500~1,000엔',
+    name: '아오모리 3대 地酒', nameJa: '田酒・豊盃・陸奥八仙',
+    query: '西田酒造店 青森', icon: '🍶', category: '일본주 (地酒)',
+    price: '1잔(90ml) 500~1,000엔', imageSearch: '田酒 日本酒',
     desc: '아오모리현의 3대 명주. 이자카야에서 반드시 시도해볼 것.',
-    menu: '<strong>田酒 (덴슈)</strong> — 아오모리시 서전주조. 전국적 프리미엄. 현지에서도 입수 어려움. "田酒ありますか?"로 물어보기.<br><strong>豊盃 (호우하이)</strong> — 히로사키시 미우라주조. 풍부한 과실향과 깊은 맛.<br><strong>陸奥八仙 (무츠핫센)</strong> — 하치노헤시. 신선한 과실향, 가볍고 깔끔.',
-    tips: '田酒는 프리미엄이라 있는 날과 없는 날이 있다. 이자카야에서 "田酒ありますか?"(덴슈 아리마스카? = 덴슈 있어요?) 꼭 물어보기. 없으면 豊盃나 陸奥八仙도 훌륭. 3종을 비교 시음하는 것이 최고의 경험.',
+    menu: '<strong>田酒 (덴슈)</strong> — 전국적 프리미엄. 현지에서도 입수 어려움.<br><strong>豊盃 (호우하이)</strong> — 풍부한 과실향.<br><strong>陸奥八仙 (무츠핫센)</strong> — 신선한 과실향, 가볍고 깔끔.',
+    tips: '田酒는 있는 날과 없는 날이 있다. "田酒ありますか?"(덴슈 아리마스카?) 꼭 물어보기. 3종 비교 시음이 최고.',
     order: '"おすすめの地酒をください" (오스스메노 지자케오 쿠다사이 = 추천 지주 주세요)',
     tags: ['田酒', '豊盃', '陸奥八仙', '프리미엄'],
   },
 };
 
+// ===== Google Maps photo URL helper =====
+function mapsPhotoUrl(placeId) {
+  return 'https://www.google.com/maps/place/?q=place_id:' + placeId;
+}
+function mapsSearchUrl(query) {
+  return 'https://www.google.com/maps/search/' + encodeURIComponent(query);
+}
+function imageSearchUrl(query) {
+  return 'https://www.google.com/search?tbm=isch&q=' + encodeURIComponent(query);
+}
+
 // ===== MAP FUNCTIONS =====
 function showMap(spotId) {
   const spot = SPOTS[spotId];
   if (!spot) return;
-  // If it has detailed info, show detail instead
-  if (spot.tips && spot.category) {
-    showDetail(spotId);
-    return;
-  }
+  if (spot.tips && spot.category) { showDetail(spotId); return; }
   const overlay = document.getElementById('mapOverlay');
-  document.getElementById('mapTitle').textContent = spot.icon + ' ' + spot.name;
+  document.getElementById('mapTitle').textContent = (spot.icon||'') + ' ' + spot.name;
   const q = encodeURIComponent(spot.query || spot.name);
   document.getElementById('mapFrame').src = 'https://www.google.com/maps?q=' + q + '&output=embed&hl=ja';
-  let footerHtml = '';
-  if (spot.address) footerHtml += '<div class="spot-meta">📍 ' + spot.address + '</div>';
-  if (spot.desc) footerHtml += '<div class="spot-desc" style="margin-top:8px;">' + spot.desc + '</div>';
-  if (spot.walk) footerHtml += '<div class="spot-meta" style="margin-top:6px;">🚶 ' + spot.walk + '</div>';
-  footerHtml += '<a class="map-open-btn" href="https://www.google.com/maps/search/' + q + '" target="_blank" rel="noopener">📱 Google Maps 앱으로 열기</a>';
-  document.getElementById('mapFooter').innerHTML = footerHtml;
+  let fh = '';
+  if (spot.address) fh += '<div class="spot-meta">\ud83d\udccd ' + spot.address + '</div>';
+  if (spot.desc) fh += '<div class="spot-desc" style="margin-top:8px;">' + spot.desc + '</div>';
+  fh += '<div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;">';
+  if (spot.placeId) {
+    fh += '<a class="map-open-btn" href="' + mapsPhotoUrl(spot.placeId) + '" target="_blank" rel="noopener">\ud83d\udcf7 Google Maps \uc0ac\uc9c4 \ubcf4\uae30</a>';
+  }
+  fh += '<a class="map-open-btn" href="https://www.google.com/maps/search/' + q + '" target="_blank" rel="noopener">\ud83d\udcf1 Google Maps \uc571\uc73c\ub85c \uc5f4\uae30</a>';
+  fh += '</div>';
+  document.getElementById('mapFooter').innerHTML = fh;
   overlay.classList.add('show');
   document.body.style.overflow = 'hidden';
 }
 
 function closeMap() {
-  const overlay = document.getElementById('mapOverlay');
-  overlay.classList.remove('show');
+  document.getElementById('mapOverlay').classList.remove('show');
   document.getElementById('mapFrame').src = '';
   document.body.style.overflow = '';
 }
@@ -1335,58 +1315,71 @@ function showDetail(spotId) {
   const overlay = document.getElementById('detailOverlay');
   const q = encodeURIComponent(s.query || s.name);
   let h = '';
-  h += '<div class="detail-photo-placeholder">' + (s.icon || '📍') + '</div>';
-  h += '<h2>' + s.name + '</h2>';
+
+  // Photo hero: Google Maps embed as visual header
+  h += '<div class="photo-hero">';
+  h += '<iframe src="https://www.google.com/maps?q=' + q + '&output=embed&hl=ja&z=17" loading="lazy"></iframe>';
+  h += '<div class="photo-hero-overlay">';
+  h += '<h2>' + (s.icon||'') + ' ' + s.name + '</h2>';
   if (s.nameJa) h += '<div class="detail-ja">' + s.nameJa + '</div>';
+  h += '</div></div>';
+
+  // Photo action buttons
+  h += '<div class="photo-cta">';
+  if (s.placeId) {
+    h += '<a class="cta-maps" href="' + mapsPhotoUrl(s.placeId) + '" target="_blank" rel="noopener">\ud83d\udcf7 Google Maps \uc0ac\uc9c4 \ubcf4\uae30</a>';
+  }
+  const imgQ = s.imageSearch || s.query || s.name;
+  h += '<a class="cta-images" href="' + imageSearchUrl(imgQ) + '" target="_blank" rel="noopener">\ud83d\uddbc\ufe0f \uc774\ubbf8\uc9c0 \uac80\uc0c9</a>';
+  h += '</div>';
+
+  // Tags
   if (s.tags) {
-    h += '<div style="margin-bottom:16px;">';
+    h += '<div style="margin:16px 0 8px;">';
     s.tags.forEach(t => { h += '<span class="tag">' + t + '</span>'; });
     h += '</div>';
   }
 
   // Basic info
-  h += '<div class="detail-section"><h4>기본 정보</h4>';
-  if (s.category) h += '<div class="detail-row"><span class="detail-label">분류</span><span class="detail-val">' + s.category + '</span></div>';
-  if (s.address) h += '<div class="detail-row"><span class="detail-label">주소</span><span class="detail-val">' + s.address + '</span></div>';
-  if (s.walk) h += '<div class="detail-row"><span class="detail-label">거리</span><span class="detail-val">' + s.walk + '</span></div>';
-  if (s.hours) h += '<div class="detail-row"><span class="detail-label">영업시간</span><span class="detail-val">' + s.hours + '</span></div>';
-  if (s.closed) h += '<div class="detail-row"><span class="detail-label">정기휴일</span><span class="detail-val">' + s.closed + '</span></div>';
-  if (s.price) h += '<div class="detail-row"><span class="detail-label">가격</span><span class="detail-val">' + s.price + '</span></div>';
+  h += '<div class="detail-section"><h4>\uae30\ubcf8 \uc815\ubcf4</h4>';
+  if (s.category) h += '<div class="detail-row"><span class="detail-label">\ubd84\ub958</span><span class="detail-val">' + s.category + '</span></div>';
+  if (s.address) h += '<div class="detail-row"><span class="detail-label">\uc8fc\uc18c</span><span class="detail-val">' + s.address + '</span></div>';
+  if (s.walk) h += '<div class="detail-row"><span class="detail-label">\uac70\ub9ac</span><span class="detail-val">' + s.walk + '</span></div>';
+  if (s.hours) h += '<div class="detail-row"><span class="detail-label">\uc601\uc5c5\uc2dc\uac04</span><span class="detail-val">' + s.hours + '</span></div>';
+  if (s.closed) h += '<div class="detail-row"><span class="detail-label">\uc815\uae30\ud734\uc77c</span><span class="detail-val">' + s.closed + '</span></div>';
+  if (s.price) h += '<div class="detail-row"><span class="detail-label">\uac00\uaca9</span><span class="detail-val">' + s.price + '</span></div>';
   h += '</div>';
 
   // Description
   if (s.desc) {
-    h += '<div class="detail-section"><h4>소개</h4>';
+    h += '<div class="detail-section"><h4>\uc18c\uac1c</h4>';
     h += '<p style="font-size:0.95em;">' + s.desc + '</p></div>';
   }
 
-  // Menu / What to try
+  // Menu
   if (s.menu) {
-    h += '<div class="detail-section"><h4>메뉴 / 뭘 먹을까</h4>';
+    h += '<div class="detail-section"><h4>\uba54\ub274 / \ubb58 \uba39\uc744\uae4c</h4>';
     h += '<p style="font-size:0.95em;">' + s.menu + '</p></div>';
   }
 
   // How to order
   if (s.order) {
-    h += '<div class="detail-section"><h4>주문 방법</h4>';
+    h += '<div class="detail-section"><h4>\uc8fc\ubb38 \ubc29\ubc95</h4>';
     h += '<div style="background:var(--accent-light);padding:12px 16px;border-radius:8px;font-size:0.95em;">' + s.order + '</div></div>';
   }
 
   // Tips
   if (s.tips) {
-    h += '<div class="detail-tip"><strong>💡 현장 팁</strong><br>' + s.tips + '</div>';
+    h += '<div class="detail-tip"><strong>\ud83d\udca1 \ud604\uc7a5 \ud301</strong><br>' + s.tips + '</div>';
   }
-
-  // Map embed
-  h += '<div class="detail-section"><h4>위치</h4>';
-  h += '<div style="border-radius:12px;overflow:hidden;height:200px;margin-top:8px;">';
-  h += '<iframe src="https://www.google.com/maps?q=' + q + '&output=embed&hl=ja" style="width:100%;height:100%;border:none;" loading="lazy"></iframe>';
-  h += '</div></div>';
 
   // Action buttons
   h += '<div class="detail-actions">';
-  h += '<a class="btn-map" href="https://www.google.com/maps/search/' + q + '" target="_blank" rel="noopener">📱 Google Maps로 길찾기</a>';
-  h += '<button class="btn-close-detail" onclick="closeDetail()">닫기</button>';
+  h += '<a class="btn-map" href="https://www.google.com/maps/search/' + q + '" target="_blank" rel="noopener">\ud83d\udcf1 Google Maps\ub85c \uae38\ucc3e\uae30</a>';
+  if (s.placeId) {
+    h += '<a class="btn-search" href="' + mapsPhotoUrl(s.placeId) + '" target="_blank" rel="noopener">\ud83d\udcf7 \uc0ac\uc9c4 \ub354 \ubcf4\uae30</a>';
+  }
+  h += '<button class="btn-close-detail" onclick="closeDetail()">\ub2eb\uae30</button>';
   h += '</div>';
 
   document.getElementById('detailContent').innerHTML = h;
@@ -1398,7 +1391,6 @@ function showDetail(spotId) {
 function closeDetail() {
   document.getElementById('detailOverlay').classList.remove('show');
   document.body.style.overflow = '';
-  // Clean up iframes
   const iframes = document.getElementById('detailContent').querySelectorAll('iframe');
   iframes.forEach(f => f.src = '');
 }
@@ -1438,12 +1430,7 @@ function loadChecklist() {
 }
 loadChecklist();
 
-// ESC to close overlays
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { closeMap(); closeDetail(); }
-});
-
-// Back button handling
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeMap(); closeDetail(); } });
 window.addEventListener('popstate', () => { closeMap(); closeDetail(); });
 </script>
 
