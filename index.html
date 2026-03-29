@@ -311,30 +311,39 @@
   .photo-hero-overlay h2 { color: white; font-size: 1.2em; margin: 0; }
   .photo-hero-overlay .detail-ja { color: rgba(255,255,255,0.8); margin: 4px 0 0; font-size: 0.85em; }
 
+  /* Photo strip for local images */
   .photo-strip {
-    display: flex; gap: 8px; overflow-x: auto; padding: 12px 0;
+    display: flex; gap: 8px; overflow-x: auto; padding: 0;
     -webkit-overflow-scrolling: touch; scrollbar-width: none;
+    width: calc(100% + 48px); margin: 0 -24px;
   }
   .photo-strip::-webkit-scrollbar { display: none; }
-  .photo-strip a {
+  .photo-strip img {
     flex-shrink: 0; display: block;
-    width: 140px; height: 100px; border-radius: 8px; overflow: hidden;
-    background: var(--tag-bg); position: relative;
+    width: 280px; height: 200px; object-fit: cover;
+    cursor: pointer; transition: opacity 0.15s;
   }
-  .photo-strip a img {
-    width: 100%; height: 100%; object-fit: cover;
-  }
+  .photo-strip img:first-child { padding-left: 0; }
+  .photo-strip img:hover { opacity: 0.9; }
+
   .photo-strip .photo-more {
-    width: 100px; height: 100px; border-radius: 8px;
+    width: 120px; height: 200px; border-radius: 0;
     background: var(--accent-light); display: flex; flex-direction: column;
     align-items: center; justify-content: center; gap: 4px;
     color: var(--accent); font-size: 0.8em; font-weight: 500;
-    text-decoration: none; flex-shrink: 0;
+    text-decoration: none; flex-shrink: 0; cursor: pointer;
   }
   .photo-strip .photo-more span { font-size: 1.5em; }
 
+  .photo-strip-title {
+    display: flex; align-items: center; gap: 8px;
+    padding: 16px 0 12px;
+  }
+  .photo-strip-title h2 { font-size: 1.3em; margin: 0; color: var(--text); }
+  .photo-strip-title .detail-ja { font-size: 0.9em; color: var(--text-light); margin: 0; }
+
   .photo-cta {
-    display: flex; gap: 8px; margin: 8px 0 4px; flex-wrap: wrap;
+    display: flex; gap: 8px; margin: 12px 0 4px; flex-wrap: wrap;
   }
   .photo-cta a {
     display: inline-flex; align-items: center; gap: 6px;
@@ -347,22 +356,85 @@
   .photo-cta .cta-images { background: var(--tag-bg); color: var(--warm); }
   .photo-cta .cta-tabelog { background: #ffeedd; color: #c4541a; }
 
+  /* Weather */
+  .weather-card { background: var(--card); border-radius: 12px; padding: 20px 28px; margin-bottom: 20px; border: 1px solid var(--border); }
+  .weather-card h2 { font-size: 1.3em; font-weight: 700; color: var(--accent); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+  .weather-days { display: flex; gap: 8px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 4px; }
+  .weather-days::-webkit-scrollbar { display: none; }
+  .weather-day {
+    flex-shrink: 0; text-align: center; padding: 12px 14px; border-radius: 10px;
+    background: var(--tag-bg); cursor: pointer; min-width: 80px; transition: all 0.2s;
+    border: 2px solid transparent;
+  }
+  .weather-day:hover { background: var(--accent-light); }
+  .weather-day.active { border-color: var(--accent); background: var(--accent-light); }
+  .weather-day .wd-date { font-size: 0.78em; color: var(--text-light); font-weight: 500; }
+  .weather-day .wd-icon { font-size: 1.6em; margin: 4px 0; }
+  .weather-day .wd-temp { font-size: 0.82em; font-weight: 500; }
+  .weather-day .wd-temp .hi { color: #c0392b; }
+  .weather-day .wd-temp .lo { color: #2980b9; }
+  .weather-day .wd-rain { font-size: 0.72em; color: #2980b9; margin-top: 2px; }
+  .weather-hourly { margin-top: 16px; display: none; }
+  .weather-hourly.active { display: block; }
+  .weather-hourly-title { font-size: 0.85em; font-weight: 500; color: var(--accent); margin-bottom: 8px; }
+  .weather-hourly-scroll { display: flex; gap: 6px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 4px; }
+  .weather-hourly-scroll::-webkit-scrollbar { display: none; }
+  .weather-hour {
+    flex-shrink: 0; text-align: center; padding: 8px 10px; border-radius: 8px;
+    background: var(--bg); min-width: 56px; font-size: 0.78em;
+  }
+  .weather-hour .wh-time { font-weight: 500; color: var(--text-light); }
+  .weather-hour .wh-icon { font-size: 1.2em; margin: 2px 0; }
+  .weather-hour .wh-temp { font-weight: 500; }
+  .weather-hour .wh-rain { color: #2980b9; font-size: 0.9em; }
+  .weather-loading { text-align: center; color: var(--text-light); padding: 20px; font-size: 0.9em; }
+  .weather-error { text-align: center; color: #c0392b; padding: 12px; font-size: 0.88em; }
+
+  /* Clickable checklist item */
+  .checklist li.clickable-item { cursor: pointer; }
+  .checklist li.clickable-item:hover { background: var(--accent-light); margin: 0 -8px; padding: 8px 8px; border-radius: 6px; }
+  .checklist li.clickable-item span { color: var(--accent); text-decoration: underline; text-decoration-style: dotted; text-underline-offset: 3px; }
+
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
   @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
 
-  /* Responsive */
+  /* Responsive - Mobile (<600px) */
   @media (max-width: 600px) {
     .hero { padding: 60px 16px 40px; }
     .hero h1 { font-size: 1.6em; }
     .card { padding: 20px; }
     .tab-btn { padding: 12px 14px; font-size: 0.82em; }
     .detail-content { padding: 0 16px 24px; }
+    .detail-sheet { width: 100%; max-width: 100%; border-radius: 16px 16px 0 0; }
     .map-footer { padding: 12px 16px; }
+    .photo-strip { width: calc(100% + 40px); margin: 0 -20px; }
+    .photo-strip img { width: 220px; height: 160px; }
+    .photo-strip .photo-more { height: 160px; width: 100px; }
+    .detail-actions a, .detail-actions button { padding: 12px 20px; font-size: 0.95em; }
+    .weather-day { min-width: 72px; padding: 10px 10px; }
+    .container { padding: 20px 12px 80px; }
+    .spot-cards-grid { display: block; }
   }
 
-  @media (min-width: 601px) {
+  /* Responsive - Tablet (601-768px) */
+  @media (min-width: 601px) and (max-width: 768px) {
     .detail-overlay { align-items: center; }
-    .detail-sheet { border-radius: 16px; max-height: 80vh; }
+    .detail-sheet { border-radius: 16px; max-height: 80vh; max-width: 90vw; }
+    .photo-strip img { width: 260px; height: 180px; }
+    .spot-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  }
+
+  /* Responsive - PC (>768px) */
+  @media (min-width: 769px) {
+    .container { max-width: 900px; }
+    .detail-overlay { align-items: center; }
+    .detail-sheet { border-radius: 16px; max-height: 80vh; max-width: 640px; }
+    .photo-strip img { width: 320px; height: 220px; }
+    .photo-strip .photo-more { height: 220px; width: 140px; }
+    .spot-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .spot-cards-grid .spot { border-bottom: none; border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
+    .spot-cards-grid .spot:hover { margin: 0; padding: 16px; }
+    .weather-day { min-width: 90px; }
   }
 
   @media print {
@@ -428,6 +500,15 @@
         <div class="flight-info" style="margin-top:6px;">KE2194 | A321neo | Q 클래스</div>
       </div>
     </div>
+  </div>
+
+  <div class="weather-card" id="weatherCard">
+    <h2>아오모리 7일 날씨</h2>
+    <div class="weather-loading" id="weatherLoading">날씨 정보를 불러오는 중...</div>
+    <div class="weather-days" id="weatherDays"></div>
+    <div id="weatherHourly"></div>
+    <div class="weather-error" id="weatherError" style="display:none;"></div>
+    <div style="font-size:0.72em; color:var(--text-light); margin-top:8px; text-align:right;">Open-Meteo API | 아오모리시 (40.82N, 140.74E)</div>
   </div>
 
   <div class="card">
@@ -949,18 +1030,18 @@
   <div class="card">
     <h2>음식 체크리스트</h2>
     <ul class="checklist" id="food-checklist">
-      <li><div class="check-box" onclick="toggleCheck(this)"></div><span>煮干しラーメン &mdash; 소울푸드</span></li>
-      <li><div class="check-box" onclick="toggleCheck(this)"></div><span>味噌カレー牛乳ラーメン &mdash; B급 구르메</span></li>
-      <li><div class="check-box" onclick="toggleCheck(this)"></div><span>のっけ丼 &mdash; 해산물 덮밥</span></li>
-      <li><div class="check-box" onclick="toggleCheck(this)"></div><span>生姜味噌おでん &mdash; 아오모리식 오뎅</span></li>
+      <li class="clickable-item"><div class="check-box" onclick="event.stopPropagation();toggleCheck(this)"></div><span onclick="showDetail('niboshi_ramen')">煮干しラーメン &mdash; 소울푸드</span></li>
+      <li class="clickable-item"><div class="check-box" onclick="event.stopPropagation();toggleCheck(this)"></div><span onclick="showDetail('miso_curry_milk_ramen')">味噌カレー牛乳ラーメン &mdash; B급 구르메</span></li>
+      <li class="clickable-item"><div class="check-box" onclick="event.stopPropagation();toggleCheck(this)"></div><span onclick="showDetail('nokkedon')">のっけ丼 &mdash; 해산물 덮밥</span></li>
+      <li class="clickable-item"><div class="check-box" onclick="event.stopPropagation();toggleCheck(this)"></div><span onclick="showDetail('shoga_miso_oden')">生姜味噌おでん &mdash; 아오모리식 오뎅</span></li>
       <li><div class="check-box" onclick="toggleCheck(this)"></div><span>ホタテ (가리비)</span></li>
       <li><div class="check-box" onclick="toggleCheck(this)"></div><span>ヤリイカ (창꼴뚜기)</span></li>
-      <li><div class="check-box" onclick="toggleCheck(this)"></div><span>田酒 (덴슈)</span></li>
-      <li><div class="check-box" onclick="toggleCheck(this)"></div><span>豊盃 (호우하이)</span></li>
-      <li><div class="check-box" onclick="toggleCheck(this)"></div><span>陸奥八仙 (무츠핫센)</span></li>
-      <li><div class="check-box" onclick="toggleCheck(this)"></div><span>아오모리 시드르</span></li>
-      <li><div class="check-box" onclick="toggleCheck(this)"></div><span>크래프트 비어</span></li>
-      <li><div class="check-box" onclick="toggleCheck(this)"></div><span>킷사텐 넬 드립 커피</span></li>
+      <li class="clickable-item"><div class="check-box" onclick="event.stopPropagation();toggleCheck(this)"></div><span onclick="showDetail('denshu')">田酒 (덴슈)</span></li>
+      <li class="clickable-item"><div class="check-box" onclick="event.stopPropagation();toggleCheck(this)"></div><span onclick="showDetail('denshu')">豊盃 (호우하이)</span></li>
+      <li class="clickable-item"><div class="check-box" onclick="event.stopPropagation();toggleCheck(this)"></div><span onclick="showDetail('denshu')">陸奥八仙 (무츠핫센)</span></li>
+      <li class="clickable-item"><div class="check-box" onclick="event.stopPropagation();toggleCheck(this)"></div><span onclick="showDetail('a_factory')">아오모리 시드르</span></li>
+      <li class="clickable-item"><div class="check-box" onclick="event.stopPropagation();toggleCheck(this)"></div><span onclick="showDetail('be_easy')">크래프트 비어</span></li>
+      <li class="clickable-item"><div class="check-box" onclick="event.stopPropagation();toggleCheck(this)"></div><span onclick="showDetail('kissaten_maron')">킷사텐 넬 드립 커피</span></li>
       <li><div class="check-box" onclick="toggleCheck(this)"></div><span>아오모리 사과</span></li>
     </ul>
   </div>
@@ -1093,6 +1174,7 @@ const SPOTS = {
     menu: '각 가게마다 특색 — 향토 어패류, 꼬치구이, 오뎅, 地酒 등',
     tips: '한 곳에서 2~3잔 마시고 옆 가게로 이동하는 "하시고(はしご)" 스타일이 현지 방식. 관광객도 오지만 현지 단골이 많은 곳이라 분위기가 좋다. 일본어를 못해도 주인이 친절하게 대해준다.',
     tags: ['하시고', '향토요리', '地酒', '현지인 단골'],
+    photos: ['img/sanfuri_1.jpg'],
   },
   joppari: {
     name: '津軽じょっぱり漁屋酒場', nameJa: '쓰가루 좃파리 이사카야',
@@ -1104,6 +1186,7 @@ const SPOTS = {
     menu: '호타테(가리비) 버터구이, 이카(오징어) 회, 향토 해산물 모듬, 地酒 각종',
     tips: '津軽三味線 라이브는 일본 전통 현악기 연주. 박력 있는 소리에 감동받을 것. 예약 없이도 가능하지만 주말은 혼잡할 수 있다.',
     tags: ['라이브 연주', '해산물', '津軽三味線'],
+    photos: ['img/joppari_1.jpg', 'img/joppari_2.jpg'],
   },
   hideka: {
     name: '旬肴 ひでか', nameJa: '순코우 히데카',
@@ -1135,6 +1218,7 @@ const SPOTS = {
     menu: 'IPA, 페일에일, 스타우트, 시즌널 에일 등 8종 로테이션. 아오모리 사과 활용 한정 비어가 인기.',
     tips: '셀프 탭 시스템이 재미있다. 소량씩 여러 종류를 시도하는 것을 추천. 안주는 간단한 것만 있으니 이자카야 2차로 가기 좋다.',
     tags: ['크래프트 비어', '셀프 탭', '사과 비어'],
+    photos: ['img/be_easy_1.jpg', 'img/be_easy_2.jpg'],
   },
   nokkedon: {
     name: '古川市場 のっけ丼', nameJa: '후루카와 시장 놋케동',
@@ -1148,6 +1232,7 @@ const SPOTS = {
     tips: '입구에서 식권(12매 2,200엔)을 구매 → 밥 가게에서 밥 받기(식권 1매) → 나머지 11매로 원하는 네타 선택. 인기 네타는 오전 중 소진되니 일찍 방문.',
     order: '① 식권 구매 (입구) → ② 밥 받기 (1매) → ③ 가게 돌며 네타 선택 (1~3매/네타) → ④ 2층에서 식사',
     tags: ['놋케동', '해산물', '아침식사', '시장'],
+    photos: ['img/nokkedon_1.jpg', 'img/nokkedon_2.jpg'],
   },
   auga: {
     name: 'AUGA 新鮮市場', nameJa: '아우가 신선시장',
@@ -1157,6 +1242,7 @@ const SPOTS = {
     menu: '아오모리 특산 절임류, 산채, 건어물, 사과 가공품 — 기념 쇼핑에도 좋다.',
     tips: '기념품 쇼핑은 여기가 좋다. のっけ丼은 고천시장에서, 장보기/기념품은 아우가에서.',
     tags: ['장보기', '기념품', '현지인 스타일'],
+    photos: ['img/auga_1.jpg', 'img/auga_2.jpg'],
   },
   machinaka_onsen: {
     name: '青森まちなか温泉', nameJa: '아오모리 마치나카 온센',
@@ -1168,6 +1254,7 @@ const SPOTS = {
     menu: '대욕장, 노천탕, 약탕, 어린이탕, 수풍탕, 대형 사우나 완비.',
     tips: '아침 6시 오픈이므로 朝風呂(아침 목욕) 가능 — 이것이 현지인 아침 루틴의 핵심! 수건이 없어도 250엔에 세트 대여. 센토 에티켓: 입욕 전 세신 필수, 수건은 탕에 넣지 말 것.',
     tags: ['朝風呂', '천연 온천', '가케나가시', '사우나'],
+    photos: ['img/machinaka_onsen_1.jpg'],
   },
   warasse: {
     name: 'ねぶたの家 ワ・ラッセ', nameJa: '네부타노이에 와랏세',
@@ -1179,6 +1266,7 @@ const SPOTS = {
     menu: '네부타 전시, 하야시 악기 연주 체험, 숍, 식사처 (11:00~19:00)',
     tips: '체험 코너에서 네부타 하야시 리듬을 직접 쳐볼 수 있다. 아오모리의 정체성을 이해하는 첫 걸음으로 첫날 방문 추천.',
     tags: ['네부타', '뮤지엄', '체험'],
+    photos: ['img/warasse_1.jpg', 'img/warasse_2.jpg'],
   },
   a_factory: {
     name: 'A-FACTORY', nameJa: '에이팩토리',
@@ -1190,6 +1278,7 @@ const SPOTS = {
     menu: '시드르 테이스팅 (드라이~스위트), 사과 젤라또, 사과 파이, 토산물',
     tips: '시드르 테이스팅은 자판기에서 카드를 구매한 후 탭에서 직접 따르는 시스템. 소량씩 여러 종류를 시도 가능. 선물용 사과 과자, 시드르 구매 적합.',
     tags: ['시드르', '사과', '토산물', '테이스팅'],
+    photos: ['img/a_factory_1.jpg', 'img/a_factory_2.jpg'],
   },
   kissaten_maron: {
     name: '喫茶 マロン', nameJa: '킷사텐 마론',
@@ -1201,6 +1290,7 @@ const SPOTS = {
     menu: '넬 드립 커피 (오리지널 머그컵), 자메이칸 카레 (양파+합비끼, 드링크+샐러드), 토스트, 케이크',
     tips: '자메이칸 카레가 숨은 명물 — 런치로 추천. 넬 드립 커피는 부드럽고 깊은 맛. 2층 안티크 인테리어도 꼭 둘러보기.',
     tags: ['넬 드립', '1970년 창업', '자메이칸 카레', '안티크'],
+    photos: ['img/maron_1.jpg', 'img/maron_2.jpg'],
   },
   kissaten_cleopatra: {
     name: '喫茶 クレオパトラ', nameJa: '킷사텐 클레오파트라',
@@ -1212,6 +1302,7 @@ const SPOTS = {
     menu: '카페 로와이얄 (브랜디 불꽃 커피), 뜨거운 애플파이 (매일 점내 제빵), 프렌치토스트',
     tips: '뜨거운 애플파이가 절대 명물 — 갓 구운 것을 먹을 수 있다. 꿀 커피 경험도 독특. 오후 티타임에 적합.',
     tags: ['1969년 창업', '애플파이', '꿀 커피', '클래식 음악'],
+    photos: ['img/cleopatra_1.jpg', 'img/cleopatra_2.jpg'],
   },
   kissaten_bankamu: {
     name: '喫茶 ばんかむ', nameJa: '킷사텐 반카무',
@@ -1223,6 +1314,7 @@ const SPOTS = {
     menu: '넬 드립 커피, 런치 세트 (16종 빵 중 선택), 토스트, 케이크',
     tips: '런치 세트의 16종 빵 선택이 재미있다. 세 킷사텐 중 가장 로컬 느낌.',
     tags: ['1962년 개업', '60년 역사', '16종 빵', '아라비아어 이름'],
+    photos: ['img/bankamu_1.jpg', 'img/bankamu_2.jpg'],
   },
 
   // --- Food items ---
@@ -1234,6 +1326,7 @@ const SPOTS = {
     menu: '진한 니보시 (농후, 걸쭉) vs 맑은 니보시 (깔끔, 투명) — 가게마다 스타일이 다르다.',
     tips: '현지인은 주 1~2회 방문하는 진짜 소울푸드. 역 주변에 다수. "あっさり(깔끔)와 こってり(진한) 중 어느 쪽?" 물어보면 추천해줌.',
     tags: ['소울푸드', '멸치 육수', '현지인 주 1~2회'],
+    photos: ['img/niboshi_1.jpg', 'img/niboshi_2.jpg'],
   },
   miso_curry_milk_ramen: {
     name: '味噌カレー牛乳ラーメン', nameJa: '미소카레규뉴 라멘',
@@ -1245,6 +1338,7 @@ const SPOTS = {
     tips: '유명 가게는 「味の札幌 大西」(아오모리역 근처). 1970년대 중고생 유행에서 탄생.',
     order: '"味噌カレー牛乳ラーメンください" (미소카레규뉴라멘 쿠다사이)',
     tags: ['B급 구르메', '1978년 탄생', '미소+카레+우유+버터'],
+    photos: ['img/miso_curry_ramen_1.jpg', 'img/miso_curry_ramen_2.jpg'],
   },
   shoga_miso_oden: {
     name: '生姜味噌おでん', nameJa: '쇼가미소 오뎅',
@@ -1255,6 +1349,7 @@ const SPOTS = {
     tips: '이자카야에서도 제공하는 곳이 많으니 "生姜味噌おでんありますか?"라고 물어보기.',
     order: '"生姜味噌おでんください" (쇼가미소오뎅 쿠다사이)',
     tags: ['향토 요리', '생강+미소', '포장마차', '추운 날 필수'],
+    photos: ['img/shoga_oden_1.jpg', 'img/shoga_oden_2.jpg'],
   },
   denshu: {
     name: '아오모리 3대 地酒', nameJa: '田酒・豊盃・陸奥八仙',
@@ -1265,6 +1360,7 @@ const SPOTS = {
     tips: '田酒는 있는 날과 없는 날이 있다. "田酒ありますか?"(덴슈 아리마스카?) 꼭 물어보기. 3종 비교 시음이 최고.',
     order: '"おすすめの地酒をください" (오스스메노 지자케오 쿠다사이 = 추천 지주 주세요)',
     tags: ['田酒', '豊盃', '陸奥八仙', '프리미엄'],
+    photos: ['img/denshu_1.jpg', 'img/denshu_2.jpg'],
   },
 };
 
@@ -1316,18 +1412,32 @@ function showDetail(spotId) {
   const q = encodeURIComponent(s.query || s.name);
   let h = '';
 
-  // Photo hero: Google Maps embed as visual header
-  h += '<div class="photo-hero">';
-  h += '<iframe src="https://www.google.com/maps?q=' + q + '&output=embed&hl=ja&z=17" loading="lazy"></iframe>';
-  h += '<div class="photo-hero-overlay">';
-  h += '<h2>' + (s.icon||'') + ' ' + s.name + '</h2>';
-  if (s.nameJa) h += '<div class="detail-ja">' + s.nameJa + '</div>';
-  h += '</div></div>';
+  // Photo strip with local images, or fallback to Google Maps embed
+  if (s.photos && s.photos.length > 0) {
+    h += '<div class="photo-strip">';
+    s.photos.forEach(function(p) {
+      h += '<img src="' + p + '" alt="' + s.name + '" loading="lazy" onclick="window.open(this.src)">';
+    });
+    const imgQ = s.imageSearch || s.query || s.name;
+    h += '<a class="photo-more" href="' + imageSearchUrl(imgQ) + '" target="_blank" rel="noopener"><span>+</span>more</a>';
+    h += '</div>';
+    h += '<div class="photo-strip-title">';
+    h += '<h2>' + (s.icon||'') + ' ' + s.name + '</h2>';
+    h += '</div>';
+    if (s.nameJa) h += '<div class="detail-ja">' + s.nameJa + '</div>';
+  } else {
+    h += '<div class="photo-hero">';
+    h += '<iframe src="https://www.google.com/maps?q=' + q + '&output=embed&hl=ja&z=17" loading="lazy"></iframe>';
+    h += '<div class="photo-hero-overlay">';
+    h += '<h2>' + (s.icon||'') + ' ' + s.name + '</h2>';
+    if (s.nameJa) h += '<div class="detail-ja">' + s.nameJa + '</div>';
+    h += '</div></div>';
+  }
 
   // Photo action buttons
   h += '<div class="photo-cta">';
   if (s.placeId) {
-    h += '<a class="cta-maps" href="' + mapsPhotoUrl(s.placeId) + '" target="_blank" rel="noopener">\ud83d\udcf7 Google Maps \uc0ac\uc9c4 \ubcf4\uae30</a>';
+    h += '<a class="cta-maps" href="' + mapsPhotoUrl(s.placeId) + '" target="_blank" rel="noopener">\ud83d\udcf7 Google Maps</a>';
   }
   const imgQ = s.imageSearch || s.query || s.name;
   h += '<a class="cta-images" href="' + imageSearchUrl(imgQ) + '" target="_blank" rel="noopener">\ud83d\uddbc\ufe0f \uc774\ubbf8\uc9c0 \uac80\uc0c9</a>';
@@ -1432,6 +1542,98 @@ loadChecklist();
 
 document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeMap(); closeDetail(); } });
 window.addEventListener('popstate', () => { closeMap(); closeDetail(); });
+
+// ===== WEATHER =====
+const WEATHER_CODES = {
+  0: {icon: '\u2600\ufe0f', label: 'Clear'},
+  1: {icon: '\u26c5', label: 'Mostly clear'}, 2: {icon: '\u26c5', label: 'Partly cloudy'}, 3: {icon: '\u26c5', label: 'Overcast'},
+  45: {icon: '\ud83c\udf2b\ufe0f', label: 'Fog'}, 48: {icon: '\ud83c\udf2b\ufe0f', label: 'Rime fog'},
+  51: {icon: '\ud83c\udf26\ufe0f', label: 'Light drizzle'}, 53: {icon: '\ud83c\udf26\ufe0f', label: 'Drizzle'}, 55: {icon: '\ud83c\udf26\ufe0f', label: 'Dense drizzle'},
+  56: {icon: '\ud83c\udf26\ufe0f', label: 'Freezing drizzle'}, 57: {icon: '\ud83c\udf26\ufe0f', label: 'Dense freezing drizzle'},
+  61: {icon: '\ud83c\udf27\ufe0f', label: 'Light rain'}, 63: {icon: '\ud83c\udf27\ufe0f', label: 'Rain'}, 65: {icon: '\ud83c\udf27\ufe0f', label: 'Heavy rain'},
+  66: {icon: '\ud83c\udf27\ufe0f', label: 'Freezing rain'}, 67: {icon: '\ud83c\udf27\ufe0f', label: 'Heavy freezing rain'},
+  71: {icon: '\ud83c\udf28\ufe0f', label: 'Light snow'}, 73: {icon: '\ud83c\udf28\ufe0f', label: 'Snow'}, 75: {icon: '\ud83c\udf28\ufe0f', label: 'Heavy snow'},
+  77: {icon: '\ud83c\udf28\ufe0f', label: 'Snow grains'},
+  80: {icon: '\ud83c\udf27\ufe0f', label: 'Light showers'}, 81: {icon: '\ud83c\udf27\ufe0f', label: 'Showers'}, 82: {icon: '\ud83c\udf27\ufe0f', label: 'Heavy showers'},
+  85: {icon: '\ud83c\udf28\ufe0f', label: 'Light snow showers'}, 86: {icon: '\ud83c\udf28\ufe0f', label: 'Heavy snow showers'},
+  95: {icon: '\u26c8\ufe0f', label: 'Thunderstorm'}, 96: {icon: '\u26c8\ufe0f', label: 'Thunderstorm + hail'}, 99: {icon: '\u26c8\ufe0f', label: 'Thunderstorm + heavy hail'},
+};
+function getWeatherIcon(code) {
+  return (WEATHER_CODES[code] || {icon: '\u2601\ufe0f'}).icon;
+}
+let weatherData = null;
+let selectedWeatherDay = 0;
+
+function renderWeatherDays() {
+  if (!weatherData) return;
+  const d = weatherData.daily;
+  const container = document.getElementById('weatherDays');
+  const dayNames = ['일','월','화','수','목','금','토'];
+  let html = '';
+  for (let i = 0; i < d.time.length; i++) {
+    const dt = new Date(d.time[i] + 'T00:00:00');
+    const dayName = dayNames[dt.getDay()];
+    const month = dt.getMonth() + 1;
+    const day = dt.getDate();
+    const active = i === selectedWeatherDay ? ' active' : '';
+    html += '<div class="weather-day' + active + '" onclick="selectWeatherDay(' + i + ')">';
+    html += '<div class="wd-date">' + month + '/' + day + ' (' + dayName + ')</div>';
+    html += '<div class="wd-icon">' + getWeatherIcon(d.weathercode[i]) + '</div>';
+    html += '<div class="wd-temp"><span class="hi">' + Math.round(d.temperature_2m_max[i]) + '</span>/<span class="lo">' + Math.round(d.temperature_2m_min[i]) + '</span>\u00b0</div>';
+    if (d.precipitation_probability_max[i] > 0) {
+      html += '<div class="wd-rain">\ud83d\udca7' + d.precipitation_probability_max[i] + '%</div>';
+    }
+    html += '</div>';
+  }
+  container.innerHTML = html;
+  renderWeatherHourly();
+}
+
+function renderWeatherHourly() {
+  if (!weatherData) return;
+  const h = weatherData.hourly;
+  const dayStr = weatherData.daily.time[selectedWeatherDay];
+  const container = document.getElementById('weatherHourly');
+  let html = '<div class="weather-hourly active">';
+  html += '<div class="weather-hourly-title">' + dayStr + ' \uc2dc\uac04\ubcc4 \uc608\ubcf4</div>';
+  html += '<div class="weather-hourly-scroll">';
+  for (let i = 0; i < h.time.length; i++) {
+    if (!h.time[i].startsWith(dayStr)) continue;
+    const hr = new Date(h.time[i]).getHours();
+    html += '<div class="weather-hour">';
+    html += '<div class="wh-time">' + hr + '\uc2dc</div>';
+    html += '<div class="wh-icon">' + getWeatherIcon(h.weathercode[i]) + '</div>';
+    html += '<div class="wh-temp">' + Math.round(h.temperature_2m[i]) + '\u00b0</div>';
+    if (h.precipitation_probability[i] > 0) {
+      html += '<div class="wh-rain">' + h.precipitation_probability[i] + '%</div>';
+    }
+    html += '</div>';
+  }
+  html += '</div></div>';
+  container.innerHTML = html;
+}
+
+function selectWeatherDay(idx) {
+  selectedWeatherDay = idx;
+  renderWeatherDays();
+}
+
+function loadWeather() {
+  const url = 'https://api.open-meteo.com/v1/forecast?latitude=40.8244&longitude=140.7400&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weathercode&hourly=temperature_2m,weathercode,precipitation_probability&timezone=Asia/Tokyo&forecast_days=7';
+  fetch(url)
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      weatherData = data;
+      document.getElementById('weatherLoading').style.display = 'none';
+      renderWeatherDays();
+    })
+    .catch(function(err) {
+      document.getElementById('weatherLoading').style.display = 'none';
+      document.getElementById('weatherError').style.display = 'block';
+      document.getElementById('weatherError').textContent = '\ub0a0\uc528 \uc815\ubcf4\ub97c \ubd88\ub7ec\uc62c \uc218 \uc5c6\uc2b5\ub2c8\ub2e4. \uc778\ud130\ub137 \uc5f0\uacb0\uc744 \ud655\uc778\ud574\uc8fc\uc138\uc694.';
+    });
+}
+loadWeather();
 </script>
 
 </body>
