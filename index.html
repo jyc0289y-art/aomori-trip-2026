@@ -468,6 +468,7 @@
   <button class="tab-btn" data-tab="day4">DAY 4</button>
   <button class="tab-btn" data-tab="spots">스폿</button>
   <button class="tab-btn" data-tab="food">음식</button>
+  <button class="tab-btn" data-tab="shopping">쇼핑</button>
   <button class="tab-btn" data-tab="budget">예산</button>
   <button class="tab-btn" data-tab="tips">준비물 & 팁</button>
 </nav>
@@ -1047,6 +1048,243 @@
   </div>
 </div>
 
+<!-- ===== 쇼핑 ===== -->
+<div id="shopping" class="tab-content">
+
+  <div class="card" style="background:linear-gradient(135deg,#f8f4ef,#ede6db);border:1px solid #d4c9b8;">
+    <h2>🛍️ 쇼핑 동선 가이드</h2>
+    <p style="font-size:0.92em;color:var(--text-light);">유니클로·GU·PORTER 등은 숙소 도보권에 없어 버스 이동 필요 (15~25분). 아래 3가지 시나리오 중 맞는 날에 활용하세요.</p>
+    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;">
+      <span class="tag" style="cursor:pointer;" onclick="document.getElementById('route-day1').scrollIntoView({behavior:'smooth'})">첫날 루트</span>
+      <span class="tag" style="cursor:pointer;" onclick="document.getElementById('route-mid').scrollIntoView({behavior:'smooth'})">중간날 루트</span>
+      <span class="tag" style="cursor:pointer;" onclick="document.getElementById('route-last').scrollIntoView({behavior:'smooth'})">마지막날 루트</span>
+    </div>
+  </div>
+
+  <!-- 쇼핑 스폿 -->
+  <div class="card">
+    <h2>쇼핑 스폿</h2>
+    <div class="spot" onclick="showDetail('sunroad')">
+      <div class="spot-name">サンロード青森 <span class="spot-name-ja">선로드 아오모리</span></div>
+      <div class="spot-meta">緑3-9-2 | 역에서 버스 15분 | 10:00~20:00</div>
+      <div class="spot-desc">PORTER 공식 취급점 (L'Avre Morita). 이온, DAISO 입점.</div>
+      <div><span class="tag">PORTER</span><span class="tag">DAISO</span><span class="tag">이온</span></div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('dreamtown')">
+      <div class="spot-name">Dream Town ALi <span class="spot-name-ja">드림타운 알리</span></div>
+      <div class="spot-meta">浜田3-1-1 | 역에서 버스 20~25분 | 10:00~21:00</div>
+      <div class="spot-desc">UNIQLO + GU 같은 건물. 한 곳에서 의류 쇼핑 해결.</div>
+      <div><span class="tag">UNIQLO</span><span class="tag">GU</span><span class="tag">JINS</span><span class="tag">DAISO</span></div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('uniqlo_bypass')">
+      <div class="spot-name">ユニクロ 青森西バイパス店</div>
+      <div class="spot-meta">三好2-2-36 | 역에서 버스 16분 | 10:00~19:00</div>
+      <div class="spot-desc">ガーラタウン(MEGAドンキ) 바로 옆. サンロード에서 가까움.</div>
+      <div><span class="tag">UNIQLO</span><span class="tag">ガーラタウン 인접</span></div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('galatown')">
+      <div class="spot-name">ガーラタウン <span class="spot-name-ja">가라타운</span></div>
+      <div class="spot-meta">三好2-3-19 | 역에서 버스 16분 | 10:00~20:00</div>
+      <div class="spot-desc">MEGAドン・キホーテ, DAISO, 미스터도넛 등.</div>
+      <div><span class="tag">MEGAドンキ</span><span class="tag">DAISO</span></div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('lovina')">
+      <div class="spot-name">LOVINA <span class="spot-name-ja">라비나 (역빌딩)</span></div>
+      <div class="spot-meta">아오모리역 직결 | 도보 1분 | 10:00~20:00</div>
+      <div class="spot-desc">역빌딩. 마츠키요, 잡화, 지하 라멘. 시간 없을 때.</div>
+      <div><span class="tag">역 직결</span><span class="tag">마츠키요</span></div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+  </div>
+
+  <!-- 쇼핑 에리어 맛집 -->
+  <div class="card">
+    <h2>쇼핑 동선 맛집</h2>
+    <p style="font-size:0.9em;color:var(--text-light);margin-bottom:12px;">쇼핑 전후로 들르기 좋은 역 근처 맛집. 쇼핑 에리어(교외)에는 특별한 맛집이 없어 역 주변에서 먹고 이동하는 게 최적.</p>
+    <div class="spot" onclick="showDetail('osanai')">
+      <div class="spot-name">おさない食堂 <span class="spot-name-ja">오사나이 식당</span></div>
+      <div class="spot-meta">역 도보 3분 | 10:00~20:00</div>
+      <div class="spot-desc">70년 전통 가리비 전문. 호타테 카이야키미소 정식 필수.</div>
+      <div><span class="tag">가리비</span><span class="tag">70년 전통</span><span class="tag">런치 추천</span></div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('nagao_ekimae')">
+      <div class="spot-name">長尾中華そば 駅前店 <span class="spot-name-ja">나가오 츄카소바</span></div>
+      <div class="spot-meta">LOVINA 지하 | 역 직결 | 07:00~20:00</div>
+      <div class="spot-desc">쓰가루 니보시 라멘 명가. 아침부터 영업!</div>
+      <div><span class="tag">니보시 라멘</span><span class="tag">아침 영업</span><span class="tag">역 직결</span></div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+  </div>
+
+  <!-- 루트 A: 첫날 -->
+  <div id="route-day1">
+    <div class="day-header" style="background:#6b4c1e;">
+      <h2>🛫 첫날 루트: 공항 → 쇼핑/식사 → 체크인</h2>
+      <div class="day-sub">11:35 공항 도착 → 16:00 체크인까지 약 4시간 활용</div>
+    </div>
+    <div class="card">
+      <div class="timeline">
+        <div class="tl-item" onclick="showMap('aoj_airport')">
+          <div class="tl-time">11:35</div>
+          <div class="tl-dot"></div>
+          <div class="tl-desc">아오모리 공항 도착</div>
+        </div>
+        <div class="tl-item" onclick="showMap('aomori_station')">
+          <div class="tl-time">12:10</div>
+          <div class="tl-dot"></div>
+          <div class="tl-desc">아오모리역 도착 (리무진 35분, 980엔)<br><span class="tl-note">코인로커에 짐 보관 (400~600엔)</span></div>
+        </div>
+        <div class="tl-item" onclick="showDetail('osanai')">
+          <div class="tl-time">12:20</div>
+          <div class="tl-dot"></div>
+          <div class="tl-desc">점심: おさない食堂 — 호타테 카이야키미소 정식<br><span class="tl-note">역 도보 3분. 가리비 70년 전통 맛집</span></div>
+        </div>
+        <div class="tl-item" onclick="showDetail('sunroad')">
+          <div class="tl-time">13:15</div>
+          <div class="tl-dot"></div>
+          <div class="tl-desc">버스 → サンロード青森 (15분)<br><span class="tl-note">L'Avre Morita에서 PORTER 쇼핑</span></div>
+        </div>
+        <div class="tl-item" onclick="showDetail('uniqlo_bypass')">
+          <div class="tl-time">14:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-desc">도보 10분 → ユニクロ 西バイパス店<br><span class="tl-note">바로 옆 ガーラタウン(MEGAドンキ)도 가능</span></div>
+        </div>
+        <div class="tl-item" onclick="showMap('aomori_station')">
+          <div class="tl-time">15:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-desc">버스 → 아오모리역 복귀 (16분)</div>
+        </div>
+        <div class="tl-item" onclick="showMap('accommodation')">
+          <div class="tl-time">15:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-desc">짐 회수 → 도보 → 숙소 체크인<br><span class="tl-note">16:00 체크인. 짐 정리 후 산책 시작</span></div>
+        </div>
+      </div>
+      <div class="tip" style="margin-top:16px;">
+        <strong>💡 첫날 동선 핵심</strong><br>
+        サンロード(PORTER) → ユニクロ 西バイパス는 같은 에리어(緑~三好)로 도보 10분 거리. 한 번 이동으로 두 곳 해결.<br>
+        GU도 필요하면 Dream Town ALi(UNIQLO+GU)로 가되 편도 25분이라 시간이 빠듯할 수 있음.
+      </div>
+    </div>
+  </div>
+
+  <!-- 루트 B: 중간날 -->
+  <div id="route-mid">
+    <div class="day-header" style="background:#1a4a3a;">
+      <h2>🚶 중간날 루트: 숙소 → 쇼핑/식사 → 이자카야</h2>
+      <div class="day-sub">DAY 2 또는 3 — 오후 시간을 활용한 여유로운 쇼핑</div>
+    </div>
+    <div class="card">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-time">오전</div>
+          <div class="tl-dot"></div>
+          <div class="tl-desc">온천 → 시장 → 킷사텐 (일상 루틴)</div>
+        </div>
+        <div class="tl-item" onclick="showDetail('nagao_ekimae')">
+          <div class="tl-time">12:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-desc">점심: 長尾中華そば 역전점 (LOVINA 지하)<br><span class="tl-note">쓰가루 니보시 라멘. 쇼핑 전 든든하게</span></div>
+        </div>
+        <div class="tl-item" onclick="showDetail('dreamtown')">
+          <div class="tl-time">13:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-desc">버스 → Dream Town ALi (25분)<br><span class="tl-note">UNIQLO + GU 한 곳에서 해결. JINS, DAISO도</span></div>
+        </div>
+        <div class="tl-item" onclick="showDetail('sunroad')">
+          <div class="tl-time">14:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-desc">택시/버스 → サンロード青森 (10분)<br><span class="tl-note">PORTER(L'Avre Morita) 쇼핑. 이온도 구경</span></div>
+        </div>
+        <div class="tl-item" onclick="showMap('accommodation')">
+          <div class="tl-time">15:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-desc">버스 → 숙소 복귀. 짐 정리 & 휴식</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">17:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-desc">이자카야 출격! 산후리/좃파리/히데카<br><span class="tl-note">숙소에서 도보권 — 버스 불필요</span></div>
+        </div>
+      </div>
+      <div class="tip" style="margin-top:16px;">
+        <strong>💡 중간날 동선 핵심</strong><br>
+        시간 여유가 가장 많은 날. Dream Town ALi에서 UNIQLO+GU 해결 → サンロード에서 PORTER. 두 몰 사이 택시 약 1,000엔(5분).<br>
+        ガーラタウン(MEGAドンキ)도 サンロード 근처라 추가 가능.
+      </div>
+    </div>
+  </div>
+
+  <!-- 루트 C: 마지막날 -->
+  <div id="route-last">
+    <div class="day-header" style="background:#5a2d27;">
+      <h2>✈️ 마지막날 루트: 숙소 → 쇼핑/식사 → 공항</h2>
+      <div class="day-sub">10:00 체크아웃 → 12:45 비행기. 시간 촉박 주의!</div>
+    </div>
+    <div class="card">
+      <div class="timeline">
+        <div class="tl-item" onclick="showMap('accommodation')">
+          <div class="tl-time">10:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-desc">체크아웃 → 역 코인로커에 짐 보관</div>
+        </div>
+        <div class="tl-item" onclick="showDetail('lovina')">
+          <div class="tl-time">10:20</div>
+          <div class="tl-dot"></div>
+          <div class="tl-desc">LOVINA (역빌딩)에서 가벼운 쇼핑<br><span class="tl-note">마츠키요, 잡화. 교외 쇼핑몰은 시간상 불가</span></div>
+        </div>
+        <div class="tl-item" onclick="showDetail('osanai')">
+          <div class="tl-time">10:45</div>
+          <div class="tl-dot"></div>
+          <div class="tl-desc">점심: おさない食堂 (일찍 오픈)<br><span class="tl-note">또는 長尾中華そば (07:00~). 역 도보 3분</span></div>
+        </div>
+        <div class="tl-item" onclick="showMap('aomori_station')">
+          <div class="tl-time">11:20</div>
+          <div class="tl-dot"></div>
+          <div class="tl-desc">코인로커에서 짐 회수</div>
+        </div>
+        <div class="tl-item" onclick="showMap('aoj_airport')">
+          <div class="tl-time">11:25</div>
+          <div class="tl-dot"></div>
+          <div class="tl-desc">공항 리무진 버스 탑승 (35분)<br><span class="tl-note">⚠️ 이 시간 버스 반드시 확인. 놓치면 택시 7,000엔</span></div>
+        </div>
+        <div class="tl-item" onclick="showMap('aoj_airport')">
+          <div class="tl-time">12:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-desc">공항 도착 → 체크인 → 12:45 출발</div>
+        </div>
+      </div>
+      <div class="tip" style="margin-top:16px;">
+        <strong>⚠️ 마지막날 주의</strong><br>
+        교외 쇼핑몰(サンロード, ALi)은 왕복 40~50분이라 시간상 불가능. LOVINA(역빌딩)에서 간단히 해결하거나, <strong>쇼핑은 전날까지 마무리</strong>하는 것을 강력 추천.<br>
+        마지막날은 식사 + 공항 동선에 집중.
+      </div>
+    </div>
+  </div>
+
+  <!-- 교통 요약 -->
+  <div class="card">
+    <h2>🚌 쇼핑 에리어 교통</h2>
+    <table class="budget-table">
+      <thead><tr><th>구간</th><th>소요</th><th>요금</th><th>비고</th></tr></thead>
+      <tbody>
+        <tr><td>역 → サンロード</td><td>버스 15분</td><td>~260엔</td><td>시영버스</td></tr>
+        <tr><td>역 → ガーラタウン/ユニクロ</td><td>버스 16분</td><td>~260엔</td><td>サンロード 근처</td></tr>
+        <tr><td>역 → Dream Town ALi</td><td>버스 20~25분</td><td>~300엔</td><td>UNIQLO+GU</td></tr>
+        <tr><td>サンロード ↔ ガーラタウン</td><td>도보 10분</td><td>무료</td><td>같은 에리어</td></tr>
+        <tr><td>ALi → サンロード</td><td>택시 5분</td><td>~1,000엔</td><td>버스 환승보다 편리</td></tr>
+      </tbody>
+    </table>
+    <div class="tip" style="margin-top:12px;">버스 요금은 현금(동전) 준비. 교통IC카드 사용 가능 여부는 노선별 상이.</div>
+  </div>
+
+</div>
+
 <!-- ===== 예산 ===== -->
 <div id="budget" class="tab-content">
   <div class="card">
@@ -1315,6 +1553,97 @@ const SPOTS = {
     tips: '런치 세트의 16종 빵 선택이 재미있다. 세 킷사텐 중 가장 로컬 느낌.',
     tags: ['1962년 개업', '60년 역사', '16종 빵', '아라비아어 이름'],
     photos: ['img/bankamu_1.jpg', 'img/bankamu_2.jpg'],
+  },
+
+  // --- Shopping spots ---
+  sunroad: {
+    name: 'サンロード青森', nameJa: '선로드 아오모리',
+    query: 'サンロード青森', address: '青森市緑3-9-2', walk: '역에서 버스 15분',
+    icon: '🛍️', category: '대형 쇼핑몰',
+    hours: '10:00~20:00', price: '입장 무료',
+    placeId: 'ChIJqc_UyLqfm184_BqVxLK9ng',
+    desc: '아오모리 시내 최대 쇼핑몰 중 하나. 이온(AEON) 슈퍼, DAISO, 전문점 다수. 아오모리 시내 유일한 PORTER 공식 취급점(L\'Avre Morita)이 1F에 입점.',
+    menu: '<strong>L\'Avre Morita (1F)</strong> — 吉田カバン(PORTER) 공식 딜러. 탱커, 요시다 등 정품 라인업.<br><strong>이온 슈퍼</strong> — 식품, 생필품<br><strong>DAISO</strong> — 100엔 숍',
+    tips: 'PORTER를 사려면 여기가 아오모리 시내 유일한 공식 취급점. ユニクロ 西バイパス점까지 도보 10분이라 동선으로 이어서 방문 가능.',
+    tags: ['PORTER', 'L\'Avre Morita', '이온', 'DAISO'],
+    photos: ['img/sunroad_1.jpg'],
+    imageSearch: 'サンロード青森 外観',
+  },
+  dreamtown: {
+    name: 'Dream Town ALi', nameJa: '드림타운 알리',
+    query: 'ドリームタウンALi 青森', address: '青森市浜田3-1-1', walk: '역에서 버스 20~25분',
+    icon: '🏬', category: '대형 쇼핑몰',
+    hours: '10:00~21:00', price: '입장 무료',
+    placeId: 'ChIJuzfEppWfm1-AXfWNGhTNvg',
+    desc: 'A~D동으로 구성된 대형 복합몰. UNIQLO와 GU가 같은 건물에 입점해 의류 쇼핑을 한 곳에서 해결 가능. JINS(안경), DAISO, 서점 등도 있음.',
+    menu: '<strong>UNIQLO (C동)</strong> — 히트텍, 울트라라이트다운 등<br><strong>GU (D동 1F)</strong> — 유니클로보다 저렴한 트렌디 라인<br><strong>JINS</strong> — 안경/선글라스<br><strong>DAISO</strong> — 100엔 숍',
+    tips: 'UNIQLO + GU를 한 번에 쇼핑하려면 여기가 최적. 역에서 좀 멀지만(버스 25분) 쇼핑 효율은 가장 높음. 푸드코트도 있어 식사 가능.',
+    tags: ['UNIQLO', 'GU', 'JINS', 'DAISO', '푸드코트'],
+    photos: ['img/dreamtown_1.jpg'],
+    imageSearch: 'ドリームタウンALi 青森',
+  },
+  uniqlo_bypass: {
+    name: 'ユニクロ 青森西バイパス店', nameJa: '유니클로 아오모리 니시바이패스점',
+    query: 'ユニクロ 青森西バイパス店', address: '青森市三好2-2-36', walk: '역에서 버스 16분',
+    icon: '👕', category: '의류',
+    hours: '평일 11:00~19:00 / 토일 10:00~19:00', price: '',
+    placeId: 'ChIJM0l0FjSfm19oIQHp-AogfA',
+    desc: '독립 매장 유니클로. ガーラタウン(MEGAドンキ) 바로 옆이라 동시 방문 가능. サンロード에서도 도보 10분.',
+    menu: '히트텍, 울트라라이트다운, 에어리즘 등 기본 라인업',
+    tips: 'サンロード(PORTER) 방문 후 도보 10분이면 도착. ガーラタウン도 바로 옆이라 세 곳을 한 동선으로 해결 가능.',
+    tags: ['UNIQLO', 'ガーラタウン 인접'],
+  },
+  galatown: {
+    name: 'ガーラタウン', nameJa: '가라타운',
+    query: 'ガーラタウン 青森', address: '青森市三好2-3-19', walk: '역에서 버스 16분',
+    icon: '🏪', category: '쇼핑 복합시설',
+    hours: '10:00~20:00', price: '입장 무료',
+    placeId: 'ChIJPxTMbSifm1_7BpAmbjBuhQ',
+    desc: 'MEGAドン・キホーテ(돈키호테)가 핵심. DAISO, 미스터도넛, 의류점 등 입점. ユニクロ 西バイパス점 바로 옆.',
+    menu: '<strong>MEGAドンキ</strong> — 화장품, 과자, 잡화, 전자제품 등 뭐든 있음<br><strong>DAISO</strong> — 100엔 숍<br><strong>미스터도넛</strong> — 휴식',
+    tips: 'ドンキ에서 일본 과자, 화장품 등 기념품 쇼핑 가성비 좋음. 면세 가능(여권 필수).',
+    tags: ['MEGAドンキ', 'DAISO', '면세 가능'],
+    photos: ['img/galatown_1.jpg'],
+    imageSearch: 'ガーラタウン 青森',
+  },
+  lovina: {
+    name: 'LOVINA', nameJa: '라비나 (아오모리역 빌딩)',
+    query: 'ラビナ 青森駅', address: '아오모리역 직결', walk: '역에서 도보 1분',
+    icon: '🏢', category: '역빌딩 상업시설',
+    hours: '10:00~20:00 (지하 식당가 ~21:00)', price: '입장 무료',
+    placeId: 'ChIJXegiGR-fm19ohbmsXHb38w',
+    desc: '아오모리역 직결 상업시설. 마츠모토키요시(드럭스토어), 잡화, 의류, 지하 식당가. 시간 없을 때 역에서 바로 쇼핑 가능.',
+    menu: '<strong>마츠모토키요시</strong> — 화장품, 의약품, 면세<br><strong>지하 식당가</strong> — 長尾中華そば(니보시 라멘), 카레, 정식 등<br><strong>토산물 코너</strong> — 사과 과자, 기념품',
+    tips: '마지막날 시간 없을 때 활용. 마츠키요에서 면세 쇼핑(여권 필수). 지하에 長尾中華そば 입점.',
+    tags: ['역 직결', '마츠키요', '면세', '長尾中華そば'],
+  },
+  osanai: {
+    name: 'おさない食堂', nameJa: '오사나이 식당',
+    query: 'おさない食堂 青森駅前', address: '青森市新町1-1-17', walk: '역 도보 3분',
+    icon: '🐚', category: '향토 식당 (1950년대 창업)',
+    hours: '10:00~20:00頃 (売切終了)', price: '정식 800~1,200엔',
+    placeId: 'ChIJp7ONMhyfm1_LgF_CkOs9Pg',
+    desc: '아오모리역 앞 70년 전통 가리비(호타테) 전문 식당. 관광객과 현지인 모두 찾는 명소. 카이야키미소(貝焼き味噌)가 시그니처.',
+    menu: '<strong>ほたて貝焼き味噌定食</strong> — 가리비를 껍데기 위에 올려 미소+달걀로 구운 아오모리 향토요리. 반드시 주문!<br><strong>ほたてフライ定食</strong> — 가리비 튀김 정식<br><strong>刺身定食</strong> — 당일 입하 생선회',
+    tips: '카이야키미소는 아오모리 가정식의 대표. 가리비 껍데기가 냄비 역할. 점심시간(12:00~13:00) 혼잡하니 약간 일찍 가거나 늦게 가는 것을 추천.',
+    order: '"ほたて貝焼き味噌定食ください" (호타테 카이야키미소 테이쇼쿠 쿠다사이)',
+    tags: ['카이야키미소', '가리비', '70년 전통', '역 앞'],
+    photos: ['img/osanai_1.jpg', 'img/osanai_2.jpg'],
+    imageSearch: 'おさない食堂 青森 ほたて貝焼き味噌',
+  },
+  nagao_ekimae: {
+    name: '長尾中華そば 駅前店', nameJa: '나가오 츄카소바 역전점',
+    query: '長尾中華そば 青森駅前店', address: 'LOVINA 지하1F', walk: '역 직결',
+    icon: '🍜', category: '니보시 라멘 명가',
+    hours: '07:00~20:00', price: '라멘 750~950엔',
+    placeId: 'ChIJs6Sn6R6fm1-ZgzX4kH2gng',
+    desc: '1949년 창업 쓰가루 니보시 라멘의 원조 중 하나. LOVINA 지하에 역전점이 있어 접근성 최고. 아침 7시부터 영업하여 朝ラー(아침 라멘)도 가능.',
+    menu: '<strong>あっさり(깔끔)</strong> — 투명한 니보시 국물. 처음이면 이것부터.<br><strong>こってり(진한)</strong> — 걸쭉한 니보시 국물. 니보시 매니아용.<br><strong>朝ラーメン</strong> — 아침 한정 소사이즈(650엔). 朝風呂 후 딱.',
+    tips: '아침 온천(朝風呂) → 長尾 아침 라멘은 현지인 루틴. 처음이면 あっさり를 추천. 멸치 향이 은은하고 깔끔.',
+    order: '"あっさりください" (앗사리 쿠다사이) 또는 "こってりください" (콧테리 쿠다사이)',
+    tags: ['니보시 라멘', '1949년 창업', '아침 라멘', '역 직결'],
+    photos: ['img/nagao_1.jpg', 'img/nagao_2.jpg'],
+    imageSearch: '長尾中華そば 青森駅前店 煮干しラーメン',
   },
 
   // --- Food items ---
