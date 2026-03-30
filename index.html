@@ -892,24 +892,52 @@
 <!-- ===== 스폿 ===== -->
 <div id="spots" class="tab-content">
   <div class="card">
-    <h2>이자카야 & 바</h2>
+    <h2>🏮 이자카야 거리 & 하시고</h2>
+    <div class="spot" onclick="showDetail('honmachi_area')">
+      <div class="spot-name">本町 이자카야 거리 <span class="spot-name-ja">거리 전체 안내</span></div>
+      <div class="spot-meta">本町 2~5丁目 | 도보 10~15분</div>
+      <div class="spot-desc">아오모리 최대의 밤문화 거리. 수백 곳 이자카야 밀집. 거리 구조 & 추천 코스.</div>
+      <div><span class="tag">거리 MAP</span><span class="tag">하시고 코스</span></div>
+      <div class="spot-tap-hint">탭하여 거리 지도 보기</div>
+    </div>
     <div class="spot" onclick="showDetail('sanfuri')">
       <div class="spot-name">さんふり横丁 <span class="spot-name-ja">산후리 요코초</span></div>
       <div class="spot-meta">本町 3-8-3 | 도보 10분</div>
-      <div class="spot-desc">昭和풍 포장마차촌 15곳. 하시고 스타일 추천.</div>
-      <div><span class="tag">하시고</span><span class="tag">향토요리</span><span class="tag">地酒</span></div>
-      <div class="spot-tap-hint">탭하여 상세 보기</div>
+      <div class="spot-desc">昭和30년대 포장마차촌 15곳. 하시고 입문에 최적.</div>
+      <div><span class="tag">하시고</span><span class="tag">향토요리</span><span class="tag">地酒</span><span class="tag">昭和レトロ</span></div>
+      <div class="spot-tap-hint">탭하여 내부 구조 보기</div>
     </div>
     <div class="spot" onclick="showDetail('joppari')">
       <div class="spot-name">津軽じょっぱり漁屋酒場</div>
       <div class="spot-meta">本町 | 도보 10~15분</div>
-      <div class="spot-desc">향토 어패류 + 津軽三味線 라이브.</div>
+      <div class="spot-desc">향토 어패류 + 津軽三味線 라이브 매일 공연.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('tsugaru_sengyo')">
+      <div class="spot-name">津軽海峡鮮魚店</div>
+      <div class="spot-meta">本町 2丁目 | 도보 12분</div>
+      <div class="spot-desc">해협 직송 해산물. 카운터에서 오마카세.</div>
+      <div><span class="tag">해산물 직송</span><span class="tag">오마카세</span></div>
       <div class="spot-tap-hint">탭하여 상세 보기</div>
     </div>
     <div class="spot" onclick="showDetail('hideka')">
       <div class="spot-name">旬肴 ひでか</div>
-      <div class="spot-meta">本町 | 도보 10~15분</div>
-      <div class="spot-desc">지역 생선 + 희귀 地酒.</div>
+      <div class="spot-meta">新町 | 도보 10~15분</div>
+      <div class="spot-desc">지역 생선 + 희귀 地酒 전문.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('mitsuishi')">
+      <div class="spot-name">酒肴旬 三ッ石</div>
+      <div class="spot-meta">本町 | 도보 12분</div>
+      <div class="spot-desc">地酒 3종 세트 + 계절 요리 페어링.</div>
+      <div><span class="tag">地酒 페어링</span><span class="tag">3종 세트</span></div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('motsu_koshiken')">
+      <div class="spot-name">もつ焼きこしけん</div>
+      <div class="spot-meta">本町 | 도보 12분</div>
+      <div class="spot-desc">숯불 모츠야키 전문. 가성비 하시고 1차.</div>
+      <div><span class="tag">모츠야키</span><span class="tag">가성비</span></div>
       <div class="spot-tap-hint">탭하여 상세 보기</div>
     </div>
     <div class="spot" onclick="showDetail('zenigata')">
@@ -922,6 +950,24 @@
       <div class="spot-name">Be Easy Brewing</div>
       <div class="spot-meta">아오모리역 근처 | 도보 10분</div>
       <div class="spot-desc">셀프 탭 크래프트 비어 8종.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🍜 시메 라멘 (심야 마무리)</h2>
+    <div class="spot" onclick="showDetail('yokoyama_ramen')">
+      <div class="spot-name">中華そば横山 <span class="spot-name-ja">추카소바 요코야마</span></div>
+      <div class="spot-meta">本町 | 20:00~03:00 | 700~900엔</div>
+      <div class="spot-desc">깔끔한 니보시 국물. 이자카야 하시고 후 시메의 성지.</div>
+      <div><span class="tag">03:00까지</span><span class="tag">맑은 니보시</span></div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('kukai_ramen')">
+      <div class="spot-name">ラーメン空海 <span class="spot-name-ja">라멘 쿠카이</span></div>
+      <div class="spot-meta">本町 | 21:00~03:30 | 750~950엔</div>
+      <div class="spot-desc">진한 니보시 라멘. 横山보다 더 늦게까지.</div>
+      <div><span class="tag">03:30까지</span><span class="tag">진한 니보시</span></div>
       <div class="spot-tap-hint">탭하여 상세 보기</div>
     </div>
   </div>
@@ -972,15 +1018,118 @@
   </div>
 
   <div class="card">
-    <h2>랜드마크</h2>
+    <h2>🌊 베이에리어 & 랜드마크</h2>
+    <div class="spot" onclick="showDetail('bay_area')">
+      <div class="spot-name">아오모리 베이에리어 <span class="spot-name-ja">산책 코스 안내</span></div>
+      <div class="spot-meta">역에서 도보 3~10분 | 약 2km 코스</div>
+      <div class="spot-desc">워터프론트 산책로. 와랏세 → A-FACTORY → 八甲田丸 → ASPAM → 베이브리지.</div>
+      <div><span class="tag">산책 코스</span><span class="tag">석양</span><span class="tag">야경</span></div>
+      <div class="spot-tap-hint">탭하여 코스 안내 보기</div>
+    </div>
     <div class="spot" onclick="showDetail('warasse')">
       <div class="spot-name">ねぶたの家 ワ・ラッセ</div>
-      <div class="spot-meta">安方 1-1-1 | 도보 10분 | 09:00~18:00</div>
+      <div class="spot-meta">安方 1-1-1 | 도보 10분 | 09:00~18:00 | 620엔</div>
+      <div class="spot-desc">실물 대형 네부타 연중 전시. 하야시 연주 체험.</div>
       <div class="spot-tap-hint">탭하여 상세 보기</div>
     </div>
     <div class="spot" onclick="showDetail('a_factory')">
       <div class="spot-name">A-FACTORY</div>
-      <div class="spot-meta">아오모리역 도보 2분 | 도보 10분</div>
+      <div class="spot-meta">아오모리역 도보 2분 | 09:00~20:00</div>
+      <div class="spot-desc">시드르 공방 + 토산물 마켓. 셀프 테이스팅.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('hakkodamaru')">
+      <div class="spot-name">八甲田丸 <span class="spot-name-ja">메모리얼 쉽</span></div>
+      <div class="spot-meta">柳川 | 도보 12분 | 09:00~17:00 | 510엔</div>
+      <div class="spot-desc">세이칸 연락선 실물 보존. 조타실·기관실 내부 관람.</div>
+      <div><span class="tag">역사</span><span class="tag">기관실</span></div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('aspam')">
+      <div class="spot-name">ASPAM (アスパム) <span class="spot-name-ja">전망대 + 물산관</span></div>
+      <div class="spot-meta">安方 | 도보 12분 | 09:00~18:00 | 전망대 400엔</div>
+      <div class="spot-desc">삼각형 빌딩 13F에서 360° 파노라마. 1F 현 최대 기념품 물산관.</div>
+      <div><span class="tag">전망대</span><span class="tag">기념품</span><span class="tag">津軽びいどろ</span></div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🚶 주간 산책 코스</h2>
+    <div class="spot" onclick="showDetail('shinmachi')">
+      <div class="spot-name">新町商店街 <span class="spot-name-ja">아케이드 상점가</span></div>
+      <div class="spot-meta">역 동쪽 도보 3분 | 약 1km</div>
+      <div class="spot-desc">지붕 있는 아케이드. 비·눈 날에도 쾌적한 산책+쇼핑.</div>
+      <div><span class="tag">아케이드</span><span class="tag">비오는 날</span></div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('utou_shrine')">
+      <div class="spot-name">善知鳥神社 <span class="spot-name-ja">우토우 진자</span></div>
+      <div class="spot-meta">安方 | 도보 8분 | 무료</div>
+      <div class="spot-desc">아오모리 시의 발상지. 龍神水 파워스폿. 네부타 御朱印.</div>
+      <div><span class="tag">아침 산책</span><span class="tag">御朱印</span><span class="tag">龍神水</span></div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🛁 현지인 朝風呂 & 스파</h2>
+    <div class="spot" onclick="showDetail('machinaka_onsen')">
+      <div class="spot-name">青森まちなか温泉 <span class="spot-name-ja">역 앞 천연 온천</span></div>
+      <div class="spot-meta">古川 | 도보 10분 | 06:00~24:00 | 480엔</div>
+      <div class="spot-desc">역 앞 유일 자가원천. 朝風呂 아침 루틴의 핵심.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('okidate_onsen')">
+      <div class="spot-name">沖館温泉 <span class="spot-name-ja">동네 銭湯</span></div>
+      <div class="spot-meta">富田 | 버스/택시 | 05:45~22:00 | 480엔</div>
+      <div class="spot-desc">새벽 5:45 오픈. 관광객 0%, 동네 어르신 100%. 진짜 로컬 銭湯.</div>
+      <div><span class="tag">현지인 100%</span><span class="tag">朝風呂</span></div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('gokurakuyu')">
+      <div class="spot-name">極楽湯 青森店 <span class="spot-name-ja">스파+반나절</span></div>
+      <div class="spot-meta">東大野 | 버스/택시 | 06:00~25:00 | 480엔</div>
+      <div class="spot-desc">탄산천+사우나+식당+만화 코너. 비 오는 날 반나절 코스.</div>
+      <div><span class="tag">스파</span><span class="tag">비오는 날</span><span class="tag">만화</span></div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🍶 昼飲み (낮술) & 동네 식당</h2>
+    <div class="spot" onclick="showDetail('kakigen')">
+      <div class="spot-name">柿源 <span class="spot-name-ja">카키겐 · ちょい一セット</span></div>
+      <div class="spot-meta">新町 | 도보 8분 | 11:00~21:00</div>
+      <div class="spot-desc">田酒 한잔 + 회 3종 + 오뎅 세트. 직장인 아저씨들의 점심 한잔.</div>
+      <div><span class="tag">昼飲み</span><span class="tag">田酒</span><span class="tag">ちょい一セット</span></div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('daikoku_sushi')">
+      <div class="spot-name">大黒寿司 <span class="spot-name-ja">동네 스시집</span></div>
+      <div class="spot-meta">新町 | 도보 8분 | 11:00~22:00</div>
+      <div class="spot-desc">관광지 회전스시가 아닌 진짜 동네 스시집. 카운터 오마카세.</div>
+      <div><span class="tag">동네 스시</span><span class="tag">昼飲み</span></div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('jukei')">
+      <div class="spot-name">重慶 <span class="spot-name-ja">숙소 옆 동네 중화</span></div>
+      <div class="spot-meta">本町 3丁目 | 도보 1분 (!)</div>
+      <div class="spot-desc">숙소 바로 옆! 동네 주민들의 런치 식당. 관광 가이드 미등재.</div>
+      <div><span class="tag">숙소 1분</span><span class="tag">동네 식당</span></div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('soba_shoseiran')">
+      <div class="spot-name">そば処 正嵐 <span class="spot-name-ja">수타 소바</span></div>
+      <div class="spot-meta">古川 | 도보 8분 | 11:00~14:30</div>
+      <div class="spot-desc">소바 한 그릇 + 地酒 한잔. 현지인 런치 클래식.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('nishimura')">
+      <div class="spot-name">みちのく料理 西むら <span class="spot-name-ja">ASPAM 10F 전망 런치</span></div>
+      <div class="spot-meta">ASPAM 10F | 도보 12분 | 11:00~15:00</div>
+      <div class="spot-desc">바다 파노라마 + 향토 런치 + 地酒. 전망대 관람 후 런치.</div>
+      <div><span class="tag">전망 런치</span><span class="tag">향토 요리</span></div>
       <div class="spot-tap-hint">탭하여 상세 보기</div>
     </div>
   </div>
@@ -1415,12 +1564,26 @@ const SPOTS = {
     tags: ['코인로커', '11번 공항', '4번 サンロード'],
   },
   bay_area: {
-    name: '아오모리 베이에리어', nameJa: '青森ベイエリア', query: '青森ベイエリア', icon: '🌊',
-    desc: '워터프론트 산책로, ASPAM 전망대, 베이브리지. 석양&야경 포인트.',
+    name: '아오모리 베이에리어', nameJa: '青森ベイエリア',
+    query: '青森ベイエリア', address: '아오모리역에서 도보 3~10분', walk: '숙소에서 도보 10분',
+    icon: '🌊', category: '산책 / 관광',
+    hours: '24시간 (시설별 영업시간 별도)', price: '산책 무료',
+    desc: '아오모리만 워터프론트를 따라 ワ・ラッセ → A-FACTORY → 八甲田丸 → ASPAM → 베이브리지까지 이어지는 해안 산책로. 석양·야경 명소.',
+    menu: '<strong>베이에리어 산책 코스 (약 2km)</strong><br>① ワ・ラッセ (네부타 뮤지엄) — 40분<br>② A-FACTORY (시드르 테이스팅) — 30분<br>③ 八甲田丸 (연락선 뮤지엄) — 40분<br>④ ASPAM (전망대+물산관) — 30분<br>⑤ 아오모리 베이브리지 — 석양 포인트',
+    tips: '오후 코스 추천: 13:00 와랏세 → 14:00 A-FACTORY → 15:00 八甲田丸 → 16:00 ASPAM → 17:00 베이브리지 석양. 전체 도보 이동 가능. 4월 초 해풍이 차가우니 방풍 재킷 필수.',
+    tags: ['산책 코스', '석양', '야경', '워터프론트'],
+    imageSearch: '青森 ベイエリア ベイブリッジ 夕景',
   },
   shinmachi: {
-    name: '新町 상점가', nameJa: '新町通り 青森', query: '青森市新町通り', icon: '🛍️',
-    desc: '아오모리역 동쪽 상업가. 상점, 카페, 이자카야 혼재.',
+    name: '新町商店街', nameJa: '新町通り 青森',
+    query: '青森市新町通り', address: '아오모리역 동쪽 출구에서 도보 3분', walk: '숙소에서 도보 8분',
+    icon: '🛍️', category: '아케이드 상점가',
+    hours: '10:00~19:00 (가게별 상이)', price: '입장 무료',
+    desc: '아오모리역에서 동쪽으로 약 1km 이어지는 아케이드 상점가. 비·눈 올 때도 쾌적한 지붕 아래 쇼핑·산책.',
+    menu: '<strong>주요 스폿</strong><br>• <strong>AUGA</strong> — B1 신선시장, 기념품<br>• <strong>喫茶 クレオパトラ</strong> — 애플파이 명물 킷사텐<br>• <strong>중앙고전시장</strong> — 청과·선어·건어물<br>• <strong>카페·잡화점</strong> — 지역 셀렉트숍 다수<br>• <strong>善知鳥神社</strong> — 상점가 끝자락 (도보 3분)',
+    tips: '비오는 날 일정으로 최적. 아케이드(지붕)가 있어 날씨 무관하게 산책 가능. 아우가 시장 아침 장보기 → 신마치 산책 → 킷사텐 런치 코스 추천.',
+    tags: ['아케이드', '비오는 날', '산책', '쇼핑'],
+    imageSearch: '青森 新町通り 商店街 アーケード',
   },
   yanagimachi: {
     name: '柳町 (야나기마치)', nameJa: '柳町通り 青森', query: '青森市柳町通り', icon: '🚶',
@@ -1434,11 +1597,13 @@ const SPOTS = {
     icon: '🏮', category: '이자카야 / 요코초',
     hours: '가게마다 다름 (대부분 17:00~23:00)', price: '1인 2,000~4,000엔/가게',
     placeId: 'ChIJ56EJY-Oem18RQbKrrxx23fM',
-    desc: '昭和30년대 분위기의 소규모 이자카야 15곳이 밀집한 屋台村. 8~12석 규모의 아담한 가게에서 주인, 단골과 자연스럽게 대화할 수 있다.',
-    menu: '각 가게마다 특색 — 향토 어패류, 꼬치구이, 오뎅, 地酒 등',
-    tips: '한 곳에서 2~3잔 마시고 옆 가게로 이동하는 "하시고(はしご)" 스타일이 현지 방식. 관광객도 오지만 현지 단골이 많은 곳이라 분위기가 좋다. 일본어를 못해도 주인이 친절하게 대해준다.',
-    tags: ['하시고', '향토요리', '地酒', '현지인 단골'],
+    desc: '昭和30년대(1955~) 분위기를 재현한 屋台村. 8~12석 규모의 아담한 가게 15곳이 좁은 통로 양쪽으로 밀집. 주인·단골과 자연스럽게 대화하며 마시는 공간.',
+    menu: '<strong>주요 가게</strong><br>• <strong>郷土料理 奥津軽</strong> — 향토 어패류, 生姜味噌おでん, 地酒<br>• <strong>虎の穴</strong> — 자가배전 커피 + 위스키 바 (디저트 바로도 인기)<br>• <strong>Bar ラブリーデイ</strong> — 칵테일, 분위기 좋은 소규모 바<br>• <strong>串焼き</strong> — 야키토리(꼬치구이) 전문<br>• <strong>おでん屋</strong> — 오뎅 + 地酒<br><br>각 가게 8~12석 규모. 한 곳에서 2~3잔 → 옆 가게로 이동.',
+    tips: '"하시고(はしご)" = 사다리처럼 가게를 옮겨 다니는 현지 음주 문화. 관광객도 오지만 현지 단골이 주류. 일본어를 못해도 주인이 친절. 입구에서 안을 들여다보고 빈자리가 보이면 "いいですか?"(이이데스카? = 들어가도 될까요?)로 OK.',
+    order: '<div style="text-align:center;margin:8px 0 4px;font-weight:600;">🏮 さんふり横丁 내부 구조</div><svg viewBox="0 0 400 280" style="width:100%;max-width:400px;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="400" height="280" rx="8" fill="#2d1b0e"/><text x="200" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#ffd700">さんふり横丁 (15店)</text><text x="200" y="38" text-anchor="middle" font-size="9" fill="#d4a574">昭和30年代 레트로 포장마차촌</text><rect x="170" y="48" width="60" height="20" rx="4" fill="#c62828"/><text x="200" y="62" text-anchor="middle" font-size="9" font-weight="600" fill="white">입구 ▼</text><rect x="170" y="72" width="60" height="190" rx="0" fill="#4a3728" opacity="0.6"/><text x="200" y="165" text-anchor="middle" font-size="8" fill="#d4a574" transform="rotate(90,200,165)">통 로</text><rect x="20" y="78" width="140" height="35" rx="4" fill="#e65100" opacity="0.9"/><text x="90" y="96" text-anchor="middle" font-size="9" font-weight="600" fill="white">郷土料理 奥津軽</text><text x="90" y="108" text-anchor="middle" font-size="7" fill="#ffe0b2">향토 어패류 · おでん</text><rect x="240" y="78" width="140" height="35" rx="4" fill="#6a1b9a" opacity="0.9"/><text x="310" y="96" text-anchor="middle" font-size="9" font-weight="600" fill="white">Bar ラブリーデイ</text><text x="310" y="108" text-anchor="middle" font-size="7" fill="#e1bee7">칵테일 · 소규모 바</text><rect x="20" y="120" width="140" height="35" rx="4" fill="#1565c0" opacity="0.9"/><text x="90" y="138" text-anchor="middle" font-size="9" font-weight="600" fill="white">串焼き (야키토리)</text><text x="90" y="150" text-anchor="middle" font-size="7" fill="#bbdefb">꼬치구이 전문</text><rect x="240" y="120" width="140" height="35" rx="4" fill="#2e7d32" opacity="0.9"/><text x="310" y="138" text-anchor="middle" font-size="9" font-weight="600" fill="white">おでん屋</text><text x="310" y="150" text-anchor="middle" font-size="7" fill="#c8e6c9">오뎅 · 地酒</text><rect x="20" y="162" width="140" height="35" rx="4" fill="#4e342e" opacity="0.9"/><text x="90" y="180" text-anchor="middle" font-size="9" font-weight="600" fill="white">虎の穴 ☕</text><text x="90" y="192" text-anchor="middle" font-size="7" fill="#d7ccc8">자가배전 커피 · 위스키</text><rect x="240" y="162" width="140" height="35" rx="4" fill="#bf360c" opacity="0.9"/><text x="310" y="180" text-anchor="middle" font-size="9" font-weight="600" fill="white">焼酎バー</text><text x="310" y="192" text-anchor="middle" font-size="7" fill="#ffccbc">소주 · 芋焼酎</text><rect x="20" y="204" width="300" height="28" rx="4" fill="#555" opacity="0.5"/><text x="170" y="222" text-anchor="middle" font-size="8" fill="#ccc">+ 약 9곳 더 (각 8~12석)</text><rect x="60" y="244" width="280" height="25" rx="4" fill="#ffd700" opacity="0.2"/><text x="200" y="260" text-anchor="middle" font-size="9" fill="#ffd700">💡 하시고 추천: 奥津軽 → 串焼き → Bar → 虎の穴 ☕</text></svg>',
+    tags: ['하시고', '향토요리', '地酒', '현지인 단골', '昭和レトロ'],
     photos: ['img/sanfuri_1.jpg'],
+    imageSearch: 'さんふり横丁 青森 屋台村 店内',
   },
   joppari: {
     name: '津軽じょっぱり漁屋酒場', nameJa: '쓰가루 좃파리 이사카야',
@@ -1705,6 +1870,192 @@ const SPOTS = {
     tags: ['니보시 라멘', '1949년 창업', '아침 라멘', '역 직결'],
     photos: ['img/nagao_1.jpg', 'img/nagao_2.jpg'],
     imageSearch: '長尾中華そば 青森駅前店 煮干しラーメン',
+  },
+
+  // --- Enhanced / New izakaya & nightlife spots ---
+  honmachi_area: {
+    name: '本町 이자카야 거리', nameJa: '本町 居酒屋通り',
+    query: '青森市本町 居酒屋', address: '아오모리시 本町 2~5丁目', walk: '숙소에서 도보 10~15분',
+    icon: '🏮', category: '이자카야 거리',
+    hours: '대부분 17:00~24:00 (가게별 상이)', price: '1인 2,500~5,000엔/가게',
+    desc: '아오모리 최대의 밤문화 거리. 旧米町通り(구 코메마치 거리)와 旧寺町通り(구 테라마치 거리)를 중심으로 수백 곳의 이자카야, 스낵, 바가 밀집. さんふり横丁도 이 지역 내에 위치.',
+    menu: '<strong>주요 거리 구성</strong><br>• <strong>旧米町通り</strong> — 이자카야, 오뎅집, 야키토리 밀집<br>• <strong>旧寺町通り</strong> — 스낵, 바, 시메 라멘집<br>• <strong>さんふり横丁</strong> — 昭和풍 포장마차촌 (15곳)<br>• <strong>本町 5丁目</strong> — 지역민 단골 이자카야 골목',
+    tips: '첫째 밤: さんふり横丁 (하시고 입문) → 둘째 밤: 本町 깊숙한 곳 탐험 → 셋째 밤: 추천받은 단골집 재방문. 가게 간 거리가 가까워 하시고(はしご) 문화에 최적화된 동네.',
+    order: '<div style="text-align:center;margin:8px 0 4px;font-weight:600;">🏮 本町 이자카야 거리 구조</div><svg viewBox="0 0 400 340" style="width:100%;max-width:400px;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="400" height="340" rx="8" fill="#1a1a2e"/><text x="200" y="25" text-anchor="middle" font-size="13" font-weight="700" fill="#ffd700">本町 이자카야 거리 MAP</text><rect x="20" y="40" width="360" height="3" rx="1" fill="#555"/><text x="200" y="55" text-anchor="middle" font-size="9" fill="#aaa">← 아오모리역 방면 ····· 国道4号 (큰길) ····· →</text><rect x="60" y="70" width="120" height="45" rx="6" fill="#c62828" opacity="0.9"/><text x="120" y="90" text-anchor="middle" font-size="10" font-weight="600" fill="white">旧米町通り</text><text x="120" y="105" text-anchor="middle" font-size="8" fill="#ffcdd2">이자카야 · 오뎅 · 야키토리</text><rect x="220" y="70" width="120" height="45" rx="6" fill="#1565c0" opacity="0.9"/><text x="280" y="90" text-anchor="middle" font-size="10" font-weight="600" fill="white">旧寺町通り</text><text x="280" y="105" text-anchor="middle" font-size="8" fill="#bbdefb">스낵 · 바 · 시메라멘</text><rect x="100" y="130" width="200" height="55" rx="8" fill="#e65100" opacity="0.9"/><text x="200" y="152" text-anchor="middle" font-size="12" font-weight="700" fill="white">🏮 さんふり横丁</text><text x="200" y="170" text-anchor="middle" font-size="9" fill="#ffe0b2">昭和풍 포장마차촌 15곳</text><text x="200" y="198" text-anchor="middle" font-size="9" fill="#aaa">────── 本町 3~4丁目 ──────</text><rect x="30" y="210" width="160" height="50" rx="6" fill="#2e7d32" opacity="0.9"/><text x="110" y="232" text-anchor="middle" font-size="10" font-weight="600" fill="white">津軽じょっぱり</text><text x="110" y="248" text-anchor="middle" font-size="8" fill="#c8e6c9">三味線 라이브 🎵</text><rect x="210" y="210" width="160" height="50" rx="6" fill="#6a1b9a" opacity="0.9"/><text x="290" y="232" text-anchor="middle" font-size="10" font-weight="600" fill="white">旬肴 ひでか · 銭形</text><text x="290" y="248" text-anchor="middle" font-size="8" fill="#e1bee7">地酒 · 현지인 단골</text><text x="200" y="278" text-anchor="middle" font-size="9" fill="#aaa">────── 本町 5丁目 ──────</text><rect x="80" y="288" width="110" height="40" rx="6" fill="#ff6f00" opacity="0.8"/><text x="135" y="308" text-anchor="middle" font-size="9" font-weight="600" fill="white">시메 라멘</text><text x="135" y="320" text-anchor="middle" font-size="7.5" fill="#ffe0b2">横山 · 空海 (03시까지)</text><rect x="210" y="288" width="110" height="40" rx="6" fill="#00695c" opacity="0.8"/><text x="265" y="308" text-anchor="middle" font-size="9" font-weight="600" fill="white">Be Easy Brewing</text><text x="265" y="320" text-anchor="middle" font-size="7.5" fill="#b2dfdb">크래프트 비어 🍺</text></svg>',
+    tags: ['하시고', '이자카야 밀집', '旧米町通り', '旧寺町通り', '야간'],
+    imageSearch: '青森 本町 居酒屋通り 夜',
+  },
+  tsugaru_sengyo: {
+    name: '津軽海峡鮮魚店', nameJa: '쓰가루 카이쿄 센교텐',
+    query: '津軽海峡鮮魚店 青森', address: '青森市本町 2丁目', walk: '숙소에서 도보 12분',
+    icon: '🐟', category: '이자카야 / 해산물',
+    hours: '17:00~24:00頃', price: '1인 3,000~5,000엔',
+    placeId: 'ChIJoTg07-Kem18Rbb8BDpQKrJw',
+    desc: '津軽海峡에서 직송되는 해산물을 주인이 직접 써는 이자카야. 그날 잡힌 생선이 메뉴판에 적혀 나온다.',
+    menu: '당일 직송 회 모듬, 호타테(가리비) 구이, 이카(오징어) 회, 季節の刺身盛り',
+    tips: '카운터석에서 주인의 칼 솜씨를 감상하며 먹는 것을 추천. "おまかせで"(오마카세데 = 맡길게요)라고 하면 그날 최고 재료로 코스를 만들어줌.',
+    tags: ['해산물 직송', '카운터석', '오마카세'],
+  },
+  motsu_koshiken: {
+    name: 'もつ焼きこしけん', nameJa: '모츠야키 코시켄',
+    query: 'もつ焼きこしけん 青森本町', address: '青森市本町', walk: '숙소에서 도보 12분',
+    icon: '🍖', category: '이자카야 / 모츠야키',
+    hours: '17:30~23:30頃', price: '1인 2,500~4,000엔',
+    desc: '신선한 모츠(내장)를 숯불에 구워주는 본격 모츠야키 전문점. 현지 직장인들의 퇴근 후 단골집.',
+    menu: '모츠 구이 세트, 시로(소장), 레바(간), 하라미(횡격막), 하이볼, 레몬사워',
+    tips: '모츠야키는 가격 부담이 적어 가볍게 하시고 1차로 최적. 하이볼과 함께.',
+    tags: ['모츠야키', '숯불구이', '가성비', '하시고 1차'],
+  },
+  mitsuishi: {
+    name: '酒肴旬 三ッ石', nameJa: '슈코슌 미츠이시',
+    query: '酒肴旬三ッ石 青森', address: '青森市本町', walk: '숙소에서 도보 12분',
+    icon: '🍶', category: '이자카야 / 地酒',
+    hours: '17:30~23:00頃', price: '1인 3,500~5,500엔',
+    desc: '아오모리현 地酒와 계절 요리의 페어링을 추구하는 이자카야. 주인의 사케 선구안이 뛰어남.',
+    menu: '계절 해산물 요리, 地酒 3종 비교 세트, 향토 진미(いぶりがっこ, 筋子)',
+    tips: '地酒 3종 세트를 주문하면 주인이 그날의 요리에 맞는 조합을 골라줌. ひでか와 함께 地酒 탐방 코스 적합.',
+    tags: ['地酒 페어링', '계절 요리', '3종 세트'],
+  },
+
+  // --- シメ (시메 = 마무리) 라멘 ---
+  yokoyama_ramen: {
+    name: '中華そば横山', nameJa: '추카소바 요코야마',
+    query: '中華そば横山 青森', address: '青森市本町', walk: '숙소에서 도보 12분',
+    icon: '🍜', category: '시메 라멘 / 니보시',
+    hours: '20:00~03:00 (심야 영업)', price: '700~900엔',
+    desc: '이자카야 하시고 후 마무리(シメ) 라멘의 성지. 심야 3시까지 영업. 깔끔한 니보시(멸치) 국물.',
+    menu: '中華そば (기본, 맑은 니보시), チャーシューメン (차슈면), 味玉 (반숙 계란)',
+    tips: '본町 이자카야 거리 한복판에 있어 술 마시고 걸어가기 최적. 심야에도 현지인으로 북적. 메뉴는 심플하니 "中華そばください" 한 마디면 OK.',
+    tags: ['심야 영업', '시메 라멘', '니보시', '03:00까지'],
+  },
+  kukai_ramen: {
+    name: 'ラーメン空海', nameJa: '라멘 쿠카이',
+    query: 'ラーメン空海 青森本町', address: '青森市本町', walk: '숙소에서 도보 12분',
+    icon: '🍜', category: '시메 라멘 / 진한 니보시',
+    hours: '21:00~03:30 (심야 영업)', price: '750~950엔',
+    desc: '진한 니보시 라멘(にぼし濃厚)의 심야 전문점. 横山보다 더 늦게까지 영업.',
+    menu: '濃厚煮干しラーメン (진한 니보시), あっさり中華そば (맑은 버전), チャーシュー増し',
+    tips: '진하고 걸쭉한 니보시를 원하면 空海, 깔끔한 니보시는 横山. 둘 다 도보 2분 거리라 취향에 따라 선택.',
+    tags: ['심야 영업', '진한 니보시', '03:30까지', '시메 라멘'],
+  },
+
+  // --- Daytime spots ---
+  aspam: {
+    name: 'ASPAM (アスパム)', nameJa: '아오모리현 관광물산관 아스파무',
+    query: 'アスパム 青森', address: '青森市安方 1-1-40', walk: '숙소에서 도보 12분',
+    icon: '🔺', category: '전망대 / 물산관',
+    hours: '09:00~18:00 (12~3월 ~17:00)', price: '13F 전망대 400엔 / 파노라마관 600엔',
+    placeId: 'ChIJRe6iuB-fm18R05jLhIjIVa0',
+    desc: '아오모리현의 "A"자를 본떠 만든 삼각형 빌딩. 13층 전망대에서 아오모리만·八甲田山·하코다테 방면까지 360° 파노라마. 1층은 현 최대 물산점.',
+    menu: '<strong>13F 展望台</strong> — 아오모리만, 하코다테 방면 조망 (맑은 날 限定)<br><strong>2F パノラマ館</strong> — 360° 영상 시어터 (네부타, 시라카미 등)<br><strong>1F 物産館</strong> — 사과 과자, 津軽びいどろ(유리공예), BUNACO(너도밤나무 공예), こぎん刺し(자수) 등',
+    tips: '물산관은 기념품 쇼핑 최적. 津軽びいどろ(색유리 잔), BUNACO(조명/그릇), こぎん刺し(수공예 소품) 등 아오모리 전통 공예품을 한곳에서. 전망대는 맑은 날만 가치 있음.',
+    tags: ['전망대', '물산관', '津軽びいどろ', 'BUNACO', '기념품'],
+    imageSearch: '青森 アスパム 三角形 建物',
+  },
+  utou_shrine: {
+    name: '善知鳥神社', nameJa: '우토우 진자',
+    query: '善知鳥神社 青森市', address: '青森市安方 2-7-18', walk: '숙소에서 도보 8분',
+    icon: '⛩️', category: '신사',
+    hours: '경내 자유 / 사무소 09:00~17:00', price: '무료',
+    placeId: 'ChIJC6DOjR6fm18RfipYmI1wXr8',
+    desc: '아오모리 시의 발상지(起源). 807년 坂上田村麻呂가 재건한 역사. 경내의 龍神水(류진수)는 파워스폿으로 유명.',
+    menu: '<strong>龍神水</strong> — 경내 용신의 샘. 나무 사이로 물이 흐르는 신비로운 분위기<br><strong>御朱印</strong> — 아오모리 네부타 디자인 어인장 (한정판도 있음)',
+    tips: '아침 산책 코스로 최적. 경내가 조용하고 수목이 울창. 御朱印(고슈인) 수집가라면 네부타 한정 디자인 꼭 챙기기. 아우가 시장 가는 길에 들르기 좋다.',
+    tags: ['아오모리 발상지', '龍神水', '御朱印', '아침 산책'],
+    imageSearch: '善知鳥神社 青森 拝殿',
+  },
+  hakkodamaru: {
+    name: '八甲田丸 (메모리얼 쉽)', nameJa: '핫코다마루',
+    query: '八甲田丸 青森', address: '青森市柳川 1-112-15', walk: '숙소에서 도보 12분',
+    icon: '🚢', category: '뮤지엄 / 역사',
+    hours: '09:00~17:00 (11~3월 ~15:30)', price: '어른 510엔',
+    placeId: 'ChIJQ7TqJx-fm18R6Pr5X2CLCUI',
+    desc: '1908~1988년 아오모리-하코다테 간 운항한 세이칸(青函) 연락선의 실물 보존. 갑판, 조타실, 기관실, 차량 갑판까지 내부 관람 가능.',
+    menu: '<strong>조타실</strong> — 해협 조망 + 실제 조타 장치<br><strong>기관실</strong> — 8기통 디젤 엔진 실물<br><strong>차량 갑판</strong> — 열차를 배에 실었던 레일 구조',
+    tips: '기관실의 거대한 디젤 엔진은 압도적. 기계/역사 좋아하면 필수. 와랏세 → A-FACTORY → 八甲田丸 순서로 베이에리어 산책 코스.',
+    tags: ['세이칸 연락선', '기관실', '역사', '베이에리어'],
+    imageSearch: '八甲田丸 青森 メモリアルシップ',
+  },
+
+  // --- 현지인 일상 체험 스폿 ---
+  okidate_onsen: {
+    name: '沖館温泉', nameJa: '오키다테 온센',
+    query: '沖館温泉 青森市', address: '青森市富田 1-16-1', walk: '역에서 버스 10분 또는 택시 5분',
+    icon: '♨️', category: '동네 銭湯 (천연 온천)',
+    hours: '05:45~22:00', price: '어른 480엔',
+    desc: '새벽 5:45부터 여는 동네 천연 온천 銭湯. 관광객은 거의 없고 근처 어르신들이 아침마다 오는 진짜 로컬 목욕탕. 번대(번대おかみ)식 옛날 구조.',
+    menu: '<strong>탕 구성</strong><br>• 메인 욕조 (천연 온천, 43°C)<br>• 누루유(ぬる湯, 미지근한 탕)<br>• 우타세유(うたせ湯, 폭포 샤워)<br>• 수풍(水風呂)<br>• TV 사우나',
+    tips: '朝風呂(아침목욕)는 아오모리 현지인의 일상. 05:45에 열리면 동네 어르신들이 삼삼오오 모여 탕에서 수다를 떤다. 관광객 0%. 보디워시·샴푸 비치. 수건은 가져갈 것.',
+    tags: ['朝風呂', '동네 銭湯', '현지인 100%', '새벽 영업'],
+    imageSearch: '沖館温泉 青森 銭湯',
+  },
+  gokurakuyu: {
+    name: '極楽湯 青森店', nameJa: '고쿠라쿠유 아오모리점',
+    query: '極楽湯 青森店', address: '青森市東大野 2-4-21', walk: '역에서 버스 15분 또는 택시 10분',
+    icon: '🧖', category: '스파 / 수퍼 銭湯',
+    hours: '06:00~25:00 (연중무휴)', price: '어른 480엔',
+    placeId: 'ChIJ16Gzf-2em18RHfCHaFTccms',
+    desc: '전국 체인 스파. 고농도 탄산천, 노천탕, TV 사우나, 식당, 만화 코너까지 있어 반나절 보내기 최적. 아오모리 현지인의 "오프날 루틴".',
+    menu: '<strong>시설</strong><br>• 고농도 인공 탄산천 (혈행 촉진)<br>• 노천탕 + 내탕 4종<br>• TV 사우나 + 수풍<br>• 식당 (라멘, 정식, 맥주)<br>• 만화 코너 (수천 권)<br>• 마사지·이발',
+    tips: '비오는 날 일정으로 최강. 오전에 와서 탕 → 사우나 → 식당에서 생맥주+라멘 → 만화 코너에서 느긋하게. 이게 아오모리 현지인의 쉬는 날 루틴. 주말 오전이 가장 여유.',
+    tags: ['스파', '탄산천', '반나절 코스', '비오는 날', '만화'],
+    imageSearch: '極楽湯 青森店 露天風呂',
+  },
+  kakigen: {
+    name: '柿源', nameJa: '카키겐',
+    query: '柿源 青森市新町', address: '青森市新町 1-8-9', walk: '숙소에서 도보 8분',
+    icon: '🍶', category: '향토 식당 / 昼飲み',
+    hours: '11:00~21:00', price: '런치 800~1,200엔 / ちょい一セット 1,500엔대',
+    desc: '아오모리역 도보 3분의 향토 요리 식당. 점심부터 地酒를 마실 수 있는 "昼飲み(히루노미)" 문화의 거점. ちょい一セット가 명물.',
+    menu: '<strong>ちょい一セット</strong> (가볍게 한잔 세트)<br>• 田酒 1合 (아오모리 프리미엄 지주)<br>• 突き出し (오늘의 안주)<br>• 刺身三種盛り (회 3종)<br>• 青森おでん (生姜味噌つき)<br><br><strong>런치</strong>: 호타테 프라이 정식, 향토 정식',
+    tips: '낮부터 田酒를 마실 수 있는 귀한 곳. "ちょい一セット(초이이치 셋토)"를 주문하면 田酒 한 잔에 회와 오뎅이 나온다. 직장인 아저씨들이 점심에 조용히 한잔하는 분위기. 이게 진짜 아오모리.',
+    tags: ['昼飲み', '田酒', 'ちょい一セット', '향토 요리'],
+    imageSearch: '柿源 青森 昼飲み 田酒',
+  },
+  daikoku_sushi: {
+    name: '大黒寿司', nameJa: '다이코쿠 스시',
+    query: '大黒寿司 青森駅前', address: '青森市新町 1-2-6', walk: '숙소에서 도보 8분',
+    icon: '🍣', category: '동네 스시집 / 昼飲み',
+    hours: '11:00~22:00 (화요일 휴무)', price: '런치 1,000~2,000엔',
+    desc: '관광객 맛집이 아닌 동네 스시집. 지역 어부가 가져오는 제철 네타를 카운터에서. 점심부터 地酒와 함께.',
+    menu: '당일 입하 제철 스시, 地酒 각종, おまかせ(오마카세) 가능',
+    tips: '"통に人気"(통에 인기) — 단골들이 카운터에 앉아 주인과 대화하며 먹는 분위기. 관광객용 화려한 회전스시가 아닌, 조용한 마을 스시집. 점심에 地酒 한잔과 함께.',
+    tags: ['동네 스시집', '昼飲み', '카운터', '제철 네타'],
+    imageSearch: '大黒寿司 青森 カウンター',
+  },
+  jukei: {
+    name: '重慶', nameJa: '쥬케이',
+    query: '重慶 青森本町', address: '青森市本町 3-7-9', walk: '숙소에서 도보 3분 (바로 옆!)',
+    icon: '🥟', category: '동네 중화식당',
+    hours: '월 11:00~15:00 / 화~일 11:00~20:30', price: '600~900엔',
+    desc: '숙소 바로 옆 본정 3丁目의 동네 중화식당. 관광 가이드에 안 나오는, 동네 주민들의 런치 식당. 가벼운 낮술 가능.',
+    menu: '탄탄멘, 교자, 마파두부, 볶음밥 + 생맥주, 하이볼',
+    tips: '숙소에서 1분 거리! 비 오는 날이나 체크인 전후 간단하게 배 채우기 최적. 현지 할머니, 직장인들이 오는 소박한 식당.',
+    tags: ['숙소 바로 옆', '동네 식당', '런치', '가성비'],
+    imageSearch: '重慶 青森本町 中華',
+  },
+  soba_shoseiran: {
+    name: 'そば処 正嵐', nameJa: '소바도코로 쇼세이란',
+    query: 'そば処正嵐 青森', address: '青森市古川 1-2-1', walk: '숙소에서 도보 8분',
+    icon: '🥢', category: '동네 소바집',
+    hours: '수~일 11:00~14:30', price: '소바 700~1,000엔',
+    desc: '역에서 2분, 소바 한 그릇에 地酒 한잔. 관광객 없는 조용한 소바집에서 현지인처럼 점심.',
+    menu: '수타 소바 (자루소바, 카케소바), 텐뿌라 소바, 地酒',
+    tips: '소바+地酒 조합은 일본 직장인의 클래식 런치. 점심에 조용히 한잔하고 싶을 때.',
+    tags: ['수타 소바', '昼飲み', '역 2분'],
+    imageSearch: 'そば処正嵐 青森 手打ちそば',
+  },
+  nishimura: {
+    name: 'みちのく料理 西むら', nameJa: '미치노쿠 요리 니시무라',
+    query: 'みちのく料理西むら 青森 アスパム', address: '青森市安方 1-1-40 (ASPAM 10F)', walk: '숙소에서 도보 12분',
+    icon: '🍱', category: '향토 요리 / 전망 레스토랑',
+    hours: '11:00~15:00, 16:30~19:00', price: '런치 1,200~2,000엔',
+    placeId: 'ChIJK6EsDB-fm18RNiPpCKlPE3c',
+    desc: 'ASPAM 10층에서 아오모리만 파노라마를 보면서 향토 요리 런치. 관광+식사를 겸하면서도 지역 음식을 제대로 맛보는 곳.',
+    menu: '호타테 요리, 향토 정식, 계절 해산물, 地酒 (낮부터 가능)',
+    tips: '전망대(13F)를 보고 내려와서 10F에서 런치. 창가석에서 바다를 보며 地酒 한잔. 평일 낮은 한산해서 여유.',
+    tags: ['전망 런치', 'ASPAM 10F', '향토 요리', '昼飲み'],
+    imageSearch: 'みちのく料理西むら アスパム 青森 ランチ',
   },
 
   // --- Food items ---
