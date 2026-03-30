@@ -1170,10 +1170,250 @@
       <div class="spot-tap-hint">탭하여 상세 보기</div>
     </div>
   </div>
+
+  <!-- 카페 & 커피 씬 -->
+  <div class="card">
+    <h2>☕ 카페 & 커피 씬</h2>
+    <p style="font-size:0.9em;color:var(--text-light);margin-bottom:12px;">아오모리역 주변, 걸어서 닿는 거리에 자가배전 스페셜티부터 와모던 카페까지. 아침 일찍 여는 곳도 있어 朝ラー 전 커피 타임에.</p>
+    <div class="spot" onclick="showDetail('coffeeman_good')">
+      <div class="spot-name">COFFEEMAN good <span class="spot-name-ja">스페셜티 커피</span></div>
+      <div class="spot-meta">古川 | 도보 7분 | 400~600엔</div>
+      <div class="spot-desc">7석 자가배전 스탠드. 시그니처 "사과 카페오레"는 여기서만.</div>
+      <div><span class="tag">자가배전</span><span class="tag">사과 카페오레</span><span class="tag">7석</span></div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('uguisu_cafe')">
+      <div class="spot-name">UGUISU <span class="spot-name-ja">와모던 카페</span></div>
+      <div class="spot-meta">新町 | 도보 5분 | 500~1,200엔</div>
+      <div class="spot-desc">升에 담긴 말차 티라미스. 아침 6:30부터. 코워킹도 가능.</div>
+      <div><span class="tag">말차 티라미스</span><span class="tag">아침 6:30~</span><span class="tag">코워킹</span></div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('quatre_cafe')">
+      <div class="spot-name">quatre cafe <span class="spot-name-ja">카페 → 바 변신</span></div>
+      <div class="spot-meta">古川 | 도보 7분 | 카페 500엔~ / 바 800엔~</div>
+      <div class="spot-desc">낮에는 케이크+커피, 밤에는 카크테일. 1일 2회 활용법.</div>
+      <div><span class="tag">카페 & 바</span><span class="tag">앤티크</span><span class="tag">Wi-Fi</span></div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+  </div>
+
+  <!-- 크래프트 비어 -->
+  <div class="card">
+    <h2>🍺 크래프트 비어 씬</h2>
+    <p style="font-size:0.9em;color:var(--text-light);margin-bottom:12px;">아오모리 사과와 카시스로 빚은 로컬 크래프트 비어. 셀프탭으로 소량씩 전종 시음하는 재미.</p>
+    <div class="spot" onclick="showDetail('aomori_brew_pub')">
+      <div class="spot-name">Aomori Brew Pub <span class="spot-name-ja">셀프탭 8종</span></div>
+      <div class="spot-meta">安方 | 도보 4분 | 500~900엔/잔</div>
+      <div class="spot-desc">도호쿠 최초 셀프탭. 카드로 원하는 양만큼 직접 따르기.</div>
+      <div><span class="tag">셀프탭</span><span class="tag">Be Easy</span><span class="tag">사과 비어</span></div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('demo_beer')">
+      <div class="spot-name">Demo Beer <span class="spot-name-ja">10탭 비어 바</span></div>
+      <div class="spot-meta">新町 | 도보 6분 | 600~1,000엔/잔</div>
+      <div class="spot-desc">10탭 로테이션 + 로스트비프. 음방 플랜도 있다.</div>
+      <div><span class="tag">10탭</span><span class="tag">로스트비프</span><span class="tag">음방 가능</span></div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('be_easy')">
+      <div class="spot-name">Be Easy Brewing <span class="spot-name-ja">히로사키 양조장</span></div>
+      <div class="spot-meta">Brew Pub에서 시음 가능</div>
+      <div class="spot-desc">미국 출신 양조가가 쓰가루벤으로 운영. 아오모리 사과 한정 비어.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+  </div>
+
+  <!-- 바 & 나이트라이프 -->
+  <div class="card">
+    <h2>🌙 바 & 나이트라이프</h2>
+    <p style="font-size:0.9em;color:var(--text-light);margin-bottom:12px;">이자카야 3~4차 후, 또는 특별한 밤을 위해. 프루츠 카크테일부터 오센틱 바, 나이트클럽까지.</p>
+
+    <!-- 駅周辺〜本町 바 에리어 SVG 맵 -->
+    <div style="margin:12px 0 16px;background:#1a1a2e;border-radius:12px;padding:16px 8px 8px;overflow-x:auto;">
+      <div style="text-align:center;color:#e0e0e0;font-size:0.85em;margin-bottom:8px;font-weight:500;">🌙 아오모리 나이트 MAP</div>
+      <svg viewBox="0 0 400 280" style="width:100%;max-width:400px;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg">
+        <!-- 배경 -->
+        <rect width="400" height="280" fill="#1a1a2e" rx="8"/>
+        <!-- 바다 -->
+        <rect x="0" y="0" width="400" height="45" fill="#0a1628" rx="8"/>
+        <text x="200" y="28" fill="#3a5a8a" font-size="11" text-anchor="middle" font-family="sans-serif">陸奥湾 (무츠만)</text>
+        <!-- 역 -->
+        <rect x="160" y="55" width="80" height="24" fill="#4a6741" rx="4" stroke="#6a9a5a" stroke-width="1"/>
+        <text x="200" y="71" fill="white" font-size="10" text-anchor="middle" font-weight="bold" font-family="sans-serif">青森駅</text>
+        <!-- 에리어 구분: 駅前 (안방·신마치) -->
+        <rect x="30" y="90" width="155" height="80" fill="#1e2a4a" rx="6" stroke="#3a5a8a" stroke-width="0.5" stroke-dasharray="3,3"/>
+        <text x="107" y="105" fill="#6a9adf" font-size="9" text-anchor="middle" font-family="sans-serif">駅前 에리어 (도보 4~7분)</text>
+        <!-- Brew Pub -->
+        <circle cx="55" cy="125" r="10" fill="#d4a017"/>
+        <text x="55" y="128" fill="#1a1a2e" font-size="7" text-anchor="middle" font-weight="bold" font-family="sans-serif">🍺</text>
+        <text x="55" y="145" fill="#e8d088" font-size="7" text-anchor="middle" font-family="sans-serif">Brew Pub</text>
+        <!-- Demo Beer -->
+        <circle cx="110" cy="125" r="10" fill="#d4a017"/>
+        <text x="110" y="128" fill="#1a1a2e" font-size="7" text-anchor="middle" font-weight="bold" font-family="sans-serif">🍺</text>
+        <text x="110" y="145" fill="#e8d088" font-size="7" text-anchor="middle" font-family="sans-serif">Demo Beer</text>
+        <!-- COFFEEMAN -->
+        <circle cx="160" cy="130" r="10" fill="#8B4513"/>
+        <text x="160" y="133" fill="white" font-size="7" text-anchor="middle" font-weight="bold" font-family="sans-serif">☕</text>
+        <text x="160" y="150" fill="#c8a882" font-size="7" text-anchor="middle" font-family="sans-serif">COFFEEMAN</text>
+        <!-- quatre cafe -->
+        <circle cx="160" cy="155" r="8" fill="#6a4a8a"/>
+        <text x="160" y="158" fill="white" font-size="6" text-anchor="middle" font-family="sans-serif">🍸</text>
+        <text x="148" y="168" fill="#b89adf" font-size="6" text-anchor="middle" font-family="sans-serif">quatre</text>
+        <!-- UGUISU -->
+        <rect x="210" y="90" width="80" height="30" fill="#2a3a2a" rx="4" stroke="#4a6a4a" stroke-width="0.5"/>
+        <text x="250" y="103" fill="#88bb88" font-size="7" text-anchor="middle" font-family="sans-serif">🍵 UGUISU</text>
+        <text x="250" y="114" fill="#6a8a6a" font-size="6" text-anchor="middle" font-family="sans-serif">新町通り</text>
+        <!-- 에리어 구분: 安方 (Quarter, MILK ROOM) -->
+        <rect x="220" y="130" width="165" height="60" fill="#2a1a2a" rx="6" stroke="#5a3a5a" stroke-width="0.5" stroke-dasharray="3,3"/>
+        <text x="302" y="145" fill="#bb6aaa" font-size="9" text-anchor="middle" font-family="sans-serif">安方 에리어 (도보 12~15분)</text>
+        <!-- Quarter -->
+        <circle cx="260" cy="168" r="10" fill="#cc4444"/>
+        <text x="260" y="171" fill="white" font-size="7" text-anchor="middle" font-weight="bold" font-family="sans-serif">🎸</text>
+        <text x="260" y="183" fill="#ee8888" font-size="7" text-anchor="middle" font-family="sans-serif">Quarter</text>
+        <!-- MILK ROOM -->
+        <circle cx="340" cy="168" r="10" fill="#cc44cc"/>
+        <text x="340" y="171" fill="white" font-size="7" text-anchor="middle" font-weight="bold" font-family="sans-serif">🎧</text>
+        <text x="340" y="183" fill="#ee88ee" font-size="7" text-anchor="middle" font-family="sans-serif">MILK ROOM</text>
+        <!-- 에리어 구분: 本町 -->
+        <rect x="30" y="200" width="350" height="65" fill="#2a1a1a" rx="6" stroke="#5a3a3a" stroke-width="0.5" stroke-dasharray="3,3"/>
+        <text x="205" y="215" fill="#df6a6a" font-size="9" text-anchor="middle" font-family="sans-serif">本町 에리어 (도보 15~18분) — 아오모리 최대 유흥가</text>
+        <!-- KAJITSU -->
+        <circle cx="100" cy="240" r="10" fill="#ff6b9d"/>
+        <text x="100" y="243" fill="white" font-size="7" text-anchor="middle" font-weight="bold" font-family="sans-serif">🍹</text>
+        <text x="100" y="256" fill="#ff9dbd" font-size="7" text-anchor="middle" font-family="sans-serif">KAJITSU</text>
+        <!-- 이자카야 거리 (기존) -->
+        <rect x="150" y="228" width="80" height="24" fill="#3a2a1a" rx="4"/>
+        <text x="190" y="244" fill="#e8b888" font-size="7" text-anchor="middle" font-family="sans-serif">🏮 이자카야 거리</text>
+        <!-- Bar Ludens -->
+        <circle cx="300" cy="240" r="10" fill="#4a3a2a"/>
+        <text x="300" y="243" fill="#e8d088" font-size="7" text-anchor="middle" font-weight="bold" font-family="sans-serif">🥃</text>
+        <text x="300" y="256" fill="#c8b088" font-size="7" text-anchor="middle" font-family="sans-serif">Bar Ludens</text>
+        <!-- 범례 -->
+        <rect x="8" y="268" width="6" height="6" fill="#d4a017" rx="1"/><text x="18" y="274" fill="#888" font-size="6" font-family="sans-serif">비어</text>
+        <rect x="48" y="268" width="6" height="6" fill="#8B4513" rx="1"/><text x="58" y="274" fill="#888" font-size="6" font-family="sans-serif">커피</text>
+        <rect x="88" y="268" width="6" height="6" fill="#cc4444" rx="1"/><text x="98" y="274" fill="#888" font-size="6" font-family="sans-serif">라이브</text>
+        <rect x="128" y="268" width="6" height="6" fill="#cc44cc" rx="1"/><text x="138" y="274" fill="#888" font-size="6" font-family="sans-serif">클럽</text>
+        <rect x="168" y="268" width="6" height="6" fill="#ff6b9d" rx="1"/><text x="178" y="274" fill="#888" font-size="6" font-family="sans-serif">카크테일</text>
+        <rect x="218" y="268" width="6" height="6" fill="#4a3a2a" rx="1"/><text x="228" y="274" fill="#888" font-size="6" font-family="sans-serif">오센틱</text>
+      </svg>
+    </div>
+
+    <div class="spot" onclick="showDetail('kajitsu_bar')">
+      <div class="spot-name">KAJITSU <span class="spot-name-ja">프루츠 카크테일 바</span></div>
+      <div class="spot-meta">本町 | 도보 15분 | 700~1,200엔</div>
+      <div class="spot-desc">제철 생과일 카크테일. 50석 모던 공간. 이자카야 2차로.</div>
+      <div><span class="tag">프루츠 카크테일</span><span class="tag">본町</span><span class="tag">50석</span></div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('bar_ludens')">
+      <div class="spot-name">Bar Ludens <span class="spot-name-ja">히든 오센틱 바</span></div>
+      <div class="spot-meta">堤町 | 도보 18분 | 카크테일 800~1,500엔</div>
+      <div class="spot-desc">골목길 히든 바. 위스키 & 클래식 카크테일. 새벽 2시까지.</div>
+      <div><span class="tag">오센틱</span><span class="tag">위스키</span><span class="tag">~새벽 2시</span></div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('aomori_quarter')">
+      <div class="spot-name">青森Quarter <span class="spot-name-ja">라이브 하우스</span></div>
+      <div class="spot-meta">安方 | 도보 15분 | 2,000~5,000엔</div>
+      <div class="spot-desc">아오모리 메인 라이브 하우스. 인디~전국 투어까지. 캐파 350.</div>
+      <div><span class="tag">라이브</span><span class="tag">인디</span><span class="tag">350석</span></div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('milk_room')">
+      <div class="spot-name">MILK ROOM <span class="spot-name-ja">나이트클럽</span></div>
+      <div class="spot-meta">安方 | 도보 12분 | 1,500~3,000엔</div>
+      <div class="spot-desc">아오모리 유일 클럽. DJ 2플로어. 테크노·하우스·힙합.</div>
+      <div><span class="tag">DJ</span><span class="tag">클럽</span><span class="tag">유일</span></div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+  </div>
+
+  <!-- 나이트 하시고 코스 -->
+  <div class="card" style="background:linear-gradient(135deg,#1a1a2e,#2a1a3e);color:#e0e0e0;border:1px solid #3a2a4a;">
+    <h2 style="color:#e8d088;">🍻 나이트 하시고 코스</h2>
+    <div style="margin-bottom:16px;">
+      <div style="font-weight:500;color:#d4a017;margin-bottom:4px;">코스 A — 크래프트 비어 삼매</div>
+      <div style="font-size:0.88em;line-height:1.9;">
+        <span style="color:#6a9adf;">17:00</span> A-FACTORY 시드르 테이스팅 →
+        <span style="color:#6a9adf;">18:00</span> <span style="cursor:pointer;text-decoration:underline;" onclick="showDetail('aomori_brew_pub')">Brew Pub</span> 셀프탭 8종 →
+        <span style="color:#6a9adf;">19:30</span> <span style="cursor:pointer;text-decoration:underline;" onclick="showDetail('demo_beer')">Demo Beer</span> + 로스트비프 →
+        <span style="color:#6a9adf;">21:00</span> 이자카야 마무리
+      </div>
+    </div>
+    <div style="margin-bottom:16px;">
+      <div style="font-weight:500;color:#8B6914;margin-bottom:4px;">코스 B — 카페 → 바 트랜지션</div>
+      <div style="font-size:0.88em;line-height:1.9;">
+        <span style="color:#6a9adf;">15:00</span> <span style="cursor:pointer;text-decoration:underline;" onclick="showDetail('coffeeman_good')">COFFEEMAN good</span> 사과 카페오레 →
+        <span style="color:#6a9adf;">16:30</span> <span style="cursor:pointer;text-decoration:underline;" onclick="showDetail('quatre_cafe')">quatre cafe</span> 케이크 →
+        <span style="color:#6a9adf;">20:00</span> quatre 바 타임 카크테일 →
+        <span style="color:#6a9adf;">22:00</span> <span style="cursor:pointer;text-decoration:underline;" onclick="showDetail('bar_ludens')">Bar Ludens</span> 위스키
+      </div>
+    </div>
+    <div>
+      <div style="font-weight:500;color:#cc4444;margin-bottom:4px;">코스 C — 본町 풀 나이트</div>
+      <div style="font-size:0.88em;line-height:1.9;">
+        <span style="color:#6a9adf;">19:00</span> 이자카야 하시고 (ひでか→銭形) →
+        <span style="color:#6a9adf;">21:30</span> <span style="cursor:pointer;text-decoration:underline;" onclick="showDetail('kajitsu_bar')">KAJITSU</span> 프루츠 카크테일 →
+        <span style="color:#6a9adf;">23:30</span> <span style="cursor:pointer;text-decoration:underline;" onclick="showDetail('bar_ludens')">Bar Ludens</span> 마무리 →
+        <span style="color:#6a9adf;">01:00?</span> <span style="cursor:pointer;text-decoration:underline;" onclick="showDetail('milk_room')">MILK ROOM</span> (이벤트 있으면)
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- ===== 음식 ===== -->
 <div id="food" class="tab-content">
+  <!-- 음식 가이드 SVG -->
+  <div class="card" style="background:linear-gradient(135deg,#f8f4ef,#ede6db);border:1px solid #d4c9b8;">
+    <h2>🍽️ 아오모리 음식 지도</h2>
+    <p style="font-size:0.9em;color:var(--text-light);margin-bottom:12px;">라멘과 놋케동만이 아오모리가 아니다. 가리비 껍데기 냄비, 대구 국물, 150엔 소울 간식, 사과 왕국의 디저트까지 — 현지의 맛을 전부.</p>
+    <div style="margin:8px 0;overflow-x:auto;">
+      <svg viewBox="0 0 380 320" style="width:100%;max-width:400px;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg">
+        <rect width="380" height="320" fill="#faf6f0" rx="10"/>
+        <!-- 타이틀 -->
+        <text x="190" y="22" fill="#2d5a27" font-size="12" text-anchor="middle" font-weight="bold" font-family="sans-serif">아오모리 먹거리 완전 가이드</text>
+        <!-- 향토 요리 영역 -->
+        <rect x="10" y="35" width="175" height="120" fill="#fff5ee" rx="8" stroke="#e8c8a8" stroke-width="1"/>
+        <text x="97" y="52" fill="#8b4513" font-size="10" text-anchor="middle" font-weight="bold" font-family="sans-serif">🐚 향토 요리</text>
+        <text x="97" y="72" fill="#6a4a2a" font-size="8" text-anchor="middle" font-family="sans-serif">貝焼き味噌 (No.1 필수)</text>
+        <text x="97" y="87" fill="#6a4a2a" font-size="8" text-anchor="middle" font-family="sans-serif">ホタテ 회·구이·프라이</text>
+        <text x="97" y="102" fill="#6a4a2a" font-size="8" text-anchor="middle" font-family="sans-serif">じゃっぱ汁 (대구 국물)</text>
+        <text x="97" y="117" fill="#6a4a2a" font-size="8" text-anchor="middle" font-family="sans-serif">生姜味噌おでん</text>
+        <text x="97" y="132" fill="#6a4a2a" font-size="8" text-anchor="middle" font-family="sans-serif">のっけ丼 (시장 체험)</text>
+        <rect x="30" y="140" width="134" height="10" rx="2" fill="#e8c8a8"/>
+        <text x="97" y="148" fill="white" font-size="6" text-anchor="middle" font-weight="bold" font-family="sans-serif">おさない食堂 · 古川市場 · 이자카야</text>
+        <!-- 라멘 영역 -->
+        <rect x="195" y="35" width="175" height="120" fill="#fff0f0" rx="8" stroke="#e8a8a8" stroke-width="1"/>
+        <text x="282" y="52" fill="#cc3333" font-size="10" text-anchor="middle" font-weight="bold" font-family="sans-serif">🍜 라멘 왕국</text>
+        <text x="282" y="72" fill="#8a3a3a" font-size="8" text-anchor="middle" font-family="sans-serif">煮干しラーメン (소울푸드)</text>
+        <text x="282" y="87" fill="#8a3a3a" font-size="8" text-anchor="middle" font-family="sans-serif">味噌カレー牛乳ラーメン</text>
+        <text x="282" y="102" fill="#8a3a3a" font-size="8" text-anchor="middle" font-family="sans-serif">朝ラー くどう (아침 라멘)</text>
+        <text x="282" y="117" fill="#8a3a3a" font-size="8" text-anchor="middle" font-family="sans-serif">시메 라멘 (심야 마무리)</text>
+        <text x="282" y="132" fill="#8a3a3a" font-size="8" text-anchor="middle" font-family="sans-serif">丸海ラーメン · 味工房</text>
+        <rect x="215" y="140" width="134" height="10" rx="2" fill="#e8a8a8"/>
+        <text x="282" y="148" fill="white" font-size="6" text-anchor="middle" font-weight="bold" font-family="sans-serif">まるかいラーメン · 横山ラーメン</text>
+        <!-- 간식 & 디저트 -->
+        <rect x="10" y="165" width="175" height="80" fill="#f0fff0" rx="8" stroke="#a8d8a8" stroke-width="1"/>
+        <text x="97" y="182" fill="#2d5a27" font-size="10" text-anchor="middle" font-weight="bold" font-family="sans-serif">🍎 간식 & 디저트</text>
+        <text x="97" y="200" fill="#3a6a3a" font-size="8" text-anchor="middle" font-family="sans-serif">イギリストースト (150엔)</text>
+        <text x="97" y="215" fill="#3a6a3a" font-size="8" text-anchor="middle" font-family="sans-serif">りんごスイーツ (파이·젤라또)</text>
+        <text x="97" y="230" fill="#3a6a3a" font-size="8" text-anchor="middle" font-family="sans-serif">킷사텐 넬 드립 + 디저트</text>
+        <!-- 술 & 음료 -->
+        <rect x="195" y="165" width="175" height="80" fill="#f5f0ff" rx="8" stroke="#c8b8e8" stroke-width="1"/>
+        <text x="282" y="182" fill="#4a2a6a" font-size="10" text-anchor="middle" font-weight="bold" font-family="sans-serif">🍶 술 & 음료</text>
+        <text x="282" y="200" fill="#5a3a7a" font-size="8" text-anchor="middle" font-family="sans-serif">地酒: 田酒·豊盃·陸奥八仙</text>
+        <text x="282" y="215" fill="#5a3a7a" font-size="8" text-anchor="middle" font-family="sans-serif">크래프트 비어 (셀프탭)</text>
+        <text x="282" y="230" fill="#5a3a7a" font-size="8" text-anchor="middle" font-family="sans-serif">사과 시드르 (A-FACTORY)</text>
+        <!-- 추천 동선 -->
+        <rect x="10" y="255" width="360" height="55" fill="#2d5a27" rx="8"/>
+        <text x="190" y="272" fill="#e8f0e6" font-size="9" text-anchor="middle" font-weight="bold" font-family="sans-serif">📋 하루 추천 동선</text>
+        <text x="190" y="288" fill="#c8e0c6" font-size="7.5" text-anchor="middle" font-family="sans-serif">아침: 朝ラー or 古川시장 놋케동 → 낮: おさない 카이야키미소 → 오후: 킷사텐 + 이기리스토스트</text>
+        <text x="190" y="302" fill="#c8e0c6" font-size="7.5" text-anchor="middle" font-family="sans-serif">저녁: 이자카야 하시고 (호타테+잣파지루+地酒) → 심야: 시메 라멘 → Bar Ludens</text>
+      </svg>
+    </div>
+  </div>
+
   <div class="card">
     <h2>아오모리 소울푸드</h2>
     <div class="spot" onclick="showDetail('niboshi_ramen')">
@@ -1194,6 +1434,46 @@
     <div class="spot" onclick="showDetail('nokkedon')">
       <div class="spot-name">のっけ丼 <span class="spot-name-ja">놋케동</span></div>
       <div class="spot-desc">古川시장에서 직접 만드는 나만의 해산물 덮밥.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🐚 향토 요리 & 해산물</h2>
+    <p style="font-size:0.9em;color:var(--text-light);margin-bottom:12px;">라멘만이 아오모리가 아니다. 가리비 껍데기에 된장을 끓이고, 대구 자투리로 국물을 내고, 150엔짜리 동네 빵에 중독되는 — 현지의 식탁.</p>
+    <div class="spot" onclick="showDetail('kaiyaki_miso')">
+      <div class="spot-name">ホタテ貝焼き味噌 <span class="spot-name-ja">카이야키 미소</span></div>
+      <div class="spot-desc">아오모리 향토 요리 No.1. 가리비 껍데기를 냄비 삼아 된장+계란을 끓인다.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('hotate_dishes')">
+      <div class="spot-name">ホタテ料理いろいろ <span class="spot-name-ja">호타테 요리 모음</span></div>
+      <div class="spot-desc">4월 제철. 회·바터구이·프라이·미소구이 — 뭘 해도 맛있다.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('jappa_jiru')">
+      <div class="spot-name">じゃっぱ汁 <span class="spot-name-ja">잣파지루</span></div>
+      <div class="spot-desc">대구 자투리를 된장에 끓인 어부의 국물. 쌀쌀한 4월 초에 딱.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('daifukumaru')">
+      <div class="spot-name">大福丸 <span class="spot-name-ja">다이후쿠마루</span></div>
+      <div class="spot-desc">호타테 낚시 체험 + 즉석 구이. 베이에리어 점심 코스.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>🍞 소울 간식 & 디저트</h2>
+    <p style="font-size:0.9em;color:var(--text-light);margin-bottom:12px;">사과 왕국 아오모리의 디저트와 편의점에서 만나는 현지 소울푸드.</p>
+    <div class="spot" onclick="showDetail('igirisu_toast')">
+      <div class="spot-name">イギリストースト <span class="spot-name-ja">이기리스 토스트</span></div>
+      <div class="spot-desc">工藤パン의 전설. 마가린+설탕, 연 500만 개 판매. 편의점에서 150엔.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('apple_sweets')">
+      <div class="spot-name">りんごスイーツ <span class="spot-name-ja">사과 디저트</span></div>
+      <div class="spot-desc">사과 파이, 사과 젤라또, 사과 시드르 — 사과 왕국의 디저트 투어.</div>
       <div class="spot-tap-hint">탭하여 상세 보기</div>
     </div>
   </div>
@@ -1229,7 +1509,12 @@
       <li class="clickable-item"><div class="check-box" onclick="event.stopPropagation();toggleCheck(this)"></div><span onclick="showDetail('miso_curry_milk_ramen')">味噌カレー牛乳ラーメン &mdash; B급 구르메</span></li>
       <li class="clickable-item"><div class="check-box" onclick="event.stopPropagation();toggleCheck(this)"></div><span onclick="showDetail('nokkedon')">のっけ丼 &mdash; 해산물 덮밥</span></li>
       <li class="clickable-item"><div class="check-box" onclick="event.stopPropagation();toggleCheck(this)"></div><span onclick="showDetail('shoga_miso_oden')">生姜味噌おでん &mdash; 아오모리식 오뎅</span></li>
-      <li><div class="check-box" onclick="toggleCheck(this)"></div><span>ホタテ (가리비)</span></li>
+      <li class="clickable-item"><div class="check-box" onclick="event.stopPropagation();toggleCheck(this)"></div><span onclick="showDetail('kaiyaki_miso')">貝焼き味噌 &mdash; 향토 No.1</span></li>
+      <li class="clickable-item"><div class="check-box" onclick="event.stopPropagation();toggleCheck(this)"></div><span onclick="showDetail('hotate_dishes')">ホタテ料理 &mdash; 4월 제철</span></li>
+      <li class="clickable-item"><div class="check-box" onclick="event.stopPropagation();toggleCheck(this)"></div><span onclick="showDetail('jappa_jiru')">じゃっぱ汁 &mdash; 어부의 국물</span></li>
+      <li class="clickable-item"><div class="check-box" onclick="event.stopPropagation();toggleCheck(this)"></div><span onclick="showDetail('daifukumaru')">大福丸 &mdash; 호타테 낚시 체험</span></li>
+      <li class="clickable-item"><div class="check-box" onclick="event.stopPropagation();toggleCheck(this)"></div><span onclick="showDetail('igirisu_toast')">イギリストースト &mdash; 소울 간식</span></li>
+      <li class="clickable-item"><div class="check-box" onclick="event.stopPropagation();toggleCheck(this)"></div><span onclick="showDetail('apple_sweets')">りんごスイーツ &mdash; 사과 디저트</span></li>
       <li><div class="check-box" onclick="toggleCheck(this)"></div><span>ヤリイカ (창꼴뚜기)</span></li>
       <li class="clickable-item"><div class="check-box" onclick="event.stopPropagation();toggleCheck(this)"></div><span onclick="showDetail('denshu')">田酒 (덴슈)</span></li>
       <li class="clickable-item"><div class="check-box" onclick="event.stopPropagation();toggleCheck(this)"></div><span onclick="showDetail('denshu')">豊盃 (호우하이)</span></li>
@@ -2197,6 +2482,179 @@ const SPOTS = {
     order: '"おすすめの地酒をください" (오스스메노 지자케오 쿠다사이 = 추천 지주 주세요)',
     tags: ['田酒', '豊盃', '陸奥八仙', '프리미엄'],
     photos: ['img/denshu_1.jpg', 'img/denshu_2.jpg'],
+  },
+
+  // --- 추가 향토 음식 ---
+  kaiyaki_miso: {
+    name: 'ホタテ貝焼き味噌', nameJa: '호타테 카이야키 미소',
+    query: '貝焼き味噌 青森', icon: '🐚', category: '아오모리 향토 요리 No.1',
+    price: '단품 500~800엔 / 정식 1,000~1,500엔',
+    imageSearch: '青森 貝焼き味噌 ホタテ',
+    desc: '아오모리를 대표하는 향토 요리. 호타테(가리비) 껍데기를 냄비 삼아, 다시+미소(된장)+계란을 넣고 끓인다. 에도시대 陸奥湾 어부가 고안.',
+    menu: '<strong>기본 구성</strong>: 호타테 껍데기 위에 호타테 살 + 다시 + 미소 + 계란 → 부글부글 끓여 먹기<br><strong>바리에이션</strong>: 가게마다 다시 배합이 다름. 두부·파 추가하는 곳도.',
+    tips: '아오모리에 왔으면 <strong>반드시 먹어야 할 1순위</strong>. おさない食堂의 "ほたて貝みそ焼き定食"이 가장 유명. 뜨거울 때 밥 위에 얹어 먹으면 최고.',
+    order: '"ほたて貝焼き味噌ください" (호타테 카이야키미소 쿠다사이)',
+    tags: ['향토 요리 No.1', '호타테', '가리비 껍데기', 'おさない食堂'],
+    photos: ['img/kaiyaki_miso_1.jpg'],
+  },
+  hotate_dishes: {
+    name: 'ホタテ料理いろいろ', nameJa: '호타테 요리 모음',
+    query: 'ホタテ料理 青森', icon: '🐚', category: '4월 제철 해산물',
+    price: '300~1,500엔',
+    imageSearch: '青森 ホタテ 刺身 バター焼き',
+    desc: '陸奥湾 호타테(가리비)는 4월이 제철. 회·구이·프라이·바터구이 뭘 해도 맛있다. 아오모리에서 가장 흔하고 가장 맛있는 식재료.',
+    menu: '<strong>호타테 회</strong> — 신선한 탄력, 단맛 폭발<br><strong>호타테 바터구이</strong> — 간장+버터, 일본 이자카야 정석<br><strong>호타테 프라이</strong> — おさない食堂 명물, 두툼한 가리비 튀김<br><strong>호타테 미소구이</strong> — 껍데기에 미소를 얹어 구움<br><strong>ベビーホタテ</strong> — 작은 가리비를 통째로 (사가구이, 술안주)',
+    tips: '4월 초는 호타테가 가장 통통한 시기. 이자카야에서 "ホタテありますか?"만 물어보면 다양한 형태로 제공. おさない食堂의 "ほたてフライ定食"은 역 앞 필수 메뉴.',
+    tags: ['4월 제철', '호타테 회', '바터구이', '프라이'],
+    photos: ['img/hotate_1.jpg'],
+  },
+  igirisu_toast: {
+    name: 'イギリストースト', nameJa: '이기리스 토스트',
+    query: 'イギリストースト 工藤パン 青森', icon: '🍞', category: '아오모리 소울 간식',
+    price: '150~200엔 (편의점·슈퍼)',
+    imageSearch: 'イギリストースト 工藤パン 青森',
+    desc: '아오모리 현민의 소울푸드 간식. 工藤パン(쿠도빵)이 만드는 지역 한정 빵. 얇은 식빵 사이에 마가린+그래뉴당(설탕)을 바른 심플한 구성인데, 연간 500만 개 판매.',
+    menu: '<strong>정통</strong>: マーガリン+グラニュー糖 (기본)<br><strong>바리에이션</strong>: 소라마메(잠두콩)맛, 초코, 피넛, 계절 한정판 등 수십 종',
+    tips: '편의점(로손, 세븐)이나 슈퍼(이온, AUGA)에서 구매. "왜 이게 맛있지?" 하면서 계속 먹게 되는 중독성. 아침에 커피와 함께, 또는 킷사텐 가기 전 간식으로. 한정판 맛을 찾는 재미도.',
+    order: '편의점·슈퍼 빵 코너에서 工藤パン 로고 찾기',
+    tags: ['소울 간식', '편의점', '工藤パン', '연 500만개', '150엔'],
+    imageSearch: 'イギリストースト 工藤パン 種類',
+  },
+  jappa_jiru: {
+    name: 'じゃっぱ汁', nameJa: '잣파지루',
+    query: 'じゃっぱ汁 青森 居酒屋', icon: '🍲', category: '겨울~봄 향토 국물',
+    price: '500~800엔',
+    imageSearch: 'じゃっぱ汁 青森 郷土料理',
+    desc: '대구(鱈) 머리·뼈·내장 등 "じゃっぱ(자투리)"를 미소 또는 시오(소금)로 끓인 거친 어부의 국물. 4월 초 쌀쌀한 날씨에 몸을 녹여주는 한 그릇.',
+    menu: '대구 자투리(머리, 뼈, 내장, 살) + 무 + 두부 + 파 → 미소 or 시오 국물',
+    tips: '이자카야에서 "じゃっぱ汁ありますか?"로 주문. 겨울~초봄 한정 메뉴인 곳도 있으니 4월 초에 먹을 수 있으면 럭키. 生姜味噌おでん과 함께 아오모리 국물 요리의 양대산맥.',
+    order: '"じゃっぱ汁ください" (잣파지루 쿠다사이)',
+    tags: ['어부 국물', '대구', '겨울~봄', '미소'],
+    imageSearch: 'じゃっぱ汁 青森 鱈',
+  },
+  apple_sweets: {
+    name: 'りんごスイーツ', nameJa: '사과 디저트',
+    query: 'アップルパイ 青森駅前', icon: '🍎', category: '사과 왕국의 디저트',
+    price: '300~600엔',
+    imageSearch: '青森 アップルパイ りんごスイーツ',
+    desc: '일본 사과 생산량 1위 아오모리. 시내 곳곳에서 사과 파이, 사과 젤라또, 사과 시드르, 사과 주스를 만날 수 있다.',
+    menu: '<strong>クレオパトラ</strong> — 갓 구운 뜨거운 애플파이 (킷사텐 명물)<br><strong>A-FACTORY</strong> — 사과 젤라또, 사과 시드르 테이스팅<br><strong>ASPAM 1F pampam</strong> — 하트형 아플파이 전문점<br><strong>편의점</strong> — 工藤パン 사과 계열 빵, 사과주스',
+    tips: 'クレオパトラ의 "あつあつアップルパイ"는 사과 디저트 1순위. A-FACTORY에서는 시드르(사과술)도 시음 가능. ASPAM 1F에서 기념품용 사과 과자 구매.',
+    tags: ['사과 파이', '시드르', '젤라또', '사과 왕국'],
+    imageSearch: '青森 クレオパトラ アップルパイ',
+  },
+  daifukumaru: {
+    name: '大福丸', nameJa: '다이후쿠마루',
+    query: '大福丸 青森港', address: '아오모리역 도보 5분 (워터프론트)', walk: '숙소에서 도보 12분',
+    icon: '🦑', category: '해산물 식당 / 호타테 낚시 체험',
+    hours: '11:00~21:00', price: '정식 1,000~2,000엔',
+    desc: '아오모리항 워터프론트의 해산물 식당. 점내에 "호타테 낚시 코너"가 있어 직접 낚은 가리비를 그 자리에서 구워먹을 수 있다.',
+    menu: '<strong>ホタテ釣り</strong> — 직접 낚아서 바로 구이 (체험형)<br><strong>貝焼き味噌</strong> — 향토 스타일 정통<br><strong>海鮮丼</strong> — 당일 입하 해산물 덮밥<br><strong>イカ刺し</strong> — 아오모리 오징어 회',
+    tips: '호타테 낚시 체험은 아이 동반이 아니어도 재미있다. 직접 잡은 가리비를 그 자리에서 숯불에 구워먹는 체험. 베이에리어 산책 중 점심으로 최적.',
+    tags: ['호타테 낚시', '체험형', '베이에리어', '해산물'],
+    imageSearch: '大福丸 青森港 ホタテ釣り',
+  },
+  // ===== 카페 & 바 (젊은 세대 스폿) =====
+  coffeeman_good: {
+    name: 'COFFEEMAN good', nameJa: 'コーヒーマングッド',
+    query: 'COFFEEMAN good 青森市古川', address: '青森市古川1-17-1 1F', walk: '역에서 도보 7분',
+    icon: '☕', category: '스페셜티 커피 스탠드',
+    hours: '월·목·금 10:00~18:00, 토·일·축 11:00~18:00 (화·수 정기휴무)', price: '400~600엔',
+    desc: '7석뿐인 작은 스페셜티 커피 스탠드. 에티오피아 이르가체페 등 엄선 원두를 소량 자가배전. 명물 "りんごカフェオレ"는 아오모리 사과주스×커피의 절묘한 블렌드. 아오모리 커피 씬의 중심.',
+    menu: '<strong>りんごカフェオレ</strong> — 아오모리 사과주스 + 커피 블렌드 (시그니처)<br><strong>에티오피아 이르가체페</strong> — 핸드드립<br><strong>에스프레소</strong> — 소량 로스팅 원두',
+    tips: '7석이라 혼잡 시 대기 가능. 원두 구매도 가능(coffeemangood.stores.jp). 아오모리 사과 카페오레는 여기서만 맛볼 수 있는 시그니처.',
+    order: '"りんごカフェオレください" (린고 카페오레 쿠다사이)',
+    tags: ['스페셜티 커피', '자가배전', '사과 카페오레', '7석', 'Wi-Fi'],
+    imageSearch: 'COFFEEMAN good 青森 コーヒー りんごカフェオレ',
+  },
+  quatre_cafe: {
+    name: 'quatre cafe', nameJa: 'カトルカフェ',
+    query: 'カトルカフェ 青森市古川', address: '青森市古川1-16-2 2F', walk: '역에서 도보 7분',
+    icon: '🍸', category: '카페 & 바 (낮→밤 변신)',
+    hours: '카페 11:30~19:00 / 바 19:30~1:00 (목 15:00까지, 일 18:00까지)', price: '카페 500~1,000엔 / 바 800~1,500엔',
+    desc: '앤티크 인테리어의 카페 겸 바. 낮에는 케이크와 커피, 밤에는 카크테일과 와인. 무료 Wi-Fi·전원 완비. COFFEEMAN good 바로 옆이라 카페 호핑에 최적.',
+    menu: '<strong>낮</strong>: 케이크 세트, 핸드드립 커피, 런치 플레이트<br><strong>밤</strong>: 카크테일, 내추럴 와인, 위스키',
+    tips: '낮에 카페로 들러서 밤에 바로 재방문하는 "1일 2회" 활용법. COFFEEMAN good과 합치면 커피→카페→바 3단 콤보.',
+    tags: ['카페 & 바', '앤티크', 'Wi-Fi', '전원', '낮밤 변신'],
+    imageSearch: 'カトルカフェ 青森 アンティーク',
+  },
+  uguisu_cafe: {
+    name: 'UGUISU', nameJa: 'ウグイス',
+    query: 'UGUISU 青森市新町 ダイワロイネット', address: '青森市新町1-11-16 ダイワロイネットホテル1F', walk: '역에서 도보 5분',
+    icon: '🍵', category: '와모던 카페 & 코워킹',
+    hours: '6:30~9:30, 11:00~22:00 (목 15:00까지)', price: '500~1,200엔',
+    desc: '교토 기법 × 아오모리 식재의 와모던 카페. 升(마스)에 담긴 말차 티라미스가 SNS에서 화제. 코워킹 이용도 가능(창가 콘센트석). 아침 6:30부터 영업.',
+    menu: '<strong>말차 티라미스</strong> — 升에 담긴 시그니처<br><strong>바리스타 커피</strong> — 본격 에스프레소<br><strong>런치 플레이트</strong> — 아오모리 식재 활용',
+    tips: '아침 일찍(6:30~) 오픈해서 朝ラー 전 커피 타임에 최적. 新町通り 메인 거리에 위치. 비 오는 날 아케이드 산책 후 들르기 좋다.',
+    tags: ['말차 티라미스', '와모던', '코워킹', '아침 영업', 'SNS'],
+    imageSearch: 'UGUISU カフェ 青森 抹茶ティラミス',
+  },
+  aomori_brew_pub: {
+    name: 'Aomori Brew Pub', nameJa: 'アオモリ ブリューパブ',
+    query: 'Aomori Brew Pub 青森市安方', address: '青森市安方1-5-11 ギャレスビル2F', walk: '역에서 도보 4분',
+    icon: '🍺', category: '셀프탭 크래프트 비어',
+    hours: '수~금 17:00~22:00, 토 15:00~22:00 (일~화 정기휴무)', price: '비어 1잔 500~900엔',
+    desc: '도호쿠 최초 셀프탭 시스템. Be Easy Brewing의 크래프트 비어 상시 8탭. 카드를 받아 원하는 양만큼 직접 따르는 스타일. 아오모리산 사과·카시스 한정 비어도. 음식 반입 OK, 보틀 100종+.',
+    menu: '<strong>셀프탭 8종</strong> — 소량씩 전종 시음 가능<br><strong>아오모리 사과 비어</strong> — 계절 한정<br><strong>카시스 비어</strong> — 아오모리 카시스 사용',
+    tips: '토요일은 15시부터 오픈! 소량씩 8종 전부 시음하는 게 이곳의 묘미. 혼자서도 편하게 입장 가능. 음식은 근처에서 사와도 OK.',
+    order: '카운터에서 카드 수령 → 탭에 카드 대고 원하는 양만큼 따르기 → 나갈 때 정산',
+    tags: ['셀프탭', '크래프트 비어', '8탭', 'Be Easy', '혼자OK'],
+    imageSearch: 'Aomori Brew Pub セルフタップ クラフトビール',
+  },
+  demo_beer: {
+    name: 'Demo Beer', nameJa: 'デモビア',
+    query: 'Demo Beer 青森市新町', address: '青森市新町2-6-28', walk: '역에서 도보 6분',
+    icon: '🍺', category: '크래프트 비어 바',
+    hours: '월~금 17:00~23:00, 토·축 15:00~23:00 (일 정기휴무)', price: '비어 1잔 600~1,000엔',
+    desc: '우드 인테리어의 캐주얼 크래프트 비어 바. 10탭으로 국내외 크래프트 비어를 로테이션. 로스트비프, 자가제 소시지 등 푸드도 충실. 음방 플랜(120분)도.',
+    menu: '<strong>10탭 크래프트 비어</strong> — 국내외 로테이션<br><strong>로스트비프</strong> — 비어 안주 인기 메뉴<br><strong>자가제 소시지</strong>',
+    tips: '그룹으로 갈 때는 음방 플랜이 가성비 좋다. Aomori Brew Pub과 합쳐서 크래프트 비어 호핑.',
+    tags: ['크래프트 비어', '10탭', '푸드 페어링', '음방 가능'],
+    imageSearch: 'Demo Beer デモビア 青森 クラフトビール',
+  },
+  bar_ludens: {
+    name: 'Bar Ludens', nameJa: 'バー ルーデンス',
+    query: 'Bar Ludens 青森市堤町', address: '青森市堤町1-1-9', walk: '역에서 도보 18분',
+    icon: '🥃', category: '오센틱 바',
+    hours: '월~토 18:00~26:00(L.O.25:30), 일·축 ~24:00', price: '카크테일 800~1,500엔, 위스키 700~2,000엔',
+    desc: '번화가에서 살짝 벗어난 골목의 히든 오센틱 바. 오너 바텐더가 혼자 운영. 위스키와 클래식 카크테일이 전문. 조용하고 차분한 어른의 공간. 새벽 2시까지 영업은 아오모리에서 귀하다.',
+    menu: '<strong>클래식 카크테일</strong> — 마티니, 사이드카, 올드 패션드 등<br><strong>위스키</strong> — 일본 위스키 + 스카치 세레크션<br><strong>오리지널 카크테일</strong> — 아오모리 사과 사용',
+    tips: '본町 이자카야 3~4차 후 마무리에 최적. 정적을 즐기는 바. "おすすめのカクテルを" (추천 카크테일을) 하면 취향에 맞춰 만들어줌.',
+    tags: ['오센틱 바', '위스키', '히든', '새벽 2시', '마무리'],
+    imageSearch: 'Bar Ludens バールーデンス 青森 カクテル',
+  },
+  kajitsu_bar: {
+    name: 'KAJITSU', nameJa: 'フルーツ＆ダイニングバー カジツ',
+    query: 'KAJITSU 青森市本町 バー', address: '青森市本町 (柳町通り)', walk: '역에서 도보 15분',
+    icon: '🍹', category: '프루츠 카크테일 바',
+    hours: '영업시간 확인 필요 (월 정기휴무)', price: '카크테일 700~1,200엔 (평균 3,000엔)',
+    desc: '제철 생과일을 아낌없이 사용한 프루츠 카크테일이 시그니처. 50석+스탠딩 70명의 넓은 공간. 모던 인테리어. 혼자~그룹까지 대응.',
+    menu: '<strong>프루츠 카크테일</strong> — 제철 과일 사용, 계절마다 변경<br><strong>아오모리 사과 카크테일</strong><br><strong>다이닝 메뉴</strong> — 가벼운 식사도 가능',
+    tips: '본町 이자카야 호핑의 2차로 최적. 화려한 프루츠 카크테일은 사진빨도 좋다.',
+    tags: ['프루츠 카크테일', '본町', '모던', '50석'],
+    imageSearch: 'KAJITSU カジツ 青森 フルーツカクテル',
+  },
+  milk_room: {
+    name: 'MILK ROOM', nameJa: 'ミルクルーム',
+    query: 'MILK ROOM 青森市安方', address: '青森市安方2-16-13 YSPOTビル3F', walk: '역에서 도보 12분',
+    icon: '🎧', category: '나이트클럽 / DJ',
+    hours: '이벤트별 (보통 22:00~새벽)', price: '1,500~3,000엔',
+    desc: '아오모리시 유일의 나이트클럽. BLACK FLOOR(DJ부스+사운드+조명)와 RED LOUNGE(라운지) 2개 에리어. 테크노·하우스·힙합 등 다양한 장르. SNS(@milkroom_re_aomori)에서 이벤트 확인.',
+    menu: '드링크 각종',
+    tips: 'SNS에서 이벤트 스케줄 확인 필수. 아오모리에서 클럽 문화를 체험할 수 있는 유일한 장소. 금·토요일이 메인.',
+    tags: ['나이트클럽', 'DJ', '테크노', '하우스', '유일'],
+    imageSearch: 'MILK ROOM ミルクルーム 青森 クラブ',
+  },
+  aomori_quarter: {
+    name: '青森Quarter', nameJa: '青森クォーター',
+    query: '青森Quarter 安方', address: '青森市安方2-11-3', walk: '역에서 도보 15분',
+    icon: '🎸', category: '라이브 하우스',
+    hours: '이벤트별 (보통 19:00 개장)', price: '2,000~5,000엔 (+1드링크 500엔)',
+    desc: '아오모리시 메인 라이브 하우스. 캐파 300~350명. 음향·조명 리뉴얼 완료. 인디 밴드부터 전국 투어 아티스트까지. 로커 48개 완비.',
+    menu: '드링크 각종 (입장 시 1드링크 필수)',
+    tips: '공식 사이트(aomoriquarter.com)에서 4월 초 스케줄 확인. 여행 일정과 맞는 공연이 있으면 현지 음악 씬 체험 가능.',
+    tags: ['라이브 하우스', '인디', '음악', '300석'],
+    imageSearch: '青森Quarter クォーター ライブハウス',
   },
 };
 
