@@ -860,17 +860,17 @@
         <span class="tl-title">A-FACTORY 마지막 시드르 한잔</span>
         <div class="tl-map-hint">탭하여 상세 보기</div>
       </div>
-      <div class="tl-item" onclick="showDetail('aomori_station')">
+      <div class="tl-item" onclick="showDetail('station_to_airport')">
         <span class="tl-time">10:30</span>
         <span class="tl-title">역 코인로커에서 짐 회수</span>
         <div class="tl-desc"><strong>11번 승강장</strong>에서 공항 리무진 탑승</div>
-        <div class="tl-map-hint">탭하여 역 승강장 배치도 보기</div>
+        <div class="tl-map-hint">탭하여 탑승 안내 보기</div>
       </div>
-      <div class="tl-item" onclick="showDetail('aoj_airport')">
+      <div class="tl-item" onclick="showDetail('station_to_airport')">
         <span class="tl-time">10:45</span>
         <span class="tl-title">리무진버스 → AOJ 공항 (35분)</span>
         <div class="tl-desc">IC카드 860엔 / 현금 980엔. ⚠️ 출발 전 시간표 반드시 확인</div>
-        <div class="tl-map-hint">탭하여 공항 버스 안내 보기</div>
+        <div class="tl-map-hint">탭하여 탑승 안내 보기</div>
       </div>
       <div class="tl-item">
         <span class="tl-time">11:20</span>
@@ -1137,25 +1137,30 @@
     </div>
     <div class="card">
       <div class="timeline">
-        <div class="tl-item" onclick="showDetail('aoj_airport')">
+        <div class="tl-item" onclick="showDetail('airport_to_sunroad')">
           <div class="tl-time">11:35</div>
           <div class="tl-dot"></div>
-          <div class="tl-desc">아오모리 공항 도착<br><span class="tl-note">출구 → 왼쪽 → <strong>2번 승강장</strong>에서 리무진 탑승</span></div>
+          <div class="tl-desc">아오모리 공항 도착<br><span class="tl-note">🚕 택시로 サンロード 직행 or 🚌 버스로 역 경유 — 탭하여 비교</span></div>
+        </div>
+        <div class="tl-item" onclick="showDetail('sunroad')">
+          <div class="tl-time">12:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-desc"><strong>A. 택시 직행</strong>: 공항 → サンロード (20분, 정액 4,720엔)<br><span class="tl-note">짐째로 이동. 2명이면 1인 2,360엔. PORTER 쇼핑</span></div>
         </div>
         <div class="tl-item" onclick="showDetail('aomori_station')">
           <div class="tl-time">12:10</div>
           <div class="tl-dot"></div>
-          <div class="tl-desc">아오모리역 도착 (<strong>11번 승강장</strong> 하차)<br><span class="tl-note">IC 860엔/현금 980엔. 코인로커에 짐 보관</span></div>
+          <div class="tl-desc"><strong>B. 버스 경유</strong>: 공항 → 역(리무진 35분) → 짐 보관 → 점심<br><span class="tl-note">리무진 11번 하차 → 4번 환승 → サンロード. 합계 ~1,220엔</span></div>
         </div>
         <div class="tl-item" onclick="showDetail('osanai')">
           <div class="tl-time">12:20</div>
           <div class="tl-dot"></div>
-          <div class="tl-desc">점심: おさない食堂 — 호타테 카이야키미소 정식<br><span class="tl-note">역 도보 3분. 가리비 70년 전통 맛집</span></div>
+          <div class="tl-desc">점심: おさない食堂 — 호타테 카이야키미소 정식<br><span class="tl-note">B코스: 역 도보 3분 / A코스: サンロード 푸드코트 or 쇼핑 후 역에서</span></div>
         </div>
         <div class="tl-item" onclick="showDetail('bus_to_sunroad')">
           <div class="tl-time">13:15</div>
           <div class="tl-dot"></div>
-          <div class="tl-desc">역 <strong>4번 승강장</strong>에서 시영버스 → サンロード (15분, 240엔)<br><span class="tl-note">⚠️ 공항버스(11번)와 다른 승강장! 탭하여 안내 보기</span></div>
+          <div class="tl-desc">B코스: 역 <strong>4번 승강장</strong>에서 시영버스 → サンロード (15분, 240엔)<br><span class="tl-note">⚠️ 공항버스(11번)와 다른 승강장! 탭하여 안내 보기</span></div>
         </div>
         <div class="tl-item" onclick="showDetail('uniqlo_bypass')">
           <div class="tl-time">14:00</div>
@@ -1174,9 +1179,10 @@
         </div>
       </div>
       <div class="tip" style="margin-top:16px;">
-        <strong>💡 첫날 동선 핵심</strong><br>
-        サンロード(PORTER) → ユニクロ 西バイパス는 같은 에리어(緑~三好)로 도보 10분 거리. 한 번 이동으로 두 곳 해결.<br>
-        GU도 필요하면 Dream Town ALi(UNIQLO+GU)로 가되 편도 25분이라 시간이 빠듯할 수 있음.
+        <strong>💡 첫날 동선 핵심 — 두 가지 루트</strong><br>
+        <strong>A. 택시 직행 (추천)</strong>: 공항 → サンロード 택시 20분, 정액 4,720엔 (2명이면 1인 2,360엔). 짐째로 이동, 시간 절약. 쇼핑 후 버스/택시로 역 이동 → 짐 보관 → 점심 → 체크인.<br>
+        <strong>B. 버스 경유</strong>: 공항 → 역(리무진 35분, 860엔) → 짐 보관 → 점심 → 4번 승강장 환승 → サンロード(15분, 240엔). 경제적이지만 50분+환승.<br>
+        공항→サンロード 직행 버스는 <strong>없음</strong>. サンロード → ユニクロ 西バイパス는 도보 10분.
       </div>
     </div>
   </div>
@@ -1251,15 +1257,15 @@
           <div class="tl-dot"></div>
           <div class="tl-desc">점심: おさない食堂 (일찍 오픈)<br><span class="tl-note">또는 長尾中華そば (07:00~). 역 도보 3분</span></div>
         </div>
-        <div class="tl-item" onclick="showMap('aomori_station')">
+        <div class="tl-item" onclick="showDetail('station_to_airport')">
           <div class="tl-time">11:20</div>
           <div class="tl-dot"></div>
-          <div class="tl-desc">코인로커에서 짐 회수</div>
+          <div class="tl-desc">코인로커에서 짐 회수 → <strong>11번 승강장</strong><br><span class="tl-note">탭하여 역→공항 탑승 안내 보기</span></div>
         </div>
-        <div class="tl-item" onclick="showMap('aoj_airport')">
+        <div class="tl-item" onclick="showDetail('station_to_airport')">
           <div class="tl-time">11:25</div>
           <div class="tl-dot"></div>
-          <div class="tl-desc">공항 리무진 버스 탑승 (35분)<br><span class="tl-note">⚠️ 이 시간 버스 반드시 확인. 놓치면 택시 7,000엔</span></div>
+          <div class="tl-desc">공항 리무진 버스 탑승 (35분, IC 860엔)<br><span class="tl-note">⚠️ 이 시간 버스 반드시 확인. 놓치면 택시 7,000엔</span></div>
         </div>
         <div class="tl-item" onclick="showMap('aoj_airport')">
           <div class="tl-time">12:00</div>
@@ -1286,6 +1292,8 @@
         <tr><td>역 → Dream Town ALi</td><td>버스 20~25분</td><td>~300엔</td><td>UNIQLO+GU</td></tr>
         <tr><td>サンロード ↔ ガーラタウン</td><td>도보 10분</td><td>무료</td><td>같은 에리어</td></tr>
         <tr><td>ALi → サンロード</td><td>택시 5분</td><td>~1,000엔</td><td>버스 환승보다 편리</td></tr>
+        <tr><td>공항 → サンロード</td><td>택시 20분</td><td>정액 4,720엔</td><td>직행 버스 없음. 2명 1인 2,360엔</td></tr>
+        <tr><td>공항 → 역 → サンロード</td><td>버스 50분+</td><td>~1,100엔</td><td>리무진+환승 (경제적)</td></tr>
       </tbody>
     </table>
     <div class="tip" style="margin-top:12px;">버스 요금은 현금(동전) 준비. 교통IC카드 사용 가능 여부는 노선별 상이.</div>
@@ -1574,6 +1582,28 @@ const SPOTS = {
   },
 
   // --- Bus info ---
+  station_to_airport: {
+    name: '역 → 공항 리무진버스 안내', nameJa: '青森駅→青森空港 リムジンバス',
+    query: '青森駅前 バスのりば', icon: '🚌', category: '교통 안내 (역→공항)',
+    address: '아오모리역 11번 승강장', walk: '역 출구에서 도보 1분',
+    hours: '첫차 06:00 ~ 막차 19:20 (시간표 변동 있음)', price: 'IC 860엔 / 현금 980엔',
+    desc: '아오모리역에서 공항까지 약 35분. <strong>11번 승강장</strong>에서 탑승. 뒷문 승차 → IC 태그 또는 정리권 수령 → 앞문 하차 시 결제.',
+    menu: '<strong>탑승 절차</strong><br>① 역 정면 출구 → 버스 로터리 <strong>11번 승강장</strong><br>② 뒷문에서 승차 (IC카드 태그 또는 정리권 수령)<br>③ 약 35분 승차<br>④ 공항 도착 → 앞문에서 결제 후 하차<br><br>⚠️ 시간표는 항공편 스케줄에 따라 1~2개월마다 변경. 출발 전 반드시 확인!',
+    tips: '마지막날 비행편 12:45 출발 → 늦어도 10:45 버스 탑승 권장 (11:20 공항 도착). 놓치면 택시 약 6,000~7,000엔. IC카드 사용 시 120엔 절약.',
+    order: '<div style="text-align:center;margin:8px 0 4px;font-weight:600;">🚌 역 → 공항 탑승 안내</div><svg viewBox="0 0 400 250" style="width:100%;max-width:400px;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg"><rect x="100" y="5" width="200" height="35" rx="4" fill="#e8e0d4"/><text x="200" y="27" text-anchor="middle" font-size="12" font-weight="600" fill="#333">JR 아오모리역</text><rect x="160" y="40" width="80" height="16" fill="#2d5a27" rx="3"/><text x="200" y="52" text-anchor="middle" font-size="9" font-weight="600" fill="white">정면 출구</text><text x="200" y="70" text-anchor="middle" font-size="9" fill="#666">↓ 버스 로터리</text><rect x="115" y="80" width="170" height="50" rx="6" fill="#c62828"/><text x="200" y="102" text-anchor="middle" font-size="14" font-weight="700" fill="white">11번 승강장</text><text x="200" y="120" text-anchor="middle" font-size="10" fill="#ffcdd2">JR버스 공항행 탑승</text><text x="200" y="145" text-anchor="middle" font-size="10" font-weight="600" fill="#c62828">뒷문 승차 → IC태그/정리권</text><rect x="115" y="155" width="170" height="3" rx="1" fill="#c62828"/><text x="200" y="175" text-anchor="middle" font-size="11" font-weight="600" fill="#c62828">약 35분 (IC 860엔)</text><rect x="115" y="190" width="170" height="50" rx="6" fill="#2d5a27"/><text x="200" y="212" text-anchor="middle" font-size="14" font-weight="700" fill="white">✈️ 아오모리 공항</text><text x="200" y="230" text-anchor="middle" font-size="10" fill="#b5d8b0">앞문 하차 시 결제</text></svg>',
+    tags: ['11번 승강장', 'IC카드 860엔', '35분'],
+  },
+  airport_to_sunroad: {
+    name: '공항 → サンロード 이동 방법 비교', nameJa: '青森空港→サンロード青森',
+    query: '青森空港', icon: '🔄', category: '교통 안내 (공항→쇼핑)',
+    address: '공항에서 サンロード까지', walk: '',
+    hours: '', price: '',
+    desc: '공항에서 サンロード까지 <strong>직행 버스는 없음</strong>. 택시 직행 또는 역 경유 환승 중 선택.',
+    menu: '',
+    tips: '짐이 있으면 택시 직행이 압도적으로 편함. 2명이면 1인 2,360엔으로 버스 경유(1,220엔)보다 1,140엔 더 비싸지만, 시간 30분 + 환승 스트레스를 절약.',
+    order: '<div style="text-align:center;margin:8px 0 4px;font-weight:600;">🔄 공항 → サンロード 루트 비교</div><svg viewBox="0 0 400 360" style="width:100%;max-width:400px;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg"><rect x="120" y="5" width="160" height="35" rx="6" fill="#2d5a27"/><text x="200" y="27" text-anchor="middle" font-size="12" font-weight="700" fill="white">✈️ 아오모리 공항</text><text x="90" y="65" text-anchor="middle" font-size="11" font-weight="700" fill="#c62828">A. 택시 직행</text><text x="310" y="65" text-anchor="middle" font-size="11" font-weight="700" fill="#1565c0">B. 버스 경유</text><line x1="140" y1="40" x2="90" y2="75" stroke="#c62828" stroke-width="2"/><line x1="260" y1="40" x2="310" y2="75" stroke="#1565c0" stroke-width="2"/><rect x="20" y="75" width="140" height="55" rx="6" fill="#fff3e0" stroke="#e65100"/><text x="90" y="95" text-anchor="middle" font-size="10" font-weight="600" fill="#e65100">🚕 정액택시</text><text x="90" y="110" text-anchor="middle" font-size="11" font-weight="700" fill="#c62828">20분 | 4,720엔</text><text x="90" y="122" text-anchor="middle" font-size="8" fill="#888">(2명이면 1인 2,360엔)</text><rect x="240" y="75" width="140" height="40" rx="6" fill="#e3f2fd" stroke="#1565c0"/><text x="310" y="95" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">🚌 리무진버스</text><text x="310" y="108" text-anchor="middle" font-size="9" fill="#333">35분 | IC 860엔</text><line x1="310" y1="115" x2="310" y2="125" stroke="#1565c0" stroke-width="1.5"/><rect x="250" y="125" width="120" height="35" rx="4" fill="#e8e0d4"/><text x="310" y="143" text-anchor="middle" font-size="9" font-weight="600" fill="#333">아오모리역</text><text x="310" y="155" text-anchor="middle" font-size="8" fill="#666">짐 보관 + 점심</text><line x1="310" y1="160" x2="310" y2="170" stroke="#1565c0" stroke-width="1.5"/><rect x="250" y="170" width="120" height="35" rx="4" fill="#e3f2fd" stroke="#1565c0"/><text x="310" y="188" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">4번 승강장 환승</text><text x="310" y="200" text-anchor="middle" font-size="8" fill="#333">시영버스 15분 | 240엔</text><line x1="90" y1="130" x2="90" y2="225" stroke="#c62828" stroke-width="2" stroke-dasharray="6"/><line x1="310" y1="205" x2="310" y2="225" stroke="#1565c0" stroke-width="1.5"/><rect x="90" y="225" width="220" height="45" rx="6" fill="#f5e6c8" stroke="#d4c9b8"/><text x="200" y="248" text-anchor="middle" font-size="13" font-weight="700" fill="#8b6914">🛍️ サンロード青森</text><text x="200" y="263" text-anchor="middle" font-size="9" fill="#8b6914">PORTER (L\'Avre Morita)</text><rect x="15" y="285" width="175" height="60" rx="6" fill="#fff3e0" stroke="#e65100"/><text x="102" y="303" text-anchor="middle" font-size="10" font-weight="600" fill="#e65100">A. 택시 직행</text><text x="102" y="318" text-anchor="middle" font-size="9" fill="#333">⏱️ 20분 | 💰 4,720엔</text><text x="102" y="333" text-anchor="middle" font-size="9" fill="#2d5a27">✅ 짐 OK · 환승 없음</text><rect x="210" y="285" width="175" height="60" rx="6" fill="#e3f2fd" stroke="#1565c0"/><text x="297" y="303" text-anchor="middle" font-size="10" font-weight="600" fill="#1565c0">B. 버스 경유</text><text x="297" y="318" text-anchor="middle" font-size="9" fill="#333">⏱️ 50분+ | 💰 1,100엔</text><text x="297" y="333" text-anchor="middle" font-size="9" fill="#c62828">⚠️ 환승 · 짐 이동</text></svg>',
+    tags: ['택시 직행 20분', '버스 경유 50분', '직행 버스 없음'],
+  },
   bus_to_sunroad: {
     name: '역 → サンロード 버스 안내', nameJa: '青森駅→サンロード青森 バス案内',
     query: '青森駅前 バスのりば', icon: '🚌', category: '교통 안내',
