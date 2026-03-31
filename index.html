@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>아오모리 여행 계획 2026</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Noto+Serif+KR:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
   :root {
     --bg: #f7f6f3;
@@ -516,6 +516,27 @@
   @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
   @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
 
+  /* Premium responsive overrides */
+  @media (max-width: 600px) {
+    [data-theme="premium"] .hero { min-height: 70vh; }
+    [data-theme="premium"] .hero h1 { font-size: 2em; letter-spacing: -1px; }
+    [data-theme="premium"] .hero-content { padding: 0 16px 60px; margin-left: 0; text-align: center; }
+    [data-theme="premium"] .hero-meta { justify-content: center; }
+    [data-theme="premium"] .tab-btn { padding: 12px 14px; font-size: 0.75em; letter-spacing: 1px; }
+    [data-theme="premium"] .day-header { min-height: 160px; }
+    [data-theme="premium"] .day-header-content { padding: 40px 20px 16px; }
+    [data-theme="premium"] .day-header h2 { font-size: 1.3em; }
+    [data-theme="premium"] .photo-strip img { width: 260px; height: 180px; }
+  }
+  @media (min-width: 769px) {
+    [data-theme="premium"] .hero { min-height: 90vh; }
+    [data-theme="premium"] .hero h1 { font-size: 4em; }
+    [data-theme="premium"] .container { max-width: 920px; padding: 48px 32px 80px; }
+    [data-theme="premium"] .day-header { min-height: 280px; }
+    [data-theme="premium"] .day-header h2 { font-size: 2em; }
+    [data-theme="premium"] .photo-strip img { width: 400px; height: 280px; }
+  }
+
   /* Responsive - Mobile (<600px) */
   @media (max-width: 600px) {
     .hero { min-height: 300px; }
@@ -622,6 +643,274 @@
     #jw-popup { max-width: 250px; font-size: 0.78em; }
   }
 
+  /* ===== PREMIUM TRAVEL THEME ===== */
+  /* Inspired by Hyundai Card Travel, Airbnb Luxe, Klook Premium */
+  [data-theme="premium"] {
+    --bg: #ffffff;
+    --card: #ffffff;
+    --accent: #0f1923;
+    --accent-light: #f5f5f7;
+    --accent-dark: #000000;
+    --text: #0f1923;
+    --text-light: #6e7681;
+    --border: #e8eaed;
+    --warm: #e8430a;
+    --warm-light: #fff4f0;
+    --tag-bg: #f0f2f5;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+    --shadow-md: 0 2px 8px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+    --radius: 0px;
+    --premium-blue: #0066ff;
+  }
+  [data-theme="premium"] body {
+    font-family: 'Inter', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 400; line-height: 1.7;
+  }
+  /* Premium Nav — 현대카드 스타일 미니멀 */
+  [data-theme="premium"] .tab-nav {
+    background: #0f1923;
+    backdrop-filter: none; -webkit-backdrop-filter: none;
+    border-bottom: none;
+    box-shadow: none;
+  }
+  [data-theme="premium"] .tab-btn {
+    font-weight: 500; font-size: 0.82em;
+    letter-spacing: 1.5px; padding: 14px 20px;
+    color: rgba(255,255,255,0.55);
+    text-transform: uppercase;
+    border-bottom: 2px solid transparent;
+  }
+  [data-theme="premium"] .tab-btn.active {
+    color: #ffffff; border-bottom: 2px solid #ffffff; font-weight: 600;
+  }
+  [data-theme="premium"] .tab-btn:hover { color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.05); }
+  /* Premium Hero — 풀스크린 시네마틱 */
+  [data-theme="premium"] .hero {
+    min-height: 85vh;
+  }
+  [data-theme="premium"] .hero::after {
+    background: linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.05) 40%, rgba(0,0,0,0.7) 100%);
+  }
+  [data-theme="premium"] .hero-content {
+    padding: 0 20px 100px; text-align: left; max-width: 800px; margin: 0; margin-left: 5%;
+  }
+  [data-theme="premium"] .hero h1 {
+    font-family: 'Inter', 'Noto Sans KR', sans-serif;
+    font-weight: 800; letter-spacing: -2px; font-size: 3.5em;
+    line-height: 1.1;
+  }
+  [data-theme="premium"] .hero .subtitle {
+    font-weight: 300; letter-spacing: 4px; font-size: 0.95em;
+    text-transform: uppercase; opacity: 0.7; margin-bottom: 36px;
+  }
+  [data-theme="premium"] .hero-meta {
+    justify-content: flex-start;
+  }
+  [data-theme="premium"] .hero-meta span {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 0; font-weight: 400;
+    letter-spacing: 0.5px; font-size: 0.85em;
+    padding: 6px 16px;
+  }
+  [data-theme="premium"] .hero-meta span:nth-child(2),
+  [data-theme="premium"] .hero-meta span:nth-child(4) {
+    border: none; opacity: 0.4;
+  }
+  [data-theme="premium"] .hero-dot {
+    background: rgba(255,255,255,0.3); border-radius: 0; width: 20px; height: 3px;
+  }
+  [data-theme="premium"] .hero-dot.active {
+    background: #ffffff; width: 40px; border-radius: 0;
+  }
+  [data-theme="premium"] .hero-arrow {
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 0; width: 48px; height: 48px;
+  }
+  [data-theme="premium"] .hero-arrow:hover { background: rgba(255,255,255,0.2); }
+  [data-theme="premium"] .hero-caption {
+    font-size: 0.7em; letter-spacing: 1px; text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+  /* Premium Container — 넓은 여백 */
+  [data-theme="premium"] .container {
+    max-width: 860px; padding: 40px 24px 80px;
+  }
+  /* Premium Cards — 미니멀, 라인 기반 */
+  [data-theme="premium"] .card {
+    border: none; border-radius: 0;
+    box-shadow: none; padding: 32px 0;
+    border-bottom: 1px solid #e8eaed;
+    background: transparent;
+  }
+  [data-theme="premium"] .card:hover {
+    border-color: #e8eaed; box-shadow: none;
+  }
+  [data-theme="premium"] .card h2 {
+    color: #0f1923; font-weight: 800; font-size: 1.3em;
+    letter-spacing: -0.5px;
+  }
+  [data-theme="premium"] .card h2::before {
+    content: none;
+  }
+  /* Premium Day Header — 현대카드 매거진 풀블리드 */
+  [data-theme="premium"] .day-header {
+    background: #0f1923; border-radius: 0;
+    min-height: 200px;
+  }
+  [data-theme="premium"] .day-header-bg { opacity: 0.6; }
+  [data-theme="premium"] .day-header-content {
+    padding: 60px 32px 24px;
+    background: linear-gradient(transparent 0%, rgba(0,0,0,0.6) 100%);
+  }
+  [data-theme="premium"] .day-header h2 {
+    font-weight: 800; font-size: 1.6em; letter-spacing: -0.5px;
+    text-shadow: none; color: white;
+  }
+  [data-theme="premium"] .day-header .day-sub {
+    font-weight: 300; letter-spacing: 2px; text-transform: uppercase;
+    font-size: 0.8em; opacity: 0.7;
+  }
+  [data-theme="premium"] .day-header + .card {
+    border-radius: 0; border-top: none;
+  }
+  /* Premium Timeline — 깔끔한 라인 */
+  [data-theme="premium"] .timeline::before {
+    background: #e8eaed; width: 1px;
+  }
+  [data-theme="premium"] .tl-item::before {
+    background: #0f1923; box-shadow: none;
+    width: 8px; height: 8px; border: none;
+  }
+  [data-theme="premium"] .tl-item:hover {
+    background: #f5f5f7; border-radius: 0;
+  }
+  [data-theme="premium"] .tl-item.meal::before {
+    background: #e8430a; box-shadow: none;
+  }
+  [data-theme="premium"] .tl-time {
+    color: #0f1923; font-weight: 700; letter-spacing: 0.5px;
+  }
+  [data-theme="premium"] .tl-item.meal .tl-time { color: #e8430a; }
+  [data-theme="premium"] .tl-title { font-weight: 600; }
+  /* Premium Spots — 매거진 리스트 */
+  [data-theme="premium"] .spot {
+    border-bottom: 1px solid #f0f2f5; border-radius: 0;
+    padding: 20px 0;
+  }
+  [data-theme="premium"] .spot:hover {
+    background: transparent; border-left: 3px solid #0f1923;
+    padding-left: 16px; margin: 0 0; box-shadow: none;
+  }
+  [data-theme="premium"] .spot-name { font-weight: 700; letter-spacing: -0.3px; }
+  [data-theme="premium"] .spot-cards-grid .spot {
+    border: 1px solid #e8eaed; border-radius: 0;
+  }
+  [data-theme="premium"] .spot-cards-grid .spot:hover {
+    border-color: #0f1923; border-left: 3px solid #0f1923;
+  }
+  /* Premium Tags — 미니멀 칩 */
+  [data-theme="premium"] .tag {
+    background: transparent; color: #6e7681;
+    border: 1px solid #d0d5db; border-radius: 0;
+    font-weight: 500; font-size: 0.72em;
+    letter-spacing: 0.5px; text-transform: uppercase;
+  }
+  [data-theme="premium"] .tag.green { background: transparent; color: #0f1923; border-color: #0f1923; }
+  /* Premium Detail Modal — 풀이미지 히어로 */
+  [data-theme="premium"] .detail-overlay {
+    background: rgba(15,25,35,0.6);
+  }
+  [data-theme="premium"] .detail-sheet {
+    border-radius: 0;
+  }
+  [data-theme="premium"] .detail-handle { display: none; }
+  [data-theme="premium"] .detail-section h4 {
+    color: #0f1923; border-bottom: 1px solid #e8eaed;
+    letter-spacing: 2px; font-size: 0.72em;
+    text-transform: uppercase; font-weight: 700;
+    padding-bottom: 10px;
+  }
+  [data-theme="premium"] .detail-content h2 { font-weight: 800; letter-spacing: -0.5px; }
+  [data-theme="premium"] .detail-tip {
+    background: #f5f5f7; border-left: 3px solid #0f1923;
+    border-radius: 0;
+  }
+  [data-theme="premium"] .detail-tip strong { color: #0f1923; }
+  /* Premium Photo strip — 더 크게 */
+  [data-theme="premium"] .photo-strip img {
+    width: 340px; height: 240px;
+  }
+  [data-theme="premium"] .photo-strip .photo-more {
+    background: #0f1923; color: white; border-radius: 0;
+  }
+  /* Premium Buttons — 사각형, 솔리드 */
+  [data-theme="premium"] .btn-map { background: #0f1923; border-radius: 0; }
+  [data-theme="premium"] .btn-search { background: #f5f5f7; color: #0f1923; border-radius: 0; }
+  [data-theme="premium"] .btn-close-detail { background: #f5f5f7; border-radius: 0; }
+  [data-theme="premium"] .map-open-btn {
+    background: #0f1923; border-radius: 0;
+  }
+  [data-theme="premium"] .detail-actions a, [data-theme="premium"] .detail-actions button {
+    border-radius: 0; letter-spacing: 0.5px;
+  }
+  [data-theme="premium"] .photo-cta a { border-radius: 0; }
+  [data-theme="premium"] .photo-cta .cta-maps { background: #0f1923; }
+  [data-theme="premium"] .photo-cta .cta-images { background: #f5f5f7; color: #0f1923; }
+  /* Premium Tip boxes */
+  [data-theme="premium"] .tip {
+    background: #f5f5f7; border-left: 2px solid #0f1923;
+    border-radius: 0;
+  }
+  /* Premium Budget table */
+  [data-theme="premium"] .budget-table th {
+    color: #0f1923; border-bottom: 2px solid #0f1923;
+    text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.75em;
+  }
+  [data-theme="premium"] .budget-table tr:hover td { background: #f5f5f7; }
+  [data-theme="premium"] .budget-table tr:last-child td { border-bottom: 2px solid #0f1923; }
+  /* Premium Section title */
+  [data-theme="premium"] .section-title {
+    color: #0f1923; border-bottom: 2px solid #0f1923;
+    letter-spacing: 3px; font-size: 0.72em;
+  }
+  /* Premium Checklist */
+  [data-theme="premium"] .check-box { border-radius: 0; border-color: #d0d5db; }
+  [data-theme="premium"] .check-box.checked { background: #0f1923; border-color: #0f1923; }
+  /* Premium Map overlay */
+  [data-theme="premium"] .map-header { background: #0f1923; }
+  /* Premium Weather */
+  [data-theme="premium"] .weather-card { background: transparent; border-bottom: 1px solid #e8eaed; box-shadow: none; border-radius: 0; }
+  [data-theme="premium"] .weather-card h2 { color: #0f1923; }
+  [data-theme="premium"] .weather-day { border-radius: 0; background: #f5f5f7; border: 1px solid transparent; }
+  [data-theme="premium"] .weather-day:hover { background: #eceef1; }
+  [data-theme="premium"] .weather-day.active { border-color: #0f1923; background: #f5f5f7; }
+  /* Premium Tooltip */
+  [data-theme="premium"] .jw { border-bottom-color: rgba(15,25,35,0.25); }
+  [data-theme="premium"] .jw:hover, [data-theme="premium"] .jw.active { background: rgba(15,25,35,0.06); }
+  /* Premium Flight card */
+  [data-theme="premium"] .flight-card { border-bottom-color: #f0f2f5; }
+  [data-theme="premium"] .flight-code { letter-spacing: 2px; }
+  /* Premium wide toggle */
+  [data-theme="premium"] .btn-wide-toggle {
+    border-radius: 0; border-color: #d0d5db;
+  }
+  /* Premium theme toggle button */
+  .theme-toggle {
+    flex-shrink: 0; padding: 8px 14px; border: none; background: none;
+    font-family: inherit; font-size: 0.78em; font-weight: 500;
+    cursor: pointer; white-space: nowrap; color: var(--text-light);
+    transition: all 0.2s; display: flex; align-items: center; gap: 4px;
+    margin-left: auto; border-left: 1px solid var(--border);
+  }
+  .theme-toggle:hover { color: var(--accent); background: var(--accent-light); }
+  [data-theme="premium"] .theme-toggle {
+    color: rgba(255,255,255,0.55); border-left-color: rgba(255,255,255,0.15);
+    letter-spacing: 1px; text-transform: uppercase; font-size: 0.72em;
+  }
+  [data-theme="premium"] .theme-toggle:hover { color: #ffffff; background: rgba(255,255,255,0.1); }
+
   @media print {
     .tab-nav { display: none; }
     .tab-content { display: block !important; }
@@ -630,6 +919,13 @@
 </style>
 </head>
 <body>
+<script>
+  // Theme init — apply saved theme before first paint
+  (function(){
+    var t = localStorage.getItem('aomori_theme') || 'local';
+    document.documentElement.setAttribute('data-theme', t);
+  })();
+</script>
 
 <div class="hero">
   <div class="hero-slides" id="heroSlides">
@@ -675,6 +971,7 @@
   <button class="tab-btn" data-tab="shopping">쇼핑</button>
   <button class="tab-btn" data-tab="budget">예산</button>
   <button class="tab-btn" data-tab="tips">준비물 & 팁</button>
+  <button class="theme-toggle" onclick="toggleTheme()" id="themeToggle" title="테마 전환">🎨 Premium</button>
 </nav>
 
 <div class="container">
@@ -2618,7 +2915,7 @@ const SPOTS = {
     icon: '🌊', category: '산책 / 관광',
     hours: '24시간 (시설별 영업시간 별도)', price: '산책 무료',
     desc: '아오모리만 워터프론트를 따라 ワ・ラッセ → A-FACTORY → 八甲田丸 → ASPAM → 베이브리지까지 이어지는 해안 산책로. 석양·야경 명소.',
-    menu: '<strong>베이에리어 산책 코스 (약 2km)</strong><br>① ワ・ラッセ (네부타 뮤지엄) — 40분<br>② A-FACTORY (시드르 테이스팅) — 30분<br>③ 八甲田丸 (연락선 뮤지엄) — 40분<br>④ ASPAM (전망대+물산관) — 30분<br>⑤ 아오모리 베이브리지 — 석양 포인트',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/bay_area_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/bay_area_menu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>베이에리어 산책 코스 (약 2km)</strong><br>① ワ・ラッセ (네부타 뮤지엄) — 40분<br>② A-FACTORY (시드르 테이스팅) — 30분<br>③ 八甲田丸 (연락선 뮤지엄) — 40분<br>④ ASPAM (전망대+물산관) — 30분<br>⑤ 아오모리 베이브리지 — 석양 포인트',
     tips: '오후 코스 추천: 13:00 와랏세 → 14:00 A-FACTORY → 15:00 八甲田丸 → 16:00 ASPAM → 17:00 베이브리지 석양. 전체 도보 이동 가능. 4월 초 해풍이 차가우니 방풍 재킷 필수.',
     tags: ['산책 코스', '석양', '야경', '워터프론트'],
     photos: ['img/bay_area_1.jpg', 'img/bay_area_2.jpg'],
@@ -2631,7 +2928,7 @@ const SPOTS = {
     hours: '10:00~19:00 (가게별 상이)', price: '입장 무료',
     linkedSpots: ['sm_ajisapporo_asari','sm_chandola','sm_okinaya','auga','kissaten_cleopatra','kissaten_bankamu','uguisu_cafe','kudo_ramen','daikoku_sushi','kakigen'],
     desc: '아오모리역에서 동쪽으로 약 1km 이어지는 아케이드 상점가. 비·눈 올 때도 쾌적한 지붕 아래 쇼핑·산책.',
-    menu: '<strong>🛍️ 주요 스폿</strong><br>• <strong>AUGA</strong> — B1 신선시장, 기념품<br>• <strong>喫茶 クレオパトラ</strong> — 애플파이 명물 킷사텐<br>• <strong>중앙고전시장</strong> — 청과·선어·건어물<br>• <strong>善知鳥神社</strong> — 상점가 끝자락 (도보 3분)<br><br><strong>🍽️ 상점가 맛집</strong><br>• <strong>味の札幌 浅利</strong> — 미소카레규뉴(미소+카레+우유) 라멘 원조 계열. B급 구르메 체험!<br>• <strong>パティスリー チャンドラ</strong> — 케이크 & 카페 레스토랑. 2F 피아노 생연주. 런치 플레이트 + 계절 파르페<br>• <strong>おきな屋 新町本店</strong> — 1918년(大正7년) 창업 사과 화과자. "薄紅" 기념품 1위<br>• <strong>おさない食堂</strong> — 역 앞 도보 3분, 70년 전통 카이야키미소 (상점가 서쪽 끝)<br>• <strong>大黒寿司</strong> — 동네 스시집. 카운터에서 제철 네타 + 昼飲み<br>• <strong>柿源</strong> — 田酒 ちょい一セット. 昼飲み의 성지<br>• <strong>喫茶 バンカム</strong> — 昭和 레트로 킷사텐, 나폴리탄·크림소다<br>• <strong>UGUISU</strong> — 와모던 카페. 말차 티라미스 SNS 화제',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/shinmachi_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>🛍️ 주요 스폿</strong><br>• <strong>AUGA</strong> — B1 신선시장, 기념품<br>• <strong>喫茶 クレオパトラ</strong> — 애플파이 명물 킷사텐<br>• <strong>중앙고전시장</strong> — 청과·선어·건어물<br>• <strong>善知鳥神社</strong> — 상점가 끝자락 (도보 3분)<br><br><strong>🍽️ 상점가 맛집</strong><br>• <strong>味の札幌 浅利</strong> — 미소카레규뉴(미소+카레+우유) 라멘 원조 계열. B급 구르메 체험!<br>• <strong>パティスリー チャンドラ</strong> — 케이크 & 카페 레스토랑. 2F 피아노 생연주. 런치 플레이트 + 계절 파르페<br>• <strong>おきな屋 新町本店</strong> — 1918년(大正7년) 창업 사과 화과자. "薄紅" 기념품 1위<br>• <strong>おさない食堂</strong> — 역 앞 도보 3분, 70년 전통 카이야키미소 (상점가 서쪽 끝)<br>• <strong>大黒寿司</strong> — 동네 스시집. 카운터에서 제철 네타 + 昼飲み<br>• <strong>柿源</strong> — 田酒 ちょい一セット. 昼飲み의 성지<br>• <strong>喫茶 バンカム</strong> — 昭和 레트로 킷사텐, 나폴리탄·크림소다<br>• <strong>UGUISU</strong> — 와모던 카페. 말차 티라미스 SNS 화제',
     tips: '비오는 날 일정으로 최적. 아케이드(지붕)가 있어 날씨 무관하게 산책 가능. <strong>추천 코스</strong>: 아우가 시장(아침 장보기) → 新町 아케이드 산책 → おきな屋(사과 과자 시식) → チャンドラ(런치) → クレオパトラ(애플파이+커피). 맛집이 밀집해 있어 교외 쇼핑몰보다 식사 선택지가 풍부.',
     tags: ['아케이드', '비오는 날', '산책', '쇼핑', '맛집 밀집'],
     photos: ['img/shinmachi_1.jpg', 'img/shinmachi_2.jpg'],
@@ -2652,7 +2949,7 @@ const SPOTS = {
     hours: '가게마다 다름 (대부분 17:00~23:00)', price: '1인 2,000~4,000엔/가게',
     placeId: 'ChIJ56EJY-Oem18RQbKrrxx23fM',
     desc: '昭和30년대(1955~) 분위기를 재현한 屋台村. 8~12석 규모의 아담한 가게 15곳이 좁은 통로 양쪽으로 밀집. 주인·단골과 자연스럽게 대화하며 마시는 공간.',
-    menu: '<strong>주요 가게</strong><br>• <strong>郷土料理 奥津軽</strong> — 향토 어패류, 生姜味噌おでん, 地酒<br>• <strong>虎の穴</strong> — 자가배전 커피 + 위스키 바 (디저트 바로도 인기)<br>• <strong>Bar ラブリーデイ</strong> — 칵테일, 분위기 좋은 소규모 바<br>• <strong>串焼き</strong> — 야키토리(꼬치구이) 전문<br>• <strong>おでん屋</strong> — 오뎅 + 地酒<br><br>각 가게 8~12석 규모. 한 곳에서 2~3잔 → 옆 가게로 이동.',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/sanfuri_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/sanfuri_menu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>주요 가게</strong><br>• <strong>郷土料理 奥津軽</strong> — 향토 어패류, 生姜味噌おでん, 地酒<br>• <strong>虎の穴</strong> — 자가배전 커피 + 위스키 바 (디저트 바로도 인기)<br>• <strong>Bar ラブリーデイ</strong> — 칵테일, 분위기 좋은 소규모 바<br>• <strong>串焼き</strong> — 야키토리(꼬치구이) 전문<br>• <strong>おでん屋</strong> — 오뎅 + 地酒<br><br>각 가게 8~12석 규모. 한 곳에서 2~3잔 → 옆 가게로 이동.',
     tips: '"하시고(はしご)" = 사다리처럼 가게를 옮겨 다니는 현지 음주 문화. 관광객도 오지만 현지 단골이 주류. 일본어를 못해도 주인이 친절. 입구에서 안을 들여다보고 빈자리가 보이면 "いいですか?"(이이데스카? = 들어가도 될까요?)로 OK.',
     order: '<div style="text-align:center;margin:8px 0 4px;font-weight:600;">🏮 さんふり横丁 내부 구조</div><svg viewBox="0 0 400 280" style="width:100%;max-width:400px;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="400" height="280" rx="8" fill="#2d1b0e"/><text x="200" y="22" text-anchor="middle" font-size="12" font-weight="700" fill="#ffd700">さんふり横丁 (15店)</text><text x="200" y="38" text-anchor="middle" font-size="9" fill="#d4a574">昭和30年代 레트로 포장마차촌</text><rect x="170" y="48" width="60" height="20" rx="4" fill="#c62828"/><text x="200" y="62" text-anchor="middle" font-size="9" font-weight="600" fill="white">입구 ▼</text><rect x="170" y="72" width="60" height="190" rx="0" fill="#4a3728" opacity="0.6"/><text x="200" y="165" text-anchor="middle" font-size="8" fill="#d4a574" transform="rotate(90,200,165)">통 로</text><rect x="20" y="78" width="140" height="35" rx="4" fill="#e65100" opacity="0.9"/><text x="90" y="96" text-anchor="middle" font-size="9" font-weight="600" fill="white">郷土料理 奥津軽</text><text x="90" y="108" text-anchor="middle" font-size="7" fill="#ffe0b2">향토 어패류 · おでん</text><rect x="240" y="78" width="140" height="35" rx="4" fill="#6a1b9a" opacity="0.9"/><text x="310" y="96" text-anchor="middle" font-size="9" font-weight="600" fill="white">Bar ラブリーデイ</text><text x="310" y="108" text-anchor="middle" font-size="7" fill="#e1bee7">칵테일 · 소규모 바</text><rect x="20" y="120" width="140" height="35" rx="4" fill="#1565c0" opacity="0.9"/><text x="90" y="138" text-anchor="middle" font-size="9" font-weight="600" fill="white">串焼き (야키토리)</text><text x="90" y="150" text-anchor="middle" font-size="7" fill="#bbdefb">꼬치구이 전문</text><rect x="240" y="120" width="140" height="35" rx="4" fill="#2e7d32" opacity="0.9"/><text x="310" y="138" text-anchor="middle" font-size="9" font-weight="600" fill="white">おでん屋</text><text x="310" y="150" text-anchor="middle" font-size="7" fill="#c8e6c9">오뎅 · 地酒</text><rect x="20" y="162" width="140" height="35" rx="4" fill="#4e342e" opacity="0.9"/><text x="90" y="180" text-anchor="middle" font-size="9" font-weight="600" fill="white">虎の穴 ☕</text><text x="90" y="192" text-anchor="middle" font-size="7" fill="#d7ccc8">자가배전 커피 · 위스키</text><rect x="240" y="162" width="140" height="35" rx="4" fill="#bf360c" opacity="0.9"/><text x="310" y="180" text-anchor="middle" font-size="9" font-weight="600" fill="white">焼酎バー</text><text x="310" y="192" text-anchor="middle" font-size="7" fill="#ffccbc">소주 · 芋焼酎</text><rect x="20" y="204" width="300" height="28" rx="4" fill="#555" opacity="0.5"/><text x="170" y="222" text-anchor="middle" font-size="8" fill="#ccc">+ 약 9곳 더 (각 8~12석)</text><rect x="60" y="244" width="280" height="25" rx="4" fill="#ffd700" opacity="0.2"/><text x="200" y="260" text-anchor="middle" font-size="9" fill="#ffd700">💡 하시고 추천: 奥津軽 → 串焼き → Bar → 虎の穴 ☕</text></svg>',
     tags: ['하시고', '향토요리', '地酒', '현지인 단골', '昭和レトロ'],
@@ -2666,7 +2963,7 @@ const SPOTS = {
     hours: '17:00~23:00 (요일별 변동)', price: '1인 3,000~5,000엔',
     placeId: 'ChIJ0_vYt-Kem18ROyingA9hNec',
     desc: '아오모리 향토 어패류를 즐기며 津軽三味線 라이브 연주를 감상할 수 있는 이자카야. 매일 연주가 있어 아오모리의 문화를 깊이 체험 가능.',
-    menu: '호타테(가리비) 버터구이, 이카(오징어) 회, 향토 해산물 모듬, 地酒 각종',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/joppari_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>호타테(가리비) 버터구이, 이카(오징어) 회, 향토 해산물 모듬, 地酒 각종',
     tips: '津軽三味線 라이브는 일본 전통 현악기 연주. 박력 있는 소리에 감동받을 것. 예약 없이도 가능하지만 주말은 혼잡할 수 있다.',
     tags: ['라이브 연주', '해산물', '津軽三味線'],
     photos: ['img/joppari_1.jpg', 'img/joppari_2.jpg'],
@@ -2677,7 +2974,7 @@ const SPOTS = {
     icon: '🍶', category: '이자카야',
     hours: '17:30~23:00頃', price: '1인 4,000~6,000엔',
     desc: '아오모리 현지 생선과 타 현에서는 구할 수 없는 희귀 地酒를 전문으로 하는 이자카야. 주인의 사케 추천이 탁월.',
-    menu: '당일 입하 지역 생선 회/구이, 희귀 地酒 (田酒, 豊盃 등 입수 시 제공)',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/hideka_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/hideka_menu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>당일 입하 지역 생선 회/구이, 희귀 地酒 (田酒, 豊盃 등 입수 시 제공)',
     tips: '地酒를 좋아한다면 여기가 최적. 주인에게 "おすすめの地酒ください" (추천 지주 주세요)라고 하면 상태 좋은 술을 골라줌. 田酒가 입하되는 날이면 꼭 주문.',
     tags: ['희귀 地酒', '지역 생선', '주인 추천'],
   },
@@ -2687,7 +2984,7 @@ const SPOTS = {
     icon: '🥢', category: '이자카야',
     hours: '18:00~23:00頃', price: '1인 3,000~5,000엔',
     desc: '관광 가이드에는 잘 나오지 않지만 지역 주민들 사이에서 유명한 숨은 명가 이자카야.',
-    menu: '향토 가정식 스타일 요리, 계절 해산물, 地酒',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/zenigata_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/zenigata_menu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>향토 가정식 스타일 요리, 계절 해산물, 地酒',
     tips: '관광객이 적어 진짜 현지 분위기를 느낄 수 있는 곳. 마지막 밤에 방문하기 좋다.',
     tags: ['현지인 단골', '숨은 맛집', '향토 가정식'],
   },
@@ -2699,7 +2996,7 @@ const SPOTS = {
     hours: '15:00~22:00 (요일별 변동)', price: '1잔 600~900엔',
     placeId: 'ChIJYwOARAyfm18RXyd5TS2Nx30',
     desc: '히로사키 기반 브루어리(2016년 설립). 상시 8종 크래프트 비어를 셀프 탭으로 직접 따라 마실 수 있다.',
-    menu: 'IPA, 페일에일, 스타우트, 시즌널 에일 등 8종 로테이션. 아오모리 사과 활용 한정 비어가 인기.',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/be_easy_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>IPA, 페일에일, 스타우트, 시즌널 에일 등 8종 로테이션. 아오모리 사과 활용 한정 비어가 인기.',
     tips: '셀프 탭 시스템이 재미있다. 소량씩 여러 종류를 시도하는 것을 추천. 안주는 간단한 것만 있으니 이자카야 2차로 가기 좋다.',
     tags: ['크래프트 비어', '셀프 탭', '사과 비어'],
     photos: ['img/be_easy_1.jpg', 'img/be_easy_2.jpg'],
@@ -2714,7 +3011,7 @@ const SPOTS = {
     placeId: 'ChIJ3bJcqB6fm18RruCZ6EBTv-Q',
     imageSearch: '青森魚菜センター のっけ丼 古川市場',
     desc: '<strong>青森魚菜センター(아오모리 교사이 센터)</strong> — 통칭 "古川市場". 1969년 개장, 약 30곳의 해산물·반찬 가게가 입점한 아오모리 시민의 부엌. 2006년부터 시작된 <strong>のっけ丼</strong> 시스템이 대히트하여, 지금은 아오모리 관광 필수 체험으로 자리잡았다. 식권을 사서 시장을 돌며 원하는 네타를 골라 나만의 해산물 덮밥을 완성하는 방식.',
-    menu: '<strong>4월 추천 네타</strong>: ホタテ(가리비·제철!) · ヤリイカ(창꼴뚜기) · マグロ(참치) · サーモン(연어) · イクラ(연어알) · ウニ(성게) · エビ(새우)<br><strong>네타 외</strong>: 玉子焼き(계란말이)·漬物(절임)·味噌汁(된장국) 등도 식권으로 구매 가능<br><strong>식권 배분 팁</strong>: 밥 1매 + 네타 11매. 인기 네타는 1~3매/개.',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/nokkedon_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/nokkedon_menu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>4월 추천 네타</strong>: ホタテ(가리비·제철!) · ヤリイカ(창꼴뚜기) · マグロ(참치) · サーモン(연어) · イクラ(연어알) · ウニ(성게) · エビ(새우)<br><strong>네타 외</strong>: 玉子焼き(계란말이)·漬物(절임)·味噌汁(된장국) 등도 식권으로 구매 가능<br><strong>식권 배분 팁</strong>: 밥 1매 + 네타 11매. 인기 네타는 1~3매/개.',
     tips: '정식명칭은 <strong>青森魚菜センター(아오모리 교사이 센터)</strong>이고 "古川市場"은 통칭. 입구에서 식권(12매 2,200엔)을 구매 → 밥 가게에서 밥 받기(식권 1매) → 나머지 11매로 가게를 돌며 원하는 네타 선택. <strong>인기 네타(호타테·성게)는 오전 중 소진</strong>되니 7시 오픈에 맞춰 방문 추천. 2층에 식사 공간 있음. 화요일 정기휴무이나 이번 일정(목~일)에는 해당 없음.',
     order: '"のっけ丼の食事券ください" (놋케동노 쇼쿠지켄 쿠다사이)<br>① 입구 안내소에서 식권 12매 구매 (2,200엔) → ② 밥 가게에서 밥 받기 (1매) → ③ 시장 내 가게를 돌며 진열대의 네타를 가리키며 식권 건네기 → ④ 2층 식사 공간에서 식사',
     tags: ['青森魚菜センター', '놋케동', '해산물', '아침식사', '시장', '1969년~'],
@@ -2725,7 +3022,7 @@ const SPOTS = {
     query: 'アウガ新鮮市場 青森', address: '青森市新町 1-3-7 (아우가 빌딩 B1)', walk: '숙소에서 도보 10분',
     icon: '🥬', category: '시장', hours: '05:00~18:30 (가게별 상이)',
     desc: 'JR 아오모리역에서 가장 가까운 시장. 현지인들이 실제로 장보는 분위기.',
-    menu: '아오모리 특산 절임류, 산채, 건어물, 사과 가공품 — 기념 쇼핑에도 좋다.',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/auga_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/auga_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>아오모리 특산 절임류, 산채, 건어물, 사과 가공품 — 기념 쇼핑에도 좋다.',
     tips: '기념품 쇼핑은 여기가 좋다. のっけ丼은 고천시장에서, 장보기/기념품은 아우가에서.',
     tags: ['장보기', '기념품', '현지인 스타일'],
     photos: ['img/auga_1.jpg', 'img/auga_2.jpg'],
@@ -2738,7 +3035,7 @@ const SPOTS = {
     hours: '06:00~24:00 (최종 입장 23:30)', price: '어른 480엔 | 수건 세트 250엔',
     placeId: 'ChIJx0uv7xufm18R8FccsqqrM08',
     desc: '아오모리역 앞 유일한 자가 원천 가케나가시(掛け流し) 천연 온천. 나트륨-염화물천, 약알칼리성, 45.1°C.',
-    menu: '대욕장, 노천탕, 약탕, 어린이탕, 수풍탕, 대형 사우나 완비.',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/machinaka_onsen_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>대욕장, 노천탕, 약탕, 어린이탕, 수풍탕, 대형 사우나 완비.',
     tips: '아침 6시 오픈이므로 朝風呂(아침 목욕) 가능 — 이것이 현지인 아침 루틴의 핵심! 수건이 없어도 250엔에 세트 대여. 센토 에티켓: 입욕 전 세신 필수, 수건은 탕에 넣지 말 것.',
     tags: ['朝風呂', '천연 온천', '가케나가시', '사우나'],
     photos: ['img/machinaka_onsen_1.jpg'],
@@ -2750,7 +3047,7 @@ const SPOTS = {
     hours: '09:00~18:00 (최종 입장 17:30)', price: '어른 620엔',
     placeId: 'ChIJgaL-zx-fm18RQjx7oW_kNcY',
     desc: '매년 8월의 아오모리 네부타 축제의 실제 대형 네부타를 연중 전시. 높이 5m, 폭 9m.',
-    menu: '네부타 전시, 하야시 악기 연주 체험, 숍, 식사처 (11:00~19:00)',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/warasse_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/warasse_menu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>네부타 전시, 하야시 악기 연주 체험, 숍, 식사처 (11:00~19:00)',
     tips: '체험 코너에서 네부타 하야시 리듬을 직접 쳐볼 수 있다. 아오모리의 정체성을 이해하는 첫 걸음으로 첫날 방문 추천.',
     tags: ['네부타', '뮤지엄', '체험'],
     photos: ['img/warasse_1.jpg', 'img/warasse_2.jpg'],
@@ -2762,7 +3059,7 @@ const SPOTS = {
     hours: '09:00~20:00 (시즌별 변동)', price: '시드르 테이스팅 300엔~ | 입장 무료',
     placeId: 'ChIJQcC39R-fm18R6j9xV-cGqBM',
     desc: '아오모리현 특산물 마켓 + 시드르 공방. 8기 양조 탱크에서 시드르 & 애플소다 양조. 유리벽 공정 견학.',
-    menu: '시드르 테이스팅 (드라이~스위트), 사과 젤라또, 사과 파이, 토산물',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/a_factory_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>시드르 테이스팅 (드라이~스위트), 사과 젤라또, 사과 파이, 토산물',
     tips: '시드르 테이스팅은 자판기에서 카드를 구매한 후 탭에서 직접 따르는 시스템. 소량씩 여러 종류를 시도 가능. 선물용 사과 과자, 시드르 구매 적합.',
     tags: ['시드르', '사과', '토산물', '테이스팅'],
     photos: ['img/a_factory_1.jpg', 'img/a_factory_2.jpg'],
@@ -2774,7 +3071,7 @@ const SPOTS = {
     hours: '08:00~18:00頃', price: '커피 500~600엔 | 자메이칸 카레 800엔대',
     placeId: 'ChIJz2RD8R2fm18RJ4yubyVdZHk',
     desc: '1970년 창업 노포. 2층 안티크 시계, 양철 장난감 인테리어. 자가 배전 원두를 넬 드립(布ドリップ)으로 추출.',
-    menu: '넬 드립 커피 (오리지널 머그컵), 자메이칸 카레 (양파+합비끼, 드링크+샐러드), 토스트, 케이크',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/kissaten_maron_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>넬 드립 커피 (오리지널 머그컵), 자메이칸 카레 (양파+합비끼, 드링크+샐러드), 토스트, 케이크',
     tips: '자메이칸 카레가 숨은 명물 — 런치로 추천. 넬 드립 커피는 부드럽고 깊은 맛. 2층 안티크 인테리어도 꼭 둘러보기.',
     tags: ['넬 드립', '1970년 창업', '자메이칸 카레', '안티크'],
     photos: ['img/maron_1.jpg', 'img/maron_2.jpg'],
@@ -2786,7 +3083,7 @@ const SPOTS = {
     hours: '09:00~18:00頃', price: '커피 500~600엔',
     placeId: 'ChIJeyE_Xh2fm18RRv7Qb7bOlaU',
     desc: '1969년 창업 노포. 안티크 가구에 클래식 음악. 커피에 설탕 대신 꿀을 제공.',
-    menu: '카페 로와이얄 (브랜디 불꽃 커피), 뜨거운 애플파이 (매일 점내 제빵), 프렌치토스트',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/kissaten_cleopatra_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>카페 로와이얄 (브랜디 불꽃 커피), 뜨거운 애플파이 (매일 점내 제빵), 프렌치토스트',
     tips: '뜨거운 애플파이가 절대 명물 — 갓 구운 것을 먹을 수 있다. 꿀 커피 경험도 독특. 오후 티타임에 적합.',
     tags: ['1969년 창업', '애플파이', '꿀 커피', '클래식 음악'],
     photos: ['img/cleopatra_1.jpg', 'img/cleopatra_2.jpg'],
@@ -2798,7 +3095,7 @@ const SPOTS = {
     hours: '08:00~17:00頃', price: '커피 500엔대 | 런치 세트 800엔대',
     placeId: 'ChIJYZ_5awKfm18R0NJJMZi_F5I',
     desc: '1962년(昭和37년) 개업, 60년+ 역사. 이름은 아라비아어 "ばん(콩)+かむ(액체)".',
-    menu: '넬 드립 커피, 런치 세트 (16종 빵 중 선택), 토스트, 케이크',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/kissaten_bankamu_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>넬 드립 커피, 런치 세트 (16종 빵 중 선택), 토스트, 케이크',
     tips: '런치 세트의 16종 빵 선택이 재미있다. 세 킷사텐 중 가장 로컬 느낌.',
     tags: ['1962년 개업', '60년 역사', '16종 빵', '아라비아어 이름'],
     photos: ['img/bankamu_1.jpg', 'img/bankamu_2.jpg'],
@@ -2848,7 +3145,7 @@ const SPOTS = {
     linkedSpots: ['sr_azuma','sr_taishoken','sr_haveli','sr_sajitokoh','sr_matahari','sr_satokagura','uniqlo_bypass','galatown'],
     placeId: 'ChIJqc_UyLqfm184_BqVxLK9ng',
     desc: '아오모리 시내 최대 쇼핑몰 중 하나. 이온(AEON) 슈퍼, DAISO, 전문점 다수. 아오모리 시내 유일한 PORTER 공식 취급점(L\'Avre Morita)이 1F에 입점.',
-    menu: '<strong>🛍️ 쇼핑</strong><br>• <strong>L\'Avre Morita (1F)</strong> — 吉田カバン(PORTER) 공식 딜러<br>• <strong>이온 슈퍼</strong> — 식품, 생필품<br>• <strong>DAISO</strong> — 100엔 숍<br>• <strong>サンマルクカフェ (1F)</strong> — 휴식<br><br><strong>🍽️ 내부 맛집 (3F 푸드코트 + 1F)</strong><br>• <strong>中華そば あづま (3F)</strong> — 煮干し라멘. 아오모리 니보시를 쇼핑몰에서 간편하게<br>• <strong>青森大勝軒 (3F)</strong> — 이케부쿠로 발상 쯔케멘 명가. <em>대성(곱빼기) 무료!</em><br>• <strong>ハヴェリキッチン (3F)</strong> — 본격 인도 카레 & 난. ⭐3.18 サンロード 내 최고 평점<br>• <strong>和食 里神楽 (3F)</strong> — 우동·소바 정식, 돈카츠. 무난한 화식<br>• <strong>スープカレー 匙と香 (1F)</strong> — 홋카이도 스타일 수프 카레. 야채 고로고로<br>• <strong>ワルン マタハリ (1F)</strong> — 아오모리 유일 인도네시아 요리. 나시고렝·미고렝',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/sunroad_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>🛍️ 쇼핑</strong><br>• <strong>L\'Avre Morita (1F)</strong> — 吉田カバン(PORTER) 공식 딜러<br>• <strong>이온 슈퍼</strong> — 식품, 생필품<br>• <strong>DAISO</strong> — 100엔 숍<br>• <strong>サンマルクカフェ (1F)</strong> — 휴식<br><br><strong>🍽️ 내부 맛집 (3F 푸드코트 + 1F)</strong><br>• <strong>中華そば あづま (3F)</strong> — 煮干し라멘. 아오모리 니보시를 쇼핑몰에서 간편하게<br>• <strong>青森大勝軒 (3F)</strong> — 이케부쿠로 발상 쯔케멘 명가. <em>대성(곱빼기) 무료!</em><br>• <strong>ハヴェリキッチン (3F)</strong> — 본격 인도 카레 & 난. ⭐3.18 サンロード 내 최고 평점<br>• <strong>和食 里神楽 (3F)</strong> — 우동·소바 정식, 돈카츠. 무난한 화식<br>• <strong>スープカレー 匙と香 (1F)</strong> — 홋카이도 스타일 수프 카레. 야채 고로고로<br>• <strong>ワルン マタハリ (1F)</strong> — 아오모리 유일 인도네시아 요리. 나시고렝·미고렝',
     tips: 'PORTER를 사려면 여기가 아오모리 시내 유일한 공식 취급점. ユニクロ 西バイパス점까지 도보 10분이라 동선으로 이어서 방문 가능. <strong>3F 푸드코트가 충실</strong>해서 쇼핑 후 식사까지 해결 가능 — 라멘이 질리면 인도카레·수프카레·인도네시아 등 선택지가 다양.',
     tags: ['PORTER', 'L\'Avre Morita', '이온', 'DAISO', '3F 푸드코트', '식당 6곳'],
     photos: ['img/sunroad_1.jpg'],
@@ -2861,7 +3158,7 @@ const SPOTS = {
     hours: '10:00~21:00', price: '입장 무료',
     placeId: 'ChIJuzfEppWfm1-AXfWNGhTNvg',
     desc: 'A~D동으로 구성된 대형 복합몰. UNIQLO와 GU가 같은 건물에 입점해 의류 쇼핑을 한 곳에서 해결 가능. JINS(안경), DAISO, 서점 등도 있음.',
-    menu: '<strong>🛍️ 쇼핑</strong><br>• <strong>UNIQLO (C동)</strong> — 히트텍, 울트라라이트다운 등<br>• <strong>GU (D동 1F)</strong> — 유니클로보다 저렴한 트렌디 라인<br>• <strong>JINS</strong> — 안경/선글라스<br>• <strong>DAISO</strong> — 100엔 숍<br><br><strong>🍽️ 내부 식사</strong><br>• <strong>푸드코트</strong> — 라멘, 우동, 정식 등 여러 점포<br>• <strong>카페·베이커리</strong> — 쇼핑 중 휴식<br><br>⚠️ 의류 쇼핑 특화 몰이라 맛집은 サンロード·ガーラタウン보다 약함. <strong>식사는 역 주변에서 하고 오는 것을 추천.</strong>',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/dreamtown_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>🛍️ 쇼핑</strong><br>• <strong>UNIQLO (C동)</strong> — 히트텍, 울트라라이트다운 등<br>• <strong>GU (D동 1F)</strong> — 유니클로보다 저렴한 트렌디 라인<br>• <strong>JINS</strong> — 안경/선글라스<br>• <strong>DAISO</strong> — 100엔 숍<br><br><strong>🍽️ 내부 식사</strong><br>• <strong>푸드코트</strong> — 라멘, 우동, 정식 등 여러 점포<br>• <strong>카페·베이커리</strong> — 쇼핑 중 휴식<br><br>⚠️ 의류 쇼핑 특화 몰이라 맛집은 サンロード·ガーラタウン보다 약함. <strong>식사는 역 주변에서 하고 오는 것을 추천.</strong>',
     tips: 'UNIQLO + GU를 한 번에 쇼핑하려면 여기가 최적. 역에서 좀 멀지만(버스 25분) 쇼핑 효율은 가장 높음. 푸드코트도 있지만 특별한 맛집은 없어, 식사는 역 주변(おさない·長尾 등)에서 하고 오는 것이 현명.',
     tags: ['UNIQLO', 'GU', 'JINS', 'DAISO', '푸드코트'],
     photos: ['img/dreamtown_1.jpg'],
@@ -2886,7 +3183,7 @@ const SPOTS = {
     linkedSpots: ['gt_donkichi','gt_sumiya','uniqlo_bypass','sunroad'],
     placeId: 'ChIJPxTMbSifm1_7BpAmbjBuhQ',
     desc: 'MEGAドン・キホーテ(돈키호테)가 핵심. DAISO, 미스터도넛, 의류점 등 입점. ユニクロ 西バイパス점 바로 옆.',
-    menu: '<strong>🛍️ 쇼핑</strong><br>• <strong>MEGAドンキ</strong> — 화장품, 과자, 잡화, 전자제품. 면세 가능(여권 필수)<br>• <strong>DAISO</strong> — 100엔 숍<br>• <strong>万代 (만다이)</strong> — 아넥스동 1F, 생활잡화 슈퍼<br><br><strong>🍽️ 내부 맛집</strong><br>• <strong>どん吉 (A동)</strong> — 미소·시오·쇼유 라멘. 쇼핑 후 간편 식사<br>• <strong>焼肉 炭や</strong> — 야키니쿠(불고기) 런치 세트 ~1,500엔. 무한리필 코스도 있음!<br>• <strong>ミスタードーナツ</strong> — 달콤한 휴식. 아이스커피 + 도넛<br>• <strong>たい夢</strong> — 타이야키(붕어빵) 간식',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/galatown_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>🛍️ 쇼핑</strong><br>• <strong>MEGAドンキ</strong> — 화장품, 과자, 잡화, 전자제품. 면세 가능(여권 필수)<br>• <strong>DAISO</strong> — 100엔 숍<br>• <strong>万代 (만다이)</strong> — 아넥스동 1F, 생활잡화 슈퍼<br><br><strong>🍽️ 내부 맛집</strong><br>• <strong>どん吉 (A동)</strong> — 미소·시오·쇼유 라멘. 쇼핑 후 간편 식사<br>• <strong>焼肉 炭や</strong> — 야키니쿠(불고기) 런치 세트 ~1,500엔. 무한리필 코스도 있음!<br>• <strong>ミスタードーナツ</strong> — 달콤한 휴식. 아이스커피 + 도넛<br>• <strong>たい夢</strong> — 타이야키(붕어빵) 간식',
     tips: 'ドンキ에서 일본 과자, 화장품 등 기념품 쇼핑 가성비 좋음. 면세 가능(여권 필수). <strong>야키니쿠 炭や의 런치 세트가 가성비 포인트</strong> — 고기가 먹고 싶을 때 교외 쇼핑 겸 야키니쿠 동선으로.',
     tags: ['MEGAドンキ', 'DAISO', '면세 가능', '야키니쿠', 'どん吉 라멘'],
     photos: ['img/galatown_1.jpg'],
@@ -2900,7 +3197,7 @@ const SPOTS = {
     linkedSpots: ['nagao_ekimae','lv_tsugaru_soba','lv_aomori_shokudo','osanai','shinmachi'],
     placeId: 'ChIJXegiGR-fm19ohbmsXHb38w',
     desc: '아오모리역 직결 상업시설. 마츠모토키요시(드럭스토어), 잡화, 의류, 식당가. 시간 없을 때 역에서 바로 쇼핑+식사.',
-    menu: '<strong>🛍️ 쇼핑</strong><br>• <strong>マツモトキヨシ</strong> — 화장품, 의약품, 면세 가능(여권 필수)<br>• <strong>THE AOMORI MARKET</strong> — 아오모리 기념품 셀렉트숍<br>• <strong>おきな屋</strong> — 사과 화과자 "薄紅" (기념품 1위)<br>• <strong>無印良品</strong> — 무인양품<br>• <strong>ステラおばさんのクッキー</strong> — 쿠키 선물<br><br><strong>🍽️ 내부 맛집 (충실!)</strong><br>• <strong>⭐ 青森食堂</strong> — 향토 푸드홀. 해산물 덮밥·호타테 정식·地酒. <em>LOVINA 최고 평점 3.41</em><br>• <strong>⭐ 長尾中華そば (P1F)</strong> — 1949년 창업 니보시 라멘 명가. <em>아침 7시부터! 朝ラー 가능.</em> ⭐3.46<br>• <strong>立喰いそば処 津軽 (1F)</strong> — 스탠딩 소바 350엔~. 서서 후루룩 3분! ⭐3.36<br>• <strong>吉野洛匠</strong> — 스시<br>• <strong>日本一</strong> — 야키토리(꼬치) 테이크아웃<br>• <strong>ドトール</strong> — 커피 휴식<br>• <strong>ヴィ・ド・フランス</strong> — 빵·샌드위치',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/lovina_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/lovina_menu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>🛍️ 쇼핑</strong><br>• <strong>マツモトキヨシ</strong> — 화장품, 의약품, 면세 가능(여권 필수)<br>• <strong>THE AOMORI MARKET</strong> — 아오모리 기념품 셀렉트숍<br>• <strong>おきな屋</strong> — 사과 화과자 "薄紅" (기념품 1위)<br>• <strong>無印良品</strong> — 무인양품<br>• <strong>ステラおばさんのクッキー</strong> — 쿠키 선물<br><br><strong>🍽️ 내부 맛집 (충실!)</strong><br>• <strong>⭐ 青森食堂</strong> — 향토 푸드홀. 해산물 덮밥·호타테 정식·地酒. <em>LOVINA 최고 평점 3.41</em><br>• <strong>⭐ 長尾中華そば (P1F)</strong> — 1949년 창업 니보시 라멘 명가. <em>아침 7시부터! 朝ラー 가능.</em> ⭐3.46<br>• <strong>立喰いそば処 津軽 (1F)</strong> — 스탠딩 소바 350엔~. 서서 후루룩 3분! ⭐3.36<br>• <strong>吉野洛匠</strong> — 스시<br>• <strong>日本一</strong> — 야키토리(꼬치) 테이크아웃<br>• <strong>ドトール</strong> — 커피 휴식<br>• <strong>ヴィ・ド・フランス</strong> — 빵·샌드위치',
     tips: '역 직결이라 접근성 최고. <strong>아침 7시부터 長尾 라멘과 津軽 소바가 영업</strong>해서 朝ラー(아침 라멘) 가능. 마지막날 시간 없을 때는 여기서 기념품(おきな屋·AOMORI MARKET) + 식사(青森食堂) + 면세(마츠키요)를 한 번에 해결.',
     tags: ['역 직결', '마츠키요', '면세', '長尾中華そば', '青森食堂', '아침 7시~'],
   },
@@ -2912,7 +3209,7 @@ const SPOTS = {
     hours: '10:00~20:00頃 (売切終了)', price: '정식 800~1,200엔',
     placeId: 'ChIJp7ONMhyfm1_LgF_CkOs9Pg',
     desc: '아오모리역 앞 70년 전통 가리비(호타테) 전문 식당. 관광객과 현지인 모두 찾는 명소. 카이야키미소(貝焼き味噌)가 시그니처.',
-    menu: '<strong>ほたて貝焼き味噌定食</strong> — 가리비를 껍데기 위에 올려 미소+달걀로 구운 아오모리 향토요리. 반드시 주문!<br><strong>ほたてフライ定食</strong> — 가리비 튀김 정식<br><strong>刺身定食</strong> — 당일 입하 생선회',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/osanai_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/osanai_menu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>ほたて貝焼き味噌定食</strong> — 가리비를 껍데기 위에 올려 미소+달걀로 구운 아오모리 향토요리. 반드시 주문!<br><strong>ほたてフライ定食</strong> — 가리비 튀김 정식<br><strong>刺身定食</strong> — 당일 입하 생선회',
     tips: '카이야키미소는 아오모리 가정식의 대표. 가리비 껍데기가 냄비 역할. 점심시간(12:00~13:00) 혼잡하니 약간 일찍 가거나 늦게 가는 것을 추천.',
     order: '"ほたて貝焼き味噌定食ください" (호타테 카이야키미소 테이쇼쿠 쿠다사이)',
     tags: ['카이야키미소', '가리비', '70년 전통', '역 앞'],
@@ -2926,7 +3223,7 @@ const SPOTS = {
     hours: '07:00~20:00', price: '라멘 750~950엔',
     placeId: 'ChIJs6Sn6R6fm1-ZgzX4kH2gng',
     desc: '1949년 창업 쓰가루 니보시 라멘의 원조 중 하나. LOVINA 지하에 역전점이 있어 접근성 최고. 아침 7시부터 영업하여 朝ラー(아침 라멘)도 가능.',
-    menu: '<strong>あっさり(깔끔)</strong> — 투명한 니보시 국물. 처음이면 이것부터.<br><strong>こってり(진한)</strong> — 걸쭉한 니보시 국물. 니보시 매니아용.<br><strong>朝ラーメン</strong> — 아침 한정 소사이즈(650엔). 朝風呂 후 딱.',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/nagao_ekimae_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/nagao_ekimae_menu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>あっさり(깔끔)</strong> — 투명한 니보시 국물. 처음이면 이것부터.<br><strong>こってり(진한)</strong> — 걸쭉한 니보시 국물. 니보시 매니아용.<br><strong>朝ラーメン</strong> — 아침 한정 소사이즈(650엔). 朝風呂 후 딱.',
     tips: '아침 온천(朝風呂) → 長尾 아침 라멘은 현지인 루틴. 처음이면 あっさり를 추천. 멸치 향이 은은하고 깔끔.',
     order: '"あっさりください" (앗사리 쿠다사이) 또는 "こってりください" (콧테리 쿠다사이)',
     tags: ['니보시 라멘', '1949년 창업', '아침 라멘', '역 직결'],
@@ -2942,7 +3239,7 @@ const SPOTS = {
     linkedSpots: ['sanfuri','joppari','hideka','zenigata','tsugaru_sengyo','motsu_koshiken','mitsuishi','yokoyama_ramen','kukai_ramen','kajitsu_bar','bar_ludens'],
     hours: '대부분 17:00~24:00 (가게별 상이)', price: '1인 2,500~5,000엔/가게',
     desc: '아오모리 최대의 밤문화 거리. 旧米町通り(구 코메마치 거리)와 旧寺町通り(구 테라마치 거리)를 중심으로 수백 곳의 이자카야, 스낵, 바가 밀집. さんふり横丁도 이 지역 내에 위치.',
-    menu: '<strong>주요 거리 구성</strong><br>• <strong>旧米町通り</strong> — 이자카야, 오뎅집, 야키토리 밀집<br>• <strong>旧寺町通り</strong> — 스낵, 바, 시메 라멘집<br>• <strong>さんふり横丁</strong> — 昭和풍 포장마차촌 (15곳)<br>• <strong>本町 5丁目</strong> — 지역민 단골 이자카야 골목',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/honmachi_area_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>주요 거리 구성</strong><br>• <strong>旧米町通り</strong> — 이자카야, 오뎅집, 야키토리 밀집<br>• <strong>旧寺町通り</strong> — 스낵, 바, 시메 라멘집<br>• <strong>さんふり横丁</strong> — 昭和풍 포장마차촌 (15곳)<br>• <strong>本町 5丁目</strong> — 지역민 단골 이자카야 골목',
     tips: '첫째 밤: さんふり横丁 (하시고 입문) → 둘째 밤: 本町 깊숙한 곳 탐험 → 셋째 밤: 추천받은 단골집 재방문. 가게 간 거리가 가까워 하시고(はしご) 문화에 최적화된 동네.',
     order: '<div style="text-align:center;margin:8px 0 4px;font-weight:600;">🏮 本町 이자카야 거리 구조</div><svg viewBox="0 0 400 340" style="width:100%;max-width:400px;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="400" height="340" rx="8" fill="#1a1a2e"/><text x="200" y="25" text-anchor="middle" font-size="13" font-weight="700" fill="#ffd700">本町 이자카야 거리 MAP</text><rect x="20" y="40" width="360" height="3" rx="1" fill="#555"/><text x="200" y="55" text-anchor="middle" font-size="9" fill="#aaa">← 아오모리역 방면 ····· 国道4号 (큰길) ····· →</text><rect x="60" y="70" width="120" height="45" rx="6" fill="#c62828" opacity="0.9"/><text x="120" y="90" text-anchor="middle" font-size="10" font-weight="600" fill="white">旧米町通り</text><text x="120" y="105" text-anchor="middle" font-size="8" fill="#ffcdd2">이자카야 · 오뎅 · 야키토리</text><rect x="220" y="70" width="120" height="45" rx="6" fill="#1565c0" opacity="0.9"/><text x="280" y="90" text-anchor="middle" font-size="10" font-weight="600" fill="white">旧寺町通り</text><text x="280" y="105" text-anchor="middle" font-size="8" fill="#bbdefb">스낵 · 바 · 시메라멘</text><rect x="100" y="130" width="200" height="55" rx="8" fill="#e65100" opacity="0.9"/><text x="200" y="152" text-anchor="middle" font-size="12" font-weight="700" fill="white">🏮 さんふり横丁</text><text x="200" y="170" text-anchor="middle" font-size="9" fill="#ffe0b2">昭和풍 포장마차촌 15곳</text><text x="200" y="198" text-anchor="middle" font-size="9" fill="#aaa">────── 本町 3~4丁目 ──────</text><rect x="30" y="210" width="160" height="50" rx="6" fill="#2e7d32" opacity="0.9"/><text x="110" y="232" text-anchor="middle" font-size="10" font-weight="600" fill="white">津軽じょっぱり</text><text x="110" y="248" text-anchor="middle" font-size="8" fill="#c8e6c9">三味線 라이브 🎵</text><rect x="210" y="210" width="160" height="50" rx="6" fill="#6a1b9a" opacity="0.9"/><text x="290" y="232" text-anchor="middle" font-size="10" font-weight="600" fill="white">旬肴 ひでか · 銭形</text><text x="290" y="248" text-anchor="middle" font-size="8" fill="#e1bee7">地酒 · 현지인 단골</text><text x="200" y="278" text-anchor="middle" font-size="9" fill="#aaa">────── 本町 5丁目 ──────</text><rect x="80" y="288" width="110" height="40" rx="6" fill="#ff6f00" opacity="0.8"/><text x="135" y="308" text-anchor="middle" font-size="9" font-weight="600" fill="white">시메 라멘</text><text x="135" y="320" text-anchor="middle" font-size="7.5" fill="#ffe0b2">横山 · 空海 (03시까지)</text><rect x="210" y="288" width="110" height="40" rx="6" fill="#00695c" opacity="0.8"/><text x="265" y="308" text-anchor="middle" font-size="9" font-weight="600" fill="white">Be Easy Brewing</text><text x="265" y="320" text-anchor="middle" font-size="7.5" fill="#b2dfdb">크래프트 비어 🍺</text></svg>',
     tags: ['하시고', '이자카야 밀집', '旧米町通り', '旧寺町通り', '야간'],
@@ -2956,7 +3253,7 @@ const SPOTS = {
     hours: '17:00~24:00頃', price: '1인 3,000~5,000엔',
     placeId: 'ChIJoTg07-Kem18Rbb8BDpQKrJw',
     desc: '津軽海峡에서 직송되는 해산물을 주인이 직접 써는 이자카야. 그날 잡힌 생선이 메뉴판에 적혀 나온다.',
-    menu: '당일 직송 회 모듬, 호타테(가리비) 구이, 이카(오징어) 회, 季節の刺身盛り',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/tsugaru_sengyo_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/tsugaru_sengyo_menu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>당일 직송 회 모듬, 호타테(가리비) 구이, 이카(오징어) 회, 季節の刺身盛り',
     tips: '카운터석에서 주인의 칼 솜씨를 감상하며 먹는 것을 추천. "おまかせで"(오마카세데 = 맡길게요)라고 하면 그날 최고 재료로 코스를 만들어줌.',
     tags: ['해산물 직송', '카운터석', '오마카세'],
   },
@@ -2966,7 +3263,7 @@ const SPOTS = {
     icon: '🍖', category: '이자카야 / 모츠야키',
     hours: '17:30~23:30頃', price: '1인 2,500~4,000엔',
     desc: '신선한 모츠(내장)를 숯불에 구워주는 본격 모츠야키 전문점. 현지 직장인들의 퇴근 후 단골집.',
-    menu: '모츠 구이 세트, 시로(소장), 레바(간), 하라미(횡격막), 하이볼, 레몬사워',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/motsu_koshiken_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>모츠 구이 세트, 시로(소장), 레바(간), 하라미(횡격막), 하이볼, 레몬사워',
     tips: '모츠야키는 가격 부담이 적어 가볍게 하시고 1차로 최적. 하이볼과 함께.',
     tags: ['모츠야키', '숯불구이', '가성비', '하시고 1차'],
   },
@@ -2976,7 +3273,7 @@ const SPOTS = {
     icon: '🍶', category: '이자카야 / 地酒',
     hours: '17:30~23:00頃', price: '1인 3,500~5,500엔',
     desc: '아오모리현 地酒와 계절 요리의 페어링을 추구하는 이자카야. 주인의 사케 선구안이 뛰어남.',
-    menu: '계절 해산물 요리, 地酒 3종 비교 세트, 향토 진미(いぶりがっこ, 筋子)',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/mitsuishi_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/mitsuishi_menu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>계절 해산물 요리, 地酒 3종 비교 세트, 향토 진미(いぶりがっこ, 筋子)',
     tips: '地酒 3종 세트를 주문하면 주인이 그날의 요리에 맞는 조합을 골라줌. ひでか와 함께 地酒 탐방 코스 적합.',
     tags: ['地酒 페어링', '계절 요리', '3종 세트'],
   },
@@ -2988,7 +3285,7 @@ const SPOTS = {
     icon: '🍜', category: '시메 라멘 / 니보시',
     hours: '20:00~03:00 (심야 영업)', price: '700~900엔',
     desc: '이자카야 하시고 후 마무리(シメ) 라멘의 성지. 심야 3시까지 영업. 깔끔한 니보시(멸치) 국물.',
-    menu: '中華そば (기본, 맑은 니보시), チャーシューメン (차슈면), 味玉 (반숙 계란)',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/yokoyama_ramen_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>中華そば (기본, 맑은 니보시), チャーシューメン (차슈면), 味玉 (반숙 계란)',
     tips: '본町 이자카야 거리 한복판에 있어 술 마시고 걸어가기 최적. 심야에도 현지인으로 북적. 메뉴는 심플하니 "中華そばください" 한 마디면 OK.',
     tags: ['심야 영업', '시메 라멘', '니보시', '03:00까지'],
   },
@@ -2998,7 +3295,7 @@ const SPOTS = {
     icon: '🍜', category: '시메 라멘 / 진한 니보시',
     hours: '21:00~03:30 (심야 영업)', price: '750~950엔',
     desc: '진한 니보시 라멘(にぼし濃厚)의 심야 전문점. 横山보다 더 늦게까지 영업.',
-    menu: '濃厚煮干しラーメン (진한 니보시), あっさり中華そば (맑은 버전), チャーシュー増し',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/kukai_ramen_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>濃厚煮干しラーメン (진한 니보시), あっさり中華そば (맑은 버전), チャーシュー増し',
     tips: '진하고 걸쭉한 니보시를 원하면 空海, 깔끔한 니보시는 横山. 둘 다 도보 2분 거리라 취향에 따라 선택.',
     tags: ['심야 영업', '진한 니보시', '03:30까지', '시메 라멘'],
   },
@@ -3011,7 +3308,7 @@ const SPOTS = {
     hours: '09:00~18:00 (12~3월 ~17:00)', price: '13F 전망대 500엔 (C권) / 3D시어터+전망대 세트 900엔 (A권) / 미취학아 무료',
     placeId: 'ChIJRe6iuB-fm18R05jLhIjIVa0',
     desc: '아오모리현의 "A"자를 본떠 만든 삼각형 빌딩. 13층 전망대에서 아오모리만·八甲田山·하코다테 방면까지 360° 파노라마. 1층은 현 최대 물산점.',
-    menu: '<strong>13F 展望台</strong> — 아오모리만, 하코다테 방면 조망 (맑은 날 限定)<br><strong>2F パノラマ館</strong> — 360° 영상 시어터 (네부타, 시라카미 등)<br><strong>1F 物産館</strong> — 사과 과자, 津軽びいどろ(유리공예), BUNACO(너도밤나무 공예), こぎん刺し(자수) 등',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/aspam_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/aspam_menu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>13F 展望台</strong> — 아오모리만, 하코다테 방면 조망 (맑은 날 限定)<br><strong>2F パノラマ館</strong> — 360° 영상 시어터 (네부타, 시라카미 등)<br><strong>1F 物産館</strong> — 사과 과자, 津軽びいどろ(유리공예), BUNACO(너도밤나무 공예), こぎん刺し(자수) 등',
     tips: '물산관은 기념품 쇼핑 최적. 津軽びいどろ(색유리 잔), BUNACO(조명/그릇), こぎん刺し(수공예 소품) 등 아오모리 전통 공예품을 한곳에서. 전망대는 맑은 날만 가치 있음.',
     tags: ['전망대', '물산관', '津軽びいどろ', 'BUNACO', '기념품'],
     photos: ['img/aspam_1.jpg'],
@@ -3024,7 +3321,7 @@ const SPOTS = {
     hours: '경내 자유 / 사무소 09:00~17:00', price: '무료',
     placeId: 'ChIJC6DOjR6fm18RfipYmI1wXr8',
     desc: '아오모리시의 지명 기원이자 발상지. 807년(大同2년) 坂上田村麻呂가 재건했다는 기록이 남아 있는 1200년+ 역사의 신사. 경내 깊숙이 자리한 龍神水(류진수)는 수목 사이로 물이 졸졸 흐르는 신비로운 분위기의 파워스폿. 新町商店街 끝자락에 위치하여 아케이드 산책의 마무리 지점으로 자연스러움.',
-    menu: '<strong>龍神水</strong> — 경내 용신의 샘. 나무 사이로 물이 흐르는 신비로운 분위기<br><strong>御朱印</strong> — 500엔 (서기(書き置き)도 있음). ねぶた 축제 테마 고슈인장 신규 출시<br><strong>제신</strong> — 宗像三女神 (도중 안전의 신)<br><strong>경내 볼거리</strong> — うとう沼, 마쓰오 바쇼 구비(句碑)',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/utou_shrine_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/utou_shrine_menu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>龍神水</strong> — 경내 용신의 샘. 나무 사이로 물이 흐르는 신비로운 분위기<br><strong>御朱印</strong> — 500엔 (서기(書き置き)도 있음). ねぶた 축제 테마 고슈인장 신규 출시<br><strong>제신</strong> — 宗像三女神 (도중 안전의 신)<br><strong>경내 볼거리</strong> — うとう沼, 마쓰오 바쇼 구비(句碑)',
     tips: '아침 산책 코스로 최적. 경내가 조용하고 수목이 울창. 御朱印(고슈인) 수집가라면 네부타 한정 디자인 꼭 챙기기. 아우가 시장 가는 길에 들르기 좋다.',
     tags: ['아오모리 발상지', '龍神水', '御朱印', '아침 산책'],
     photos: ['img/utou_shrine_1.jpg', 'img/utou_shrine_2.jpg'],
@@ -3038,7 +3335,7 @@ const SPOTS = {
     hours: '09:00~17:00 (11~3월 ~15:30)', price: '어른 510엔',
     placeId: 'ChIJQ7TqJx-fm18R6Pr5X2CLCUI',
     desc: '1908~1988년, 세이칸 터널 개통 전까지 80년간 아오모리-하코다테를 오가던 青函連絡船의 마지막 취항선. 4,916톤의 거대한 선체가 그대로 보존되어 갑판·조타실·기관실·차량 갑판(열차를 배에 실었던 레일)까지 내부를 탐험할 수 있다. 기관실의 8기통 디젤 엔진은 압도적 스케일.',
-    menu: '<strong>조타실</strong> — 해협 조망 + 실제 조타 장치<br><strong>기관실</strong> — 8기통 디젤 엔진 실물<br><strong>차량 갑판</strong> — 열차를 배에 실었던 레일 구조',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/hakkodamaru_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/hakkodamaru_menu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>조타실</strong> — 해협 조망 + 실제 조타 장치<br><strong>기관실</strong> — 8기통 디젤 엔진 실물<br><strong>차량 갑판</strong> — 열차를 배에 실었던 레일 구조',
     tips: '기관실의 거대한 디젤 엔진은 압도적. 기계/역사 좋아하면 필수. 와랏세 → A-FACTORY → 八甲田丸 순서로 베이에리어 산책 코스.',
     tags: ['세이칸 연락선', '기관실', '역사', '베이에리어'],
     photos: ['img/hakkodamaru_1.jpg', 'img/hakkodamaru_2.jpg'],
@@ -3052,7 +3349,7 @@ const SPOTS = {
     icon: '♨️', category: '동네 銭湯 (천연 온천)',
     hours: '05:45~22:00', price: '어른 480엔',
     desc: '새벽 5:45에 문을 여는 동네 천연 온천 銭湯. 관광객은 0%에 가깝고, 근처 어르신들이 매일 아침 출근 전에 오는 진짜 로컬 목욕탕. 번대(입구에서 요금 받는 할머니) 스타일의 옛날 구조가 남아 있어 昭和 시대 銭湯 체험 그 자체. 천연 온천수는 약간 갈색빛이 도는 나트륨 염화물천으로, 몸이 속부터 풀리는 느낌.',
-    menu: '<strong>탕 구성</strong><br>• 메인 욕조 (천연 온천, 43°C)<br>• 누루유(ぬる湯, 미지근한 탕)<br>• 우타세유(うたせ湯, 폭포 샤워)<br>• 수풍(水風呂)<br>• TV 사우나',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/okidate_onsen_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>탕 구성</strong><br>• 메인 욕조 (천연 온천, 43°C)<br>• 누루유(ぬる湯, 미지근한 탕)<br>• 우타세유(うたせ湯, 폭포 샤워)<br>• 수풍(水風呂)<br>• TV 사우나',
     tips: '朝風呂(아침목욕)는 아오모리 현지인의 일상. 05:45에 열리면 동네 어르신들이 삼삼오오 모여 탕에서 수다를 떤다. 관광객 0%. 보디워시·샴푸 비치. 수건은 가져갈 것.',
     tags: ['朝風呂', '동네 銭湯', '현지인 100%', '새벽 영업'],
     photos: ['img/okidate_onsen_1.jpg', 'img/okidate_onsen_2.jpg'],
@@ -3065,7 +3362,7 @@ const SPOTS = {
     hours: '06:00~25:00 (연중무휴)', price: '어른 480엔',
     placeId: 'ChIJ16Gzf-2em18RHfCHaFTccms',
     desc: '전국 체인 스파. 고농도 탄산천, 노천탕, TV 사우나, 식당, 만화 코너까지 있어 반나절 보내기 최적. 아오모리 현지인의 "오프날 루틴".',
-    menu: '<strong>시설</strong><br>• 고농도 인공 탄산천 (혈행 촉진)<br>• 노천탕 + 내탕 4종<br>• TV 사우나 + 수풍<br>• 식당 (라멘, 정식, 맥주)<br>• 만화 코너 (수천 권)<br>• 마사지·이발',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/gokurakuyu_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>시설</strong><br>• 고농도 인공 탄산천 (혈행 촉진)<br>• 노천탕 + 내탕 4종<br>• TV 사우나 + 수풍<br>• 식당 (라멘, 정식, 맥주)<br>• 만화 코너 (수천 권)<br>• 마사지·이발',
     tips: '비오는 날 일정으로 최강. 오전에 와서 탕 → 사우나 → 식당에서 생맥주+라멘 → 만화 코너에서 느긋하게. 이게 아오모리 현지인의 쉬는 날 루틴. 주말 오전이 가장 여유.',
     tags: ['스파', '탄산천', '반나절 코스', '비오는 날', '만화'],
     photos: ['img/gokurakuyu_1.jpg', 'img/gokurakuyu_2.jpg'],
@@ -3077,7 +3374,7 @@ const SPOTS = {
     icon: '🍶', category: '향토 식당 / 昼飲み',
     hours: '11:00~21:00', price: '런치 800~1,200엔 / ちょい一セット 1,500엔대',
     desc: '아오모리역 도보 3분의 향토 요리 식당. 점심부터 地酒를 마실 수 있는 "昼飲み(히루노미)" 문화의 거점. ちょい一セット가 명물.',
-    menu: '<strong>ちょい一セット</strong> (가볍게 한잔 세트)<br>• 田酒 1合 (아오모리 프리미엄 지주)<br>• 突き出し (오늘의 안주)<br>• 刺身三種盛り (회 3종)<br>• 青森おでん (生姜味噌つき)<br><br><strong>런치</strong>: 호타테 프라이 정식, 향토 정식',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/kakigen_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>ちょい一セット</strong> (가볍게 한잔 세트)<br>• 田酒 1合 (아오모리 프리미엄 지주)<br>• 突き出し (오늘의 안주)<br>• 刺身三種盛り (회 3종)<br>• 青森おでん (生姜味噌つき)<br><br><strong>런치</strong>: 호타테 프라이 정식, 향토 정식',
     tips: '낮부터 田酒를 마실 수 있는 귀한 곳. "ちょい一セット(초이이치 셋토)"를 주문하면 田酒 한 잔에 회와 오뎅이 나온다. 직장인 아저씨들이 점심에 조용히 한잔하는 분위기. 이게 진짜 아오모리.',
     tags: ['昼飲み', '田酒', 'ちょい一セット', '향토 요리'],
     photos: ['img/kakigen_1.jpg', 'img/kakigen_2.jpg'],
@@ -3089,7 +3386,7 @@ const SPOTS = {
     icon: '🍣', category: '동네 스시집 / 昼飲み',
     hours: '11:00~22:00 (화요일 휴무)', price: '런치 1,000~2,000엔',
     desc: '관광객 맛집이 아닌 동네 스시집. 지역 어부가 가져오는 제철 네타를 카운터에서. 점심부터 地酒와 함께.',
-    menu: '당일 입하 제철 스시, 地酒 각종, おまかせ(오마카세) 가능',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/daikoku_sushi_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>당일 입하 제철 스시, 地酒 각종, おまかせ(오마카세) 가능',
     tips: '"통に人気"(통에 인기) — 단골들이 카운터에 앉아 주인과 대화하며 먹는 분위기. 관광객용 화려한 회전스시가 아닌, 조용한 마을 스시집. 점심에 地酒 한잔과 함께.',
     tags: ['동네 스시집', '昼飲み', '카운터', '제철 네타'],
     photos: ['img/daikoku_sushi_1.jpg', 'img/daikoku_sushi_2.jpg'],
@@ -3101,7 +3398,7 @@ const SPOTS = {
     icon: '🥟', category: '동네 중화식당',
     hours: '월 11:00~15:00 / 화~일 11:00~20:30', price: '600~900엔',
     desc: '숙소 바로 옆 본정 3丁目의 동네 중화식당. 관광 가이드에 안 나오는, 동네 주민들의 런치 식당. 가벼운 낮술 가능.',
-    menu: '탄탄멘, 교자, 마파두부, 볶음밥 + 생맥주, 하이볼',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/jukei_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/jukei_menu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>탄탄멘, 교자, 마파두부, 볶음밥 + 생맥주, 하이볼',
     tips: '숙소에서 1분 거리! 비 오는 날이나 체크인 전후 간단하게 배 채우기 최적. 현지 할머니, 직장인들이 오는 소박한 식당.',
     tags: ['숙소 바로 옆', '동네 식당', '런치', '가성비'],
     imageSearch: '重慶 青森本町 中華',
@@ -3112,7 +3409,7 @@ const SPOTS = {
     icon: '🥢', category: '동네 소바집',
     hours: '수~일 11:00~14:30', price: '소바 700~1,000엔',
     desc: '역에서 2분, 소바 한 그릇에 地酒 한잔. 관광객 없는 조용한 소바집에서 현지인처럼 점심.',
-    menu: '수타 소바 (자루소바, 카케소바), 텐뿌라 소바, 地酒',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/soba_shoseiran_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/soba_shoseiran_menu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>수타 소바 (자루소바, 카케소바), 텐뿌라 소바, 地酒',
     tips: '소바+地酒 조합은 일본 직장인의 클래식 런치. 점심에 조용히 한잔하고 싶을 때.',
     tags: ['수타 소바', '昼飲み', '역 2분'],
     imageSearch: 'そば処正嵐 青森 手打ちそば',
@@ -3124,7 +3421,7 @@ const SPOTS = {
     hours: '11:00~15:00, 16:30~19:00', price: '런치 1,200~2,000엔',
     placeId: 'ChIJK6EsDB-fm18RNiPpCKlPE3c',
     desc: 'ASPAM 10층에서 아오모리만 파노라마를 보면서 향토 요리 런치. 관광+식사를 겸하면서도 지역 음식을 제대로 맛보는 곳.',
-    menu: '호타테 요리, 향토 정식, 계절 해산물, 地酒 (낮부터 가능)',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/nishimura_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>호타테 요리, 향토 정식, 계절 해산물, 地酒 (낮부터 가능)',
     tips: '전망대(13F)를 보고 내려와서 10F에서 런치. 창가석에서 바다를 보며 地酒 한잔. 평일 낮은 한산해서 여유.',
     tags: ['전망 런치', 'ASPAM 10F', '향토 요리', '昼飲み'],
     photos: ['img/nishimura_1.jpg', 'img/nishimura_2.jpg'],
@@ -3138,7 +3435,7 @@ const SPOTS = {
     icon: '🍜', category: '아침 라멘 (朝ラー)',
     hours: '07:30~15:00', price: '450~600엔 / 100엔 맛보기 있음',
     desc: '아침 7:30부터 라멘! "朝ラー(아사라)" 문화의 상징. 구운 멸치(焼干し) 육수의 맑은 중화소바. 100엔짜리 "맛보기" 사이즈도 있어 부담 없이.',
-    menu: '中華そば (기본 450엔), 大盛り (600엔), お試し 100엔 (맛보기 소량)',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/kudo_ramen_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>中華そば (기본 450엔), 大盛り (600엔), お試し 100엔 (맛보기 소량)',
     tips: '아침 시장 가기 전이나 후에 들르기 최적. 100엔 맛보기는 "아침에 라멘은 좀..." 하는 사람도 부담 없이 시도 가능. 현지 아저씨들이 출근 전에 한 그릇 먹고 가는 진짜 로컬.',
     tags: ['朝ラー', '아침 라멘', '100엔 맛보기', '07:30 오픈'],
     photos: ['img/kudo_ramen_1.jpg', 'img/kudo_ramen_2.jpg'],
@@ -3150,7 +3447,7 @@ const SPOTS = {
     icon: '🍜', category: '대중 라멘 (메뉴 2개)',
     hours: '10:30~15:00頃 (매진 시 조기 마감)', price: '중 650엔 / 대 700엔',
     desc: '메뉴가 딱 2개. 중(650엔)과 대(700엔). 그게 전부. 니보시 간장 라멘 하나로 50년+ 버틴 집. 아오모리 소울푸드의 원형.',
-    menu: '中華そば 中 (650엔), 中華そば 大 (700엔) — 이상 끝',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/marukai_ramen_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>中華そば 中 (650엔), 中華そば 大 (700엔) — 이상 끝',
     tips: '"메뉴 2개뿐인 라멘집"이라는 것 자체가 맛의 증거. 카운터에 앉아 "中ください"(츄 쿠다사이) 한 마디면 끝. 余計なもの없이 니보시 육수에만 집중.',
     tags: ['메뉴 2개', '소울푸드', '니보시 간장', '50년+'],
     photos: ['img/marukai_ramen_1.jpg', 'img/marukai_ramen_2.jpg'],
@@ -3162,7 +3459,7 @@ const SPOTS = {
     icon: '🍚', category: '대중 식당 (전 메뉴 700엔)',
     hours: '11:00~14:00頃', price: '전 메뉴 700엔',
     desc: '런치 세트 전부 700엔. 당일 입하 생선으로 만든 手作り 정식. 현금만. 직장인·택시 기사·건설 노동자가 오는 대중 식당.',
-    menu: '日替わり定食 (매일 바뀌는 정식), 焼き魚定食, 생선 프라이 정식 — 전부 700엔',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/ajikou_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>日替わり定食 (매일 바뀌는 정식), 焼き魚定食, 생선 프라이 정식 — 전부 700엔',
     tips: '매일 메뉴가 바뀐다. 入口의 간판을 보고 오늘의 메뉴를 확인. 관광 가이드에 절대 안 나오는 곳. 직장인들 사이에 끼어 앉아 묵묵히 정식을 먹는 것이 "로컬 체험".',
     tags: ['전 메뉴 700엔', '日替わり', '현금만', '직장인 식당'],
     photos: ['img/ajikou_1.jpg', 'img/ajikou_2.jpg'],
@@ -3174,7 +3471,7 @@ const SPOTS = {
     icon: '🍺', category: '立ち飲み (스탠딩 바)',
     hours: '14:00~22:00頃', price: '쯔마미 100엔~, 음료 300엔~',
     desc: '오후 2시부터 여는 스탠딩 바. 현금·현장 결제(キャッシュオン). 프로레슬링 장식이 특이한 분위기. 쯔마미(안주) 100엔부터.',
-    menu: '생맥주, 하이볼, 사워 300엔~ / 쯔마미(안주) 100~300엔 / 일품 요리',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/tachinomi_17_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>생맥주, 하이볼, 사워 300엔~ / 쯔마미(안주) 100~300엔 / 일품 요리',
     tips: '"昼飲み(히루노미)" 입문에 최적. 서서 마시니까 짧게 1~2잔 하고 나오기 좋다. 주변 직장인·아저씨들과 어깨를 나란히 하고 서서 마시는 경험. 일본 스탠딩 바 문화 체험.',
     tags: ['立ち飲み', '14시 오픈', '100엔 안주', '캐시온'],
     photos: ['img/tachinomi_17_1.jpg', 'img/tachinomi_17_2.jpg'],
@@ -3186,7 +3483,7 @@ const SPOTS = {
     icon: '🌳', category: '도심 공원',
     hours: '24시간', price: '무료',
     desc: '숙소 바로 근처 長島 지역의 도심 공원. 현청 옆에 위치한 녹지로, 점심시간이면 직장인들이 편의점 도시락을 들고 벤치에 앉고, 어르신들이 느긋하게 산책하는 아오모리 사람들의 일상적 공간. 관광지가 아니기에 오히려 "현지인처럼 사는" 이 여행의 컨셉에 가장 맞는 장소.',
-    menu: '벤치, 산책로, 녹지. 편의점 도시락이나 시장 음식 사서 여기서 먹기 좋다.',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/aoimori_park_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/aoimori_park_menu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>벤치, 산책로, 녹지. 편의점 도시락이나 시장 음식 사서 여기서 먹기 좋다.',
     tips: '아침 산책이나 편의점 커피 마시며 멍 때리기 최적. 숙소에서 3분이라 부담 없이. 아오모리 사람들의 일상 속에 자연스럽게 녹아들 수 있는 공간.',
     tags: ['숙소 3분', '산책', '도시락', '일상'],
     photos: ['img/aoimori_park_1.jpg', 'img/aoimori_park_2.jpg'],
@@ -3200,7 +3497,7 @@ const SPOTS = {
     linkedSpots: ['nagao_ekimae','kudo_ramen','marukai_ramen','sr_azuma'],
     price: '700~1,000엔', imageSearch: '青森 煮干しラーメン',
     desc: '아오모리시 100곳+ 라멘점 중 8~9할이 니보시(멸치) 라멘. 도쿄의 돈코츠, 삿포로의 미소처럼 아오모리의 정체성은 니보시다. 건조 멸치를 대량으로 우려낸 깊은 국물 — 가게마다 멸치 배합과 농도가 달라 「煮干しラーメン 순례」를 하는 현지인도 많다. 관광객용이 아닌, 현지인이 매일 먹는 진짜 소울푸드.',
-    menu: '진한 니보시 (농후, 걸쭉) vs 맑은 니보시 (깔끔, 투명) — 가게마다 스타일이 다르다.',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/niboshi_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/niboshi_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>진한 니보시 (농후, 걸쭉) vs 맑은 니보시 (깔끔, 투명) — 가게마다 스타일이 다르다.',
     tips: '현지인은 주 1~2회 방문하는 진짜 소울푸드. 역 주변에 다수. "あっさり(깔끔)와 こってり(진한) 중 어느 쪽?" 물어보면 추천해줌.',
     tags: ['소울푸드', '멸치 육수', '현지인 주 1~2회'],
     photos: ['img/niboshi_1.jpg', 'img/niboshi_2.jpg'],
@@ -3212,7 +3509,7 @@ const SPOTS = {
     price: '850~1,000엔', imageSearch: '味噌カレー牛乳ラーメン 青森',
     placeId: 'ChIJ8RSfihufm18RbYfiZDGnKD0',
     desc: '아오모리 고유 B급 구르메. 1970년대 학생들이 "미소에 카레 넣고, 우유도 넣고, 버터도!" 주문한 것이 시작. "그런 게 맛있겠어?"에서 출발한 조합이 1978년 「味の札幌」에서 정식 메뉴화되며 아오모리 시 공인 명물로. 미소의 짠맛, 카레의 향, 우유의 부드러움, 버터의 고소함이 혼연일체 — 한 입 먹으면 "왜 다른 데는 안 하지?"가 된다.',
-    menu: '미소 베이스 국물 + 카레 스파이스 + 우유 + 버터 토핑. 중태 축면(ちぢれ麺).',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/miso_curry_ramen_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/miso_curry_ramen_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>미소 베이스 국물 + 카레 스파이스 + 우유 + 버터 토핑. 중태 축면(ちぢれ麺).',
     tips: '유명 가게는 「味の札幌 大西」(아오모리역 근처). 1970년대 중고생 유행에서 탄생.',
     order: '"味噌カレー牛乳ラーメンください" (미소카레규뉴라멘 쿠다사이)',
     tags: ['B급 구르메', '1978년 탄생', '미소+카레+우유+버터'],
@@ -3223,7 +3520,7 @@ const SPOTS = {
     query: '生姜味噌おでん 青森', icon: '🍢', category: '아오모리 향토 요리',
     price: '1개 100~200엔대', imageSearch: '青森 生姜味噌おでん',
     desc: '전국 어디서나 오뎅은 먹을 수 있지만, 생강 갈은 것을 섞은 미소 소스를 찍어 먹는 오뎅은 아오모리뿐. 전후 아오모리역 앞 포장마차에서 겨울바람 속 손님 몸을 녹이려 생강을 넣은 것이 시작 — 미소의 깊은 맛에 생강의 알싸한 온기가 겹쳐 한 입에 속부터 따뜻해진다. 4월 초 아오모리는 아직 겨울의 끝자락이라, 이 한 그릇이 진가를 발휘하는 시기.',
-    menu: '다이콘(무), 곤약, 치쿠와, 계란, 한펜 + 생강미소 소스',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/shoga_oden_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/shoga_oden_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>다이콘(무), 곤약, 치쿠와, 계란, 한펜 + 생강미소 소스',
     tips: '이자카야에서도 제공하는 곳이 많으니 "生姜味噌おでんありますか?"라고 물어보기.',
     order: '"生姜味噌おでんください" (쇼가미소오뎅 쿠다사이)',
     tags: ['향토 요리', '생강+미소', '포장마차', '추운 날 필수'],
@@ -3235,7 +3532,7 @@ const SPOTS = {
     linkedSpots: ['hideka','kakigen','joppari','sanfuri'],
     price: '1잔(90ml) 500~1,000엔', imageSearch: '田酒 日本酒',
     desc: '아오모리현이 자랑하는 3대 명주. 田酒(덴슈)는 서울 미쉐린급 와인바에서도 찾기 힘든 전국적 프리미엄 — 순미 대긴조 한 잔에 쌀의 감칠맛이 폭발한다. 豊盃(호우하이)는 풍부한 과실향이 해산물과 절묘한 페어링. 陸奥八仙(무츠핫센)은 청량한 시트러스 뉘앙스로 입문용에 최적. 이 세 가지를 한 자리에서 비교 시음하는 것이 아오모리 술 체험의 핵심.',
-    menu: '<strong>田酒 (덴슈)</strong> — 전국적 프리미엄. 현지에서도 입수 어려움.<br><strong>豊盃 (호우하이)</strong> — 풍부한 과실향.<br><strong>陸奥八仙 (무츠핫센)</strong> — 신선한 과실향, 가볍고 깔끔.',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/denshu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/denshu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>田酒 (덴슈)</strong> — 전국적 프리미엄. 현지에서도 입수 어려움.<br><strong>豊盃 (호우하이)</strong> — 풍부한 과실향.<br><strong>陸奥八仙 (무츠핫센)</strong> — 신선한 과실향, 가볍고 깔끔.',
     tips: '田酒는 있는 날과 없는 날이 있다. "田酒ありますか?"(덴슈 아리마스카?) 꼭 물어보기. 3종 비교 시음이 최고.',
     order: '"おすすめの地酒をください" (오스스메노 지자케오 쿠다사이 = 추천 지주 주세요)',
     tags: ['田酒', '豊盃', '陸奥八仙', '프리미엄'],
@@ -3250,7 +3547,7 @@ const SPOTS = {
     price: '단품 500~800엔 / 정식 1,000~1,500엔',
     imageSearch: '青森 貝焼き味噌 ホタテ',
     desc: '아오모리 향토 요리의 정점. 지름 20cm의 호타테(가리비) 껍데기를 그대로 냄비 삼아, 가쓰오 다시와 미소를 붓고 호타테 살·파·두부를 넣어 부글부글 끓인 뒤, 마지막에 계란을 풀어 반숙으로 마무리. 에도시대 陸奥湾 어부들이 선상에서 남은 가리비 껍데기로 조리한 것이 기원 — 소박하지만 바다의 감칠맛이 응축된 한 그릇이다. おさない食堂의 것이 가장 유명하며, 밥 위에 얹어 먹으면 아오모리판 해물덮밥이 된다.',
-    menu: '<strong>기본 구성</strong>: 호타테 껍데기 위에 호타테 살 + 다시 + 미소 + 계란 → 부글부글 끓여 먹기<br><strong>바리에이션</strong>: 가게마다 다시 배합이 다름. 두부·파 추가하는 곳도.',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/kaiyaki_miso_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>기본 구성</strong>: 호타테 껍데기 위에 호타테 살 + 다시 + 미소 + 계란 → 부글부글 끓여 먹기<br><strong>바리에이션</strong>: 가게마다 다시 배합이 다름. 두부·파 추가하는 곳도.',
     tips: '아오모리에 왔으면 <strong>반드시 먹어야 할 1순위</strong>. おさない食堂의 "ほたて貝みそ焼き定食"이 가장 유명. 뜨거울 때 밥 위에 얹어 먹으면 최고.',
     order: '"ほたて貝焼き味噌ください" (호타테 카이야키미소 쿠다사이)',
     tags: ['향토 요리 No.1', '호타테', '가리비 껍데기', 'おさない食堂'],
@@ -3262,7 +3559,7 @@ const SPOTS = {
     price: '300~1,500엔',
     imageSearch: '青森 ホタテ 刺身 バター焼き',
     desc: '陸奥湾은 쓰가루 반도와 시모키타 반도가 감싸는 내해 — 수온이 낮아 호타테(가리비)가 천천히 자라며 단맛과 탄력이 극대화된다. 4월은 산란 직전으로 가장 통통하게 살이 오른 시기. 회로 먹으면 탱글한 식감과 바다의 단맛이 폭발하고, 바터구이로 하면 껍데기 위에서 간장·버터와 지글지글. 아오모리 어디서든 호타테는 "기본값"이다 — 이자카야에서 "ホタテありますか?" 한 마디면 그날의 호타테가 다양한 형태로 나온다.',
-    menu: '<strong>호타테 회</strong> — 신선한 탄력, 단맛 폭발<br><strong>호타테 바터구이</strong> — 간장+버터, 일본 이자카야 정석<br><strong>호타테 프라이</strong> — おさない食堂 명물, 두툼한 가리비 튀김<br><strong>호타테 미소구이</strong> — 껍데기에 미소를 얹어 구움<br><strong>ベビーホタテ</strong> — 작은 가리비를 통째로 (사가구이, 술안주)',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/hotate_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>호타테 회</strong> — 신선한 탄력, 단맛 폭발<br><strong>호타테 바터구이</strong> — 간장+버터, 일본 이자카야 정석<br><strong>호타테 프라이</strong> — おさない食堂 명물, 두툼한 가리비 튀김<br><strong>호타테 미소구이</strong> — 껍데기에 미소를 얹어 구움<br><strong>ベビーホタテ</strong> — 작은 가리비를 통째로 (사가구이, 술안주)',
     tips: '4월 초는 호타테가 가장 통통한 시기. 이자카야에서 "ホタテありますか?"만 물어보면 다양한 형태로 제공. おさない食堂의 "ほたてフライ定食"은 역 앞 필수 메뉴.',
     tags: ['4월 제철', '호타테 회', '바터구이', '프라이'],
     photos: ['img/hotate_1.jpg'],
@@ -3273,7 +3570,7 @@ const SPOTS = {
     price: '150~200엔 (편의점·슈퍼)',
     imageSearch: 'イギリストースト 工藤パン 青森',
     desc: '아오모리 현민이 사랑하는 소울 간식. 工藤パン(쿠도빵)이 1967년부터 만들어온 지역 한정 빵 — 얇은 식빵 2장 사이에 마가린과 그래뉴당(자리자리 설탕)을 바른, 그것뿐인 구성인데 연간 500만 개가 팔린다. "이게 왜 맛있지?"라고 의문을 품는 순간 이미 두 번째 입을 베어 물고 있다. 마가린의 부드러움과 설탕 입자의 사각사각이 중독적. 계절 한정판(잠두콩, 초코, 피넛 등)이 수십 종 있어 컬렉팅하는 팬도.',
-    menu: '<strong>정통</strong>: マーガリン+グラニュー糖 (기본)<br><strong>바리에이션</strong>: 소라마메(잠두콩)맛, 초코, 피넛, 계절 한정판 등 수십 종',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/igirisu_toast_product_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/igirisu_toast_product_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>정통</strong>: マーガリン+グラニュー糖 (기본)<br><strong>바리에이션</strong>: 소라마메(잠두콩)맛, 초코, 피넛, 계절 한정판 등 수십 종',
     tips: '편의점(로손, 세븐)이나 슈퍼(이온, AUGA)에서 구매. "왜 이게 맛있지?" 하면서 계속 먹게 되는 중독성. 아침에 커피와 함께, 또는 킷사텐 가기 전 간식으로. 한정판 맛을 찾는 재미도.',
     order: '편의점·슈퍼 빵 코너에서 工藤パン 로고 찾기',
     tags: ['소울 간식', '편의점', '工藤パン', '연 500만개', '150엔'],
@@ -3286,7 +3583,7 @@ const SPOTS = {
     price: '500~800엔',
     imageSearch: 'じゃっぱ汁 青森 郷土料理',
     desc: '"じゃっぱ"는 쓰가루 사투리로 "자투리". 대구(鱈)의 머리·뼈·내장·아가미 등 버리는 부위를 통째로 미소 또는 시오(소금) 국물에 끓인, 쓰가루 어부의 겨울 생존식이다. 뼈에서 우러나는 젤라틴, 내장(白子·肝)의 농후함, 무의 달큼함이 어우러져 한 그릇에 바다 전체가 들어 있는 느낌. 정식 제철은 겨울이지만 4월 초까지 제공하는 이자카야가 있으니, 生姜味噌おでん과 함께 아오모리 국물 요리의 양대산맥을 꼭 체험할 것.',
-    menu: '대구 자투리(머리, 뼈, 내장, 살) + 무 + 두부 + 파 → 미소 or 시오 국물',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/jappa_jiru_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/jappa_jiru_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>대구 자투리(머리, 뼈, 내장, 살) + 무 + 두부 + 파 → 미소 or 시오 국물',
     tips: '이자카야에서 "じゃっぱ汁ありますか?"로 주문. 겨울~초봄 한정 메뉴인 곳도 있으니 4월 초에 먹을 수 있으면 럭키. 生姜味噌おでん과 함께 아오모리 국물 요리의 양대산맥.',
     order: '"じゃっぱ汁ください" (잣파지루 쿠다사이)',
     tags: ['어부 국물', '대구', '겨울~봄', '미소'],
@@ -3300,7 +3597,7 @@ const SPOTS = {
     price: '300~600엔',
     imageSearch: '青森 アップルパイ りんごスイーツ',
     desc: '일본 사과 생산량의 60%를 차지하는 사과 왕국 아오모리. 시내 곳곳에서 사과 파이, 사과 젤라또, 사과 시드르(사과술), 갓 짠 사과 주스를 만날 수 있다. クレオパトラの "あつあつアップルパイ"(갓 구운 뜨거운 파이)는 필수 체험이고, A-FACTORY에서는 아오모리산 사과만으로 빚은 시드르 5종을 100엔부터 시음 가능. 편의점에서조차 사과주스가 5종 이상 진열되어 있는 게 아오모리다.',
-    menu: '<strong>クレオパトラ</strong> — 갓 구운 뜨거운 애플파이 (킷사텐 명물)<br><strong>A-FACTORY</strong> — 사과 젤라또, 사과 시드르 테이스팅<br><strong>ASPAM 1F pampam</strong> — 하트형 아플파이 전문점<br><strong>편의점</strong> — 工藤パン 사과 계열 빵, 사과주스',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/apple_sweets_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/apple_sweets_menu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>クレオパトラ</strong> — 갓 구운 뜨거운 애플파이 (킷사텐 명물)<br><strong>A-FACTORY</strong> — 사과 젤라또, 사과 시드르 테이스팅<br><strong>ASPAM 1F pampam</strong> — 하트형 아플파이 전문점<br><strong>편의점</strong> — 工藤パン 사과 계열 빵, 사과주스',
     tips: 'クレオパトラ의 "あつあつアップルパイ"는 사과 디저트 1순위. A-FACTORY에서는 시드르(사과술)도 시음 가능. ASPAM 1F에서 기념품용 사과 과자 구매.',
     tags: ['사과 파이', '시드르', '젤라또', '사과 왕국'],
     photos: ['img/apple_sweets_1.jpg', 'img/apple_sweets_2.jpg'],
@@ -3312,7 +3609,7 @@ const SPOTS = {
     icon: '🦑', category: '해산물 식당 / 호타테 낚시 체험',
     hours: '11:00~21:00', price: '정식 1,000~2,000엔',
     desc: '아오모리항 워터프론트에 위치한 해산물 식당 겸 체험 시설. 점내에 "ホタテ釣り(호타테 낚시)" 코너가 있어, 수조에서 직접 가리비를 낚아 그 자리에서 숯불구이로 먹을 수 있다. 잡은 직후의 가리비가 숯불 위에서 껍데기를 벌리며 육즙을 내뿜는 모습은 진정한 라이브 쿠킹. 베이에리어 산책 코스 중간에 위치하여 와랏세·A-FACTORY와 동선이 자연스럽다.',
-    menu: '<strong>ホタテ釣り</strong> — 직접 낚아서 바로 구이 (체험형)<br><strong>貝焼き味噌</strong> — 향토 스타일 정통<br><strong>海鮮丼</strong> — 당일 입하 해산물 덮밥<br><strong>イカ刺し</strong> — 아오모리 오징어 회',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/daifukumaru_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>ホタテ釣り</strong> — 직접 낚아서 바로 구이 (체험형)<br><strong>貝焼き味噌</strong> — 향토 스타일 정통<br><strong>海鮮丼</strong> — 당일 입하 해산물 덮밥<br><strong>イカ刺し</strong> — 아오모리 오징어 회',
     tips: '호타테 낚시 체험은 아이 동반이 아니어도 재미있다. 직접 잡은 가리비를 그 자리에서 숯불에 구워먹는 체험. 베이에리어 산책 중 점심으로 최적.',
     tags: ['호타테 낚시', '체험형', '베이에리어', '해산물'],
     photos: ['img/daifukumaru_1.jpg', 'img/daifukumaru_2.jpg'],
@@ -3327,7 +3624,7 @@ const SPOTS = {
     icon: '☕', category: '스페셜티 커피 스탠드',
     hours: '월·목·금 10:00~18:00, 토·일·축 11:00~18:00 (화·수 정기휴무)', price: '400~600엔',
     desc: '7석뿐인 작은 스페셜티 커피 스탠드. 에티오피아 이르가체페 등 엄선 원두를 소량 자가배전. 명물 "りんごカフェオレ"는 아오모리 사과주스×커피의 절묘한 블렌드. 아오모리 커피 씬의 중심.',
-    menu: '<strong>りんごカフェオレ</strong> — 아오모리 사과주스 + 커피 블렌드 (시그니처)<br><strong>에티오피아 이르가체페</strong> — 핸드드립<br><strong>에스프레소</strong> — 소량 로스팅 원두',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/coffeeman_good_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>りんごカフェオレ</strong> — 아오모리 사과주스 + 커피 블렌드 (시그니처)<br><strong>에티오피아 이르가체페</strong> — 핸드드립<br><strong>에스프레소</strong> — 소량 로스팅 원두',
     tips: '7석이라 혼잡 시 대기 가능. 원두 구매도 가능(coffeemangood.stores.jp). 아오모리 사과 카페오레는 여기서만 맛볼 수 있는 시그니처.',
     order: '"りんごカフェオレください" (린고 카페오레 쿠다사이)',
     tags: ['스페셜티 커피', '자가배전', '사과 카페오레', '7석', 'Wi-Fi'],
@@ -3341,7 +3638,7 @@ const SPOTS = {
     icon: '🍸', category: '카페 & 바 (낮→밤 변신)',
     hours: '카페 11:30~19:00 / 바 19:30~1:00 (목 15:00까지, 일 18:00까지)', price: '카페 500~1,000엔 / 바 800~1,500엔',
     desc: '앤티크 인테리어의 카페 겸 바. 낮에는 케이크와 커피, 밤에는 카크테일과 와인. 무료 Wi-Fi·전원 완비. COFFEEMAN good 바로 옆이라 카페 호핑에 최적.',
-    menu: '<strong>낮</strong>: 케이크 세트, 핸드드립 커피, 런치 플레이트<br><strong>밤</strong>: 카크테일, 내추럴 와인, 위스키',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/quatre_cafe_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>낮</strong>: 케이크 세트, 핸드드립 커피, 런치 플레이트<br><strong>밤</strong>: 카크테일, 내추럴 와인, 위스키',
     tips: '낮에 카페로 들러서 밤에 바로 재방문하는 "1일 2회" 활용법. COFFEEMAN good과 합치면 커피→카페→바 3단 콤보.',
     tags: ['카페 & 바', '앤티크', 'Wi-Fi', '전원', '낮밤 변신'],
     photos: ['img/quatre_cafe_1.jpg', 'img/quatre_cafe_2.jpg'],
@@ -3354,7 +3651,7 @@ const SPOTS = {
     icon: '🍵', category: '와모던 카페 & 코워킹',
     hours: '6:30~9:30, 11:00~22:00 (목 15:00까지)', price: '500~1,200엔',
     desc: '교토 기법 × 아오모리 식재의 와모던 카페. 升(마스)에 담긴 말차 티라미스가 SNS에서 화제. 코워킹 이용도 가능(창가 콘센트석). 아침 6:30부터 영업.',
-    menu: '<strong>말차 티라미스</strong> — 升에 담긴 시그니처<br><strong>바리스타 커피</strong> — 본격 에스프레소<br><strong>런치 플레이트</strong> — 아오모리 식재 활용',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/uguisu_cafe_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>말차 티라미스</strong> — 升에 담긴 시그니처<br><strong>바리스타 커피</strong> — 본격 에스프레소<br><strong>런치 플레이트</strong> — 아오모리 식재 활용',
     tips: '아침 일찍(6:30~) 오픈해서 朝ラー 전 커피 타임에 최적. 新町通り 메인 거리에 위치. 비 오는 날 아케이드 산책 후 들르기 좋다.',
     tags: ['말차 티라미스', '와모던', '코워킹', '아침 영업', 'SNS'],
     photos: ['img/uguisu_cafe_1.jpg', 'img/uguisu_cafe_2.jpg'],
@@ -3368,7 +3665,7 @@ const SPOTS = {
     icon: '🍺', category: '셀프탭 크래프트 비어',
     hours: '수~금 17:00~22:00, 토 15:00~22:00 (일~화 정기휴무)', price: '비어 1잔 500~900엔',
     desc: '도호쿠 최초 셀프탭 시스템. Be Easy Brewing의 크래프트 비어 상시 8탭. 카드를 받아 원하는 양만큼 직접 따르는 스타일. 아오모리산 사과·카시스 한정 비어도. 음식 반입 OK, 보틀 100종+.',
-    menu: '<strong>셀프탭 8종</strong> — 소량씩 전종 시음 가능<br><strong>아오모리 사과 비어</strong> — 계절 한정<br><strong>카시스 비어</strong> — 아오모리 카시스 사용',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/aomori_brew_pub_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>셀프탭 8종</strong> — 소량씩 전종 시음 가능<br><strong>아오모리 사과 비어</strong> — 계절 한정<br><strong>카시스 비어</strong> — 아오모리 카시스 사용',
     tips: '토요일은 15시부터 오픈! 소량씩 8종 전부 시음하는 게 이곳의 묘미. 혼자서도 편하게 입장 가능. 음식은 근처에서 사와도 OK.',
     order: '카운터에서 카드 수령 → 탭에 카드 대고 원하는 양만큼 따르기 → 나갈 때 정산',
     tags: ['셀프탭', '크래프트 비어', '8탭', 'Be Easy', '혼자OK'],
@@ -3382,7 +3679,7 @@ const SPOTS = {
     icon: '🍺', category: '크래프트 비어 바',
     hours: '월~금 17:00~23:00, 토·축 15:00~23:00 (일 정기휴무)', price: '비어 1잔 600~1,000엔',
     desc: '우드 인테리어의 캐주얼 크래프트 비어 바. 10탭으로 국내외 크래프트 비어를 로테이션. 로스트비프, 자가제 소시지 등 푸드도 충실. 음방 플랜(120분)도.',
-    menu: '<strong>10탭 크래프트 비어</strong> — 국내외 로테이션<br><strong>로스트비프</strong> — 비어 안주 인기 메뉴<br><strong>자가제 소시지</strong>',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/demo_beer_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/demo_beer_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>10탭 크래프트 비어</strong> — 국내외 로테이션<br><strong>로스트비프</strong> — 비어 안주 인기 메뉴<br><strong>자가제 소시지</strong>',
     tips: '그룹으로 갈 때는 음방 플랜이 가성비 좋다. Aomori Brew Pub과 합쳐서 크래프트 비어 호핑.',
     tags: ['크래프트 비어', '10탭', '푸드 페어링', '음방 가능'],
     photos: ['img/demo_beer_1.jpg', 'img/demo_beer_2.jpg'],
@@ -3395,7 +3692,7 @@ const SPOTS = {
     icon: '🥃', category: '오센틱 바',
     hours: '월~토 18:00~26:00(L.O.25:30), 일·축 ~24:00', price: '카크테일 800~1,500엔, 위스키 700~2,000엔',
     desc: '번화가에서 살짝 벗어난 골목의 히든 오센틱 바. 오너 바텐더가 혼자 운영. 위스키와 클래식 카크테일이 전문. 조용하고 차분한 어른의 공간. 새벽 2시까지 영업은 아오모리에서 귀하다.',
-    menu: '<strong>클래식 카크테일</strong> — 마티니, 사이드카, 올드 패션드 등<br><strong>위스키</strong> — 일본 위스키 + 스카치 세레크션<br><strong>오리지널 카크테일</strong> — 아오모리 사과 사용',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/bar_ludens_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>클래식 카크테일</strong> — 마티니, 사이드카, 올드 패션드 등<br><strong>위스키</strong> — 일본 위스키 + 스카치 세레크션<br><strong>오리지널 카크테일</strong> — 아오모리 사과 사용',
     tips: '본町 이자카야 3~4차 후 마무리에 최적. 정적을 즐기는 바. "おすすめのカクテルを" (추천 카크테일을) 하면 취향에 맞춰 만들어줌.',
     tags: ['오센틱 바', '위스키', '히든', '새벽 2시', '마무리'],
     photos: ['img/bar_ludens_1.jpg', 'img/bar_ludens_2.jpg'],
@@ -3408,7 +3705,7 @@ const SPOTS = {
     icon: '🍹', category: '프루츠 카크테일 바',
     hours: '영업시간 확인 필요 (월 정기휴무)', price: '카크테일 700~1,200엔 (평균 3,000엔)',
     desc: '제철 생과일을 아낌없이 사용한 프루츠 카크테일이 시그니처. 50석+스탠딩 70명의 넓은 공간. 모던 인테리어. 혼자~그룹까지 대응.',
-    menu: '<strong>프루츠 카크테일</strong> — 제철 과일 사용, 계절마다 변경<br><strong>아오모리 사과 카크테일</strong><br><strong>다이닝 메뉴</strong> — 가벼운 식사도 가능',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/kajitsu_bar_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>프루츠 카크테일</strong> — 제철 과일 사용, 계절마다 변경<br><strong>아오모리 사과 카크테일</strong><br><strong>다이닝 메뉴</strong> — 가벼운 식사도 가능',
     tips: '본町 이자카야 호핑의 2차로 최적. 화려한 프루츠 카크테일은 사진빨도 좋다.',
     tags: ['프루츠 카크테일', '본町', '모던', '50석'],
     photos: ['img/kajitsu_bar_1.jpg', 'img/kajitsu_bar_2.jpg'],
@@ -3421,7 +3718,7 @@ const SPOTS = {
     icon: '🎧', category: '나이트클럽 / DJ',
     hours: '이벤트별 (보통 22:00~새벽)', price: '1,500~3,000엔',
     desc: '아오모리시 유일의 나이트클럽. BLACK FLOOR(DJ부스+사운드+조명)와 RED LOUNGE(라운지) 2개 에리어. 테크노·하우스·힙합 등 다양한 장르. SNS(@milkroom_re_aomori)에서 이벤트 확인.',
-    menu: '드링크 각종',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/milk_room_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>드링크 각종',
     tips: 'SNS에서 이벤트 스케줄 확인 필수. 아오모리에서 클럽 문화를 체험할 수 있는 유일한 장소. 금·토요일이 메인.',
     tags: ['나이트클럽', 'DJ', '테크노', '하우스', '유일'],
     photos: ['img/milk_room_1.jpg', 'img/milk_room_2.jpg'],
@@ -3434,7 +3731,7 @@ const SPOTS = {
     icon: '🎸', category: '라이브 하우스',
     hours: '이벤트별 (보통 19:00 개장)', price: '2,000~5,000엔 (+1드링크 500엔)',
     desc: '아오모리시 메인 라이브 하우스. 캐파 300~350명. 음향·조명 리뉴얼 완료. 인디 밴드부터 전국 투어 아티스트까지. 로커 48개 완비.',
-    menu: '드링크 각종 (입장 시 1드링크 필수)',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/aomori_quarter_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>드링크 각종 (입장 시 1드링크 필수)',
     tips: '공식 사이트(aomoriquarter.com)에서 4월 초 스케줄 확인. 여행 일정과 맞는 공연이 있으면 현지 음악 씬 체험 가능.',
     tags: ['라이브 하우스', '인디', '음악', '300석'],
     photos: ['img/aomori_quarter_1.jpg', 'img/aomori_quarter_2.jpg'],
@@ -3449,7 +3746,7 @@ const SPOTS = {
     icon: '🍜', category: '니보시 라멘 (サンロード 내)',
     hours: '11:00~20:00', price: '750~950엔',
     desc: 'サンロード 3층 푸드코트의 煮干し中華そば 전문점. 쇼핑 중 든든한 한 그릇. 아오모리 니보시 라멘을 쇼핑몰에서 간편하게 맛볼 수 있다.',
-    menu: '<strong>煮干し中華そば</strong> — 기본 니보시 라멘<br><strong>つけ麺</strong> — 쯔케멘 스타일',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/sr_azuma_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>煮干し中華そば</strong> — 기본 니보시 라멘<br><strong>つけ麺</strong> — 쯔케멘 스타일',
     tips: 'サンロード에서 PORTER 쇼핑 후 3층으로 올라가면 바로. 푸드코트라 혼자서도 편하게.',
     tags: ['니보시 라멘', 'サンロード 3F', '쇼핑 후 식사'],
     photos: ['img/sr_azuma_1.jpg', 'img/sr_azuma_2.jpg'],
@@ -3461,7 +3758,7 @@ const SPOTS = {
     icon: '🍛', category: '인도 카레 (サンロード 내)',
     hours: '11:00~20:00', price: '1,000~1,500엔',
     desc: 'サンロード 3층의 본격 인도 카레 & 난. 라멘이 질릴 때 선택지. 큰 난에 카레 2종 세트가 인기.',
-    menu: '<strong>カレーセット</strong> — 난 + 카레 2종 선택<br><strong>タンドリーチキン</strong><br><strong>ラッシー</strong>',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/sr_haveli_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>カレーセット</strong> — 난 + 카레 2종 선택<br><strong>タンドリーチキン</strong><br><strong>ラッシー</strong>',
     tips: '라멘·화식에 지칠 때 기분 전환으로 최적. 식베론 3.18로 サンロード 내 최고 평점.',
     tags: ['인도 카레', '난', 'サンロード 3F', '기분 전환'],
     photos: ['img/sr_haveli_1.jpg', 'img/sr_haveli_2.jpg'],
@@ -3568,7 +3865,7 @@ const SPOTS = {
     icon: '🍰', category: '케이크 & 카페 레스토랑',
     hours: '10:00~20:00', price: '런치 1,000~1,800엔 / 케이크 500~800엔',
     desc: '新町商店街의 파티스리 겸 카페 레스토랑. 2F에서 피아노 생연주를 들으며 런치·디너 가능. 1F 쇼케이스에서 케이크·양과자 테이크아웃도.',
-    menu: '<strong>ランチプレート</strong> — 파스타/오므라이스 + 미니 디저트<br><strong>ケーキセット</strong> — 케이크 + 드링크<br><strong>季節のパフェ</strong> — 계절 파르페',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/sm_chandola_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>ランチプレート</strong> — 파스타/오므라이스 + 미니 디저트<br><strong>ケーキセット</strong> — 케이크 + 드링크<br><strong>季節のパフェ</strong> — 계절 파르페',
     tips: '新町 아케이드 산책 후 디저트 타임에 최적. 피아노 생연주(토·일)가 분위기 좋다. 쇼핑 피로를 달래는 달콤한 보상.',
     tags: ['케이크', '피아노 생연주', '新町', '런치', '디저트'],
     photos: ['img/sm_chandola_1.jpg', 'img/sm_chandola_2.jpg'],
@@ -3580,7 +3877,7 @@ const SPOTS = {
     icon: '🍛', category: '미소카레규뉴 라멘 (新町)',
     hours: '11:00~18:30', price: '800~1,000엔',
     desc: '미소카레규뉴(미소+카레+우유) 라멘의 원조 「味の札幌」 계열 점포. 大西보다 접근성이 좋은 新町通り 위치. 관광객+현지인 혼재.',
-    menu: '<strong>味噌カレー牛乳ラーメン</strong> — 시그니처. 미소+카레+우유+버터<br><strong>味噌ラーメン</strong> — 기본 미소 라멘<br><strong>醤油ラーメン</strong>',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/sm_ajisapporo_asari_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>味噌カレー牛乳ラーメン</strong> — 시그니처. 미소+카레+우유+버터<br><strong>味噌ラーメン</strong> — 기본 미소 라멘<br><strong>醤油ラーメン</strong>',
     tips: '大西가 유명하지만 浅利도 같은 계열이라 맛은 동급. 新町 산책 동선에서 자연스럽게 들를 수 있어 편리.',
     order: '"味噌カレー牛乳ラーメンください" (미소카레규뉴라멘 쿠다사이)',
     tags: ['미소카레규뉴', '新町', '원조 계열', 'B급 구르메'],
@@ -3593,7 +3890,7 @@ const SPOTS = {
     icon: '🍎', category: '사과 화과자 & 甘味処',
     hours: '09:00~18:00', price: '200~500엔',
     desc: '1918년(大正7년) 창업의 사과 화과자 전문점. 간판 상품 "薄紅(우스베니)"는 사과 얇은 조림을 감싼 반생과자. 아오모리 사과 기념품의 대표.',
-    menu: '<strong>薄紅(우스베니)</strong> — 사과 반생과자 (시그니처)<br><strong>たわわ</strong> — 사과 파이 스틱<br><strong>甘味セット</strong> — 점내 이트인 세트',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/sm_okinaya_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>薄紅(우스베니)</strong> — 사과 반생과자 (시그니처)<br><strong>たわわ</strong> — 사과 파이 스틱<br><strong>甘味セット</strong> — 점내 이트인 세트',
     tips: '기념품 쇼핑은 여기서 해결. "薄紅"은 아오모리 사과 기념품 부동의 1위. 이트인 코너에서 맛보기도 가능.',
     tags: ['사과 과자', '1918년 창업', '기념품', '新町', '薄紅'],
     photos: ['img/sm_okinaya_1.jpg', 'img/sm_okinaya_2.jpg'],
@@ -3607,7 +3904,7 @@ const SPOTS = {
     linkedSpots: ['igirisu_toast','apple_sweets','kisan_sunroad'],
     price: '100~300엔대',
     desc: '일본 편의점의 진짜 재미는 "지역한정(ご当地限定)". 아오모리는 사과 왕국답게 사과 계열 상품이 압도적이고, 동북 한정 오니기리·디저트가 수시로 바뀐다. 공항 면세점보다 편의점 빵 코너가 더 흥미로운 곳, 그게 아오모리다.',
-    menu: '<strong>🍞 工藤パン イギリストースト</strong><br>아오모리 소울 간식. 마가린+자리자리 설탕의 중독적 조합. 오리지널 필수 + りんごジャム&練乳クリーム맛 강추. 편의점 빵 코너에서 工藤パン 로고 찾기.<br><br><strong>🍙 セブンイレブン 동북 한정 おにぎり</strong><br>• <strong>塩漬け筋子</strong> (259엔) — 동북 3현 한정 연어알 오니기리. 도쿄에서 못 사는 맛<br>• <strong>にんにく味噌焼きおむすび</strong> (184엔) — 아오모리산 마늘+미소 구운 오니기리. 북동북 3현 한정<br><br><strong>🍎 りんご系 (사과 계열)</strong><br>• <strong>JAアオレン 希望の雫</strong> — 아오모리 후지 사과 100% 주스. 몽드셀렉션 금상. 편의점·슈퍼 어디서든<br>• 세브일레븐 <strong>青森県産りんごのアップルパイ</strong> — 계절 한정<br>• 편의점 주류 코너: りんごに恋したお酒 (사과술), 사과 츄하이 등',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/cvs_aomori_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>🍞 工藤パン イギリストースト</strong><br>아오모리 소울 간식. 마가린+자리자리 설탕의 중독적 조합. 오리지널 필수 + りんごジャム&練乳クリーム맛 강추. 편의점 빵 코너에서 工藤パン 로고 찾기.<br><br><strong>🍙 セブンイレブン 동북 한정 おにぎり</strong><br>• <strong>塩漬け筋子</strong> (259엔) — 동북 3현 한정 연어알 오니기리. 도쿄에서 못 사는 맛<br>• <strong>にんにく味噌焼きおむすび</strong> (184엔) — 아오모리산 마늘+미소 구운 오니기리. 북동북 3현 한정<br><br><strong>🍎 りんご系 (사과 계열)</strong><br>• <strong>JAアオレン 希望の雫</strong> — 아오모리 후지 사과 100% 주스. 몽드셀렉션 금상. 편의점·슈퍼 어디서든<br>• 세브일레븐 <strong>青森県産りんごのアップルパイ</strong> — 계절 한정<br>• 편의점 주류 코너: りんごに恋したお酒 (사과술), 사과 츄하이 등',
     tips: '<strong>편의점별 특징</strong><br>🔴 <strong>セブンイレブン</strong> — 동북 한정 오니기리·디저트가 가장 풍부. 筋子おにぎり 필수<br>🔵 <strong>ローソン</strong> — からあげクン 동북 한정맛 (시즌별 변경). 본정 한복판에 있어 술 마신 후 편리<br>🟢 <strong>ファミリーマート</strong> — 역 앞 가장 가까운 편의점(132m). 工藤パン 풀라인 보유<br><br><strong>추천 동선</strong>: 이자카야 하시고 후 → ローソン青森本町店(본정) or セブンイレブン青森本町4丁目店에서 야식+아침용 간식 구매 → 숙소 귀가',
     tags: ['지역한정', '편의점', '工藤パン', '동북 한정', '사과'],
     photos: ['img/igirisu_toast_product_1.jpg', 'img/igirisu_toast_product_2.jpg', 'img/seven_sujiko_1.jpg', 'img/seven_ninniku_1.jpg', 'img/aoren_juice_1.png', 'img/igirisu_toast_lineup_1.jpg'],
@@ -3620,7 +3917,7 @@ const SPOTS = {
     hours: '10:30~19:00頃', price: '오니기리 150~250엔 / 도시락 400~600엔',
     placeId: 'ChIJyzIxAYSem18Rn8j84w3Ey-c',
     desc: '아오모리 한정 편의점 "オレンジハート"의 자매 브랜드. 전 상품 매장 수제(手作り) — 기계가 아닌 사람 손으로 직접 쥔 오니기리, 당일 조리 도시락. 醤油筋子(간장 연어알), ホタテ味噌(가리비 미소) 등 아오모리 식재를 활용한 오니기리가 시그니처. 2024년 3월 サンロード 3층에 오픈.',
-    menu: '<strong>수제 おにぎり</strong><br>• <strong>醤油筋子</strong> — 간장에 절인 연어알. 인기 No.1<br>• <strong>ホタテ味噌</strong> — 아오모리 가리비+미소<br>• <strong>鮭マヨ / 明太マヨ</strong> — 클래식<br>• <strong>爆弾おにぎり</strong> — 반숙 계란이 통째로 들어간 초대형 (緑店 한정)<br><br><strong>도시락 & 반찬</strong><br>• よだれどり (3종: 赤/白/青)<br>• 사바 카라아게 도시락<br>• 치킨난반 도시락',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/kisan_sunroad_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>수제 おにぎり</strong><br>• <strong>醤油筋子</strong> — 간장에 절인 연어알. 인기 No.1<br>• <strong>ホタテ味噌</strong> — 아오모리 가리비+미소<br>• <strong>鮭マヨ / 明太マヨ</strong> — 클래식<br>• <strong>爆弾おにぎり</strong> — 반숙 계란이 통째로 들어간 초대형 (緑店 한정)<br><br><strong>도시락 & 반찬</strong><br>• よだれどり (3종: 赤/白/青)<br>• 사바 카라아게 도시락<br>• 치킨난반 도시락',
     tips: 'サンロード 쇼핑 + 3F あづまラーメン과 같은 층에 있어 쇼핑 동선에 자연스럽게 편입. 오니기리는 오후에 매진되는 종류도 있으니 일찍 가는 것이 좋다. 아오모리 밖에서는 절대 만날 수 없는 "진짜 로컬 편의점" 체험.',
     tags: ['수제 오니기리', '오렌지하트', '아오모리 한정', 'サンロード 3F'],
     photos: ['img/kisan_1.jpg', 'img/kisan_2.jpg'],
@@ -3632,7 +3929,7 @@ const SPOTS = {
     icon: '🥐', category: '편의점 / 매장 베이커리',
     hours: '24시간', price: '빵 100~250엔',
     desc: '일반 편의점과 달리 매장 안에 "デイリーホット" 베이커리 코너가 있어, 갓 구운 빵·샌드위치·조리빵을 즉석에서 만든다. 아침에 따끈한 크로와상이나 베이컨에그 샌드를 갓 구운 상태로 살 수 있는 건 데일리 야마자키뿐.',
-    menu: '<strong>デイリーホット 메뉴</strong><br>• 갓 구운 크로와상 — 버터 향 가득<br>• ベーコンエッグサンド — 매장 조리 핫 샌드<br>• カレーパン — 갓 튀긴 카레빵<br>• 계절 한정 빵 (수시 변경)',
+    menu: '<div style="margin:-4px 0 16px;"><img src="img/daily_yamazaki_aomori_menu_1.jpg" style="width:100%;border-radius:8px;margin:8px 0 12px;" loading="lazy"></div><strong>デイリーホット 메뉴</strong><br>• 갓 구운 크로와상 — 버터 향 가득<br>• ベーコンエッグサンド — 매장 조리 핫 샌드<br>• カレーパン — 갓 튀긴 카레빵<br>• 계절 한정 빵 (수시 변경)',
     tips: '모든 デイリーヤマザキ에 베이커리가 있는 것은 아님 — "デイリーホット" 표시 확인. 아오모리역 주변보다는 교외 로드사이드점에 많다. 아침 일찍 가면 갓 구운 빵을 만날 확률 높음.',
     tags: ['매장 베이커리', '갓구운빵', '데이리호트', '24시간'],
     photos: ['img/daily_yamazaki_1.jpg'],
@@ -3645,7 +3942,7 @@ const SPOTS = {
     icon: '🧃', category: '자판기 / 체험',
     hours: '역 영업시간 내', price: '150~300엔',
     desc: '일본에 4대뿐인 사과주스 전용 자판기. JR東日本 acure 브랜드로 JAアオレン의 密閉絞り(밀폐착즙) 제법으로 산화방지제 무첨가. 후지·츠가루·오린·토키·조나골드·메이게츠·키오 등 품종별 주스를 판매하며, 초희귀 品種 "世界一(세카이이치)"가 한정으로 나오기도 한다.',
-    menu: '<strong>품종별 라인업</strong><br>• ふじ — 단맛+산미 밸런스<br>• つがる — 상쾌한 단맛<br>• 王林 — 풍부한 향, 깊은 단맛<br>• トキ — 깔끔한 뒷맛<br>• ジョナゴールド — 상쾌한 산미<br>• 名月 — 농후한 단맛<br>• きおう — 풍부한 향<br>• <em>世界一</em> — 작부면적 0.5% 초희귀 한정판',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/acure_vending_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>품종별 라인업</strong><br>• ふじ — 단맛+산미 밸런스<br>• つがる — 상쾌한 단맛<br>• 王林 — 풍부한 향, 깊은 단맛<br>• トキ — 깔끔한 뒷맛<br>• ジョナゴールド — 상쾌한 산미<br>• 名月 — 농후한 단맛<br>• きおう — 풍부한 향<br>• <em>世界一</em> — 작부면적 0.5% 초희귀 한정판',
     tips: '2~3품종이 상시 배치. 飲み比べ(음료 비교 시음) 추천 — 2~3종 사서 맛 비교해보기. 신아오모리역에도 1대 있지만 개찰구 안이라 열차 이용 시만 접근 가능.',
     tags: ['사과주스', '자판기', '품종별', '한정판', 'JR역'],
     photos: ['img/acure_vending_1.jpg', 'img/acure_vending_2.jpg'],
@@ -3658,7 +3955,7 @@ const SPOTS = {
     icon: '🛒', category: '슈퍼마켓 / 현지 식품',
     hours: '9:00~22:00 (점포별 상이)', price: '상품별',
     desc: '아오모리현 로컬 슈퍼 3사 — ユニバース(하치노헤 본사, 사과주스 품종별 라인업 풍부), マエダ(무츠시 본사, 농가 직매 코너·생선회 강세), カブセンター(紅屋商事 운영, 자체 베이커리·오하기 인기). 전국 체인에서 찾을 수 없는 아오모리 한정 식품의 보고.',
-    menu: '<strong>반드시 사야 할 아오모리 한정 상품</strong><br>• <strong>スタミナ源たれ</strong> (~518엔) — 마늘+사과+양파 만능 소스, 현 내 점유율 70%<br>• <strong>茶わんむし風 玉子とうふ</strong> (~200엔) — 달콤한 다시맛 계란두부<br>• <strong>味噌カレー牛乳ラーメン</strong> (즉석면 ~250엔) — 된장+카레+우유 소울푸드<br>• <strong>チャルメラ 源たれ味</strong> (~250엔) — 한정 콜라보 컵라면<br>• <strong>Shiny ねぶた りんごジュース</strong> (~171엔) — 100% 혼탁주스<br>• <strong>アップルスナック</strong> (~300엔) — 무첨가 사과칩<br>• <strong>いのち りんご</strong> (~200엔) — 커스터드+사과소스 케이크<br>• <strong>にんにく揚げせんべい</strong> (~648엔) — 타코 마늘맛 센베이',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/supermarket_guide_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>반드시 사야 할 아오모리 한정 상품</strong><br>• <strong>スタミナ源たれ</strong> (~518엔) — 마늘+사과+양파 만능 소스, 현 내 점유율 70%<br>• <strong>茶わんむし風 玉子とうふ</strong> (~200엔) — 달콤한 다시맛 계란두부<br>• <strong>味噌カレー牛乳ラーメン</strong> (즉석면 ~250엔) — 된장+카레+우유 소울푸드<br>• <strong>チャルメラ 源たれ味</strong> (~250엔) — 한정 콜라보 컵라면<br>• <strong>Shiny ねぶた りんごジュース</strong> (~171엔) — 100% 혼탁주스<br>• <strong>アップルスナック</strong> (~300엔) — 무첨가 사과칩<br>• <strong>いのち りんご</strong> (~200엔) — 커스터드+사과소스 케이크<br>• <strong>にんにく揚げせんべい</strong> (~648엔) — 타코 마늘맛 센베이',
     tips: '숙소 근처에서 접근하기 좋은 곳: ユニバース 青森中央店 (차량 10분). 이기리스토스트는 슈퍼에서도 살 수 있지만 편의점이 더 쉬움. スタミナ源たれ 미니 사이즈는 お土産에 최적.',
     tags: ['슈퍼마켓', '지역한정', '소스', '사과주스', 'お土産'],
     photos: ['img/stamina_gentare_1.jpg', 'img/aomori_supermarket_1.jpg'],
@@ -3671,7 +3968,7 @@ const SPOTS = {
     icon: '♨️', category: '센토 / 천연온천',
     hours: '6:00~23:00', price: '450엔',
     desc: '1969년부터 이어진 후지산 벽화가 있는 정통 센토. 아오모리시 센토의 특이점은 시내 15곳 중 10곳이 자가 온천원을 보유한 것 — 수도꼭지에서 나오는 물이 온천 원수 그 자체다. 알칼리성 단순천(pH 9.2)을 원천 그대로 가열 없이 제공. 아침 6시 오픈으로 아오모리의 "朝風呂(아침 목욕)" 문화를 체험할 수 있다.',
-    menu: '<strong>아오모리시 추천 센토 3선</strong><br>• <strong>出町温泉</strong> — 6:00~23:00, 후지산 벽화, pH 9.2 알칼리천<br>• <strong>徳乃湯温泉</strong> — 11:30~22:00, 도와다호 벽화, 츠츠이역 도보 2분<br>• <strong>大福温泉</strong> — 12:00~22:00, 다람쥐 물토출구, pH 8.64 미인수',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/sento_demachi_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>아오모리시 추천 센토 3선</strong><br>• <strong>出町温泉</strong> — 6:00~23:00, 후지산 벽화, pH 9.2 알칼리천<br>• <strong>徳乃湯温泉</strong> — 11:30~22:00, 도와다호 벽화, 츠츠이역 도보 2분<br>• <strong>大福温泉</strong> — 12:00~22:00, 다람쥐 물토출구, pH 8.64 미인수',
     tips: '수건·비누 지참 필수 (판매 200엔). 문신 OK인 곳 대부분. 아침 목욕은 출마치온천 6:00, 다이후쿠온천 일요일 8:30. 입욕료 전 점포 통일 450엔.',
     tags: ['센토', '천연온천', '아침목욕', '450엔', '벽화'],
     photos: ['img/demachi_onsen_1.jpg'],
@@ -3684,7 +3981,7 @@ const SPOTS = {
     icon: '⛩️', category: '신사 / 고슈인',
     hours: '참배 자유, 수여소 9:00~17:00', price: '고슈인 300엔~',
     desc: '일본 유일의 병액제(病厄除) 수호신을 모시는 신사. 경내에 본전 외 金生稲荷神社·八大龍神宮·乃木神社·二十三夜大神 총 5개 사가 있어, 각각의 고슈인을 받을 수 있다. ねぶた 등롱 디자인 고슈인(1,000엔)과 매월 특정일에만 배포하는 御縁日灯り御朱印(1,200엔)이 특히 인기.',
-    menu: '<strong>고슈인 라인업</strong><br>• 통상 고슈인 (사과/눈결정/현 모티브) — 300엔<br>• ねぶた提灯御朱印 — 1,000엔<br>• 부속사 고슈인 4종 — 각 300엔<br>• 御縁日灯り御朱印 — 1,200엔 (매월 특정일만)<br><br><strong>고슈인장</strong><br>• ねぶた 대상작 에디션 — 3,500엔<br>• 金魚ねぶた — 1,500엔<br>• りんごデザイン 프리미엄 — 4,000엔',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/hirota_shrine_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>고슈인 라인업</strong><br>• 통상 고슈인 (사과/눈결정/현 모티브) — 300엔<br>• ねぶた提灯御朱印 — 1,000엔<br>• 부속사 고슈인 4종 — 각 300엔<br>• 御縁日灯り御朱印 — 1,200엔 (매월 특정일만)<br><br><strong>고슈인장</strong><br>• ねぶた 대상작 에디션 — 3,500엔<br>• 金魚ねぶた — 1,500엔<br>• りんごデザイン 프리미엄 — 4,000엔',
     tips: '숙소에서 도보 5~7분으로 가까움. 4/3(금)이 八大龍神宮 인연일(8일에 가장 가까운 날) — 해당 날 방문 시 특별 고슈인 확인. 善知鳥神社(도보 10분)와 함께 둘러보면 좋음.',
     tags: ['고슈인', '신사', '병액제', 'ねぶた', '도보권'],
     photos: ['img/hirota_shrine_1.jpg', 'img/hirota_shrine_2.jpg'],
@@ -3711,7 +4008,7 @@ const SPOTS = {
     icon: '🥐', category: '빵집 / 현지 인기',
     hours: '07:30~売り切れ次第終了', price: '150~400엔',
     desc: '오픈 전부터 행렬이 생기는 아오모리 로컬 인기 빵집. 볼륨 만점의 조리빵과 샌드위치가 합리적 가격. 현지인이 아침에 사서 출근하는 곳.',
-    menu: '<strong>인기 메뉴</strong><br>• 볼륨 샌드위치류 — 햄카츠, 에비카츠 등<br>• 카레빵 — 갓 튀긴 사쿠사쿠 식감<br>• 크림빵 — 커스터드 가득<br>• 아침 세트 (빵+커피)',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/bakery_hyu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/bakery_hyu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>인기 메뉴</strong><br>• 볼륨 샌드위치류 — 햄카츠, 에비카츠 등<br>• 카레빵 — 갓 튀긴 사쿠사쿠 식감<br>• 크림빵 — 커스터드 가득<br>• 아침 세트 (빵+커피)',
     tips: '오전 중 방문 필수. 인기 상품은 점심 전 매진. 주차장 있음. 工藤パン과는 다른 결의 "동네 빵집" 체험.',
     tags: ['아침 빵', '행렬', '볼륨 만점', '현지인 인기'],
     photos: ['img/bakery_hyu_1.jpg', 'img/bakery_hyu_2.jpg'],
@@ -3724,7 +4021,7 @@ const SPOTS = {
     icon: '🥧', category: '빵집 / 노포',
     hours: '08:00~18:00 (매진 시 조기종료)', price: '150~350엔',
     desc: '아오모리 로컬 노포(老舗) 빵집. 대표 상품 パンプキンパイ(호박파이)는 아오모리 주민이면 다 아는 소울 간식.',
-    menu: '<strong>대표 메뉴</strong><br>• <strong>パンプキンパイ</strong> — 호박 앙금의 바삭한 파이. 로컬 소울 간식<br>• 각종 과자빵, 총채빵<br>• 식빵류',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/bakery_bonmisuzu_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>대표 메뉴</strong><br>• <strong>パンプキンパイ</strong> — 호박 앙금의 바삭한 파이. 로컬 소울 간식<br>• 각종 과자빵, 총채빵<br>• 식빵류',
     tips: 'パンプキンパイ는 상온 보관 가능해서 お土産으로도 가능. 주택가 속 소박한 외관이지만 맛은 보장.',
     tags: ['노포', '호박파이', '소울 간식', '아오모리 로컬'],
     photos: ['img/bakery_bonmisuzu_1.jpg', 'img/bakery_bonmisuzu_2.jpg'],
@@ -3737,7 +4034,7 @@ const SPOTS = {
     icon: '🎰', category: '가챠 / 캡슐토이',
     hours: '매장별 상이', price: '200~500엔/회',
     desc: '아오모리시 내 대형 가챠 스팟 가이드. 일본 여행의 소소한 즐거움, 캡슐토이를 현지인처럼 즐기기.',
-    menu: '<strong>주요 스팟</strong><br>• <strong>ドリームカプセル シーナシーナ青森店</strong> — 2024년 리뉴얼, 시내 최대급<br>• <strong>ガシャポンバンダイ イオン新青森店</strong> — 반다이 공식 대형 전문점<br>• <strong>ドリームカプセル イトーヨーカドー青森店</strong> — 상시 300종+<br><br><strong>팁</strong>: ねぶた 테마 전용 가챠는 아직 없지만, ご当地ミニチュア 시리즈에서 아오모리 아이템이 나올 수 있음.',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/gacha_aomori_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>주요 스팟</strong><br>• <strong>ドリームカプセル シーナシーナ青森店</strong> — 2024년 리뉴얼, 시내 최대급<br>• <strong>ガシャポンバンダイ イオン新青森店</strong> — 반다이 공식 대형 전문점<br>• <strong>ドリームカプセル イトーヨーカドー青森店</strong> — 상시 300종+<br><br><strong>팁</strong>: ねぶた 테마 전용 가챠는 아직 없지만, ご当地ミニチュア 시리즈에서 아오모리 아이템이 나올 수 있음.',
     tips: '100엔 동전을 미리 준비 (일부 기기는 동전만 가능). ドリームカプセル는 X(트위터) @drecap_aomori에서 신상품 확인 가능.',
     tags: ['가챠', '캡슐토이', '소소한 즐거움', '일본 문화'],
     photos: ['img/gacha_aomori_1.jpg', 'img/gacha_aomori_2.jpg'],
@@ -3751,7 +4048,7 @@ const SPOTS = {
     icon: '🌸', category: '공원 / 벚꽃',
     hours: '24시간 (공원 자체)', price: '무료',
     desc: '아오모리시 최고의 벚꽃 명소. 약 600본의 벚나무와 700본의 흑송이 陸奥湾(무츠만) 해변을 따라 어우러지는 희귀한 "바닷가 벚꽃" 풍경. 2026년 만개 예상: 4월 중순~하순.',
-    menu: '<strong>벚꽃 정보 (2026)</strong><br>• 만개 피크: 4/25~28<br>• 꽃잎 흩날림: 4/29~5/2<br>• 약 600본 + 흑송 700본<br><br><strong>青森春まつり</strong> — 벚꽃 시기에 맞춰 개최, 봉보리(ぼんぼり) 점등으로 야간 꽃놀이 가능<br><br><strong>접근</strong><br>• JR 아오모리역 → 시영버스 東部営業所行 약 20분 → 合浦公園前 하차',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/gappo_park_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/gappo_park_menu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>벚꽃 정보 (2026)</strong><br>• 만개 피크: 4/25~28<br>• 꽃잎 흩날림: 4/29~5/2<br>• 약 600본 + 흑송 700본<br><br><strong>青森春まつり</strong> — 벚꽃 시기에 맞춰 개최, 봉보리(ぼんぼり) 점등으로 야간 꽃놀이 가능<br><br><strong>접근</strong><br>• JR 아오모리역 → 시영버스 東部営業所行 약 20분 → 合浦公園前 하차',
     tips: '4월 초(4/2~5) 여행에서는 아직 만개 전이지만, 일찍 피는 나무도 있어 벚꽃 기운은 느낄 수 있음. 해변+벚꽃+흑송의 조합은 일본에서도 드문 풍경. 아침 조깅/산책 코스로 인기.',
     tags: ['벚꽃', '바닷가', '무츠만', '봄 축제', '무료'],
     photos: ['img/gappo_park_1.jpg', 'img/gappo_park_2.jpg'],
@@ -3764,7 +4061,7 @@ const SPOTS = {
     icon: '🎪', category: '이벤트 / 축제',
     hours: '10:00~17:00 (2026년 4월 26일)', price: '무료',
     desc: '2026년 4월 26일(일) 개최, 제19회. 올해 최대 화제는 <strong>東京ディズニーリゾート スペシャルパレード</strong> — 아오모리 시내 디즈니 퍼레이드는 2013년 이래 13년 만. "青森まちづくり400年" 기념 특별 이벤트.',
-    menu: '<strong>디즈니 퍼레이드</strong><br>• 10:00 스타트, 新町通り~本町 약 900m 구간<br>• 아오모리 시청에 ダッフィーバス 전시<br><br><strong>이벤트 에리어</strong><br>• 新町通り, 昭和通り, 柳町通り<br>• パサージュ広場, ワ・ラッセ西の広場, 新町キューブ<br><br>⚠️ 여행 일정(4/2~5)과 겹치지 않음. 참고 정보로 수록.',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/haru_festival_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>디즈니 퍼레이드</strong><br>• 10:00 스타트, 新町通り~本町 약 900m 구간<br>• 아오모리 시청에 ダッフィーバス 전시<br><br><strong>이벤트 에리어</strong><br>• 新町通り, 昭和通り, 柳町通り<br>• パサージュ広場, ワ・ラッセ西の広場, 新町キューブ<br><br>⚠️ 여행 일정(4/2~5)과 겹치지 않음. 참고 정보로 수록.',
     tips: '4/2~5 여행에는 해당 없지만, 일정 변경이 가능하다면 4/26을 포함시키는 것을 강력 추천. 디즈니 퍼레이드는 지방도시에서 10년에 한 번 올까 말까한 이벤트.',
     tags: ['봄 축제', '디즈니 퍼레이드', '무료', '4월 26일'],
     photos: ['img/haru_festival_1.jpg', 'img/haru_festival_2.jpg'],
@@ -3777,7 +4074,7 @@ const SPOTS = {
     icon: '💊', category: '쇼핑 / 약국',
     hours: '점포별 상이 (대부분 09:00~22:00)', price: '품목별 상이',
     desc: '아오모리 약국 체인 가이드 + 사과 소재 ご当地コスメ 정보. 숙소 근처 ツルハドラッグ 本町店이 가장 가까움.',
-    menu: '<strong>주요 약국</strong><br>• <strong>ツルハドラッグ 青森本町店</strong> — 숙소에서 가장 가까움, 도호쿠 최대 체인<br>• <strong>マツモトキヨシ LOVINA점</strong> — JR 아오모리역 빌딩 내, 도보 1분<br><br><strong>아오모리 ご当地コスメ</strong><br>• <strong>APセラミド</strong> — 아오모리산 사과 추출 세라마이드. 히로사키대 분석 완료<br>• <strong>사과 뷰티 마스크</strong> — 히로사키 다무라 농원 토키 품종 과즙수 + 히알루론산 (~1,000엔)<br>• <strong>りんご 입욕제/비누</strong> — 아오모리 사과향 (~300-800엔)<br><br>💡 약국보다 <strong>ASPAM 1F 물산 코너</strong>나 <strong>A-FACTORY</strong>에서 사과 코스메를 찾는 편이 효율적.',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/drugstore_guide_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>주요 약국</strong><br>• <strong>ツルハドラッグ 青森本町店</strong> — 숙소에서 가장 가까움, 도호쿠 최대 체인<br>• <strong>マツモトキヨシ LOVINA점</strong> — JR 아오모리역 빌딩 내, 도보 1분<br><br><strong>아오모리 ご当地コスメ</strong><br>• <strong>APセラミド</strong> — 아오모리산 사과 추출 세라마이드. 히로사키대 분석 완료<br>• <strong>사과 뷰티 마스크</strong> — 히로사키 다무라 농원 토키 품종 과즙수 + 히알루론산 (~1,000엔)<br>• <strong>りんご 입욕제/비누</strong> — 아오모리 사과향 (~300-800엔)<br><br>💡 약국보다 <strong>ASPAM 1F 물산 코너</strong>나 <strong>A-FACTORY</strong>에서 사과 코스메를 찾는 편이 효율적.',
     tips: 'ツルハは免税対応 있음 (5,000엔 이상). 사과 코스메는 약국보다 ASPAM/A-FACTORY가 품목이 풍부.',
     tags: ['약국', '사과 코스메', '면세', 'ツルハ'],
     photos: ['img/drugstore_guide_1.jpg', 'img/drugstore_guide_2.jpg'],
@@ -4494,6 +4791,29 @@ _jwObserver.observe(document.getElementById('detailContent'), { childList: true 
 
 // Also apply to static page content (timelines, food tab, etc.)
 applyJwTooltips(document.querySelector('.container') || document.body);
+
+// ===== THEME TOGGLE =====
+function toggleTheme() {
+  var html = document.documentElement;
+  var current = html.getAttribute('data-theme') || 'local';
+  var next = current === 'local' ? 'premium' : 'local';
+  html.setAttribute('data-theme', next);
+  localStorage.setItem('aomori_theme', next);
+  updateThemeButton(next);
+}
+function updateThemeButton(theme) {
+  var btn = document.getElementById('themeToggle');
+  if (!btn) return;
+  if (theme === 'premium') {
+    btn.innerHTML = '🎨 Local';
+    btn.title = 'Local Journal 테마로 전환';
+  } else {
+    btn.innerHTML = '🎨 Premium';
+    btn.title = 'Premium Travel 테마로 전환';
+  }
+}
+// Init button label on load
+updateThemeButton(document.documentElement.getAttribute('data-theme') || 'local');
 </script>
 
 </body>

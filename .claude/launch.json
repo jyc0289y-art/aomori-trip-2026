@@ -4,7 +4,7 @@
     {
       "name": "aomori",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8090", "--directory", "/Users/jyc/Library/Mobile Documents/com~apple~CloudDocs/developer/AOMORI/aomori-trip-2026"],
+      "runtimeArgs": ["-m", "http.server", "8090", "--directory", "/tmp/aomori-serve"],
       "port": 8090
     }
   ]
