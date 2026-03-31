@@ -3578,7 +3578,6 @@ function imageSearchUrl(query) {
 
 // ===== MAP FUNCTIONS =====
 function mapEmbedUrl(spot) {
-  if (spot.placeId) return 'https://www.google.com/maps?q=place_id:' + spot.placeId + '&output=embed&hl=ja&z=17';
   const q = encodeURIComponent(spot.query || spot.name);
   return 'https://www.google.com/maps?q=' + q + '&output=embed&hl=ja&z=17';
 }
