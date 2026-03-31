@@ -414,12 +414,22 @@
     .card { padding: 20px; }
     .tab-btn { padding: 12px 14px; font-size: 0.82em; }
     .detail-content { padding: 0 16px 24px; }
-    .detail-sheet { width: 100%; max-width: 100%; border-radius: 16px 16px 0 0; }
+    .detail-sheet {
+      width: 100%; max-width: 100%; max-height: 92vh;
+      border-radius: 16px 16px 0 0;
+    }
+    .detail-sheet .photo-strip { width: calc(100% + 32px); margin: 0 -16px; }
+    .detail-sheet .photo-strip img { width: 200px; height: 150px; }
+    .detail-sheet .photo-strip .photo-more { height: 150px; width: 80px; font-size: 0.8em; }
+    .detail-map-embed iframe { height: 180px; }
+    .detail-section { margin-top: 14px; }
+    .detail-row { font-size: 0.88em; }
+    .detail-actions { flex-direction: column; }
+    .detail-actions a, .detail-actions button { padding: 14px 20px; font-size: 0.95em; justify-content: center; }
     .map-footer { padding: 12px 16px; }
     .photo-strip { width: calc(100% + 40px); margin: 0 -20px; }
     .photo-strip img { width: 220px; height: 160px; }
     .photo-strip .photo-more { height: 160px; width: 100px; }
-    .detail-actions a, .detail-actions button { padding: 12px 20px; font-size: 0.95em; }
     .weather-day { min-width: 72px; padding: 10px 10px; }
     .container { padding: 20px 12px 80px; }
     .spot-cards-grid { display: block; }
@@ -428,7 +438,7 @@
   /* Responsive - Tablet (601-768px) */
   @media (min-width: 601px) and (max-width: 768px) {
     .detail-overlay { align-items: center; }
-    .detail-sheet { border-radius: 16px; max-height: 80vh; max-width: 90vw; }
+    .detail-sheet { border-radius: 16px; max-height: 85vh; max-width: 90vw; }
     .photo-strip img { width: 260px; height: 180px; }
     .spot-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   }
@@ -437,13 +447,58 @@
   @media (min-width: 769px) {
     .container { max-width: 900px; }
     .detail-overlay { align-items: center; }
-    .detail-sheet { border-radius: 16px; max-height: 80vh; max-width: 640px; }
+    .detail-sheet { border-radius: 16px; max-height: 85vh; max-width: 640px; transition: max-width 0.3s; }
+    .detail-sheet.wide { max-width: 960px; }
+    .detail-sheet.wide .photo-strip img { width: 380px; height: 260px; }
+    .detail-sheet.wide .photo-strip .photo-more { height: 260px; }
+    .detail-sheet.wide .detail-map-embed iframe { height: 300px; }
     .photo-strip img { width: 320px; height: 220px; }
     .photo-strip .photo-more { height: 220px; width: 140px; }
     .spot-cards-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .spot-cards-grid .spot { border-bottom: none; border: 1px solid var(--border); border-radius: 10px; padding: 16px; }
     .spot-cards-grid .spot:hover { margin: 0; padding: 16px; }
     .weather-day { min-width: 90px; }
+    .btn-wide-toggle { display: inline-flex; }
+  }
+
+  /* ===== PC WIDE TOGGLE ===== */
+  .btn-wide-toggle {
+    display: none; background: var(--tag-bg); color: var(--text-light);
+    font-size: 0.8em; padding: 6px 12px; border-radius: 8px;
+    cursor: pointer; border: none; font-family: inherit;
+  }
+  @media (min-width: 769px) {
+    .btn-wide-toggle { display: inline-flex; }
+  }
+  .btn-wide-toggle:hover { background: var(--border); }
+
+  /* ===== TOOLTIP (JW) ===== */
+  .jw {
+    border-bottom: 1px dotted rgba(0,0,0,0.25); cursor: help;
+    transition: background 0.15s;
+  }
+  .jw:hover, .jw.active { background: rgba(255,193,7,0.15); }
+  #jw-popup {
+    display: none; position: fixed;
+    background: #1a1a2e; color: white;
+    padding: 10px 14px; border-radius: 10px;
+    font-size: 0.82em; z-index: 10001;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+    line-height: 1.6; max-width: 300px;
+    white-space: normal; pointer-events: none;
+  }
+  #jw-popup::after {
+    content: ''; position: absolute; top: 100%; left: 16px;
+    border: 6px solid transparent; border-top-color: #1a1a2e;
+  }
+  #jw-popup.below::after {
+    top: auto; bottom: 100%;
+    border-top-color: transparent; border-bottom-color: #1a1a2e;
+  }
+  #jw-popup .jw-reading { color: #f39c12; font-weight: 600; font-size: 1.05em; }
+  #jw-popup .jw-meaning { color: rgba(255,255,255,0.85); margin-top: 2px; }
+  @media (max-width: 768px) {
+    #jw-popup { max-width: 250px; font-size: 0.78em; }
   }
 
   @media print {
@@ -601,6 +656,12 @@
         <div class="tl-desc">IC카드 860엔 / 현금 980엔. <strong>11번 승강장</strong> 하차</div>
         <div class="tl-map-hint">탭하여 역 승강장 배치도 보기</div>
       </div>
+      <div class="tl-item" onclick="showDetail('acure_vending')">
+        <span class="tl-time">12:10</span>
+        <span class="tl-title">🧃 acure 사과주스 자판기</span>
+        <div class="tl-desc">역 2층 みどりの窓口 앞. 일본에 4대뿐인 품종별 사과주스 자판기 — 후지·츠가루·오린 등 飲み比べ!</div>
+        <div class="tl-map-hint">탭하여 상세 보기</div>
+      </div>
       <div class="tl-item" onclick="showMap('accommodation')">
         <span class="tl-time">12:40</span>
         <span class="tl-title">아오모리역 도착 &#8594; 숙소에 짐 맡기기</span>
@@ -680,7 +741,7 @@
       <div class="tl-item" onclick="showDetail('machinaka_onsen')">
         <span class="tl-time">06:00</span>
         <span class="tl-title">朝風呂 (아침 목욕) @ まちなか温泉</span>
-        <div class="tl-desc">480엔, 6시 오픈. 천연 온천 가케나가시.</div>
+        <div class="tl-desc">480엔, 6시 오픈. 천연 온천 가케나가시. <em>또는</em> <span style="cursor:pointer;text-decoration:underline" onclick="event.stopPropagation();showDetail('sento_demachi')">出町温泉</span>(450엔, pH 9.2, 후지산 벽화)도 추천.</div>
         <div class="tl-map-hint">탭하여 상세 보기</div>
       </div>
       <div class="tl-item meal" onclick="showDetail('nokkedon')">
@@ -700,6 +761,12 @@
 
     <div class="section-title">낮: 느긋한 동네 산책</div>
     <div class="timeline">
+      <div class="tl-item" onclick="showDetail('hirota_shrine')">
+        <span class="tl-time">10:00</span>
+        <span class="tl-title">⛩️ 廣田神社 고슈인 (숙소 도보 5분)</span>
+        <div class="tl-desc">일본 유일 병액제 수호신. ねぶた提灯御朱印(1,000엔)·사과 모티브 고슈인(300엔). 경내 5개 사 순례.</div>
+        <div class="tl-map-hint">탭하여 상세 보기</div>
+      </div>
       <div class="tl-item" onclick="showMap('shinmachi')">
         <span class="tl-time">10:30</span>
         <span class="tl-title">新町 (신마치) 상점가 산책</span>
@@ -843,14 +910,20 @@
         <span class="tl-title">柳町 (야나기마치) 산책</span>
         <div class="tl-map-hint">탭하여 지도 보기</div>
       </div>
+      <div class="tl-item" onclick="showDetail('supermarket_guide')">
+        <span class="tl-time">15:00</span>
+        <span class="tl-title">🛒 로컬 슈퍼마켓 식품 헌팅</span>
+        <div class="tl-desc">スタミナ源たれ(만능소스)·茶わんむし風玉子とうふ·사과주스·にんにく揚げせんべい 등 아오모리 한정 식품 お土産 사냥!</div>
+        <div class="tl-map-hint">탭하여 상세 보기</div>
+      </div>
       <div class="tl-item" onclick="showDetail('a_factory')">
-        <span class="tl-time">15:30</span>
+        <span class="tl-time">16:00</span>
         <span class="tl-title">A-FACTORY 재방문 & 기념 쇼핑</span>
         <div class="tl-desc">시드르 추가 시음. 토산물 선물 구매.</div>
         <div class="tl-map-hint">탭하여 상세 보기</div>
       </div>
       <div class="tl-item" onclick="showMap('accommodation')">
-        <span class="tl-time">16:30</span>
+        <span class="tl-time">17:00</span>
         <span class="tl-title">숙소 휴식 & 짐 정리</span>
       </div>
     </div>
@@ -1583,6 +1656,36 @@
   </div>
 
   <div class="card">
+    <h2>🧭 현지인 체험 가이드</h2>
+    <p style="font-size:0.9em;color:var(--text-light);margin-bottom:12px;">편의점 너머의 아오모리 — 사과주스 자판기, 로컬 슈퍼 한정 식품, 450엔 천연온천 센토, 고슈인 수집까지.</p>
+    <div class="spot" onclick="showDetail('acure_vending')">
+      <div class="spot-name">🧃 acure 사과주스 자판기 <span class="spot-name-ja">りんごジュース自販機</span></div>
+      <div class="spot-desc">일본에 4대뿐. 후지·츠가루·오린 등 품종별 사과주스. JR 아오모리역 2층.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('supermarket_guide')">
+      <div class="spot-name">🛒 로컬 슈퍼마켓 한정 식품 <span class="spot-name-ja">ご当地スーパー</span></div>
+      <div class="spot-desc">スタミナ源たれ·茶わんむし풍 계란두부·사과주스·にんにく揚げせんべい — 전국 체인에 없는 보물.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('sento_demachi')">
+      <div class="spot-name">♨️ 아오모리 센토 (천연온천) <span class="spot-name-ja">銭湯 天然温泉</span></div>
+      <div class="spot-desc">450엔에 천연온천. 시내 15곳 중 10곳 자가원천 보유. 아침 6시 朝風呂 문화 체험.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('hirota_shrine')">
+      <div class="spot-name">⛩️ 廣田神社 고슈인 <span class="spot-name-ja">ひろたじんじゃ</span></div>
+      <div class="spot-desc">일본 유일 병액제 수호신. ねぶた 등롱 고슈인·사과 모티브 고슈인. 숙소 도보 5분.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('manhole_card')">
+      <div class="spot-name">🎴 맨홀카드 (ねぶた) <span class="spot-name-ja">マンホールカード</span></div>
+      <div class="spot-desc">무료. ねぶた祭 디자인 맨홀카드. 道の駅 ゆ~さ浅虫에서 수령.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+  </div>
+
+  <div class="card">
     <h2>음식 체크리스트</h2>
     <ul class="checklist" id="food-checklist">
       <li class="clickable-item"><div class="check-box" onclick="event.stopPropagation();toggleCheck(this)"></div><span onclick="showDetail('niboshi_ramen')">煮干しラーメン &mdash; 소울푸드</span></li>
@@ -1602,6 +1705,10 @@
       <li class="clickable-item"><div class="check-box" onclick="event.stopPropagation();toggleCheck(this)"></div><span onclick="showDetail('a_factory')">아오모리 시드르</span></li>
       <li class="clickable-item"><div class="check-box" onclick="event.stopPropagation();toggleCheck(this)"></div><span onclick="showDetail('be_easy')">크래프트 비어</span></li>
       <li class="clickable-item"><div class="check-box" onclick="event.stopPropagation();toggleCheck(this)"></div><span onclick="showDetail('kissaten_maron')">킷사텐 넬 드립 커피</span></li>
+      <li class="clickable-item"><div class="check-box" onclick="event.stopPropagation();toggleCheck(this)"></div><span onclick="showDetail('acure_vending')">acure 품종별 사과주스 飲み比べ</span></li>
+      <li class="clickable-item"><div class="check-box" onclick="event.stopPropagation();toggleCheck(this)"></div><span onclick="showDetail('supermarket_guide')">슈퍼마켓 한정 식품 (스타미나겐타레 등)</span></li>
+      <li class="clickable-item"><div class="check-box" onclick="event.stopPropagation();toggleCheck(this)"></div><span onclick="showDetail('sento_demachi')">센토 朝風呂 체험 (450엔)</span></li>
+      <li class="clickable-item"><div class="check-box" onclick="event.stopPropagation();toggleCheck(this)"></div><span onclick="showDetail('hirota_shrine')">廣田神社 고슈인 수집</span></li>
       <li><div class="check-box" onclick="toggleCheck(this)"></div><span>아오모리 사과</span></li>
     </ul>
   </div>
@@ -2148,10 +2255,16 @@
 <!-- ===== DETAIL OVERLAY ===== -->
 <div class="detail-overlay" id="detailOverlay" onclick="if(event.target===this)closeDetail()">
   <div class="detail-sheet" id="detailSheet">
-    <div class="detail-handle"></div>
+    <div class="detail-handle" style="display:flex;align-items:center;justify-content:center;gap:12px;padding:10px 16px;">
+      <div style="width:40px;height:4px;background:var(--border);border-radius:2px;"></div>
+      <button class="btn-wide-toggle" id="btnWide" onclick="event.stopPropagation();toggleWide()">⛶ 넓게</button>
+    </div>
     <div class="detail-content" id="detailContent"></div>
   </div>
 </div>
+
+<!-- Tooltip popup (must be direct body child, not inside transform containers) -->
+<div id="jw-popup"></div>
 
 <script>
 // ===== SPOT DATABASE =====
@@ -3209,6 +3322,66 @@ const SPOTS = {
     photos: ['img/daily_yamazaki_1.jpg'],
     imageSearch: 'デイリーヤマザキ デイリーホット 焼きたてパン',
   },
+  // ===== 현지인 체험 딥다이브 (P15.11wc) =====
+  acure_vending: {
+    name: 'acure りんごジュース自販機', nameJa: '아큐어 사과주스 자판기',
+    query: 'JR青森駅 acure りんごジュース自販機', address: 'JR 아오모리역 2층 みどりの窓口 앞',
+    icon: '🧃', category: '자판기 / 체험',
+    hours: '역 영업시간 내', price: '150~300엔',
+    desc: '일본에 4대뿐인 사과주스 전용 자판기. JR東日本 acure 브랜드로 JAアオレン의 密閉絞り(밀폐착즙) 제법으로 산화방지제 무첨가. 후지·츠가루·오린·토키·조나골드·메이게츠·키오 등 품종별 주스를 판매하며, 초희귀 品種 "世界一(세카이이치)"가 한정으로 나오기도 한다.',
+    menu: '<strong>품종별 라인업</strong><br>• ふじ — 단맛+산미 밸런스<br>• つがる — 상쾌한 단맛<br>• 王林 — 풍부한 향, 깊은 단맛<br>• トキ — 깔끔한 뒷맛<br>• ジョナゴールド — 상쾌한 산미<br>• 名月 — 농후한 단맛<br>• きおう — 풍부한 향<br>• <em>世界一</em> — 작부면적 0.5% 초희귀 한정판',
+    tips: '2~3품종이 상시 배치. 飲み比べ(음료 비교 시음) 추천 — 2~3종 사서 맛 비교해보기. 신아오모리역에도 1대 있지만 개찰구 안이라 열차 이용 시만 접근 가능.',
+    tags: ['사과주스', '자판기', '품종별', '한정판', 'JR역'],
+    photos: ['img/acure_vending_1.jpg', 'img/acure_vending_2.jpg'],
+    imageSearch: 'acure りんごジュース自販機 青森駅',
+  },
+  supermarket_guide: {
+    name: 'アオモリ ローカルスーパー', nameJa: '아오모리 로컬 슈퍼마켓',
+    query: 'ユニバース 青森中央店', address: '아오모리시 내 각 점포',
+    icon: '🛒', category: '슈퍼마켓 / 현지 식품',
+    hours: '9:00~22:00 (점포별 상이)', price: '상품별',
+    desc: '아오모리현 로컬 슈퍼 3사 — ユニバース(하치노헤 본사, 사과주스 품종별 라인업 풍부), マエダ(무츠시 본사, 농가 직매 코너·생선회 강세), カブセンター(紅屋商事 운영, 자체 베이커리·오하기 인기). 전국 체인에서 찾을 수 없는 아오모리 한정 식품의 보고.',
+    menu: '<strong>반드시 사야 할 아오모리 한정 상품</strong><br>• <strong>スタミナ源たれ</strong> (~518엔) — 마늘+사과+양파 만능 소스, 현 내 점유율 70%<br>• <strong>茶わんむし風 玉子とうふ</strong> (~200엔) — 달콤한 다시맛 계란두부<br>• <strong>味噌カレー牛乳ラーメン</strong> (즉석면 ~250엔) — 된장+카레+우유 소울푸드<br>• <strong>チャルメラ 源たれ味</strong> (~250엔) — 한정 콜라보 컵라면<br>• <strong>Shiny ねぶた りんごジュース</strong> (~171엔) — 100% 혼탁주스<br>• <strong>アップルスナック</strong> (~300엔) — 무첨가 사과칩<br>• <strong>いのち りんご</strong> (~200엔) — 커스터드+사과소스 케이크<br>• <strong>にんにく揚げせんべい</strong> (~648엔) — 타코 마늘맛 센베이',
+    tips: '숙소 근처에서 접근하기 좋은 곳: ユニバース 青森中央店 (차량 10분). 이기리스토스트는 슈퍼에서도 살 수 있지만 편의점이 더 쉬움. スタミナ源たれ 미니 사이즈는 お土産에 최적.',
+    tags: ['슈퍼마켓', '지역한정', '소스', '사과주스', 'お土産'],
+    photos: ['img/stamina_gentare_1.jpg', 'img/aomori_supermarket_1.jpg'],
+    imageSearch: 'スタミナ源たれ 青森 スーパー',
+  },
+  sento_demachi: {
+    name: '出町温泉', nameJa: '데마치온천',
+    query: '出町温泉 青森市', address: '아오모리역/신아오모리역 모두 차량 9분',
+    icon: '♨️', category: '센토 / 천연온천',
+    hours: '6:00~23:00', price: '450엔',
+    desc: '1969년부터 이어진 후지산 벽화가 있는 정통 센토. 아오모리시 센토의 특이점은 시내 15곳 중 10곳이 자가 온천원을 보유한 것 — 수도꼭지에서 나오는 물이 온천 원수 그 자체다. 알칼리성 단순천(pH 9.2)을 원천 그대로 가열 없이 제공. 아침 6시 오픈으로 아오모리의 "朝風呂(아침 목욕)" 문화를 체험할 수 있다.',
+    menu: '<strong>아오모리시 추천 센토 3선</strong><br>• <strong>出町温泉</strong> — 6:00~23:00, 후지산 벽화, pH 9.2 알칼리천<br>• <strong>徳乃湯温泉</strong> — 11:30~22:00, 도와다호 벽화, 츠츠이역 도보 2분<br>• <strong>大福温泉</strong> — 12:00~22:00, 다람쥐 물토출구, pH 8.64 미인수',
+    tips: '수건·비누 지참 필수 (판매 200엔). 문신 OK인 곳 대부분. 아침 목욕은 출마치온천 6:00, 다이후쿠온천 일요일 8:30. 입욕료 전 점포 통일 450엔.',
+    tags: ['센토', '천연온천', '아침목욕', '450엔', '벽화'],
+    photos: ['img/demachi_onsen_1.jpg'],
+    imageSearch: '出町温泉 青森市 銭湯',
+  },
+  hirota_shrine: {
+    name: '廣田神社', nameJa: '히로타 신사',
+    query: '廣田神社 青森市', address: '青森市長島2丁目13-5 (숙소 도보 5~7분)',
+    icon: '⛩️', category: '신사 / 고슈인',
+    hours: '참배 자유, 수여소 9:00~17:00', price: '고슈인 300엔~',
+    desc: '일본 유일의 병액제(病厄除) 수호신을 모시는 신사. 경내에 본전 외 金生稲荷神社·八大龍神宮·乃木神社·二十三夜大神 총 5개 사가 있어, 각각의 고슈인을 받을 수 있다. ねぶた 등롱 디자인 고슈인(1,000엔)과 매월 특정일에만 배포하는 御縁日灯り御朱印(1,200엔)이 특히 인기.',
+    menu: '<strong>고슈인 라인업</strong><br>• 통상 고슈인 (사과/눈결정/현 모티브) — 300엔<br>• ねぶた提灯御朱印 — 1,000엔<br>• 부속사 고슈인 4종 — 각 300엔<br>• 御縁日灯り御朱印 — 1,200엔 (매월 특정일만)<br><br><strong>고슈인장</strong><br>• ねぶた 대상작 에디션 — 3,500엔<br>• 金魚ねぶた — 1,500엔<br>• りんごデザイン 프리미엄 — 4,000엔',
+    tips: '숙소에서 도보 5~7분으로 가까움. 4/3(금)이 八大龍神宮 인연일(8일에 가장 가까운 날) — 해당 날 방문 시 특별 고슈인 확인. 善知鳥神社(도보 10분)와 함께 둘러보면 좋음.',
+    tags: ['고슈인', '신사', '병액제', 'ねぶた', '도보권'],
+    photos: ['img/hirota_shrine_1.jpg', 'img/hirota_shrine_2.jpg'],
+    imageSearch: '廣田神社 青森市 御朱印',
+  },
+  manhole_card: {
+    name: 'マンホールカード (ねぶた)', nameJa: '맨홀카드',
+    query: '道の駅 ゆ~さ浅虫', address: '青森市浅虫蛍谷341-19 (아사무시온천)',
+    icon: '🎴', category: '수집 / 무료 체험',
+    hours: '9:00~19:00 (4~11월)', price: '무료',
+    desc: '아오모리 ねぶた祭 디자인 맨홀카드. 무사 대형 ねぶた와 跳人(하네토)의 역동적 도안이 인쇄되어 있다. QR코드를 스캔하면 지역 문화·관광 동영상으로 연결. 전국 맨홀카드 수집가들 사이에서 인기 높은 디자인.',
+    tips: '1인 1장 선착순, 우편 주문/예약 불가 — 방문 수령만 가능. 아오모리역에서 아오이모리 철도로 浅虫温泉역까지 약 25분, 역에서 도보 5분. 아사무시 수족관·온천과 함께 반나절 코스로 좋음.',
+    tags: ['맨홀카드', '무료', 'ねぶた', '아사무시', '수집'],
+    photos: ['img/manhole_card_1.jpg'],
+    imageSearch: 'マンホールカード 青森 ねぶた',
+  },
 };
 
 // ===== Google Maps photo URL helper =====
@@ -3621,6 +3794,240 @@ function loadWeather() {
     });
 }
 loadWeather();
+
+// ===== PC WIDE TOGGLE =====
+function toggleWide() {
+  const sheet = document.getElementById('detailSheet');
+  const btn = document.getElementById('btnWide');
+  sheet.classList.toggle('wide');
+  btn.textContent = sheet.classList.contains('wide') ? '⛶ 좁게' : '⛶ 넓게';
+}
+
+// ===== TOOLTIP DICTIONARY (JW) =====
+const jwDict = {
+  // 음식/요리
+  '生姜味噌おでん': { r: '쇼가미소오뎅', m: '생강+된장 오뎅 — 아오모리 향토 요리' },
+  '煮干し': { r: '니보시', m: '멸치 (말린 정어리). 아오모리 라멘의 핵심 육수 재료' },
+  '煮干しラーメン': { r: '니보시 라멘', m: '멸치 육수 라멘 — 아오모리 소울푸드' },
+  '味噌カレー牛乳ラーメン': { r: '미소카레규뉴 라멘', m: '미소+카레+우유+버터 라멘. 1970년대 학생들이 발명' },
+  '貝焼き味噌': { r: '카이야키미소', m: '가리비 껍데기+된장+계란 구이. 아오모리 No.1 향토 요리' },
+  'ホタテ': { r: '호타테', m: '가리비. 陸奥湾 4월이 제철' },
+  'じゃっぱ汁': { r: '잣파지루', m: '대구 자투리 된장국. 어부의 겨울 국물' },
+  'イギリストースト': { r: '이기리스 토스트', m: '工藤パン의 마가린+설탕 빵. 아오모리 소울 간식' },
+  'りんご': { r: '링고', m: '사과. 아오모리 = 일본 사과 생산량 60%' },
+  '中華そば': { r: '추카소바', m: '중화면 — 일본식 라멘의 원래 이름' },
+  'つけ麺': { r: '쯔케멘', m: '면을 차갑게 담가 먹는 라멘' },
+  '味噌': { r: '미소', m: '된장' },
+  '醤油': { r: '쇼유', m: '간장' },
+  '刺身': { r: '사시미', m: '회 (생선 날것)' },
+  'おまかせ': { r: '오마카세', m: '"맡길게요" — 셰프에게 메뉴 선택을 맡기는 것' },
+  '定食': { r: '테이쇼쿠', m: '정식 — 밥+국+메인+반찬 세트' },
+  '日替わり': { r: '히가와리', m: '매일 바뀌는 (오늘의 메뉴)' },
+  '焼き魚': { r: '야키자카나', m: '생선 구이' },
+  '唐揚げ': { r: '카라아게', m: '일본식 치킨 튀김' },
+  'からあげクン': { r: '카라아게쿤', m: '로손의 인기 치킨 너겟 브랜드' },
+  '筋子': { r: '스지코', m: '연어알 (막에 싸인 상태). おにぎり 인기 속재료' },
+  'おにぎり': { r: '오니기리', m: '주먹밥' },
+  'にんにく': { r: '닌니쿠', m: '마늘. 아오모리산 마늘은 전국 1위' },
+  '田酒': { r: '덴슈', m: '아오모리 프리미엄 지주(地酒). 입수 난이도 최상' },
+  '豊盃': { r: '호우하이', m: '아오모리 지주. 과실향 풍부' },
+  '陸奥八仙': { r: '무츠핫센', m: '아오모리 지주. 시트러스계, 입문용' },
+  '地酒': { r: '지자케', m: '지역 사케 — 그 지역에서만 마실 수 있는 술' },
+  '昼飲み': { r: '히루노미', m: '낮술 문화. 점심부터 가볍게 한잔' },
+  'ちょい一': { r: '초이이치', m: '"가볍게 한잔" — 柿源의 세트 메뉴명' },
+  '시메': { r: '시메', m: '마무리. 술 마신 후 마지막 라멘' },
+  'シメ': { r: '시메', m: '마무리 (술 후 라멘)' },
+  'はしご': { r: '하시고', m: '술집 투어 (사다리처럼 옮겨 다님)' },
+  'ハイボール': { r: '하이볼', m: '위스키 소다' },
+  'レモンサワー': { r: '레몬사워', m: '레몬 소주 소다' },
+  '朝ラー': { r: '아사라', m: '아침 라멘 문화. 출근 전 한 그릇' },
+  '立ち飲み': { r: '다치노미', m: '서서 마시는 바 (스탠딩 바)' },
+  // 장소/시설
+  'さんふり横丁': { r: '산후리 요코초', m: '昭和풍 포장마차촌 15곳. 本町 이자카야 거리' },
+  '横丁': { r: '요코초', m: '좁은 골목 — 작은 술집들이 모인 골목' },
+  '居酒屋': { r: '이자카야', m: '일본식 선술집' },
+  '銭湯': { r: '센토', m: '대중목욕탕 (450엔)' },
+  '温泉': { r: '온센', m: '온천' },
+  '朝風呂': { r: '아사부로', m: '아침 목욕 — 아오모리 현지인 루틴' },
+  '善知鳥神社': { r: '우토우 진자', m: '아오모리 발상지 신사. 807년 재건' },
+  '八甲田丸': { r: '핫코다마루', m: '세이칸 연락선 뮤지엄 (1908-1988)' },
+  'ワ・ラッセ': { r: '와랏세', m: '네부타 뮤지엄 — 실물 네부타 전시' },
+  'ねぶた': { r: '네부타', m: '아오모리 최대 축제의 거대 등불 조형물' },
+  '商店街': { r: '쇼텐가이', m: '상점가 (아케이드)' },
+  '新町': { r: '신마치', m: '아오모리역 동쪽 아케이드 상점가' },
+  '本町': { r: '혼마치', m: '아오모리 최대 이자카야/밤문화 거리' },
+  '柳町': { r: '야나기마치', m: '시내 중심 남북 대로' },
+  '古川': { r: '후루카와', m: '역 동쪽 주거+카페 밀집 지역' },
+  'サンロード': { r: '산로드', m: 'サンロード青森 — 아오모리 최대 쇼핑몰' },
+  'ガーラタウン': { r: '가라타운', m: 'MEGAドンキ가 있는 쇼핑 단지' },
+  '物産館': { r: '부산칸', m: '특산품관 — 지역 기념품 판매' },
+  '喫茶': { r: '킷사', m: '킷사텐(찻집/카페). 昭和 레트로 분위기' },
+  '御朱印': { r: '고슈인', m: '신사/사찰에서 받는 도장+글씨 (수집 문화)' },
+  // 편의점/쇼핑
+  '工藤パン': { r: '쿠도 빵', m: '1932년 창업 아오모리 제빵 회사. 이기리스토스트 제조' },
+  '限定': { r: '겐테이', m: '한정 (지역한정, 기간한정 등)' },
+  'ご当地': { r: '고토치', m: '지역 특유의 / 해당 지역에서만 만나는' },
+  '手作り': { r: '테즈쿠리', m: '수제 — 기계가 아닌 손으로 직접 만든' },
+  '焼きたて': { r: '야키타테', m: '갓 구운 (빵/과자 등)' },
+  // 일상 표현
+  'ください': { r: '쿠다사이', m: '~주세요' },
+  'ありますか': { r: '아리마스카', m: '있습니까?' },
+  'おすすめ': { r: '오스스메', m: '추천' },
+  'あっさり': { r: '앗사리', m: '깔끔한 맛 (국물이 맑고 가벼운)' },
+  'こってり': { r: '콧테리', m: '진한 맛 (국물이 걸쭉하고 농후한)' },
+  '大盛り': { r: '오오모리', m: '곱배기 / 대자' },
+  '営業中': { r: '에이교추', m: '영업 중' },
+  '定休日': { r: '테이큐비', m: '정기 휴무일' },
+  '食べログ': { r: '타베로그', m: '일본 최대 맛집 리뷰 사이트' },
+  '合浦公園': { r: '갓포 공원', m: '아오모리 벚꽃 명소. 4월 하순 만개' },
+  '陸奥湾': { r: '무츠완', m: '아오모리 앞바다. 호타테 양식지' },
+  '津軽': { r: '쯔가루', m: '아오모리 서부 지역명. 독자적 문화권' },
+  '三味線': { r: '샤미센', m: '일본 전통 3현 악기. 津軽三味線이 유명' },
+  // 현지인 체험 딥다이브 추가
+  '自販機': { r: '지한키', m: '자동판매기 (자판기)' },
+  'りんごジュース': { r: '링고 주스', m: '사과주스' },
+  '飲み比べ': { r: '노미쿠라베', m: '음료 비교 시음 — 여러 종류를 마셔보며 비교' },
+  'ふじ': { r: '후지', m: '일본 대표 사과 품종. 단맛+산미 밸런스' },
+  '王林': { r: '오린', m: '초록 사과 품종. 풍부한 향, 깊은 단맛' },
+  '世界一': { r: '세카이이치', m: '"세계 제일" — 작부면적 0.5% 초희귀 사과 품종' },
+  'スタミナ源たれ': { r: '스타미나 겐타레', m: '마늘+사과+양파 만능 소스. 아오모리현 점유율 70%' },
+  '玉子とうふ': { r: '타마고 토후', m: '계란두부 — 아오모리에서는 달콤한 다시맛 차완무시 스타일' },
+  'スーパー': { r: '수퍼', m: '슈퍼마켓' },
+  'ユニバース': { r: '유니바스', m: 'Universe — 아오모리 로컬 슈퍼마켓 체인' },
+  'マエダ': { r: '마에다', m: 'Maeda — 무츠시 본사 로컬 슈퍼. 생선회·직매 코너 강세' },
+  'カブセンター': { r: '카부센타', m: 'Cub Center — 紅屋商事 운영 지역밀착형 슈퍼' },
+  '銭湯': { r: '센토', m: '대중목욕탕 (일본식 공중 목욕)' },
+  '朝風呂': { r: '아사부로', m: '아침 목욕 — 아오모리 현지 문화' },
+  '出町温泉': { r: '데마치 온센', m: '1969년~ 후지산 벽화 센토. 6시 오픈, pH 9.2' },
+  '廣田神社': { r: '히로타 진자', m: '일본 유일 병액제 수호신. 숙소 도보 5분' },
+  '御朱印': { r: '고슈인', m: '신사·절에서 받는 참배 기념 인장' },
+  '御朱印帳': { r: '고슈인초', m: '고슈인을 받아 모으는 수첩' },
+  '提灯': { r: '초친', m: '등롱 — ねぶた提灯은 네부타 등롱' },
+  'マンホールカード': { r: '만호루 카도', m: '맨홀 뚜껑 디자인 수집 카드. 전국 900종+' },
+  '道の駅': { r: '미치노에키', m: '도로 휴게소 — 지역 특산물·관광 정보' },
+  '浅虫温泉': { r: '아사무시 온센', m: '아오모리역에서 25분. 온천+수족관 관광지' },
+};
+
+// Auto-mark Japanese text with tooltip spans
+function applyJwTooltips(root) {
+  if (!root) root = document.getElementById('detailContent');
+  if (!root) return;
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
+  const textNodes = [];
+  while (walker.nextNode()) textNodes.push(walker.currentNode);
+
+  // Sort dict keys by length (longest first) for greedy matching
+  const keys = Object.keys(jwDict).sort(function(a, b) { return b.length - a.length; });
+  const pattern = new RegExp('(' + keys.map(function(k) { return k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }).join('|') + ')', 'g');
+
+  textNodes.forEach(function(node) {
+    if (node.parentNode.closest('.jw, script, style, .jw-reading, .jw-meaning')) return;
+    const text = node.textContent;
+    if (!pattern.test(text)) return;
+    pattern.lastIndex = 0;
+    const frag = document.createDocumentFragment();
+    let lastIndex = 0;
+    let match;
+    while ((match = pattern.exec(text)) !== null) {
+      if (match.index > lastIndex) {
+        frag.appendChild(document.createTextNode(text.slice(lastIndex, match.index)));
+      }
+      const span = document.createElement('span');
+      span.className = 'jw';
+      span.textContent = match[1];
+      const entry = jwDict[match[1]];
+      if (entry) {
+        if (entry.r) span.dataset.r = entry.r;
+        if (entry.m) span.dataset.m = entry.m;
+      }
+      frag.appendChild(span);
+      lastIndex = pattern.lastIndex;
+    }
+    if (lastIndex < text.length) {
+      frag.appendChild(document.createTextNode(text.slice(lastIndex)));
+    }
+    if (lastIndex > 0) node.parentNode.replaceChild(frag, node);
+  });
+}
+
+// Tooltip popup logic (P3 battle-tested)
+const jwPopup = document.getElementById('jw-popup');
+let activeJw = null;
+
+function showJwPopup(jw) {
+  const r = jw.dataset.r || '';
+  const m = jw.dataset.m || '';
+  if (!r && !m) return;
+  let html = '';
+  if (r) html += '<span class="jw-reading">' + r + '</span>';
+  if (m) html += ' <span class="jw-meaning">' + m + '</span>';
+  jwPopup.innerHTML = html;
+  jwPopup.style.display = 'block';
+  jwPopup.classList.remove('below');
+
+  const rect = jw.getBoundingClientRect();
+  let top = rect.top - jwPopup.offsetHeight - 8;
+  let left = rect.right - 12;
+  if (top < 8) { top = rect.bottom + 8; jwPopup.classList.add('below'); }
+  if (left + jwPopup.offsetWidth > window.innerWidth - 8) left = window.innerWidth - jwPopup.offsetWidth - 8;
+  if (left < 8) left = 8;
+  jwPopup.style.top = top + 'px';
+  jwPopup.style.left = left + 'px';
+
+  if (activeJw) activeJw.classList.remove('active');
+  jw.classList.add('active');
+  activeJw = jw;
+}
+
+function hideJwPopup() {
+  jwPopup.style.display = 'none';
+  if (activeJw) { activeJw.classList.remove('active'); activeJw = null; }
+}
+
+// Touch device detection
+let _jwTouch = false;
+document.addEventListener('touchstart', function() { _jwTouch = true; }, {once: true});
+
+// Desktop: hover
+document.addEventListener('mouseover', function(e) {
+  if (_jwTouch) return;
+  var jw = e.target.closest('.jw');
+  if (jw) showJwPopup(jw);
+});
+document.addEventListener('mouseout', function(e) {
+  if (_jwTouch) return;
+  var jw = e.target.closest('.jw');
+  if (jw && !jw.contains(e.relatedTarget)) hideJwPopup();
+});
+
+// Mobile: touch toggle
+document.addEventListener('touchend', function(e) {
+  var jw = e.target.closest('.jw');
+  if (jw) {
+    e.preventDefault();
+    if (activeJw === jw) hideJwPopup();
+    else showJwPopup(jw);
+  } else if (!e.target.closest('#jw-popup')) {
+    hideJwPopup();
+  }
+});
+
+// Desktop: click outside to close
+document.addEventListener('click', function(e) {
+  if (_jwTouch) return;
+  if (!e.target.closest('.jw') && !e.target.closest('#jw-popup')) hideJwPopup();
+});
+
+// Hook into showDetail: apply tooltips after content is rendered
+const _origShowDetail = showDetail;
+// (Monkey-patch not needed — we inject into showDetail completion via MutationObserver)
+const _jwObserver = new MutationObserver(function() {
+  applyJwTooltips(document.getElementById('detailContent'));
+});
+_jwObserver.observe(document.getElementById('detailContent'), { childList: true });
+
+// Also apply to static page content (timelines, food tab, etc.)
+applyJwTooltips(document.querySelector('.container') || document.body);
 </script>
 
 </body>
