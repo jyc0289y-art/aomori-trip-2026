@@ -1580,23 +1580,241 @@
     </div>
   </div>
 
-  <!-- 쇼핑 에리어 맛집 -->
-  <div class="card">
-    <h2>쇼핑 동선 맛집</h2>
-    <p style="font-size:0.9em;color:var(--text-light);margin-bottom:12px;">쇼핑 전후로 들르기 좋은 역 근처 맛집. 쇼핑 에리어(교외)에는 특별한 맛집이 없어 역 주변에서 먹고 이동하는 게 최적.</p>
-    <div class="spot" onclick="showDetail('osanai')">
-      <div class="spot-name">おさない食堂 <span class="spot-name-ja">오사나이 식당</span></div>
-      <div class="spot-meta">역 도보 3분 | 10:00~20:00</div>
-      <div class="spot-desc">70년 전통 가리비 전문. 호타테 카이야키미소 정식 필수.</div>
-      <div><span class="tag">가리비</span><span class="tag">70년 전통</span><span class="tag">런치 추천</span></div>
-      <div class="spot-tap-hint">탭하여 상세 보기</div>
+  <!-- 쇼핑 에리어 맛집 — 필터링 UI -->
+  <div class="card" id="shop-food-section">
+    <h2>🍽️ 쇼핑 동선 맛집</h2>
+    <p style="font-size:0.9em;color:var(--text-light);margin-bottom:8px;">쇼핑 스폿별 · 메뉴별로 골라보세요. 각 쇼핑몰 내부 또는 도보권 맛집을 정리했습니다.</p>
+
+    <!-- 스폿 필터 -->
+    <div style="margin-bottom:6px;font-size:0.82em;font-weight:600;color:var(--primary);">📍 쇼핑 스폿별</div>
+    <div id="shopFoodSpotFilter" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;">
+      <span class="tag" style="cursor:pointer;background:var(--primary);color:#fff;" onclick="filterShopFood('all','spot')">전체</span>
+      <span class="tag" style="cursor:pointer;" onclick="filterShopFood('sunroad','spot')">サンロード</span>
+      <span class="tag" style="cursor:pointer;" onclick="filterShopFood('gala','spot')">ガーラタウン</span>
+      <span class="tag" style="cursor:pointer;" onclick="filterShopFood('lovina','spot')">LOVINA (역)</span>
+      <span class="tag" style="cursor:pointer;" onclick="filterShopFood('shinmachi','spot')">新町商店街</span>
+      <span class="tag" style="cursor:pointer;" onclick="filterShopFood('station','spot')">역 주변</span>
     </div>
-    <div class="spot" onclick="showDetail('nagao_ekimae')">
-      <div class="spot-name">長尾中華そば 駅前店 <span class="spot-name-ja">나가오 츄카소바</span></div>
-      <div class="spot-meta">LOVINA 지하 | 역 직결 | 07:00~20:00</div>
-      <div class="spot-desc">쓰가루 니보시 라멘 명가. 아침부터 영업!</div>
-      <div><span class="tag">니보시 라멘</span><span class="tag">아침 영업</span><span class="tag">역 직결</span></div>
-      <div class="spot-tap-hint">탭하여 상세 보기</div>
+
+    <!-- 메뉴 필터 -->
+    <div style="margin-bottom:6px;font-size:0.82em;font-weight:600;color:var(--accent);">🍜 메뉴별</div>
+    <div id="shopFoodMenuFilter" style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px;">
+      <span class="tag" style="cursor:pointer;background:var(--accent);color:#fff;" onclick="filterShopFood('all','menu')">전체</span>
+      <span class="tag" style="cursor:pointer;" onclick="filterShopFood('ramen','menu')">라멘·소바</span>
+      <span class="tag" style="cursor:pointer;" onclick="filterShopFood('curry','menu')">카레</span>
+      <span class="tag" style="cursor:pointer;" onclick="filterShopFood('seafood','menu')">해산물·정식</span>
+      <span class="tag" style="cursor:pointer;" onclick="filterShopFood('meat','menu')">고기</span>
+      <span class="tag" style="cursor:pointer;" onclick="filterShopFood('cafe','menu')">카페·디저트</span>
+      <span class="tag" style="cursor:pointer;" onclick="filterShopFood('ethnic','menu')">이국 요리</span>
+    </div>
+
+    <!-- SVG 쇼핑 맛집 맵 -->
+    <div style="margin-bottom:16px;">
+      <svg viewBox="0 0 420 200" style="width:100%;max-width:420px;display:block;margin:0 auto;" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0" y="0" width="420" height="200" rx="10" fill="#1a1a2e"/>
+        <text x="210" y="20" text-anchor="middle" font-size="11" font-weight="700" fill="#ffd700">🗺️ 쇼핑 에리어별 맛집 분포</text>
+        <!-- 역 중심 -->
+        <rect x="160" y="35" width="100" height="35" rx="6" fill="#e65100"/>
+        <text x="210" y="50" text-anchor="middle" font-size="9" font-weight="700" fill="white">JR 아오모리역</text>
+        <text x="210" y="62" text-anchor="middle" font-size="7" fill="#ffe0b2">LOVINA · 역 주변</text>
+        <!-- LOVINA 맛집 -->
+        <text x="210" y="82" text-anchor="middle" font-size="7" fill="#ffab91">🍜 長尾 · 津軽そば · 青森食堂</text>
+        <!-- 좌측: 新町 -->
+        <rect x="10" y="95" width="130" height="50" rx="6" fill="#1565c0"/>
+        <text x="75" y="112" text-anchor="middle" font-size="9" font-weight="700" fill="white">新町商店街</text>
+        <text x="75" y="124" text-anchor="middle" font-size="7" fill="#bbdefb">도보 5~8분</text>
+        <text x="75" y="138" text-anchor="middle" font-size="6.5" fill="#90caf9">🍛 浅利 · 🍰 チャンドラ · 🍎 おきな屋</text>
+        <!-- 중앙하단: 역 주변 -->
+        <rect x="150" y="95" width="120" height="50" rx="6" fill="#2e7d32"/>
+        <text x="210" y="112" text-anchor="middle" font-size="9" font-weight="700" fill="white">역 주변 (도보 3분)</text>
+        <text x="210" y="124" text-anchor="middle" font-size="7" fill="#c8e6c9">おさない · 大黒寿司</text>
+        <text x="210" y="138" text-anchor="middle" font-size="6.5" fill="#a5d6a7">🐚 カイヤキミソ · 🍣 스시</text>
+        <!-- 우측: 교외 -->
+        <rect x="280" y="95" width="130" height="50" rx="6" fill="#6a1b9a"/>
+        <text x="345" y="112" text-anchor="middle" font-size="9" font-weight="700" fill="white">교외 쇼핑몰</text>
+        <text x="345" y="124" text-anchor="middle" font-size="7" fill="#e1bee7">버스 15~20분</text>
+        <text x="345" y="138" text-anchor="middle" font-size="6.5" fill="#ce93d8">サンロード 6곳 · ガーラ 2곳</text>
+        <!-- 범례 -->
+        <rect x="10" y="160" width="400" height="32" rx="5" fill="#ffffff10"/>
+        <text x="210" y="175" text-anchor="middle" font-size="8" fill="#aaa">💡 교외 쇼핑몰은 내부 맛집 충실 | 역 주변은 쇼핑 전후 식사에 최적</text>
+        <text x="210" y="188" text-anchor="middle" font-size="7.5" fill="#ffd700">총 15+ 맛집 | 라멘 · 카레 · 해산물 · 고기 · 디저트 · 이국요리</text>
+      </svg>
+    </div>
+
+    <!-- 맛집 리스트 -->
+    <div id="shopFoodList">
+      <!-- サンロード -->
+      <div class="shop-food-item" data-spot="sunroad" data-menu="ramen">
+        <div class="spot" onclick="showDetail('sr_azuma')">
+          <div class="spot-name">中華そば あづま <span class="spot-name-ja">니보시 라멘</span></div>
+          <div class="spot-meta">🏬 サンロード 3F | 11:00~20:00 | ~950엔</div>
+          <div class="spot-desc">サンロード 내 煮干し라멘. 쇼핑 후 3층에서 한 그릇.</div>
+          <div><span class="tag">🍜 라멘</span><span class="tag">サンロード</span><span class="tag">니보시</span></div>
+          <div class="spot-tap-hint">탭하여 상세 보기</div>
+        </div>
+      </div>
+      <div class="shop-food-item" data-spot="sunroad" data-menu="ramen">
+        <div class="spot" onclick="showDetail('sr_taishoken')">
+          <div class="spot-name">青森大勝軒 <span class="spot-name-ja">쯔케멘</span></div>
+          <div class="spot-meta">🏬 サンロード 3F | 11:00~20:00 | ~1,100엔</div>
+          <div class="spot-desc">도쿄 이케부쿠로 발상 쯔케멘 명가. 대성(곱빼기) 무료!</div>
+          <div><span class="tag">🍜 쯔케멘</span><span class="tag">サンロード</span><span class="tag">대성 무료</span></div>
+          <div class="spot-tap-hint">탭하여 상세 보기</div>
+        </div>
+      </div>
+      <div class="shop-food-item" data-spot="sunroad" data-menu="curry">
+        <div class="spot" onclick="showDetail('sr_haveli')">
+          <div class="spot-name">ハヴェリキッチン <span class="spot-name-ja">인도 카레</span></div>
+          <div class="spot-meta">🏬 サンロード 3F | 11:00~20:00 | ~1,500엔</div>
+          <div class="spot-desc">본격 인도 카레 & 난. 식베론 3.18 — サンロード 내 최고 평점.</div>
+          <div><span class="tag">🍛 인도 카레</span><span class="tag">サンロード</span><span class="tag">⭐3.18</span></div>
+          <div class="spot-tap-hint">탭하여 상세 보기</div>
+        </div>
+      </div>
+      <div class="shop-food-item" data-spot="sunroad" data-menu="curry">
+        <div class="spot" onclick="showDetail('sr_sajitokoh')">
+          <div class="spot-name">スープカレー 匙と香 <span class="spot-name-ja">수프 카레</span></div>
+          <div class="spot-meta">🏬 サンロード 1F | 11:00~20:00 | ~1,500엔</div>
+          <div class="spot-desc">홋카이도 스타일 수프 카레. 야채 고로고로, 추운 날에 딱.</div>
+          <div><span class="tag">🍲 수프 카레</span><span class="tag">サンロード</span><span class="tag">야채 듬뿍</span></div>
+          <div class="spot-tap-hint">탭하여 상세 보기</div>
+        </div>
+      </div>
+      <div class="shop-food-item" data-spot="sunroad" data-menu="ethnic">
+        <div class="spot" onclick="showDetail('sr_matahari')">
+          <div class="spot-name">ワルン マタハリ <span class="spot-name-ja">인도네시아 요리</span></div>
+          <div class="spot-meta">🏬 サンロード 1F | 11:00~20:00 | ~1,500엔</div>
+          <div class="spot-desc">아오모리 유일 인도네시아 전문점. 나시고렝·미고렝으로 기분 전환.</div>
+          <div><span class="tag">🍚 인도네시아</span><span class="tag">サンロード</span><span class="tag">이색</span></div>
+          <div class="spot-tap-hint">탭하여 상세 보기</div>
+        </div>
+      </div>
+      <div class="shop-food-item" data-spot="sunroad" data-menu="seafood">
+        <div class="spot" onclick="showDetail('sr_satokagura')">
+          <div class="spot-name">和食 里神楽 <span class="spot-name-ja">우동·돈카츠</span></div>
+          <div class="spot-meta">🏬 サンロード 3F | 11:00~20:00 | ~1,200엔</div>
+          <div class="spot-desc">우동·소바 정식, 돈카츠. 무난하게 화식을 먹고 싶을 때.</div>
+          <div><span class="tag">🥢 화식</span><span class="tag">サンロード</span><span class="tag">정식</span></div>
+          <div class="spot-tap-hint">탭하여 상세 보기</div>
+        </div>
+      </div>
+
+      <!-- ガーラタウン -->
+      <div class="shop-food-item" data-spot="gala" data-menu="ramen">
+        <div class="spot" onclick="showDetail('gt_donkichi')">
+          <div class="spot-name">どん吉 <span class="spot-name-ja">라멘</span></div>
+          <div class="spot-meta">🏬 ガーラタウン A棟 | 11:00~20:00 | ~950엔</div>
+          <div class="spot-desc">ドンキ 쇼핑 후 간편하게. 미소·시오·쇼유 라멘.</div>
+          <div><span class="tag">🍜 라멘</span><span class="tag">ガーラタウン</span><span class="tag">미소</span></div>
+          <div class="spot-tap-hint">탭하여 상세 보기</div>
+        </div>
+      </div>
+      <div class="shop-food-item" data-spot="gala" data-menu="meat">
+        <div class="spot" onclick="showDetail('gt_sumiya')">
+          <div class="spot-name">焼肉 炭や <span class="spot-name-ja">야키니쿠</span></div>
+          <div class="spot-meta">🏬 ガーラタウン | 런치 11:00~ | 런치 ~1,500엔</div>
+          <div class="spot-desc">야키니쿠 런치 세트가 가성비 좋다. 고기가 먹고 싶을 때.</div>
+          <div><span class="tag">🥩 야키니쿠</span><span class="tag">ガーラタウン</span><span class="tag">런치 세트</span></div>
+          <div class="spot-tap-hint">탭하여 상세 보기</div>
+        </div>
+      </div>
+
+      <!-- LOVINA -->
+      <div class="shop-food-item" data-spot="lovina" data-menu="ramen">
+        <div class="spot" onclick="showDetail('nagao_ekimae')">
+          <div class="spot-name">長尾中華そば 駅前店 <span class="spot-name-ja">니보시 라멘</span></div>
+          <div class="spot-meta">🏬 LOVINA P1F | 07:00~20:00 | ~950엔</div>
+          <div class="spot-desc">1949년 창업 니보시 라멘 명가. 아침 7시부터! 朝ラー 가능.</div>
+          <div><span class="tag">🍜 니보시 라멘</span><span class="tag">LOVINA</span><span class="tag">⭐3.46</span><span class="tag">아침 7시</span></div>
+          <div class="spot-tap-hint">탭하여 상세 보기</div>
+        </div>
+      </div>
+      <div class="shop-food-item" data-spot="lovina" data-menu="ramen">
+        <div class="spot" onclick="showDetail('lv_tsugaru_soba')">
+          <div class="spot-name">立喰いそば処 津軽 <span class="spot-name-ja">스탠딩 소바</span></div>
+          <div class="spot-meta">🏬 LOVINA 1F | 07:00~20:00 | 350~600엔</div>
+          <div class="spot-desc">서서 후루룩! 일본 역 소바 문화 체험. 350엔부터 초가성비.</div>
+          <div><span class="tag">🥢 스탠딩 소바</span><span class="tag">LOVINA</span><span class="tag">⭐3.36</span><span class="tag">350엔~</span></div>
+          <div class="spot-tap-hint">탭하여 상세 보기</div>
+        </div>
+      </div>
+      <div class="shop-food-item" data-spot="lovina" data-menu="seafood">
+        <div class="spot" onclick="showDetail('lv_aomori_shokudo')">
+          <div class="spot-name">青森食堂 <span class="spot-name-ja">향토 푸드홀</span></div>
+          <div class="spot-meta">🏬 LOVINA 내 | 11:00~21:00 | ~2,500엔</div>
+          <div class="spot-desc">LOVINA 최고 평점 3.41! 해산물 덮밥·호타테 정식·地酒.</div>
+          <div><span class="tag">🍱 향토 정식</span><span class="tag">LOVINA</span><span class="tag">⭐3.41</span><span class="tag">해산물</span></div>
+          <div class="spot-tap-hint">탭하여 상세 보기</div>
+        </div>
+      </div>
+
+      <!-- 新町商店街 -->
+      <div class="shop-food-item" data-spot="shinmachi" data-menu="ramen">
+        <div class="spot" onclick="showDetail('sm_ajisapporo_asari')">
+          <div class="spot-name">味の札幌 浅利 <span class="spot-name-ja">미소카레규뉴 라멘</span></div>
+          <div class="spot-meta">📍 新町1-11-23 | 11:00~18:30 | ~1,000엔</div>
+          <div class="spot-desc">미소+카레+우유 라멘 원조 계열. 新町 산책 동선에서 자연스럽게.</div>
+          <div><span class="tag">🍛 미소카레규뉴</span><span class="tag">新町</span><span class="tag">B급 구르메</span></div>
+          <div class="spot-tap-hint">탭하여 상세 보기</div>
+        </div>
+      </div>
+      <div class="shop-food-item" data-spot="shinmachi" data-menu="cafe">
+        <div class="spot" onclick="showDetail('sm_chandola')">
+          <div class="spot-name">パティスリー チャンドラ <span class="spot-name-ja">케이크 & 런치</span></div>
+          <div class="spot-meta">📍 新町 (역 도보 5분) | 10:00~20:00 | ~1,800엔</div>
+          <div class="spot-desc">피아노 생연주 카페 레스토랑. 런치 플레이트 + 계절 파르페.</div>
+          <div><span class="tag">🍰 케이크</span><span class="tag">新町</span><span class="tag">피아노 연주</span><span class="tag">런치</span></div>
+          <div class="spot-tap-hint">탭하여 상세 보기</div>
+        </div>
+      </div>
+      <div class="shop-food-item" data-spot="shinmachi" data-menu="cafe">
+        <div class="spot" onclick="showDetail('sm_okinaya')">
+          <div class="spot-name">おきな屋 新町本店 <span class="spot-name-ja">사과 화과자</span></div>
+          <div class="spot-meta">📍 新町1-8-2 | 09:00~18:00 | ~500엔</div>
+          <div class="spot-desc">1918년 창업. "薄紅" 사과 반생과자 — 아오모리 기념품 1위.</div>
+          <div><span class="tag">🍎 사과 과자</span><span class="tag">新町</span><span class="tag">1918년</span><span class="tag">기념품</span></div>
+          <div class="spot-tap-hint">탭하여 상세 보기</div>
+        </div>
+      </div>
+
+      <!-- 역 주변 (기존 + 추가) -->
+      <div class="shop-food-item" data-spot="station" data-menu="seafood">
+        <div class="spot" onclick="showDetail('osanai')">
+          <div class="spot-name">おさない食堂 <span class="spot-name-ja">오사나이 식당</span></div>
+          <div class="spot-meta">📍 역 도보 3분 | 10:00~20:00 | 정식 ~1,200엔</div>
+          <div class="spot-desc">70년 전통 가리비 전문. 호타테 카이야키미소 정식 필수!</div>
+          <div><span class="tag">🐚 카이야키미소</span><span class="tag">역 앞</span><span class="tag">70년 전통</span></div>
+          <div class="spot-tap-hint">탭하여 상세 보기</div>
+        </div>
+      </div>
+      <div class="shop-food-item" data-spot="station" data-menu="seafood">
+        <div class="spot" onclick="showDetail('daikoku_sushi')">
+          <div class="spot-name">大黒寿司 <span class="spot-name-ja">다이코쿠 스시</span></div>
+          <div class="spot-meta">📍 新町1-2-6 | 11:00~22:00 | 런치 ~2,000엔</div>
+          <div class="spot-desc">동네 스시집. 제철 네타를 카운터에서. 점심 地酒도 OK.</div>
+          <div><span class="tag">🍣 스시</span><span class="tag">역 주변</span><span class="tag">카운터</span><span class="tag">昼飲み</span></div>
+          <div class="spot-tap-hint">탭하여 상세 보기</div>
+        </div>
+      </div>
+      <div class="shop-food-item" data-spot="station" data-menu="seafood">
+        <div class="spot" onclick="showDetail('kakigen')">
+          <div class="spot-name">柿源 <span class="spot-name-ja">카키겐</span></div>
+          <div class="spot-meta">📍 新町1-8-9 | 11:00~21:00 | ちょい一 ~1,500엔</div>
+          <div class="spot-desc">향토 식당 × 昼飲み. 田酒 한잔 + 회 + 오뎅 "ちょい一セット".</div>
+          <div><span class="tag">🍶 昼飲み</span><span class="tag">역 주변</span><span class="tag">田酒</span><span class="tag">향토 요리</span></div>
+          <div class="spot-tap-hint">탭하여 상세 보기</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 결과 없음 메시지 -->
+    <div id="shopFoodEmpty" style="display:none;text-align:center;padding:20px;color:var(--text-light);font-size:0.9em;">
+      해당 조건의 맛집이 없습니다. 다른 필터를 선택해보세요.
+    </div>
+
+    <!-- 맛집 수 카운터 -->
+    <div id="shopFoodCount" style="text-align:center;margin-top:8px;font-size:0.82em;color:var(--text-light);">
+      총 <strong>17</strong>곳 표시 중
     </div>
   </div>
 
@@ -2657,6 +2875,160 @@ const SPOTS = {
     tags: ['라이브 하우스', '인디', '음악', '300석'],
     imageSearch: '青森Quarter クォーター ライブハウス',
   },
+
+  // ===== 쇼핑 동선 맛집 (쇼핑 스폿별) =====
+  // --- サンロード青森 내부/주변 ---
+  sr_azuma: {
+    name: '中華そば あづま', nameJa: '츄카소바 아즈마',
+    query: '中華そばあづま サンロード青森', address: 'サンロード青森 3F',
+    icon: '🍜', category: '니보시 라멘 (サンロード 내)',
+    hours: '11:00~20:00', price: '750~950엔',
+    desc: 'サンロード 3층 푸드코트의 煮干し中華そば 전문점. 쇼핑 중 든든한 한 그릇. 아오모리 니보시 라멘을 쇼핑몰에서 간편하게 맛볼 수 있다.',
+    menu: '<strong>煮干し中華そば</strong> — 기본 니보시 라멘<br><strong>つけ麺</strong> — 쯔케멘 스타일',
+    tips: 'サンロード에서 PORTER 쇼핑 후 3층으로 올라가면 바로. 푸드코트라 혼자서도 편하게.',
+    tags: ['니보시 라멘', 'サンロード 3F', '쇼핑 후 식사'],
+    imageSearch: '中華そばあづま サンロード青森 煮干し',
+  },
+  sr_haveli: {
+    name: 'ハヴェリキッチン', nameJa: '하벨리 키친',
+    query: 'ハヴェリキッチン サンロード青森', address: 'サンロード青森 3F',
+    icon: '🍛', category: '인도 카레 (サンロード 내)',
+    hours: '11:00~20:00', price: '1,000~1,500엔',
+    desc: 'サンロード 3층의 본격 인도 카레 & 난. 라멘이 질릴 때 선택지. 큰 난에 카레 2종 세트가 인기.',
+    menu: '<strong>カレーセット</strong> — 난 + 카레 2종 선택<br><strong>タンドリーチキン</strong><br><strong>ラッシー</strong>',
+    tips: '라멘·화식에 지칠 때 기분 전환으로 최적. 식베론 3.18로 サンロード 내 최고 평점.',
+    tags: ['인도 카레', '난', 'サンロード 3F', '기분 전환'],
+    imageSearch: 'ハヴェリキッチン サンロード青森 インドカレー ナン',
+  },
+  sr_sajitokoh: {
+    name: 'スープカレー 匙と香', nameJa: '수프카레 사지토코',
+    query: 'スープカレー匙と香 サンロード青森', address: 'サンロード青森 1F',
+    icon: '🍲', category: '수프 카레 (サンロード 내)',
+    hours: '11:00~20:00', price: '1,000~1,500엔',
+    desc: 'サンロード 1층의 스프 카레 전문점. 홋카이도 스타일 수프 카레를 아오모리에서. 야채 고로고로.',
+    menu: '<strong>チキンスープカレー</strong> — 기본 인기 메뉴<br><strong>野菜スープカレー</strong> — 야채 듬뿍<br><strong>辛さ選択</strong> — 매운 정도 조절 가능',
+    tips: 'スープカレー는 홋카이도가 원조지만 이 점포도 완성도가 높다. 추운 4월 초에 몸이 따뜻해지는 선택.',
+    tags: ['수프 카레', 'サンロード 1F', '홋카이도 스타일'],
+    imageSearch: 'スープカレー匙と香 サンロード チキン',
+  },
+  sr_matahari: {
+    name: 'ワルン マタハリ', nameJa: '와룬 마타하리',
+    query: 'ワルンマタハリ サンロード青森', address: 'サンロード青森 1F',
+    icon: '🍚', category: '인도네시아 요리 (サンロード 내)',
+    hours: '11:00~20:00', price: '1,000~1,500엔',
+    desc: 'サンロード 1층의 인도네시아 가정식 레스토랑. 나시고렝, 미고렝, 사테 등 본격 동남아 요리. 아오모리에서 유일한 인도네시아 전문점.',
+    menu: '<strong>ナシゴレン</strong> — 인도네시아 볶음밥<br><strong>ミーゴレン</strong> — 볶음면<br><strong>サテ</strong> — 꼬치구이',
+    tips: '일식에 완전히 지쳤을 때의 구원자. サンロード 내 이색적인 선택지.',
+    tags: ['인도네시아', '나시고렝', 'サンロード 1F', '이색'],
+    imageSearch: 'ワルンマタハリ サンロード青森 ナシゴレン',
+  },
+  sr_satokagura: {
+    name: '和食 里神楽', nameJa: '와쇼쿠 사토카구라',
+    query: '和食里神楽 サンロード青森', address: 'サンロード青森 3F',
+    icon: '🥢', category: '우동·돈카츠 (サンロード 내)',
+    hours: '11:00~20:00', price: '800~1,200엔',
+    desc: 'サンロード 3층의 화식 레스토랑. 우동·소바 정식, 돈카츠 등 가정식 스타일. 가족 식사에도 무난.',
+    menu: '<strong>うどん定食</strong> — 우동 + 미니 덮밥 세트<br><strong>とんかつ定食</strong> — 돈카츠 정식<br><strong>天ぷら定食</strong>',
+    tips: '무난하게 화식을 먹고 싶을 때. 쇼핑 피로 후 정식 한상 안정감.',
+    tags: ['우동', '돈카츠', 'サンロード 3F', '가정식'],
+    imageSearch: '里神楽 サンロード青森 うどん定食',
+  },
+  sr_taishoken: {
+    name: '青森大勝軒', nameJa: '아오모리 타이쇼켄',
+    query: '青森大勝軒 サンロード青森', address: 'サンロード青森 3F',
+    icon: '🍜', category: '쯔케멘 (サンロード 내)',
+    hours: '11:00~20:00', price: '850~1,100엔',
+    desc: '도쿄 이케부쿠로 발상의 쯔케멘 명가 대승헌의 아오모리점. 진한 어개 돈코츠 스프에 적시는 쯔케멘.',
+    menu: '<strong>もりそば(쯔케멘)</strong> — 시그니처. 진한 국물에 면을 적셔 먹기<br><strong>中華そば</strong> — 라멘 스타일<br><strong>大盛り無料</strong> — 대성 무료!',
+    tips: '대성 무료가 포인트. 니보시 라멘이 아닌 쯔케멘이 먹고 싶을 때. サンロード에서 3F 푸드코트 계열.',
+    tags: ['쯔케멘', '대승헌', 'サンロード 3F', '대성 무료'],
+    imageSearch: '青森大勝軒 サンロード つけ麺',
+  },
+
+  // --- ガーラタウン 내부 ---
+  gt_donkichi: {
+    name: 'どん吉', nameJa: '돈키치',
+    query: 'どん吉 ガーラタウン青森', address: 'ガーラタウン A棟',
+    icon: '🍜', category: '라멘 (ガーラタウン 내)',
+    hours: '11:00~20:00', price: '700~950엔',
+    desc: 'ガーラタウン A동의 라멘점. ドンキ 쇼핑 후 간편하게. 미소·시오·쇼유 라멘.',
+    menu: '<strong>味噌ラーメン</strong> — 미소 라멘<br><strong>醤油ラーメン</strong> — 간장 라멘<br><strong>半チャーハンセット</strong> — 미니 볶음밥 세트',
+    tips: 'ガーラタウン(MEGAドンキ)에서 쇼핑 후 바로 옆에서 식사 해결. 무난한 맛.',
+    tags: ['라멘', 'ガーラタウン', '미소', '쇼핑 후'],
+    imageSearch: 'どん吉 ガーラタウン青森 ラーメン',
+  },
+  gt_sumiya: {
+    name: '焼肉 炭や', nameJa: '야키니쿠 스미야',
+    query: '焼肉炭や ガーラタウン青森', address: 'ガーラタウン',
+    icon: '🥩', category: '야키니쿠 (ガーラタウン 내)',
+    hours: '11:00~22:00', price: '런치 1,000~1,500엔 / 디너 2,500~4,000엔',
+    desc: 'ガーラタウン의 야키니쿠(불고기) 레스토랑. 런치 세트가 가성비 좋다. 일식이 아닌 고기가 먹고 싶을 때.',
+    menu: '<strong>焼肉ランチ</strong> — 런치 세트 (밥·국·샐러드 포함)<br><strong>カルビセット</strong><br><strong>食べ放題</strong> — 무한리필 코스 있음',
+    tips: '런치타임이 가성비 포인트. 일본 야키니쿠 런치는 한국 고기 가격과 비교해도 만족도 높다.',
+    tags: ['야키니쿠', 'ガーラタウン', '런치 세트', '고기'],
+    imageSearch: '焼肉炭や ガーラタウン青森 ランチ',
+  },
+
+  // --- LOVINA (역빌딩) 내부 ---
+  lv_tsugaru_soba: {
+    name: '立喰いそば処 津軽', nameJa: '다치구이 소바 쓰가루',
+    query: '立喰いそば処津軽 ラビナ青森', address: 'LOVINA 1F (역 직결)',
+    icon: '🥢', category: '스탠딩 소바 (LOVINA 내)',
+    hours: '07:00~20:00', price: '350~600엔',
+    desc: 'LOVINA 1층의 스탠딩 소바 가게. 식베론 3.36의 숨은 실력파. 서서 후루룩 먹는 일본식 역 소바. 7시부터 영업해서 아침식사로도.',
+    menu: '<strong>かけそば</strong> — 기본 소바 350엔<br><strong>天ぷらそば</strong> — 텐뿌라 소바 500엔<br><strong>春菊天そば</strong> — 쑥갓 텐뿌라 소바',
+    tips: '일본 역 소바 문화를 체험할 수 있는 곳. 서서 후루룩 3분 만에 먹고 나오는 것이 정석. 장尾 라멘보다 가볍게 배를 채우고 싶을 때.',
+    order: '"天ぷらそばください" (텐뿌라소바 쿠다사이)',
+    tags: ['스탠딩 소바', 'LOVINA 1F', '역 직결', '350엔~', '아침'],
+    imageSearch: '立喰い蕎麦 津軽 ラビナ 青森駅',
+  },
+  lv_aomori_shokudo: {
+    name: '青森食堂', nameJa: '아오모리 쇼쿠도',
+    query: '青森食堂 ラビナ 青森駅', address: 'LOVINA 내 (역 직결)',
+    icon: '🍱', category: '푸드홀 (LOVINA 내)',
+    hours: '11:00~21:00', price: '1,000~2,500엔',
+    desc: 'LOVINA 내 아오모리 향토 요리 푸드홀. 식베론 3.41로 <strong>LOVINA 내 최고 평점</strong>. 해산물 덮밥·호타테 요리·향토 정식을 한 자리에서. 지역 地酒 메뉴도 풍부.',
+    menu: '<strong>海鮮丼</strong> — 해산물 덮밥<br><strong>ホタテ定食</strong> — 호타테 정식 각종<br><strong>地酒</strong> — 田酒·豊盃 등',
+    tips: 'LOVINA 내에서 제대로 된 향토 요리를 먹고 싶다면 여기. 長尾는 라멘, 津軽는 소바, 여기는 정식+해산물. 용도에 맞춰 선택.',
+    tags: ['향토 정식', 'LOVINA', '해산물 덮밥', '최고 평점 3.41'],
+    imageSearch: '青森食堂 ラビナ 海鮮丼 ホタテ',
+  },
+
+  // --- 新町商店街 ---
+  sm_chandola: {
+    name: 'パティスリー&カフェ チャンドラ', nameJa: '파티스리 & 카페 찬도라',
+    query: 'パティスリーカフェチャンドラ 青森新町', address: '青森市新町 (역 도보 5분)', walk: '숙소에서 도보 8분',
+    icon: '🍰', category: '케이크 & 카페 레스토랑',
+    hours: '10:00~20:00', price: '런치 1,000~1,800엔 / 케이크 500~800엔',
+    desc: '新町商店街의 파티스리 겸 카페 레스토랑. 2F에서 피아노 생연주를 들으며 런치·디너 가능. 1F 쇼케이스에서 케이크·양과자 테이크아웃도.',
+    menu: '<strong>ランチプレート</strong> — 파스타/오므라이스 + 미니 디저트<br><strong>ケーキセット</strong> — 케이크 + 드링크<br><strong>季節のパフェ</strong> — 계절 파르페',
+    tips: '新町 아케이드 산책 후 디저트 타임에 최적. 피아노 생연주(토·일)가 분위기 좋다. 쇼핑 피로를 달래는 달콤한 보상.',
+    tags: ['케이크', '피아노 생연주', '新町', '런치', '디저트'],
+    imageSearch: 'チャンドラ CHANDOLA 青森新町 ケーキ ランチ',
+  },
+  sm_ajisapporo_asari: {
+    name: '味の札幌 浅利', nameJa: '아지노삿포로 아사리',
+    query: '味の札幌浅利 青森新町', address: '青森市新町1-11-23', walk: '숙소에서 도보 8분',
+    icon: '🍛', category: '미소카레규뉴 라멘 (新町)',
+    hours: '11:00~18:30', price: '800~1,000엔',
+    desc: '미소카레규뉴(미소+카레+우유) 라멘의 원조 「味の札幌」 계열 점포. 大西보다 접근성이 좋은 新町通り 위치. 관광객+현지인 혼재.',
+    menu: '<strong>味噌カレー牛乳ラーメン</strong> — 시그니처. 미소+카레+우유+버터<br><strong>味噌ラーメン</strong> — 기본 미소 라멘<br><strong>醤油ラーメン</strong>',
+    tips: '大西가 유명하지만 浅利도 같은 계열이라 맛은 동급. 新町 산책 동선에서 자연스럽게 들를 수 있어 편리.',
+    order: '"味噌カレー牛乳ラーメンください" (미소카레규뉴라멘 쿠다사이)',
+    tags: ['미소카레규뉴', '新町', '원조 계열', 'B급 구르메'],
+    imageSearch: '味の札幌浅利 青森 味噌カレー牛乳ラーメン',
+  },
+  sm_okinaya: {
+    name: 'おきな屋 新町本店', nameJa: '오키나야 신마치 본점',
+    query: 'おきな屋 青森新町本店', address: '青森市新町1-8-2', walk: '숙소에서 도보 8분',
+    icon: '🍎', category: '사과 화과자 & 甘味処',
+    hours: '09:00~18:00', price: '200~500엔',
+    desc: '1918년(大正7년) 창업의 사과 화과자 전문점. 간판 상품 "薄紅(우스베니)"는 사과 얇은 조림을 감싼 반생과자. 아오모리 사과 기념품의 대표.',
+    menu: '<strong>薄紅(우스베니)</strong> — 사과 반생과자 (시그니처)<br><strong>たわわ</strong> — 사과 파이 스틱<br><strong>甘味セット</strong> — 점내 이트인 세트',
+    tips: '기념품 쇼핑은 여기서 해결. "薄紅"은 아오모리 사과 기념품 부동의 1위. 이트인 코너에서 맛보기도 가능.',
+    tags: ['사과 과자', '1918년 창업', '기념품', '新町', '薄紅'],
+    imageSearch: 'おきな屋 青森 薄紅 りんご 和菓子',
+  },
 };
 
 // ===== Google Maps photo URL helper =====
@@ -2798,6 +3170,62 @@ function closeDetail() {
   document.body.style.overflow = '';
   const iframes = document.getElementById('detailContent').querySelectorAll('iframe');
   iframes.forEach(f => f.src = '');
+}
+
+// ===== SHOP FOOD FILTER =====
+let shopFoodActiveSpot = 'all';
+let shopFoodActiveMenu = 'all';
+
+function filterShopFood(value, type) {
+  if (type === 'spot') shopFoodActiveSpot = value;
+  if (type === 'menu') shopFoodActiveMenu = value;
+
+  // Update filter button styles
+  const spotBtns = document.querySelectorAll('#shopFoodSpotFilter .tag');
+  spotBtns.forEach(btn => {
+    const v = btn.getAttribute('onclick').match(/filterShopFood\('([^']+)'/)[1];
+    if (v === shopFoodActiveSpot) {
+      btn.style.background = 'var(--primary)'; btn.style.color = '#fff';
+    } else {
+      btn.style.background = ''; btn.style.color = '';
+    }
+  });
+  const menuBtns = document.querySelectorAll('#shopFoodMenuFilter .tag');
+  menuBtns.forEach(btn => {
+    const v = btn.getAttribute('onclick').match(/filterShopFood\('([^']+)'/)[1];
+    if (v === shopFoodActiveMenu) {
+      btn.style.background = 'var(--accent)'; btn.style.color = '#fff';
+    } else {
+      btn.style.background = ''; btn.style.color = '';
+    }
+  });
+
+  // Filter items
+  const items = document.querySelectorAll('.shop-food-item');
+  let count = 0;
+  items.forEach(item => {
+    const spot = item.dataset.spot;
+    const menu = item.dataset.menu;
+    const spotMatch = shopFoodActiveSpot === 'all' || spot === shopFoodActiveSpot;
+    const menuMatch = shopFoodActiveMenu === 'all' || menu === shopFoodActiveMenu;
+    if (spotMatch && menuMatch) {
+      item.style.display = ''; count++;
+    } else {
+      item.style.display = 'none';
+    }
+  });
+
+  // Update count & empty message
+  const countEl = document.getElementById('shopFoodCount');
+  const emptyEl = document.getElementById('shopFoodEmpty');
+  if (count === 0) {
+    emptyEl.style.display = 'block';
+    countEl.style.display = 'none';
+  } else {
+    emptyEl.style.display = 'none';
+    countEl.style.display = '';
+    countEl.innerHTML = '총 <strong>' + count + '</strong>곳 표시 중';
+  }
 }
 
 // ===== TABS =====
