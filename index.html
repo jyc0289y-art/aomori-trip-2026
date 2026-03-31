@@ -657,9 +657,11 @@
         <div class="tl-desc">아오모리 고유의 오뎅. 쌀쌀한 밤에 딱.</div>
         <div class="tl-map-hint">탭하여 상세 보기</div>
       </div>
-      <div class="tl-item">
+      <div class="tl-item" onclick="showDetail('cvs_aomori')">
         <span class="tl-time">21:30</span>
-        <span class="tl-title">편의점에서 사과 간식 사서 귀가</span>
+        <span class="tl-title">🏪 편의점 탐방 &mdash; 아오모리 지역한정 헌팅</span>
+        <div class="tl-desc">セブンイレブン青森新町1丁目店 (역 도보 3분). 工藤パン イギリストースト + 동북 한정 筋子おにぎり + JAアオレン 사과주스 구매. 내일 아침용 간식도 여기서.</div>
+        <div class="tl-map-hint">탭하여 지역한정 상품 가이드 보기</div>
       </div>
     </div>
     <div class="tip">첫날 포인트: 동네 지리 파악 + 이자카야에서 현지 분위기 체험. 무리하지 말고 일찍 쉬기.</div>
@@ -770,9 +772,11 @@
         <div class="tl-desc">本町의 정통 칵테일 바. 하루 마무리 한 잔.</div>
         <div class="tl-map-hint">탭하여 상세 보기</div>
       </div>
-      <div class="tl-item">
+      <div class="tl-item" onclick="showDetail('cvs_aomori')">
         <span class="tl-time">23:30</span>
-        <span class="tl-title">편의점 들러 귀가</span>
+        <span class="tl-title">🏪 ローソン青森本町店 &mdash; 야식 & 내일 간식</span>
+        <div class="tl-desc">本町 이자카야 거리 한복판의 로손. からあげクン 동북 한정맛 + 이기리스토스트 새 맛 도전. 심야 편의점도 문화 체험.</div>
+        <div class="tl-map-hint">탭하여 지역한정 상품 가이드 보기</div>
       </div>
     </div>
     <div class="tip">둘째날 포인트: 아침부터 밤까지 "현지인 24시"를 완전 체험.</div>
@@ -814,6 +818,12 @@
         <span class="tl-time">10:30</span>
         <span class="tl-title">サンロード青森 쇼핑</span>
         <div class="tl-desc">아오모리 최대 쇼핑몰. UNIQLO, 전문점, 푸드코트.</div>
+        <div class="tl-map-hint">탭하여 상세 보기</div>
+      </div>
+      <div class="tl-item" onclick="showDetail('kisan_sunroad')">
+        <span class="tl-time">11:30</span>
+        <span class="tl-title">🍙 喜三 (기산) &mdash; 수제 오니기리 & 도시락</span>
+        <div class="tl-desc">サンロード 3F. 아오모리 한정 "오렌지하트" 계열. 醤油筋子·ホタテ味噌 오니기리. 도쿄에서 못 만나는 진짜 로컬 편의점.</div>
         <div class="tl-map-hint">탭하여 상세 보기</div>
       </div>
       <div class="tl-item meal" onclick="showDetail('sr_azuma')">
@@ -1534,6 +1544,16 @@
     <div class="spot" onclick="showDetail('apple_sweets')">
       <div class="spot-name">りんごスイーツ <span class="spot-name-ja">사과 디저트</span></div>
       <div class="spot-desc">사과 파이, 사과 젤라또, 사과 시드르 — 사과 왕국의 디저트 투어.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('cvs_aomori')">
+      <div class="spot-name">🏪 편의점 지역한정 가이드 <span class="spot-name-ja">コンビニ ご当地ガイド</span></div>
+      <div class="spot-desc">工藤パン 이기리스토스트, 세브일레븐 동북한정 筋子おにぎり, JAアオレン 사과주스 등 지역한정 상품 총정리.</div>
+      <div class="spot-tap-hint">탭하여 상세 보기</div>
+    </div>
+    <div class="spot" onclick="showDetail('kisan_sunroad')">
+      <div class="spot-name">喜三 サンロード青森 <span class="spot-name-ja">기산 (오렌지하트 계열)</span></div>
+      <div class="spot-desc">아오모리 한정 편의점의 자매점. 매장 수제 오니기리·도시락. サンロード 3F.</div>
       <div class="spot-tap-hint">탭하여 상세 보기</div>
     </div>
   </div>
@@ -3149,6 +3169,45 @@ const SPOTS = {
     tags: ['사과 과자', '1918년 창업', '기념품', '新町', '薄紅'],
     photos: ['img/sm_okinaya_1.jpg', 'img/sm_okinaya_2.jpg'],
     imageSearch: 'おきな屋 青森 薄紅 りんご 和菓子',
+  },
+
+  // ===== 편의점 & 지역한정 =====
+  cvs_aomori: {
+    name: '아오모리 편의점 지역한정 가이드', nameJa: '青森コンビニ ご当地ガイド',
+    query: 'セブンイレブン 青森新町', icon: '🏪', category: '편의점 지역한정 상품',
+    linkedSpots: ['igirisu_toast','apple_sweets','kisan_sunroad'],
+    price: '100~300엔대',
+    desc: '일본 편의점의 진짜 재미는 "지역한정(ご当地限定)". 아오모리는 사과 왕국답게 사과 계열 상품이 압도적이고, 동북 한정 오니기리·디저트가 수시로 바뀐다. 공항 면세점보다 편의점 빵 코너가 더 흥미로운 곳, 그게 아오모리다.',
+    menu: '<strong>🍞 工藤パン イギリストースト</strong><br>아오모리 소울 간식. 마가린+자리자리 설탕의 중독적 조합. 오리지널 필수 + りんごジャム&練乳クリーム맛 강추. 편의점 빵 코너에서 工藤パン 로고 찾기.<br><br><strong>🍙 セブンイレブン 동북 한정 おにぎり</strong><br>• <strong>塩漬け筋子</strong> (259엔) — 동북 3현 한정 연어알 오니기리. 도쿄에서 못 사는 맛<br>• <strong>にんにく味噌焼きおむすび</strong> (184엔) — 아오모리산 마늘+미소 구운 오니기리. 북동북 3현 한정<br><br><strong>🍎 りんご系 (사과 계열)</strong><br>• <strong>JAアオレン 希望の雫</strong> — 아오모리 후지 사과 100% 주스. 몽드셀렉션 금상. 편의점·슈퍼 어디서든<br>• 세브일레븐 <strong>青森県産りんごのアップルパイ</strong> — 계절 한정<br>• 편의점 주류 코너: りんごに恋したお酒 (사과술), 사과 츄하이 등',
+    tips: '<strong>편의점별 특징</strong><br>🔴 <strong>セブンイレブン</strong> — 동북 한정 오니기리·디저트가 가장 풍부. 筋子おにぎり 필수<br>🔵 <strong>ローソン</strong> — からあげクン 동북 한정맛 (시즌별 변경). 본정 한복판에 있어 술 마신 후 편리<br>🟢 <strong>ファミリーマート</strong> — 역 앞 가장 가까운 편의점(132m). 工藤パン 풀라인 보유<br><br><strong>추천 동선</strong>: 이자카야 하시고 후 → ローソン青森本町店(본정) or セブンイレブン青森本町4丁目店에서 야식+아침용 간식 구매 → 숙소 귀가',
+    tags: ['지역한정', '편의점', '工藤パン', '동북 한정', '사과'],
+    photos: ['img/igirisu_toast_product_1.jpg', 'img/igirisu_toast_product_2.jpg', 'img/seven_sujiko_1.jpg', 'img/seven_ninniku_1.jpg', 'img/aoren_juice_1.png', 'img/igirisu_toast_lineup_1.jpg'],
+    imageSearch: '青森 コンビニ 限定 商品 工藤パン',
+  },
+  kisan_sunroad: {
+    name: '喜三 サンロード青森店', nameJa: '기산 산로드 아오모리점',
+    query: '喜三 サンロード青森', address: 'サンロード青森 3F', walk: '버스 15분',
+    icon: '🍙', category: '수제 오니기리 & 도시락 (오렌지하트 계열)',
+    hours: '10:30~19:00頃', price: '오니기리 150~250엔 / 도시락 400~600엔',
+    placeId: 'ChIJyzIxAYSem18Rn8j84w3Ey-c',
+    desc: '아오모리 한정 편의점 "オレンジハート"의 자매 브랜드. 전 상품 매장 수제(手作り) — 기계가 아닌 사람 손으로 직접 쥔 오니기리, 당일 조리 도시락. 醤油筋子(간장 연어알), ホタテ味噌(가리비 미소) 등 아오모리 식재를 활용한 오니기리가 시그니처. 2024년 3월 サンロード 3층에 오픈.',
+    menu: '<strong>수제 おにぎり</strong><br>• <strong>醤油筋子</strong> — 간장에 절인 연어알. 인기 No.1<br>• <strong>ホタテ味噌</strong> — 아오모리 가리비+미소<br>• <strong>鮭マヨ / 明太マヨ</strong> — 클래식<br>• <strong>爆弾おにぎり</strong> — 반숙 계란이 통째로 들어간 초대형 (緑店 한정)<br><br><strong>도시락 & 반찬</strong><br>• よだれどり (3종: 赤/白/青)<br>• 사바 카라아게 도시락<br>• 치킨난반 도시락',
+    tips: 'サンロード 쇼핑 + 3F あづまラーメン과 같은 층에 있어 쇼핑 동선에 자연스럽게 편입. 오니기리는 오후에 매진되는 종류도 있으니 일찍 가는 것이 좋다. 아오모리 밖에서는 절대 만날 수 없는 "진짜 로컬 편의점" 체험.',
+    tags: ['수제 오니기리', '오렌지하트', '아오모리 한정', 'サンロード 3F'],
+    photos: ['img/kisan_1.jpg', 'img/kisan_2.jpg'],
+    imageSearch: '喜三 青森 おにぎり 手作り オレンジハート',
+  },
+  daily_yamazaki_aomori: {
+    name: 'デイリーヤマザキ (매장 갓구운빵)', nameJa: '데이리 야마자키',
+    query: 'デイリーヤマザキ 青森旭町通り店', address: '青森市旭町通り',
+    icon: '🥐', category: '편의점 / 매장 베이커리',
+    hours: '24시간', price: '빵 100~250엔',
+    desc: '일반 편의점과 달리 매장 안에 "デイリーホット" 베이커리 코너가 있어, 갓 구운 빵·샌드위치·조리빵을 즉석에서 만든다. 아침에 따끈한 크로와상이나 베이컨에그 샌드를 갓 구운 상태로 살 수 있는 건 데일리 야마자키뿐.',
+    menu: '<strong>デイリーホット 메뉴</strong><br>• 갓 구운 크로와상 — 버터 향 가득<br>• ベーコンエッグサンド — 매장 조리 핫 샌드<br>• カレーパン — 갓 튀긴 카레빵<br>• 계절 한정 빵 (수시 변경)',
+    tips: '모든 デイリーヤマザキ에 베이커리가 있는 것은 아님 — "デイリーホット" 표시 확인. 아오모리역 주변보다는 교외 로드사이드점에 많다. 아침 일찍 가면 갓 구운 빵을 만날 확률 높음.',
+    tags: ['매장 베이커리', '갓구운빵', '데이리호트', '24시간'],
+    photos: ['img/daily_yamazaki_1.jpg'],
+    imageSearch: 'デイリーヤマザキ デイリーホット 焼きたてパン',
   },
 };
 
