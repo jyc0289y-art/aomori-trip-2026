@@ -818,80 +818,221 @@
     letter-spacing: 0.5px; text-transform: uppercase;
   }
   [data-theme="premium"] .tag.green { background: transparent; color: #0f1923; border-color: #0f1923; }
-  /* Premium Detail Modal — 풀이미지 히어로 */
+  /* Premium Detail Modal — 에디토리얼 매거진 */
   [data-theme="premium"] .detail-overlay {
-    background: rgba(15,25,35,0.6);
+    background: rgba(15,25,35,0.65);
+    backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
   }
   [data-theme="premium"] .detail-sheet {
-    border-radius: 0;
+    border-radius: 0; border-top: 3px solid #0f1923;
   }
   [data-theme="premium"] .detail-handle { display: none; }
+  [data-theme="premium"] .detail-content {
+    padding: 0 28px 36px;
+  }
+  [data-theme="premium"] .detail-content h2 {
+    font-weight: 800; letter-spacing: -0.5px; font-size: 1.5em;
+    line-height: 1.2; margin-bottom: 2px;
+  }
+  [data-theme="premium"] .detail-content .detail-ja {
+    font-size: 0.88em; font-weight: 300; letter-spacing: 1px;
+    color: #6e7681; margin-bottom: 20px;
+  }
+  /* Premium Detail Section Headers — 에디토리얼 구분선 */
+  [data-theme="premium"] .detail-section {
+    margin-top: 28px;
+  }
   [data-theme="premium"] .detail-section h4 {
-    color: #0f1923; border-bottom: 1px solid #e8eaed;
-    letter-spacing: 2px; font-size: 0.72em;
+    color: #0f1923; border-bottom: 2px solid #0f1923;
+    letter-spacing: 3px; font-size: 0.68em;
     text-transform: uppercase; font-weight: 700;
-    padding-bottom: 10px;
+    padding-bottom: 10px; margin-bottom: 14px;
   }
-  [data-theme="premium"] .detail-content h2 { font-weight: 800; letter-spacing: -0.5px; }
+  [data-theme="premium"] .detail-section p {
+    font-size: 0.92em; line-height: 1.85; color: #2c3038;
+  }
+  /* Premium Detail Rows — 키-값 정보 그리드 */
+  [data-theme="premium"] .detail-row {
+    padding: 10px 0; border-bottom: 1px solid #f0f2f5;
+  }
+  [data-theme="premium"] .detail-row:last-child { border-bottom: none; }
+  [data-theme="premium"] .detail-label {
+    font-size: 0.72em; font-weight: 600; text-transform: uppercase;
+    letter-spacing: 1px; color: #9ca3af; min-width: 80px;
+  }
+  [data-theme="premium"] .detail-val {
+    font-weight: 500; color: #0f1923;
+  }
+  /* Premium Tip — 다크 사이드바 */
   [data-theme="premium"] .detail-tip {
-    background: #f5f5f7; border-left: 3px solid #0f1923;
-    border-radius: 0;
+    background: #0f1923; border-left: none;
+    border-radius: 0; padding: 16px 20px;
+    color: rgba(255,255,255,0.85); font-size: 0.88em; line-height: 1.7;
+    margin-top: 20px;
   }
-  [data-theme="premium"] .detail-tip strong { color: #0f1923; }
-  /* Premium Photo strip — 더 크게 */
+  [data-theme="premium"] .detail-tip strong {
+    color: #e8430a; font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  /* Premium Photo strip — 시네마틱 */
+  [data-theme="premium"] .photo-strip { gap: 2px; }
   [data-theme="premium"] .photo-strip img {
     width: 340px; height: 240px;
   }
   [data-theme="premium"] .photo-strip .photo-more {
     background: #0f1923; color: white; border-radius: 0;
+    letter-spacing: 1px; text-transform: uppercase; font-size: 0.72em;
+  }
+  /* Premium Photo Hero overlay */
+  [data-theme="premium"] .photo-hero-overlay {
+    background: linear-gradient(transparent, rgba(15,25,35,0.85));
+    padding: 60px 28px 20px;
+  }
+  [data-theme="premium"] .photo-hero-overlay h2 {
+    font-weight: 800; letter-spacing: -0.5px; font-size: 1.4em;
+  }
+  /* Premium Photo CTA */
+  [data-theme="premium"] .photo-cta a {
+    border-radius: 0; font-weight: 600; letter-spacing: 0.5px;
+    font-size: 0.82em; padding: 10px 20px;
+  }
+  [data-theme="premium"] .photo-cta .cta-maps { background: #0f1923; }
+  [data-theme="premium"] .photo-cta .cta-images { background: #f5f5f7; color: #0f1923; }
+  /* Premium Menu 인라인 이미지 — 에디토리얼 */
+  [data-theme="premium"] .detail-section img {
+    border-radius: 0;
   }
   /* Premium Buttons — 사각형, 솔리드 */
-  [data-theme="premium"] .btn-map { background: #0f1923; border-radius: 0; }
-  [data-theme="premium"] .btn-search { background: #f5f5f7; color: #0f1923; border-radius: 0; }
-  [data-theme="premium"] .btn-close-detail { background: #f5f5f7; border-radius: 0; }
+  [data-theme="premium"] .detail-actions {
+    margin-top: 28px; gap: 8px;
+  }
+  [data-theme="premium"] .detail-actions a, [data-theme="premium"] .detail-actions button {
+    border-radius: 0; letter-spacing: 0.5px; font-weight: 600;
+    font-size: 0.82em; padding: 12px 22px;
+    text-transform: uppercase;
+  }
+  [data-theme="premium"] .btn-map {
+    background: #0f1923; border-radius: 0;
+  }
+  [data-theme="premium"] .btn-search {
+    background: transparent; color: #0f1923; border-radius: 0;
+    border: 1.5px solid #0f1923;
+  }
+  [data-theme="premium"] .btn-close-detail {
+    background: transparent; color: #6e7681; border-radius: 0;
+    border: 1px solid #d0d5db;
+  }
   [data-theme="premium"] .map-open-btn {
     background: #0f1923; border-radius: 0;
   }
-  [data-theme="premium"] .detail-actions a, [data-theme="premium"] .detail-actions button {
-    border-radius: 0; letter-spacing: 0.5px;
+  /* Premium Related Spots — 미니멀 */
+  [data-theme="premium"] .detail-section div[onclick] {
+    border-radius: 0 !important; border-color: #e8eaed !important;
+    transition: border-color 0.2s !important;
   }
-  [data-theme="premium"] .photo-cta a { border-radius: 0; }
-  [data-theme="premium"] .photo-cta .cta-maps { background: #0f1923; }
-  [data-theme="premium"] .photo-cta .cta-images { background: #f5f5f7; color: #0f1923; }
-  /* Premium Tip boxes */
+  [data-theme="premium"] .detail-section div[onclick]:hover {
+    border-color: #0f1923 !important; background: #f5f5f7 !important;
+  }
+  /* Premium Tip boxes — 다크 액센트 */
   [data-theme="premium"] .tip {
-    background: #f5f5f7; border-left: 2px solid #0f1923;
-    border-radius: 0;
+    background: #0f1923; border-left: none;
+    border-radius: 0; color: rgba(255,255,255,0.85);
+    padding: 16px 20px; line-height: 1.7;
+    box-shadow: none;
   }
-  /* Premium Budget table */
+  [data-theme="premium"] .tip strong { color: #e8430a; }
+  /* Premium Budget table — 매거진 데이터 테이블 */
+  [data-theme="premium"] .budget-table {
+    font-size: 0.88em;
+  }
   [data-theme="premium"] .budget-table th {
     color: #0f1923; border-bottom: 2px solid #0f1923;
-    text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.75em;
+    text-transform: uppercase; letter-spacing: 2px; font-size: 0.7em;
+    font-weight: 700; padding: 14px 16px;
+  }
+  [data-theme="premium"] .budget-table td {
+    padding: 14px 16px; border-bottom-color: #f0f2f5;
   }
   [data-theme="premium"] .budget-table tr:hover td { background: #f5f5f7; }
-  [data-theme="premium"] .budget-table tr:last-child td { border-bottom: 2px solid #0f1923; }
+  [data-theme="premium"] .budget-table tr:last-child td {
+    border-bottom: 2px solid #0f1923; font-weight: 800;
+  }
   /* Premium Section title */
   [data-theme="premium"] .section-title {
     color: #0f1923; border-bottom: 2px solid #0f1923;
     letter-spacing: 3px; font-size: 0.72em;
   }
-  /* Premium Checklist */
-  [data-theme="premium"] .check-box { border-radius: 0; border-color: #d0d5db; }
+  /* Premium Checklist — 스퀘어 + 세련된 간격 */
+  [data-theme="premium"] .checklist li {
+    padding: 12px 0; border-bottom-color: #f0f2f5;
+    font-size: 0.9em; letter-spacing: 0.2px;
+  }
+  [data-theme="premium"] .check-box {
+    border-radius: 0; border-color: #d0d5db; width: 18px; height: 18px;
+  }
   [data-theme="premium"] .check-box.checked { background: #0f1923; border-color: #0f1923; }
   /* Premium Map overlay */
   [data-theme="premium"] .map-header { background: #0f1923; }
-  /* Premium Weather */
-  [data-theme="premium"] .weather-card { background: transparent; border-bottom: 1px solid #e8eaed; box-shadow: none; border-radius: 0; }
-  [data-theme="premium"] .weather-card h2 { color: #0f1923; }
-  [data-theme="premium"] .weather-day { border-radius: 0; background: #f5f5f7; border: 1px solid transparent; }
+  /* Premium Weather — 에디토리얼 카드 */
+  [data-theme="premium"] .weather-card {
+    background: transparent; border-bottom: 1px solid #e8eaed;
+    box-shadow: none; border-radius: 0; padding: 24px 0;
+  }
+  [data-theme="premium"] .weather-card h2 {
+    color: #0f1923; font-weight: 800; letter-spacing: -0.5px;
+  }
+  [data-theme="premium"] .weather-day {
+    border-radius: 0; background: #f5f5f7; border: 1px solid transparent;
+  }
   [data-theme="premium"] .weather-day:hover { background: #eceef1; }
   [data-theme="premium"] .weather-day.active { border-color: #0f1923; background: #f5f5f7; }
+  [data-theme="premium"] .weather-hour { border-radius: 0; }
   /* Premium Tooltip */
   [data-theme="premium"] .jw { border-bottom-color: rgba(15,25,35,0.25); }
   [data-theme="premium"] .jw:hover, [data-theme="premium"] .jw.active { background: rgba(15,25,35,0.06); }
-  /* Premium Flight card */
+  /* Premium Flight card — 세련된 보딩패스 */
   [data-theme="premium"] .flight-card { border-bottom-color: #f0f2f5; }
-  [data-theme="premium"] .flight-code { letter-spacing: 2px; }
+  [data-theme="premium"] .flight-code { letter-spacing: 3px; font-weight: 800; }
+  /* Premium Timeline — 에디토리얼 타임라인 */
+  [data-theme="premium"] .tl-item:hover {
+    border-radius: 0; margin: 0 -12px; padding-left: 28px; padding-right: 12px;
+  }
+  [data-theme="premium"] .tl-time {
+    font-size: 0.75em; letter-spacing: 1.5px; font-weight: 700;
+    text-transform: uppercase;
+  }
+  [data-theme="premium"] .tl-title {
+    font-weight: 700; letter-spacing: -0.2px;
+  }
+  [data-theme="premium"] .tl-desc {
+    font-size: 0.85em; line-height: 1.6;
+  }
+  /* Premium Spot List — 매거진 리스트 개선 */
+  [data-theme="premium"] .spot-name {
+    font-weight: 800; letter-spacing: -0.3px; font-size: 1.05em;
+  }
+  [data-theme="premium"] .spot-desc {
+    font-size: 0.88em; line-height: 1.75; color: #4a4f57;
+  }
+  [data-theme="premium"] .spot-meta {
+    font-size: 0.78em; letter-spacing: 0.5px; text-transform: uppercase;
+    color: #9ca3af;
+  }
+  /* Premium Distance tree */
+  [data-theme="premium"] .distance-tree {
+    font-family: 'Inter', monospace; font-size: 0.85em;
+    line-height: 2.2; letter-spacing: 0.3px;
+  }
+  [data-theme="premium"] .distance-tree .dist {
+    color: #0f1923; font-weight: 700;
+  }
+  /* Premium Clickable checklist */
+  [data-theme="premium"] .checklist li.clickable-item:hover {
+    background: #f5f5f7; border-radius: 0; margin: 0 -12px; padding: 12px 12px;
+  }
+  [data-theme="premium"] .checklist li.clickable-item span {
+    color: #0f1923; text-decoration-style: solid;
+  }
   /* Premium wide toggle */
   [data-theme="premium"] .btn-wide-toggle {
     border-radius: 0; border-color: #d0d5db;
@@ -922,7 +1063,7 @@
 <script>
   // Theme init — apply saved theme before first paint
   (function(){
-    var t = localStorage.getItem('aomori_theme') || 'local';
+    var t = localStorage.getItem('aomori_theme') || 'premium';
     document.documentElement.setAttribute('data-theme', t);
   })();
 </script>
@@ -3022,7 +3163,7 @@ const SPOTS = {
     query: 'アウガ新鮮市場 青森', address: '青森市新町 1-3-7 (아우가 빌딩 B1)', walk: '숙소에서 도보 10분',
     icon: '🥬', category: '시장', hours: '05:00~18:30 (가게별 상이)',
     desc: 'JR 아오모리역에서 가장 가까운 시장. 현지인들이 실제로 장보는 분위기.',
-    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/auga_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/auga_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>아오모리 특산 절임류, 산채, 건어물, 사과 가공품 — 기념 쇼핑에도 좋다.',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/auga_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/auga_menu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>아오모리 특산 절임류, 산채, 건어물, 사과 가공품 — 기념 쇼핑에도 좋다.',
     tips: '기념품 쇼핑은 여기가 좋다. のっけ丼은 고천시장에서, 장보기/기념품은 아우가에서.',
     tags: ['장보기', '기념품', '현지인 스타일'],
     photos: ['img/auga_1.jpg', 'img/auga_2.jpg'],
@@ -3497,7 +3638,7 @@ const SPOTS = {
     linkedSpots: ['nagao_ekimae','kudo_ramen','marukai_ramen','sr_azuma'],
     price: '700~1,000엔', imageSearch: '青森 煮干しラーメン',
     desc: '아오모리시 100곳+ 라멘점 중 8~9할이 니보시(멸치) 라멘. 도쿄의 돈코츠, 삿포로의 미소처럼 아오모리의 정체성은 니보시다. 건조 멸치를 대량으로 우려낸 깊은 국물 — 가게마다 멸치 배합과 농도가 달라 「煮干しラーメン 순례」를 하는 현지인도 많다. 관광객용이 아닌, 현지인이 매일 먹는 진짜 소울푸드.',
-    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/niboshi_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/niboshi_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>진한 니보시 (농후, 걸쭉) vs 맑은 니보시 (깔끔, 투명) — 가게마다 스타일이 다르다.',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/niboshi_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/niboshi_menu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>진한 니보시 (농후, 걸쭉) vs 맑은 니보시 (깔끔, 투명) — 가게마다 스타일이 다르다.',
     tips: '현지인은 주 1~2회 방문하는 진짜 소울푸드. 역 주변에 다수. "あっさり(깔끔)와 こってり(진한) 중 어느 쪽?" 물어보면 추천해줌.',
     tags: ['소울푸드', '멸치 육수', '현지인 주 1~2회'],
     photos: ['img/niboshi_1.jpg', 'img/niboshi_2.jpg'],
@@ -3509,7 +3650,7 @@ const SPOTS = {
     price: '850~1,000엔', imageSearch: '味噌カレー牛乳ラーメン 青森',
     placeId: 'ChIJ8RSfihufm18RbYfiZDGnKD0',
     desc: '아오모리 고유 B급 구르메. 1970년대 학생들이 "미소에 카레 넣고, 우유도 넣고, 버터도!" 주문한 것이 시작. "그런 게 맛있겠어?"에서 출발한 조합이 1978년 「味の札幌」에서 정식 메뉴화되며 아오모리 시 공인 명물로. 미소의 짠맛, 카레의 향, 우유의 부드러움, 버터의 고소함이 혼연일체 — 한 입 먹으면 "왜 다른 데는 안 하지?"가 된다.',
-    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/miso_curry_ramen_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/miso_curry_ramen_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>미소 베이스 국물 + 카레 스파이스 + 우유 + 버터 토핑. 중태 축면(ちぢれ麺).',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/miso_curry_ramen_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/miso_curry_ramen_menu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>미소 베이스 국물 + 카레 스파이스 + 우유 + 버터 토핑. 중태 축면(ちぢれ麺).',
     tips: '유명 가게는 「味の札幌 大西」(아오모리역 근처). 1970년대 중고생 유행에서 탄생.',
     order: '"味噌カレー牛乳ラーメンください" (미소카레규뉴라멘 쿠다사이)',
     tags: ['B급 구르메', '1978년 탄생', '미소+카레+우유+버터'],
@@ -3520,7 +3661,7 @@ const SPOTS = {
     query: '生姜味噌おでん 青森', icon: '🍢', category: '아오모리 향토 요리',
     price: '1개 100~200엔대', imageSearch: '青森 生姜味噌おでん',
     desc: '전국 어디서나 오뎅은 먹을 수 있지만, 생강 갈은 것을 섞은 미소 소스를 찍어 먹는 오뎅은 아오모리뿐. 전후 아오모리역 앞 포장마차에서 겨울바람 속 손님 몸을 녹이려 생강을 넣은 것이 시작 — 미소의 깊은 맛에 생강의 알싸한 온기가 겹쳐 한 입에 속부터 따뜻해진다. 4월 초 아오모리는 아직 겨울의 끝자락이라, 이 한 그릇이 진가를 발휘하는 시기.',
-    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/shoga_oden_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/shoga_oden_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>다이콘(무), 곤약, 치쿠와, 계란, 한펜 + 생강미소 소스',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/shoga_oden_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/shoga_oden_menu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>다이콘(무), 곤약, 치쿠와, 계란, 한펜 + 생강미소 소스',
     tips: '이자카야에서도 제공하는 곳이 많으니 "生姜味噌おでんありますか?"라고 물어보기.',
     order: '"生姜味噌おでんください" (쇼가미소오뎅 쿠다사이)',
     tags: ['향토 요리', '생강+미소', '포장마차', '추운 날 필수'],
@@ -3532,7 +3673,7 @@ const SPOTS = {
     linkedSpots: ['hideka','kakigen','joppari','sanfuri'],
     price: '1잔(90ml) 500~1,000엔', imageSearch: '田酒 日本酒',
     desc: '아오모리현이 자랑하는 3대 명주. 田酒(덴슈)는 서울 미쉐린급 와인바에서도 찾기 힘든 전국적 프리미엄 — 순미 대긴조 한 잔에 쌀의 감칠맛이 폭발한다. 豊盃(호우하이)는 풍부한 과실향이 해산물과 절묘한 페어링. 陸奥八仙(무츠핫센)은 청량한 시트러스 뉘앙스로 입문용에 최적. 이 세 가지를 한 자리에서 비교 시음하는 것이 아오모리 술 체험의 핵심.',
-    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/denshu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/denshu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>田酒 (덴슈)</strong> — 전국적 프리미엄. 현지에서도 입수 어려움.<br><strong>豊盃 (호우하이)</strong> — 풍부한 과실향.<br><strong>陸奥八仙 (무츠핫센)</strong> — 신선한 과실향, 가볍고 깔끔.',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/denshu_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/denshu_menu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>田酒 (덴슈)</strong> — 전국적 프리미엄. 현지에서도 입수 어려움.<br><strong>豊盃 (호우하이)</strong> — 풍부한 과실향.<br><strong>陸奥八仙 (무츠핫센)</strong> — 신선한 과실향, 가볍고 깔끔.',
     tips: '田酒는 있는 날과 없는 날이 있다. "田酒ありますか?"(덴슈 아리마스카?) 꼭 물어보기. 3종 비교 시음이 최고.',
     order: '"おすすめの地酒をください" (오스스메노 지자케오 쿠다사이 = 추천 지주 주세요)',
     tags: ['田酒', '豊盃', '陸奥八仙', '프리미엄'],
@@ -3547,7 +3688,7 @@ const SPOTS = {
     price: '단품 500~800엔 / 정식 1,000~1,500엔',
     imageSearch: '青森 貝焼き味噌 ホタテ',
     desc: '아오모리 향토 요리의 정점. 지름 20cm의 호타테(가리비) 껍데기를 그대로 냄비 삼아, 가쓰오 다시와 미소를 붓고 호타테 살·파·두부를 넣어 부글부글 끓인 뒤, 마지막에 계란을 풀어 반숙으로 마무리. 에도시대 陸奥湾 어부들이 선상에서 남은 가리비 껍데기로 조리한 것이 기원 — 소박하지만 바다의 감칠맛이 응축된 한 그릇이다. おさない食堂의 것이 가장 유명하며, 밥 위에 얹어 먹으면 아오모리판 해물덮밥이 된다.',
-    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/kaiyaki_miso_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>기본 구성</strong>: 호타테 껍데기 위에 호타테 살 + 다시 + 미소 + 계란 → 부글부글 끓여 먹기<br><strong>바리에이션</strong>: 가게마다 다시 배합이 다름. 두부·파 추가하는 곳도.',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/kaiyaki_miso_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>기본 구성</strong>: 호타테 껍데기 위에 호타테 살 + 다시 + 미소 + 계란 → 부글부글 끓여 먹기<br><strong>바리에이션</strong>: 가게마다 다시 배합이 다름. 두부·파 추가하는 곳도.',
     tips: '아오모리에 왔으면 <strong>반드시 먹어야 할 1순위</strong>. おさない食堂의 "ほたて貝みそ焼き定食"이 가장 유명. 뜨거울 때 밥 위에 얹어 먹으면 최고.',
     order: '"ほたて貝焼き味噌ください" (호타테 카이야키미소 쿠다사이)',
     tags: ['향토 요리 No.1', '호타테', '가리비 껍데기', 'おさない食堂'],
@@ -3559,7 +3700,7 @@ const SPOTS = {
     price: '300~1,500엔',
     imageSearch: '青森 ホタテ 刺身 バター焼き',
     desc: '陸奥湾은 쓰가루 반도와 시모키타 반도가 감싸는 내해 — 수온이 낮아 호타테(가리비)가 천천히 자라며 단맛과 탄력이 극대화된다. 4월은 산란 직전으로 가장 통통하게 살이 오른 시기. 회로 먹으면 탱글한 식감과 바다의 단맛이 폭발하고, 바터구이로 하면 껍데기 위에서 간장·버터와 지글지글. 아오모리 어디서든 호타테는 "기본값"이다 — 이자카야에서 "ホタテありますか?" 한 마디면 그날의 호타테가 다양한 형태로 나온다.',
-    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/hotate_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>호타테 회</strong> — 신선한 탄력, 단맛 폭발<br><strong>호타테 바터구이</strong> — 간장+버터, 일본 이자카야 정석<br><strong>호타테 프라이</strong> — おさない食堂 명물, 두툼한 가리비 튀김<br><strong>호타테 미소구이</strong> — 껍데기에 미소를 얹어 구움<br><strong>ベビーホタテ</strong> — 작은 가리비를 통째로 (사가구이, 술안주)',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/hotate_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>호타테 회</strong> — 신선한 탄력, 단맛 폭발<br><strong>호타테 바터구이</strong> — 간장+버터, 일본 이자카야 정석<br><strong>호타테 프라이</strong> — おさない食堂 명물, 두툼한 가리비 튀김<br><strong>호타테 미소구이</strong> — 껍데기에 미소를 얹어 구움<br><strong>ベビーホタテ</strong> — 작은 가리비를 통째로 (사가구이, 술안주)',
     tips: '4월 초는 호타테가 가장 통통한 시기. 이자카야에서 "ホタテありますか?"만 물어보면 다양한 형태로 제공. おさない食堂의 "ほたてフライ定食"은 역 앞 필수 메뉴.',
     tags: ['4월 제철', '호타테 회', '바터구이', '프라이'],
     photos: ['img/hotate_1.jpg'],
@@ -3583,7 +3724,7 @@ const SPOTS = {
     price: '500~800엔',
     imageSearch: 'じゃっぱ汁 青森 郷土料理',
     desc: '"じゃっぱ"는 쓰가루 사투리로 "자투리". 대구(鱈)의 머리·뼈·내장·아가미 등 버리는 부위를 통째로 미소 또는 시오(소금) 국물에 끓인, 쓰가루 어부의 겨울 생존식이다. 뼈에서 우러나는 젤라틴, 내장(白子·肝)의 농후함, 무의 달큼함이 어우러져 한 그릇에 바다 전체가 들어 있는 느낌. 정식 제철은 겨울이지만 4월 초까지 제공하는 이자카야가 있으니, 生姜味噌おでん과 함께 아오모리 국물 요리의 양대산맥을 꼭 체험할 것.',
-    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/jappa_jiru_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/jappa_jiru_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>대구 자투리(머리, 뼈, 내장, 살) + 무 + 두부 + 파 → 미소 or 시오 국물',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/jappa_jiru_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/jappa_jiru_menu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div>대구 자투리(머리, 뼈, 내장, 살) + 무 + 두부 + 파 → 미소 or 시오 국물',
     tips: '이자카야에서 "じゃっぱ汁ありますか?"로 주문. 겨울~초봄 한정 메뉴인 곳도 있으니 4월 초에 먹을 수 있으면 럭키. 生姜味噌おでん과 함께 아오모리 국물 요리의 양대산맥.',
     order: '"じゃっぱ汁ください" (잣파지루 쿠다사이)',
     tags: ['어부 국물', '대구', '겨울~봄', '미소'],
@@ -3679,7 +3820,7 @@ const SPOTS = {
     icon: '🍺', category: '크래프트 비어 바',
     hours: '월~금 17:00~23:00, 토·축 15:00~23:00 (일 정기휴무)', price: '비어 1잔 600~1,000엔',
     desc: '우드 인테리어의 캐주얼 크래프트 비어 바. 10탭으로 국내외 크래프트 비어를 로테이션. 로스트비프, 자가제 소시지 등 푸드도 충실. 음방 플랜(120분)도.',
-    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/demo_beer_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/demo_beer_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>10탭 크래프트 비어</strong> — 국내외 로테이션<br><strong>로스트비프</strong> — 비어 안주 인기 메뉴<br><strong>자가제 소시지</strong>',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/demo_beer_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/demo_beer_menu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>10탭 크래프트 비어</strong> — 국내외 로테이션<br><strong>로스트비프</strong> — 비어 안주 인기 메뉴<br><strong>자가제 소시지</strong>',
     tips: '그룹으로 갈 때는 음방 플랜이 가성비 좋다. Aomori Brew Pub과 합쳐서 크래프트 비어 호핑.',
     tags: ['크래프트 비어', '10탭', '푸드 페어링', '음방 가능'],
     photos: ['img/demo_beer_1.jpg', 'img/demo_beer_2.jpg'],
@@ -3746,7 +3887,7 @@ const SPOTS = {
     icon: '🍜', category: '니보시 라멘 (サンロード 내)',
     hours: '11:00~20:00', price: '750~950엔',
     desc: 'サンロード 3층 푸드코트의 煮干し中華そば 전문점. 쇼핑 중 든든한 한 그릇. 아오모리 니보시 라멘을 쇼핑몰에서 간편하게 맛볼 수 있다.',
-    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/sr_azuma_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>煮干し中華そば</strong> — 기본 니보시 라멘<br><strong>つけ麺</strong> — 쯔케멘 스타일',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/sr_azuma_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>煮干し中華そば</strong> — 기본 니보시 라멘<br><strong>つけ麺</strong> — 쯔케멘 스타일',
     tips: 'サンロード에서 PORTER 쇼핑 후 3층으로 올라가면 바로. 푸드코트라 혼자서도 편하게.',
     tags: ['니보시 라멘', 'サンロード 3F', '쇼핑 후 식사'],
     photos: ['img/sr_azuma_1.jpg', 'img/sr_azuma_2.jpg'],
@@ -3758,7 +3899,7 @@ const SPOTS = {
     icon: '🍛', category: '인도 카레 (サンロード 내)',
     hours: '11:00~20:00', price: '1,000~1,500엔',
     desc: 'サンロード 3층의 본격 인도 카레 & 난. 라멘이 질릴 때 선택지. 큰 난에 카레 2종 세트가 인기.',
-    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/sr_haveli_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>カレーセット</strong> — 난 + 카레 2종 선택<br><strong>タンドリーチキン</strong><br><strong>ラッシー</strong>',
+    menu: '<div style="margin:-4px 0 16px;"><img src=\"img/sr_haveli_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>カレーセット</strong> — 난 + 카레 2종 선택<br><strong>タンドリーチキン</strong><br><strong>ラッシー</strong>',
     tips: '라멘·화식에 지칠 때 기분 전환으로 최적. 식베론 3.18로 サンロード 내 최고 평점.',
     tags: ['인도 카레', '난', 'サンロード 3F', '기분 전환'],
     photos: ['img/sr_haveli_1.jpg', 'img/sr_haveli_2.jpg'],
@@ -4008,7 +4149,7 @@ const SPOTS = {
     icon: '🥐', category: '빵집 / 현지 인기',
     hours: '07:30~売り切れ次第終了', price: '150~400엔',
     desc: '오픈 전부터 행렬이 생기는 아오모리 로컬 인기 빵집. 볼륨 만점의 조리빵과 샌드위치가 합리적 가격. 현지인이 아침에 사서 출근하는 곳.',
-    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/bakery_hyu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/bakery_hyu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>인기 메뉴</strong><br>• 볼륨 샌드위치류 — 햄카츠, 에비카츠 등<br>• 카레빵 — 갓 튀긴 사쿠사쿠 식감<br>• 크림빵 — 커스터드 가득<br>• 아침 세트 (빵+커피)',
+    menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/bakery_hyu_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/bakery_hyu_menu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>인기 메뉴</strong><br>• 볼륨 샌드위치류 — 햄카츠, 에비카츠 등<br>• 카레빵 — 갓 튀긴 사쿠사쿠 식감<br>• 크림빵 — 커스터드 가득<br>• 아침 세트 (빵+커피)',
     tips: '오전 중 방문 필수. 인기 상품은 점심 전 매진. 주차장 있음. 工藤パン과는 다른 결의 "동네 빵집" 체험.',
     tags: ['아침 빵', '행렬', '볼륨 만점', '현지인 인기'],
     photos: ['img/bakery_hyu_1.jpg', 'img/bakery_hyu_2.jpg'],
