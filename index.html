@@ -44,34 +44,45 @@
     text-align: center;
     position: relative;
     overflow: hidden;
-    min-height: 340px;
+    min-height: 380px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: url('img/hero_waterfront.jpg') center/cover no-repeat;
-    opacity: 0.6;
-    transform: scale(1.02);
+  .hero-slides {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  }
+  .hero-slide {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+    background-size: cover; background-position: center;
+    opacity: 0; transition: opacity 1.2s ease-in-out;
+    transform: scale(1.03);
+  }
+  .hero-slide.active {
+    opacity: 1;
+    animation: heroZoom 8s ease-in-out forwards;
+  }
+  @keyframes heroZoom {
+    from { transform: scale(1.03); }
+    to { transform: scale(1.08); }
   }
   .hero::after {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.5) 100%);
+    background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.55) 100%);
+    z-index: 1;
   }
-  .hero-content { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; padding: 80px 20px 60px; }
+  .hero-content { position: relative; z-index: 3; max-width: 600px; margin: 0 auto; padding: 80px 20px 70px; }
   .hero h1 {
     font-family: 'Noto Serif KR', serif;
     font-size: 2.4em; font-weight: 700; margin-bottom: 8px; letter-spacing: -1px;
-    text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+    text-shadow: 0 2px 20px rgba(0,0,0,0.5);
   }
   .hero .subtitle {
     font-size: 1.15em; font-weight: 300; opacity: 0.95; margin-bottom: 28px;
     letter-spacing: 2px;
+    text-shadow: 0 1px 8px rgba(0,0,0,0.4);
   }
   .hero-meta {
     display: flex; flex-wrap: wrap; justify-content: center;
@@ -84,6 +95,41 @@
   }
   .hero-meta span:nth-child(2), .hero-meta span:nth-child(4) {
     background: none; padding: 4px 0;
+  }
+
+  /* Hero slideshow controls */
+  .hero-controls {
+    position: absolute; bottom: 20px; left: 0; right: 0;
+    z-index: 3; display: flex; align-items: center;
+    justify-content: center; gap: 8px;
+  }
+  .hero-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: rgba(255,255,255,0.4); border: none;
+    cursor: pointer; padding: 0;
+    transition: all 0.3s;
+  }
+  .hero-dot.active {
+    background: white; width: 24px; border-radius: 4px;
+  }
+  .hero-dot:hover { background: rgba(255,255,255,0.7); }
+  .hero-arrow {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    z-index: 3; background: rgba(0,0,0,0.25); border: none;
+    color: white; width: 40px; height: 40px; border-radius: 50%;
+    cursor: pointer; font-size: 1.2em;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+    backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+  }
+  .hero-arrow:hover { background: rgba(0,0,0,0.5); }
+  .hero-arrow.prev { left: 16px; }
+  .hero-arrow.next { right: 16px; }
+  .hero-caption {
+    position: absolute; bottom: 44px; right: 20px;
+    z-index: 3; font-size: 0.72em; color: rgba(255,255,255,0.6);
+    text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+    pointer-events: none;
   }
 
   /* Nav tabs */
@@ -472,10 +518,14 @@
 
   /* Responsive - Mobile (<600px) */
   @media (max-width: 600px) {
-    .hero { min-height: 280px; }
-    .hero-content { padding: 60px 16px 40px; }
+    .hero { min-height: 300px; }
+    .hero-content { padding: 60px 16px 50px; }
     .hero h1 { font-size: 1.6em; }
     .hero-meta span { font-size: 0.82em; padding: 3px 10px; }
+    .hero-arrow { width: 34px; height: 34px; font-size: 1em; }
+    .hero-arrow.prev { left: 8px; }
+    .hero-arrow.next { right: 8px; }
+    .hero-caption { font-size: 0.65em; bottom: 38px; right: 12px; }
     .card { padding: 20px; }
     .tab-btn { padding: 12px 14px; font-size: 0.82em; }
     .detail-content { padding: 0 16px 24px; }
@@ -582,6 +632,24 @@
 <body>
 
 <div class="hero">
+  <div class="hero-slides" id="heroSlides">
+    <div class="hero-slide active" style="background-image:url('img/hero_waterfront.jpg')" data-caption="아오모리 워터프론트"></div>
+    <div class="hero-slide" style="background-image:url('img/hero_nebuta.jpg')" data-caption="네부타 마츠리"></div>
+    <div class="hero-slide" style="background-image:url('img/hero_sakura.jpg')" data-caption="히로사키 벚꽃 & 이와키산"></div>
+    <div class="hero-slide" style="background-image:url('img/hero_night_sakura.jpg')" data-caption="히로사키성 야간 벚꽃"></div>
+    <div class="hero-slide" style="background-image:url('img/hero_bridge_night.jpg')" data-caption="아오모리 베이 브릿지 야경"></div>
+    <div class="hero-slide" style="background-image:url('img/hero_hakkoda_autumn.jpg')" data-caption="핫코다산 단풍"></div>
+    <div class="hero-slide" style="background-image:url('img/hero_snow_monsters.jpg')" data-caption="핫코다 수빙 (주효)"></div>
+    <div class="hero-slide" style="background-image:url('img/hero_oirase.jpg')" data-caption="오이라세 계류"></div>
+    <div class="hero-slide" style="background-image:url('img/hero_shirakami.jpg')" data-caption="시라카미 산지"></div>
+    <div class="hero-slide" style="background-image:url('img/hero_snowy_port.jpg')" data-caption="겨울 아오모리 항"></div>
+    <div class="hero-slide" style="background-image:url('img/hero_warasse.jpg')" data-caption="네부타의 집 와랏세"></div>
+    <div class="hero-slide" style="background-image:url('img/hero_tsugaru.jpg')" data-caption="쓰가루 해협"></div>
+    <div class="hero-slide" style="background-image:url('img/hero_towada.jpg')" data-caption="도와다 호수"></div>
+  </div>
+  <button class="hero-arrow prev" onclick="heroSlide(-1)" aria-label="이전">&#10094;</button>
+  <button class="hero-arrow next" onclick="heroSlide(1)" aria-label="다음">&#10095;</button>
+  <div class="hero-caption" id="heroCaption">아오모리 워터프론트</div>
   <div class="hero-content">
     <h1>아오모리 여행 계획</h1>
     <div class="subtitle">"동네 주민이 되는 3박 4일"</div>
@@ -593,6 +661,7 @@
       <span>2인</span>
     </div>
   </div>
+  <div class="hero-controls" id="heroDots"></div>
 </div>
 
 <nav class="tab-nav">
@@ -2461,6 +2530,58 @@
 <div id="jw-popup"></div>
 
 <script>
+// ===== HERO SLIDESHOW =====
+(function() {
+  const slides = document.querySelectorAll('.hero-slide');
+  const dotsContainer = document.getElementById('heroDots');
+  const captionEl = document.getElementById('heroCaption');
+  let current = 0;
+  let autoTimer = null;
+  const INTERVAL = 6000;
+
+  // Create dots
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', '슬라이드 ' + (i + 1));
+    dot.addEventListener('click', () => goTo(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  function goTo(index) {
+    slides[current].classList.remove('active');
+    dotsContainer.children[current].classList.remove('active');
+    current = (index + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dotsContainer.children[current].classList.add('active');
+    captionEl.textContent = slides[current].dataset.caption || '';
+    resetAuto();
+  }
+
+  window.heroSlide = function(dir) { goTo(current + dir); };
+
+  function resetAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => goTo(current + 1), INTERVAL);
+  }
+
+  // Pause on hover/touch
+  const hero = document.querySelector('.hero');
+  hero.addEventListener('mouseenter', () => clearInterval(autoTimer));
+  hero.addEventListener('mouseleave', resetAuto);
+
+  // Touch swipe support
+  let touchStartX = 0;
+  hero.addEventListener('touchstart', e => { touchStartX = e.changedTouches[0].clientX; clearInterval(autoTimer); }, { passive: true });
+  hero.addEventListener('touchend', e => {
+    const diff = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(diff) > 50) goTo(current + (diff > 0 ? -1 : 1));
+    else resetAuto();
+  }, { passive: true });
+
+  resetAuto();
+})();
+
 // ===== SPOT DATABASE =====
 const SPOTS = {
   // --- Locations (map only) ---
