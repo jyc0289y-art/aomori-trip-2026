@@ -311,6 +311,15 @@
   .photo-hero-overlay h2 { color: white; font-size: 1.2em; margin: 0; }
   .photo-hero-overlay .detail-ja { color: rgba(255,255,255,0.8); margin: 4px 0 0; font-size: 0.85em; }
 
+  /* Inline map embed (shown below photos) */
+  .detail-map-embed {
+    width: calc(100% + 48px); margin: 0 -24px; background: #111;
+    border-top: 1px solid var(--border);
+  }
+  .detail-map-embed iframe {
+    width: 100%; height: 220px; border: none; display: block;
+  }
+
   /* Photo strip for local images */
   .photo-strip {
     display: flex; gap: 8px; overflow-x: auto; padding: 0;
@@ -3155,6 +3164,11 @@ function imageSearchUrl(query) {
 }
 
 // ===== MAP FUNCTIONS =====
+function mapEmbedUrl(spot) {
+  if (spot.placeId) return 'https://www.google.com/maps?q=place_id:' + spot.placeId + '&output=embed&hl=ja&z=17';
+  const q = encodeURIComponent(spot.query || spot.name);
+  return 'https://www.google.com/maps?q=' + q + '&output=embed&hl=ja&z=17';
+}
 function showMap(spotId) {
   const spot = SPOTS[spotId];
   if (!spot) return;
@@ -3162,7 +3176,7 @@ function showMap(spotId) {
   const overlay = document.getElementById('mapOverlay');
   document.getElementById('mapTitle').textContent = (spot.icon||'') + ' ' + spot.name;
   const q = encodeURIComponent(spot.query || spot.name);
-  document.getElementById('mapFrame').src = 'https://www.google.com/maps?q=' + q + '&output=embed&hl=ja';
+  document.getElementById('mapFrame').src = mapEmbedUrl(spot);
   let fh = '';
   if (spot.address) fh += '<div class="spot-meta">\ud83d\udccd ' + spot.address + '</div>';
   if (spot.desc) fh += '<div class="spot-desc" style="margin-top:8px;">' + spot.desc + '</div>';
@@ -3230,7 +3244,7 @@ function showDetail(spotId, pushHistory) {
     h += '<div style="padding:8px 0 4px;"><button onclick="detailGoBack()" style="background:none;border:none;color:var(--primary);font-size:0.88em;cursor:pointer;padding:4px 8px;">← 이전 스폿으로</button></div>';
   }
 
-  // Photo strip with local images, or fallback to Google Maps embed
+  // Photo strip with local images
   if (s.photos && s.photos.length > 0) {
     h += '<div class="photo-strip">';
     s.photos.forEach(function(p) {
@@ -3245,11 +3259,18 @@ function showDetail(spotId, pushHistory) {
     if (s.nameJa) h += '<div class="detail-ja">' + s.nameJa + '</div>';
   } else {
     h += '<div class="photo-hero">';
-    h += '<iframe src="https://www.google.com/maps?q=' + q + '&output=embed&hl=ja&z=17" loading="lazy"></iframe>';
+    h += '<iframe src="' + mapEmbedUrl(s) + '" loading="lazy"></iframe>';
     h += '<div class="photo-hero-overlay">';
     h += '<h2>' + (s.icon||'') + ' ' + s.name + '</h2>';
     if (s.nameJa) h += '<div class="detail-ja">' + s.nameJa + '</div>';
     h += '</div></div>';
+  }
+
+  // Google Maps embed (always shown — with pin)
+  if (s.photos && s.photos.length > 0) {
+    h += '<div class="detail-map-embed">';
+    h += '<iframe src="' + mapEmbedUrl(s) + '" loading="lazy" allowfullscreen></iframe>';
+    h += '</div>';
   }
 
   // Photo action buttons
