@@ -2106,6 +2106,7 @@ const SPOTS = {
   bay_area: {
     name: '아오모리 베이에리어', nameJa: '青森ベイエリア',
     query: '青森ベイエリア', address: '아오모리역에서 도보 3~10분', walk: '숙소에서 도보 10분',
+    linkedSpots: ['warasse','a_factory','aspam','hakkodamaru','nishimura','daifukumaru'],
     icon: '🌊', category: '산책 / 관광',
     hours: '24시간 (시설별 영업시간 별도)', price: '산책 무료',
     desc: '아오모리만 워터프론트를 따라 ワ・ラッセ → A-FACTORY → 八甲田丸 → ASPAM → 베이브리지까지 이어지는 해안 산책로. 석양·야경 명소.',
@@ -2119,6 +2120,7 @@ const SPOTS = {
     query: '青森市新町通り', address: '아오모리역 동쪽 출구에서 도보 3분', walk: '숙소에서 도보 8분',
     icon: '🛍️', category: '아케이드 상점가',
     hours: '10:00~19:00 (가게별 상이)', price: '입장 무료',
+    linkedSpots: ['sm_ajisapporo_asari','sm_chandola','sm_okinaya','auga','kissaten_cleopatra','kissaten_bankamu','uguisu_cafe','kudo_ramen','daikoku_sushi','kakigen'],
     desc: '아오모리역에서 동쪽으로 약 1km 이어지는 아케이드 상점가. 비·눈 올 때도 쾌적한 지붕 아래 쇼핑·산책.',
     menu: '<strong>🛍️ 주요 스폿</strong><br>• <strong>AUGA</strong> — B1 신선시장, 기념품<br>• <strong>喫茶 クレオパトラ</strong> — 애플파이 명물 킷사텐<br>• <strong>중앙고전시장</strong> — 청과·선어·건어물<br>• <strong>善知鳥神社</strong> — 상점가 끝자락 (도보 3분)<br><br><strong>🍽️ 상점가 맛집</strong><br>• <strong>味の札幌 浅利</strong> — 미소카레규뉴(미소+카레+우유) 라멘 원조 계열. B급 구르메 체험!<br>• <strong>パティスリー チャンドラ</strong> — 케이크 & 카페 레스토랑. 2F 피아노 생연주. 런치 플레이트 + 계절 파르페<br>• <strong>おきな屋 新町本店</strong> — 1918년(大正7년) 창업 사과 화과자. "薄紅" 기념품 1위<br>• <strong>おさない食堂</strong> — 역 앞 도보 3분, 70년 전통 카이야키미소 (상점가 서쪽 끝)<br>• <strong>大黒寿司</strong> — 동네 스시집. 카운터에서 제철 네타 + 昼飲み<br>• <strong>柿源</strong> — 田酒 ちょい一セット. 昼飲み의 성지<br>• <strong>喫茶 バンカム</strong> — 昭和 레트로 킷사텐, 나폴리탄·크림소다<br>• <strong>UGUISU</strong> — 와모던 카페. 말차 티라미스 SNS 화제',
     tips: '비오는 날 일정으로 최적. 아케이드(지붕)가 있어 날씨 무관하게 산책 가능. <strong>추천 코스</strong>: 아우가 시장(아침 장보기) → 新町 아케이드 산책 → おきな屋(사과 과자 시식) → チャンドラ(런치) → クレオパトラ(애플파이+커피). 맛집이 밀집해 있어 교외 쇼핑몰보다 식사 선택지가 풍부.',
@@ -2134,6 +2136,7 @@ const SPOTS = {
   sanfuri: {
     name: 'さんふり横丁', nameJa: '산후리 요코초',
     query: 'さんふり横丁 青森', address: '青森市本町 3-8-3', walk: '숙소에서 도보 10분',
+    linkedSpots: ['honmachi_area','joppari','zenigata','yokoyama_ramen','kukai_ramen','machinaka_onsen'],
     icon: '🏮', category: '이자카야 / 요코초',
     hours: '가게마다 다름 (대부분 17:00~23:00)', price: '1인 2,000~4,000엔/가게',
     placeId: 'ChIJ56EJY-Oem18RQbKrrxx23fM',
@@ -2180,6 +2183,7 @@ const SPOTS = {
   be_easy: {
     name: 'Be Easy Brewing', nameJa: '비 이지 브루잉',
     query: 'Be Easy Brewing 青森', address: '青森市安方 1-4-10', walk: '숙소에서 도보 10분',
+    linkedSpots: ['aomori_brew_pub','demo_beer','honmachi_area','a_factory'],
     icon: '🍺', category: '크래프트 비어 펍',
     hours: '15:00~22:00 (요일별 변동)', price: '1잔 600~900엔',
     placeId: 'ChIJYwOARAyfm18RXyd5TS2Nx30',
@@ -2192,6 +2196,7 @@ const SPOTS = {
   nokkedon: {
     name: '古川市場 のっけ丼', nameJa: '후루카와 시장 놋케동',
     query: '青森魚菜センター のっけ丼', address: '青森市古川 1-11-16', walk: '숙소에서 도보 8분',
+    linkedSpots: ['auga','machinaka_onsen','kudo_ramen','osanai'],
     icon: '🐟', category: '아침 시장 / 해산물 덮밥',
     hours: '07:00~16:00', closed: '매주 화요일 (이번 일정에는 해당 없음)',
     price: '식권 12매 2,200엔 / 1매 190엔',
@@ -2217,6 +2222,7 @@ const SPOTS = {
   machinaka_onsen: {
     name: '青森まちなか温泉', nameJa: '아오모리 마치나카 온센',
     query: '青森まちなか温泉', address: '青森市古川 1-10-14 (센터호텔 내)', walk: '숙소에서 도보 10분',
+    linkedSpots: ['okidate_onsen','gokurakuyu','nagao_ekimae','kudo_ramen','nokkedon'],
     icon: '♨️', category: '천연 온천',
     hours: '06:00~24:00 (최종 입장 23:30)', price: '어른 480엔 | 수건 세트 250엔',
     placeId: 'ChIJx0uv7xufm18R8FccsqqrM08',
@@ -2328,6 +2334,7 @@ const SPOTS = {
     query: 'サンロード青森', address: '青森市緑3-9-2', walk: '역에서 버스 15분',
     icon: '🛍️', category: '대형 쇼핑몰',
     hours: '10:00~20:00 (3F 식당가 ~21:00)', price: '입장 무료',
+    linkedSpots: ['sr_azuma','sr_taishoken','sr_haveli','sr_sajitokoh','sr_matahari','sr_satokagura','uniqlo_bypass','galatown'],
     placeId: 'ChIJqc_UyLqfm184_BqVxLK9ng',
     desc: '아오모리 시내 최대 쇼핑몰 중 하나. 이온(AEON) 슈퍼, DAISO, 전문점 다수. 아오모리 시내 유일한 PORTER 공식 취급점(L\'Avre Morita)이 1F에 입점.',
     menu: '<strong>🛍️ 쇼핑</strong><br>• <strong>L\'Avre Morita (1F)</strong> — 吉田カバン(PORTER) 공식 딜러<br>• <strong>이온 슈퍼</strong> — 식품, 생필품<br>• <strong>DAISO</strong> — 100엔 숍<br>• <strong>サンマルクカフェ (1F)</strong> — 휴식<br><br><strong>🍽️ 내부 맛집 (3F 푸드코트 + 1F)</strong><br>• <strong>中華そば あづま (3F)</strong> — 煮干し라멘. 아오모리 니보시를 쇼핑몰에서 간편하게<br>• <strong>青森大勝軒 (3F)</strong> — 이케부쿠로 발상 쯔케멘 명가. <em>대성(곱빼기) 무료!</em><br>• <strong>ハヴェリキッチン (3F)</strong> — 본격 인도 카레 & 난. ⭐3.18 サンロード 내 최고 평점<br>• <strong>和食 里神楽 (3F)</strong> — 우동·소바 정식, 돈카츠. 무난한 화식<br>• <strong>スープカレー 匙と香 (1F)</strong> — 홋카이도 스타일 수프 카레. 야채 고로고로<br>• <strong>ワルン マタハリ (1F)</strong> — 아오모리 유일 인도네시아 요리. 나시고렝·미고렝',
@@ -2365,6 +2372,7 @@ const SPOTS = {
     query: 'ガーラタウン 青森', address: '青森市三好2-3-19', walk: '역에서 버스 16분',
     icon: '🏪', category: '쇼핑 복합시설',
     hours: '10:00~20:00 (焼肉 ~22:00)', price: '입장 무료',
+    linkedSpots: ['gt_donkichi','gt_sumiya','uniqlo_bypass','sunroad'],
     placeId: 'ChIJPxTMbSifm1_7BpAmbjBuhQ',
     desc: 'MEGAドン・キホーテ(돈키호테)가 핵심. DAISO, 미스터도넛, 의류점 등 입점. ユニクロ 西バイパス점 바로 옆.',
     menu: '<strong>🛍️ 쇼핑</strong><br>• <strong>MEGAドンキ</strong> — 화장품, 과자, 잡화, 전자제품. 면세 가능(여권 필수)<br>• <strong>DAISO</strong> — 100엔 숍<br>• <strong>万代 (만다이)</strong> — 아넥스동 1F, 생활잡화 슈퍼<br><br><strong>🍽️ 내부 맛집</strong><br>• <strong>どん吉 (A동)</strong> — 미소·시오·쇼유 라멘. 쇼핑 후 간편 식사<br>• <strong>焼肉 炭や</strong> — 야키니쿠(불고기) 런치 세트 ~1,500엔. 무한리필 코스도 있음!<br>• <strong>ミスタードーナツ</strong> — 달콤한 휴식. 아이스커피 + 도넛<br>• <strong>たい夢</strong> — 타이야키(붕어빵) 간식',
@@ -2378,6 +2386,7 @@ const SPOTS = {
     query: 'ラビナ 青森駅', address: '아오모리역 직결', walk: '역에서 도보 1분',
     icon: '🏢', category: '역빌딩 상업시설',
     hours: '10:00~20:00 (식당가 07:00~21:00)', price: '입장 무료',
+    linkedSpots: ['nagao_ekimae','lv_tsugaru_soba','lv_aomori_shokudo','osanai','shinmachi'],
     placeId: 'ChIJXegiGR-fm19ohbmsXHb38w',
     desc: '아오모리역 직결 상업시설. 마츠모토키요시(드럭스토어), 잡화, 의류, 식당가. 시간 없을 때 역에서 바로 쇼핑+식사.',
     menu: '<strong>🛍️ 쇼핑</strong><br>• <strong>マツモトキヨシ</strong> — 화장품, 의약품, 면세 가능(여권 필수)<br>• <strong>THE AOMORI MARKET</strong> — 아오모리 기념품 셀렉트숍<br>• <strong>おきな屋</strong> — 사과 화과자 "薄紅" (기념품 1위)<br>• <strong>無印良品</strong> — 무인양품<br>• <strong>ステラおばさんのクッキー</strong> — 쿠키 선물<br><br><strong>🍽️ 내부 맛집 (충실!)</strong><br>• <strong>⭐ 青森食堂</strong> — 향토 푸드홀. 해산물 덮밥·호타테 정식·地酒. <em>LOVINA 최고 평점 3.41</em><br>• <strong>⭐ 長尾中華そば (P1F)</strong> — 1949년 창업 니보시 라멘 명가. <em>아침 7시부터! 朝ラー 가능.</em> ⭐3.46<br>• <strong>立喰いそば処 津軽 (1F)</strong> — 스탠딩 소바 350엔~. 서서 후루룩 3분! ⭐3.36<br>• <strong>吉野洛匠</strong> — 스시<br>• <strong>日本一</strong> — 야키토리(꼬치) 테이크아웃<br>• <strong>ドトール</strong> — 커피 휴식<br>• <strong>ヴィ・ド・フランス</strong> — 빵·샌드위치',
@@ -2387,6 +2396,7 @@ const SPOTS = {
   osanai: {
     name: 'おさない食堂', nameJa: '오사나이 식당',
     query: 'おさない食堂 青森駅前', address: '青森市新町1-1-17', walk: '역 도보 3분',
+    linkedSpots: ['kaiyaki_miso','hotate_dishes','lovina','nagao_ekimae','nokkedon','shinmachi'],
     icon: '🐚', category: '향토 식당 (1950년대 창업)',
     hours: '10:00~20:00頃 (売切終了)', price: '정식 800~1,200엔',
     placeId: 'ChIJp7ONMhyfm1_LgF_CkOs9Pg',
@@ -2418,6 +2428,7 @@ const SPOTS = {
     name: '本町 이자카야 거리', nameJa: '本町 居酒屋通り',
     query: '青森市本町 居酒屋', address: '아오모리시 本町 2~5丁目', walk: '숙소에서 도보 10~15분',
     icon: '🏮', category: '이자카야 거리',
+    linkedSpots: ['sanfuri','joppari','hideka','zenigata','tsugaru_sengyo','motsu_koshiken','mitsuishi','yokoyama_ramen','kukai_ramen','kajitsu_bar','bar_ludens'],
     hours: '대부분 17:00~24:00 (가게별 상이)', price: '1인 2,500~5,000엔/가게',
     desc: '아오모리 최대의 밤문화 거리. 旧米町通り(구 코메마치 거리)와 旧寺町通り(구 테라마치 거리)를 중심으로 수백 곳의 이자카야, 스낵, 바가 밀집. さんふり横丁도 이 지역 내에 위치.',
     menu: '<strong>주요 거리 구성</strong><br>• <strong>旧米町通り</strong> — 이자카야, 오뎅집, 야키토리 밀집<br>• <strong>旧寺町通り</strong> — 스낵, 바, 시메 라멘집<br>• <strong>さんふり横丁</strong> — 昭和풍 포장마차촌 (15곳)<br>• <strong>本町 5丁目</strong> — 지역민 단골 이자카야 골목',
@@ -2661,6 +2672,7 @@ const SPOTS = {
   niboshi_ramen: {
     name: '煮干しラーメン', nameJa: '니보시 라멘 (멸치 라멘)',
     query: '煮干しラーメン 青森駅前', icon: '🍜', category: '아오모리의 소울푸드',
+    linkedSpots: ['nagao_ekimae','kudo_ramen','marukai_ramen','sr_azuma'],
     price: '700~1,000엔', imageSearch: '青森 煮干しラーメン',
     desc: '아오모리시 100곳+ 라멘점 중 8~9할이 니보시(멸치) 라멘. 津軽 지방의 소울푸드.',
     menu: '진한 니보시 (농후, 걸쭉) vs 맑은 니보시 (깔끔, 투명) — 가게마다 스타일이 다르다.',
@@ -2671,6 +2683,7 @@ const SPOTS = {
   miso_curry_milk_ramen: {
     name: '味噌カレー牛乳ラーメン', nameJa: '미소카레규뉴 라멘',
     query: '味の札幌大西 青森', icon: '🍛', category: 'B급 구르메',
+    linkedSpots: ['sm_ajisapporo_asari'],
     price: '850~1,000엔', imageSearch: '味噌カレー牛乳ラーメン 青森',
     placeId: 'ChIJ8RSfihufm18RbYfiZDGnKD0',
     desc: '아오모리 고유 B급 구르메. 1978년 「味の札幌」에서 정식 메뉴화. 미소+카레+우유+버터.',
@@ -2694,6 +2707,7 @@ const SPOTS = {
   denshu: {
     name: '아오모리 3대 地酒', nameJa: '田酒・豊盃・陸奥八仙',
     query: '西田酒造店 青森', icon: '🍶', category: '일본주 (地酒)',
+    linkedSpots: ['hideka','kakigen','joppari','sanfuri'],
     price: '1잔(90ml) 500~1,000엔', imageSearch: '田酒 日本酒',
     desc: '아오모리현의 3대 명주. 이자카야에서 반드시 시도해볼 것.',
     menu: '<strong>田酒 (덴슈)</strong> — 전국적 프리미엄. 현지에서도 입수 어려움.<br><strong>豊盃 (호우하이)</strong> — 풍부한 과실향.<br><strong>陸奥八仙 (무츠핫센)</strong> — 신선한 과실향, 가볍고 깔끔.',
@@ -2707,6 +2721,7 @@ const SPOTS = {
   kaiyaki_miso: {
     name: 'ホタテ貝焼き味噌', nameJa: '호타테 카이야키 미소',
     query: '貝焼き味噌 青森', icon: '🐚', category: '아오모리 향토 요리 No.1',
+    linkedSpots: ['osanai','nishimura','daifukumaru','joppari'],
     price: '단품 500~800엔 / 정식 1,000~1,500엔',
     imageSearch: '青森 貝焼き味噌 ホタテ',
     desc: '아오모리를 대표하는 향토 요리. 호타테(가리비) 껍데기를 냄비 삼아, 다시+미소(된장)+계란을 넣고 끓인다. 에도시대 陸奥湾 어부가 고안.',
@@ -2754,6 +2769,7 @@ const SPOTS = {
   apple_sweets: {
     name: 'りんごスイーツ', nameJa: '사과 디저트',
     query: 'アップルパイ 青森駅前', icon: '🍎', category: '사과 왕국의 디저트',
+    linkedSpots: ['kissaten_cleopatra','a_factory','sm_okinaya','aspam'],
     price: '300~600엔',
     imageSearch: '青森 アップルパイ りんごスイーツ',
     desc: '일본 사과 생산량 1위 아오모리. 시내 곳곳에서 사과 파이, 사과 젤라또, 사과 시드르, 사과 주스를 만날 수 있다.',
@@ -2777,6 +2793,7 @@ const SPOTS = {
   coffeeman_good: {
     name: 'COFFEEMAN good', nameJa: 'コーヒーマングッド',
     query: 'COFFEEMAN good 青森市古川', address: '青森市古川1-17-1 1F', walk: '역에서 도보 7분',
+    linkedSpots: ['quatre_cafe','uguisu_cafe','kissaten_cleopatra','kissaten_maron'],
     icon: '☕', category: '스페셜티 커피 스탠드',
     hours: '월·목·금 10:00~18:00, 토·일·축 11:00~18:00 (화·수 정기휴무)', price: '400~600엔',
     desc: '7석뿐인 작은 스페셜티 커피 스탠드. 에티오피아 이르가체페 등 엄선 원두를 소량 자가배전. 명물 "りんごカフェオレ"는 아오모리 사과주스×커피의 절묘한 블렌드. 아오모리 커피 씬의 중심.',
@@ -2811,6 +2828,7 @@ const SPOTS = {
   aomori_brew_pub: {
     name: 'Aomori Brew Pub', nameJa: 'アオモリ ブリューパブ',
     query: 'Aomori Brew Pub 青森市安方', address: '青森市安方1-5-11 ギャレスビル2F', walk: '역에서 도보 4분',
+    linkedSpots: ['be_easy','demo_beer','honmachi_area'],
     icon: '🍺', category: '셀프탭 크래프트 비어',
     hours: '수~금 17:00~22:00, 토 15:00~22:00 (일~화 정기휴무)', price: '비어 1잔 500~900엔',
     desc: '도호쿠 최초 셀프탭 시스템. Be Easy Brewing의 크래프트 비어 상시 8탭. 카드를 받아 원하는 양만큼 직접 따르는 스타일. 아오모리산 사과·카시스 한정 비어도. 음식 반입 OK, 보틀 100종+.',
@@ -3072,12 +3090,51 @@ function closeMap() {
 }
 
 // ===== DETAIL FUNCTIONS =====
-function showDetail(spotId) {
+// ===== BIDIRECTIONAL LINK ENGINE =====
+// Collects forward links (linkedSpots) + auto-generated backlinks
+// Implements Associative Navigation (Bush, 1945) — information nodes
+// connected by semantic relationships, not just hierarchy.
+const _detailHistory = [];
+
+function _collectLinks(spotId) {
+  const s = SPOTS[spotId];
+  if (!s) return [];
+  const linkMap = new Map(); // id -> {id, name, icon, category, direction}
+
+  // Forward links (explicitly declared)
+  if (s.linkedSpots) {
+    s.linkedSpots.forEach(id => {
+      const t = SPOTS[id];
+      if (t) linkMap.set(id, { id, name: t.name, icon: t.icon||'', category: t.category||'', dir: 'forward' });
+    });
+  }
+
+  // Backlinks (auto-discovered: who links to me?)
+  Object.keys(SPOTS).forEach(id => {
+    if (id === spotId) return;
+    const t = SPOTS[id];
+    if (t.linkedSpots && t.linkedSpots.includes(spotId)) {
+      if (!linkMap.has(id)) {
+        linkMap.set(id, { id, name: t.name, icon: t.icon||'', category: t.category||'', dir: 'back' });
+      }
+    }
+  });
+
+  return Array.from(linkMap.values());
+}
+
+function showDetail(spotId, pushHistory) {
   const s = SPOTS[spotId];
   if (!s) return;
+  if (pushHistory !== false) _detailHistory.push(spotId);
   const overlay = document.getElementById('detailOverlay');
   const q = encodeURIComponent(s.query || s.name);
   let h = '';
+
+  // Back button (if navigated from another detail)
+  if (_detailHistory.length > 1) {
+    h += '<div style="padding:8px 0 4px;"><button onclick="detailGoBack()" style="background:none;border:none;color:var(--primary);font-size:0.88em;cursor:pointer;padding:4px 8px;">← 이전 스폿으로</button></div>';
+  }
 
   // Photo strip with local images, or fallback to Google Maps embed
   if (s.photos && s.photos.length > 0) {
@@ -3104,10 +3161,10 @@ function showDetail(spotId) {
   // Photo action buttons
   h += '<div class="photo-cta">';
   if (s.placeId) {
-    h += '<a class="cta-maps" href="' + mapsPhotoUrl(s.placeId) + '" target="_blank" rel="noopener">\ud83d\udcf7 Google Maps</a>';
+    h += '<a class="cta-maps" href="' + mapsPhotoUrl(s.placeId) + '" target="_blank" rel="noopener">📷 Google Maps</a>';
   }
   const imgQ = s.imageSearch || s.query || s.name;
-  h += '<a class="cta-images" href="' + imageSearchUrl(imgQ) + '" target="_blank" rel="noopener">\ud83d\uddbc\ufe0f \uc774\ubbf8\uc9c0 \uac80\uc0c9</a>';
+  h += '<a class="cta-images" href="' + imageSearchUrl(imgQ) + '" target="_blank" rel="noopener">🖼️ 이미지 검색</a>';
   h += '</div>';
 
   // Tags
@@ -3118,45 +3175,67 @@ function showDetail(spotId) {
   }
 
   // Basic info
-  h += '<div class="detail-section"><h4>\uae30\ubcf8 \uc815\ubcf4</h4>';
-  if (s.category) h += '<div class="detail-row"><span class="detail-label">\ubd84\ub958</span><span class="detail-val">' + s.category + '</span></div>';
-  if (s.address) h += '<div class="detail-row"><span class="detail-label">\uc8fc\uc18c</span><span class="detail-val">' + s.address + '</span></div>';
-  if (s.walk) h += '<div class="detail-row"><span class="detail-label">\uac70\ub9ac</span><span class="detail-val">' + s.walk + '</span></div>';
-  if (s.hours) h += '<div class="detail-row"><span class="detail-label">\uc601\uc5c5\uc2dc\uac04</span><span class="detail-val">' + s.hours + '</span></div>';
-  if (s.closed) h += '<div class="detail-row"><span class="detail-label">\uc815\uae30\ud734\uc77c</span><span class="detail-val">' + s.closed + '</span></div>';
-  if (s.price) h += '<div class="detail-row"><span class="detail-label">\uac00\uaca9</span><span class="detail-val">' + s.price + '</span></div>';
+  h += '<div class="detail-section"><h4>기본 정보</h4>';
+  if (s.category) h += '<div class="detail-row"><span class="detail-label">분류</span><span class="detail-val">' + s.category + '</span></div>';
+  if (s.address) h += '<div class="detail-row"><span class="detail-label">주소</span><span class="detail-val">' + s.address + '</span></div>';
+  if (s.walk) h += '<div class="detail-row"><span class="detail-label">거리</span><span class="detail-val">' + s.walk + '</span></div>';
+  if (s.hours) h += '<div class="detail-row"><span class="detail-label">영업시간</span><span class="detail-val">' + s.hours + '</span></div>';
+  if (s.closed) h += '<div class="detail-row"><span class="detail-label">정기휴일</span><span class="detail-val">' + s.closed + '</span></div>';
+  if (s.price) h += '<div class="detail-row"><span class="detail-label">가격</span><span class="detail-val">' + s.price + '</span></div>';
   h += '</div>';
 
   // Description
   if (s.desc) {
-    h += '<div class="detail-section"><h4>\uc18c\uac1c</h4>';
+    h += '<div class="detail-section"><h4>소개</h4>';
     h += '<p style="font-size:0.95em;">' + s.desc + '</p></div>';
   }
 
   // Menu
   if (s.menu) {
-    h += '<div class="detail-section"><h4>\uba54\ub274 / \ubb58 \uba39\uc744\uae4c</h4>';
+    h += '<div class="detail-section"><h4>메뉴 / 뭘 먹을까</h4>';
     h += '<p style="font-size:0.95em;">' + s.menu + '</p></div>';
   }
 
   // How to order
   if (s.order) {
-    h += '<div class="detail-section"><h4>\uc8fc\ubb38 \ubc29\ubc95</h4>';
+    h += '<div class="detail-section"><h4>주문 방법</h4>';
     h += '<div style="background:var(--accent-light);padding:12px 16px;border-radius:8px;font-size:0.95em;">' + s.order + '</div></div>';
   }
 
   // Tips
   if (s.tips) {
-    h += '<div class="detail-tip"><strong>\ud83d\udca1 \ud604\uc7a5 \ud301</strong><br>' + s.tips + '</div>';
+    h += '<div class="detail-tip"><strong>💡 현장 팁</strong><br>' + s.tips + '</div>';
+  }
+
+  // === BIDIRECTIONAL LINKS (관련 스폿) ===
+  const links = _collectLinks(spotId);
+  if (links.length > 0) {
+    h += '<div class="detail-section" style="margin-top:16px;">';
+    h += '<h4>🔗 관련 스폿</h4>';
+    h += '<div style="display:flex;flex-direction:column;gap:6px;">';
+    links.forEach(lk => {
+      const dirBadge = lk.dir === 'back'
+        ? '<span style="font-size:0.7em;background:#e8e0d4;color:#6b4c1e;padding:1px 6px;border-radius:4px;margin-left:6px;">↩ 여기서 연결됨</span>'
+        : '';
+      h += '<div onclick="showDetail(\'' + lk.id + '\')" style="display:flex;align-items:center;gap:8px;padding:10px 12px;background:var(--card-bg);border:1px solid #e8e0d4;border-radius:8px;cursor:pointer;transition:background 0.15s;" onmouseover="this.style.background=\'#f5f0eb\'" onmouseout="this.style.background=\'var(--card-bg)\'">';
+      h += '<span style="font-size:1.2em;flex-shrink:0;">' + lk.icon + '</span>';
+      h += '<div style="flex:1;min-width:0;">';
+      h += '<div style="font-weight:600;font-size:0.9em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + lk.name + dirBadge + '</div>';
+      h += '<div style="font-size:0.75em;color:var(--text-light);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">' + lk.category + '</div>';
+      h += '</div>';
+      h += '<span style="color:var(--primary);font-size:0.85em;flex-shrink:0;">›</span>';
+      h += '</div>';
+    });
+    h += '</div></div>';
   }
 
   // Action buttons
   h += '<div class="detail-actions">';
-  h += '<a class="btn-map" href="https://www.google.com/maps/search/' + q + '" target="_blank" rel="noopener">\ud83d\udcf1 Google Maps\ub85c \uae38\ucc3e\uae30</a>';
+  h += '<a class="btn-map" href="https://www.google.com/maps/search/' + q + '" target="_blank" rel="noopener">📱 Google Maps로 길찾기</a>';
   if (s.placeId) {
-    h += '<a class="btn-search" href="' + mapsPhotoUrl(s.placeId) + '" target="_blank" rel="noopener">\ud83d\udcf7 \uc0ac\uc9c4 \ub354 \ubcf4\uae30</a>';
+    h += '<a class="btn-search" href="' + mapsPhotoUrl(s.placeId) + '" target="_blank" rel="noopener">📷 사진 더 보기</a>';
   }
-  h += '<button class="btn-close-detail" onclick="closeDetail()">\ub2eb\uae30</button>';
+  h += '<button class="btn-close-detail" onclick="closeDetail()">닫기</button>';
   h += '</div>';
 
   document.getElementById('detailContent').innerHTML = h;
@@ -3165,11 +3244,22 @@ function showDetail(spotId) {
   document.body.style.overflow = 'hidden';
 }
 
+function detailGoBack() {
+  _detailHistory.pop(); // remove current
+  const prevId = _detailHistory[_detailHistory.length - 1];
+  if (prevId) {
+    showDetail(prevId, false); // false = don't push to history
+  } else {
+    closeDetail();
+  }
+}
+
 function closeDetail() {
   document.getElementById('detailOverlay').classList.remove('show');
   document.body.style.overflow = '';
   const iframes = document.getElementById('detailContent').querySelectorAll('iframe');
   iframes.forEach(f => f.src = '');
+  _detailHistory.length = 0; // reset navigation history
 }
 
 // ===== SHOP FOOD FILTER =====
