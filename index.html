@@ -72,8 +72,13 @@
     top: 0; left: 0; right: 0; bottom: 0;
     background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.55) 100%);
     z-index: 1;
+    transition: opacity 0.6s;
   }
-  .hero-content { position: relative; z-index: 3; max-width: 600px; margin: 0 auto; padding: 80px 20px 70px; }
+  .hero.hero-map-active::after { opacity: 0; pointer-events: none; }
+  .hero.hero-map-active .hero-content { opacity: 0; pointer-events: none; }
+  .hero.hero-map-active .hero-caption { opacity: 0; }
+  .hero-slide-map > div { z-index: 2; }
+  .hero-content { position: relative; z-index: 3; max-width: 600px; margin: 0 auto; padding: 80px 20px 70px; transition: opacity 0.6s; }
   .hero h1 {
     font-family: 'Noto Serif KR', serif;
     font-size: 2.4em; font-weight: 700; margin-bottom: 8px; letter-spacing: -1px;
@@ -142,6 +147,31 @@
     scrollbar-width: none;
   }
   .tab-nav::-webkit-scrollbar { display: none; }
+  /* Search bar */
+  .search-bar { position:sticky; top:48px; z-index:90; padding:8px 16px; background:rgba(255,255,255,0.95); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid rgba(0,0,0,0.06); display:flex; gap:8px; align-items:center; margin:0 -16px; }
+  .search-input { flex:1; padding:10px 14px 10px 36px; border:1.5px solid var(--border); border-radius:10px; font-size:0.9em; font-family:inherit; background:var(--card-bg); color:var(--text); outline:none; transition:border-color 0.2s; }
+  .search-input:focus { border-color:var(--accent); }
+  .search-input::placeholder { color:var(--text-light); opacity:0.7; }
+  .search-icon { position:absolute; left:28px; color:var(--text-light); font-size:1em; pointer-events:none; }
+  .search-results { position:absolute; top:100%; left:16px; right:16px; max-height:60vh; overflow-y:auto; background:var(--card-bg); border-radius:0 0 12px 12px; box-shadow:0 8px 32px rgba(0,0,0,0.15); border:1px solid var(--border); border-top:none; z-index:91; display:none; }
+  .search-results.show { display:block; }
+  .search-result-item { padding:12px 16px; cursor:pointer; border-bottom:1px solid rgba(0,0,0,0.04); display:flex; gap:10px; align-items:flex-start; transition:background 0.15s; }
+  .search-result-item:hover, .search-result-item:active { background:rgba(90,114,71,0.08); }
+  .search-result-icon { font-size:1.4em; flex-shrink:0; width:28px; text-align:center; }
+  .search-result-info { flex:1; min-width:0; }
+  .search-result-name { font-weight:600; font-size:0.92em; margin-bottom:2px; }
+  .search-result-category { font-size:0.78em; color:var(--text-light); }
+  .search-result-match { font-size:0.78em; color:var(--accent); margin-top:2px; }
+  .search-result-count { padding:8px 16px; font-size:0.8em; color:var(--text-light); text-align:center; border-bottom:1px solid rgba(0,0,0,0.04); }
+  .search-clear { background:none; border:none; font-size:1.1em; cursor:pointer; color:var(--text-light); padding:4px 8px; display:none; }
+  [data-theme="premium"] .search-bar { background:rgba(26,26,26,0.95); }
+  [data-theme="premium"] .search-results { background:#1a1a1a; border-color:rgba(255,255,255,0.1); }
+  [data-theme="premium"] .search-result-item:hover { background:rgba(255,255,255,0.05); }
+  [data-theme="premium"] .search-result-name { color:#e8e4df !important; }
+  [data-theme="premium"] .search-result-name a { color:#e8e4df !important; }
+  [data-theme="premium"] .search-result-category { color:rgba(255,255,255,0.5) !important; }
+  [data-theme="premium"] .search-result-match { color:#a8c896 !important; }
+  [data-theme="premium"] .search-result-item { border-bottom-color:rgba(255,255,255,0.06); }
   .tab-btn {
     flex-shrink: 0; padding: 14px 20px; border: none; background: none;
     font-family: inherit; font-size: 0.88em; font-weight: 400;
@@ -1093,14 +1123,72 @@
     <div class="hero-slide" style="background-image:url('img/hero_warasse.jpg')" data-caption="네부타의 집 와랏세"></div>
     <div class="hero-slide" style="background-image:url('img/hero_tsugaru.jpg')" data-caption="쓰가루 해협"></div>
     <div class="hero-slide" style="background-image:url('img/hero_towada.jpg')" data-caption="도와다 호수"></div>
-    <div class="hero-slide hero-slide-map" style="background:#f4f1eb;" data-caption="🗺 스팟 지도">
-      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:20px;">
-        <div style="width:100%;max-width:700px;text-align:center;">
-          <div style="color:#333;font-size:1.4em;font-weight:700;margin-bottom:6px;text-shadow:none;">🗺 아오모리 스팟 지도</div>
-          <div style="color:#666;font-size:0.85em;margin-bottom:12px;text-shadow:none;">발굴한 전체 컨텐츠의 지리적 위치 · 탭하면 상세 정보</div>
-          <div style="font-size:0.75em;color:#999;text-shadow:none;">아래로 스크롤하여 개요 탭에서 인터랙티브 지도를 확인하세요</div>
-          <div onclick="document.getElementById('spotMapCard').scrollIntoView({behavior:'smooth'});document.querySelector('[data-tab=overview]').click();" style="cursor:pointer;display:inline-block;margin-top:16px;padding:12px 28px;background:#5a7247;color:white;border-radius:8px;font-size:0.95em;font-weight:600;text-shadow:none;">지도 보기 ↓</div>
+    <div class="hero-slide hero-slide-map" style="background:linear-gradient(135deg,#f7f4ef 0%,#e8e2d6 50%,#ddd6c8 100%);" data-caption="🗺 스팟 지도">
+      <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 20px;">
+        <div style="text-align:center;margin-bottom:12px;">
+          <div style="color:#2d2d2d;font-size:1.3em;font-weight:800;letter-spacing:-0.5px;text-shadow:none;font-family:'Noto Serif KR',serif;">🗺 아오모리 스팟 지도</div>
+          <div style="color:#777;font-size:0.72em;margin-top:4px;text-shadow:none;letter-spacing:1px;">52 SPOTS · 9 ZONES — TAP TO EXPLORE</div>
         </div>
+        <svg viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg" style="width:92%;max-width:640px;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.08));" font-family="'Noto Sans KR',sans-serif">
+          <rect x="0" y="0" width="700" height="280" rx="14" fill="rgba(255,255,255,0.7)"/>
+          <path d="M 0 0 L 700 0 L 700 52 Q 540 42 380 48 Q 220 56 60 44 Q 30 42 0 48 Z" fill="#b8d4e8" opacity="0.6" rx="14"/>
+          <text x="350" y="30" text-anchor="middle" font-size="10" fill="#4a7fa0" opacity="0.7" letter-spacing="2">陸 奥 湾</text>
+          <rect x="80" y="55" width="260" height="42" rx="8" fill="#2e7d32" opacity="0.08" stroke="#2e7d32" stroke-width="0.8" stroke-dasharray="3,2"/>
+          <text x="210" y="67" text-anchor="middle" font-size="7.5" fill="#2e7d32" font-weight="700">ベイエリア</text>
+          <g><circle cx="120" cy="82" r="8" fill="#2e7d32" stroke="white" stroke-width="1.5"/><text x="120" y="85.5" text-anchor="middle" font-size="8">🎭</text></g>
+          <g><circle cx="170" cy="82" r="8" fill="#2e7d32" stroke="white" stroke-width="1.5"/><text x="170" y="85.5" text-anchor="middle" font-size="8">🍎</text></g>
+          <g><circle cx="220" cy="82" r="8" fill="#2e7d32" stroke="white" stroke-width="1.5"/><text x="220" y="85.5" text-anchor="middle" font-size="8">🚢</text></g>
+          <g><circle cx="268" cy="82" r="8" fill="#2e7d32" stroke="white" stroke-width="1.5"/><text x="268" y="85.5" text-anchor="middle" font-size="8">🔺</text></g>
+          <g><circle cx="310" cy="82" r="8" fill="#c62828" stroke="white" stroke-width="1.5"/><text x="310" y="85.5" text-anchor="middle" font-size="8">🦑</text></g>
+          <rect x="120" y="102" width="170" height="38" rx="8" fill="#5a7247" opacity="0.08" stroke="#5a7247" stroke-width="0.8" stroke-dasharray="3,2"/>
+          <text x="205" y="112" text-anchor="middle" font-size="7" fill="#5a7247" font-weight="700">아오모리역 허브</text>
+          <circle cx="205" cy="128" r="10" fill="#3e6b3a" stroke="white" stroke-width="2"/><text x="205" y="132" text-anchor="middle" font-size="10">🚉</text>
+          <g><circle cx="165" cy="128" r="7" fill="#c62828" stroke="white" stroke-width="1"/><text x="165" y="131" text-anchor="middle" font-size="7">🐚</text></g>
+          <g><circle cx="245" cy="128" r="7" fill="#5a7247" stroke="white" stroke-width="1"/><text x="245" y="131" text-anchor="middle" font-size="7">🏢</text></g>
+          <rect x="300" y="102" width="110" height="38" rx="8" fill="#8b7355" opacity="0.08" stroke="#8b7355" stroke-width="0.8" stroke-dasharray="3,2"/>
+          <text x="355" y="112" text-anchor="middle" font-size="7" fill="#8b7355" font-weight="700">新町商店街</text>
+          <g><circle cx="325" cy="128" r="7" fill="#1565c0" stroke="white" stroke-width="1"/><text x="325" y="131" text-anchor="middle" font-size="7">🥬</text></g>
+          <g><circle cx="355" cy="128" r="7" fill="#6d4c41" stroke="white" stroke-width="1"/><text x="355" y="131" text-anchor="middle" font-size="7">☕</text></g>
+          <g><circle cx="385" cy="128" r="7" fill="#6a1b9a" stroke="white" stroke-width="1"/><text x="385" y="131" text-anchor="middle" font-size="7">🍺</text></g>
+          <rect x="120" y="148" width="140" height="34" rx="8" fill="#c8860b" opacity="0.06" stroke="#c8860b" stroke-width="0.8" stroke-dasharray="3,2"/>
+          <text x="190" y="158" text-anchor="middle" font-size="7" fill="#c8860b" font-weight="700">古川</text>
+          <g><circle cx="160" cy="172" r="8" fill="#c62828" stroke="white" stroke-width="1.5"/><text x="160" y="175.5" text-anchor="middle" font-size="8">🐟</text></g>
+          <g><circle cx="200" cy="172" r="7" fill="#00897b" stroke="white" stroke-width="1"/><text x="200" y="175" text-anchor="middle" font-size="7">♨️</text></g>
+          <g><circle cx="235" cy="172" r="7" fill="#c62828" stroke="white" stroke-width="1"/><text x="235" y="175" text-anchor="middle" font-size="7">🍜</text></g>
+          <rect x="105" y="190" width="160" height="34" rx="8" fill="#c62828" opacity="0.06" stroke="#c62828" stroke-width="0.8" stroke-dasharray="3,2"/>
+          <text x="185" y="200" text-anchor="middle" font-size="7" fill="#c62828" font-weight="700">本町 이자카야</text>
+          <g><circle cx="140" cy="214" r="7" fill="#c62828" stroke="white" stroke-width="1"/><text x="140" y="217" text-anchor="middle" font-size="7">🏮</text></g>
+          <g><circle cx="175" cy="214" r="7" fill="#c62828" stroke="white" stroke-width="1"/><text x="175" y="217" text-anchor="middle" font-size="7">🎵</text></g>
+          <g><circle cx="210" cy="214" r="7" fill="#6a1b9a" stroke="white" stroke-width="1"/><text x="210" y="217" text-anchor="middle" font-size="7">🍹</text></g>
+          <g><circle cx="240" cy="214" r="7" fill="#6a1b9a" stroke="white" stroke-width="1"/><text x="240" y="217" text-anchor="middle" font-size="7">🥃</text></g>
+          <path d="M 290 160 Q 400 180 480 195" fill="none" stroke="#1565c0" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.5"/>
+          <text x="400" y="178" font-size="6.5" fill="#1565c0" opacity="0.7">🚌 15분</text>
+          <rect x="440" y="178" width="120" height="34" rx="8" fill="#1565c0" opacity="0.08" stroke="#1565c0" stroke-width="0.8" stroke-dasharray="3,2"/>
+          <text x="500" y="188" text-anchor="middle" font-size="7" fill="#1565c0" font-weight="700">교외 쇼핑</text>
+          <g><circle cx="475" cy="202" r="8" fill="#1565c0" stroke="white" stroke-width="1.5"/><text x="475" y="205.5" text-anchor="middle" font-size="8">🛍️</text></g>
+          <g><circle cx="520" cy="202" r="7" fill="#1565c0" stroke="white" stroke-width="1"/><text x="520" y="205" text-anchor="middle" font-size="7">🏪</text></g>
+          <rect x="460" y="228" width="110" height="28" rx="7" fill="#6a1b9a" opacity="0.06" stroke="#6a1b9a" stroke-width="0.8" stroke-dasharray="3,2"/>
+          <text x="515" y="238" text-anchor="middle" font-size="6.5" fill="#6a1b9a" font-weight="700">교외 몰 (25분)</text>
+          <g><circle cx="515" cy="248" r="7" fill="#6a1b9a" stroke="white" stroke-width="1"/><text x="515" y="251" text-anchor="middle" font-size="7">🏬</text></g>
+          <path d="M 340 82 Q 460 60 570 72" fill="none" stroke="#00897b" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.5"/>
+          <text x="470" y="60" font-size="6.5" fill="#00897b" opacity="0.8">🚃 아오이모리 철도 25분</text>
+          <rect x="570" y="55" width="110" height="36" rx="8" fill="#00897b" opacity="0.08" stroke="#00897b" stroke-width="0.8" stroke-dasharray="3,2"/>
+          <text x="625" y="65" text-anchor="middle" font-size="7" fill="#00897b" font-weight="700">浅虫温泉</text>
+          <g><circle cx="625" cy="80" r="8" fill="#00897b" stroke="white" stroke-width="1.5"/><text x="625" y="83.5" text-anchor="middle" font-size="8">♨️</text></g>
+          <g><circle cx="40" cy="250" r="9" fill="#607d8b" stroke="white" stroke-width="1.5"/><text x="40" y="253.5" text-anchor="middle" font-size="9">✈️</text></g>
+          <text x="62" y="253" font-size="7" fill="#607d8b" font-weight="600">AOJ</text>
+          <path d="M 80 248 Q 100 200 150 170" fill="none" stroke="#777" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
+          <text x="88" y="216" font-size="6" fill="#888" opacity="0.7" transform="rotate(-55,88,216)">🚌 35분</text>
+          <rect x="10" y="262" width="690" height="16" rx="6" fill="rgba(0,0,0,0.03)"/>
+          <circle cx="30" cy="270" r="4" fill="#c62828"/><text x="38" y="273" font-size="6.5" fill="#666">식당</text>
+          <circle cx="72" cy="270" r="4" fill="#1565c0"/><text x="80" y="273" font-size="6.5" fill="#666">쇼핑</text>
+          <circle cx="114" cy="270" r="4" fill="#2e7d32"/><text x="122" y="273" font-size="6.5" fill="#666">관광</text>
+          <circle cx="156" cy="270" r="4" fill="#6a1b9a"/><text x="164" y="273" font-size="6.5" fill="#666">바</text>
+          <circle cx="186" cy="270" r="4" fill="#00897b"/><text x="194" y="273" font-size="6.5" fill="#666">온천</text>
+          <circle cx="230" cy="270" r="4" fill="#6d4c41"/><text x="238" y="273" font-size="6.5" fill="#666">카페</text>
+          <text x="690" y="273" text-anchor="end" font-size="6" fill="#aaa">52 spots · 개요 탭에서 인터랙티브 지도 보기 ↓</text>
+        </svg>
+        <div onclick="document.getElementById('spotMapCard').scrollIntoView({behavior:'smooth'});document.querySelector('[data-tab=overview]').click();" style="cursor:pointer;display:inline-block;margin-top:14px;padding:10px 32px;background:linear-gradient(135deg,#5a7247,#4a6237);color:white;border-radius:24px;font-size:0.85em;font-weight:600;text-shadow:none;letter-spacing:0.5px;box-shadow:0 2px 12px rgba(90,114,71,0.3);transition:transform 0.2s;" onmouseover="this.style.transform='scale(1.04)'" onmouseout="this.style.transform='scale(1)'">인터랙티브 지도 열기 ↓</div>
       </div>
     </div>
   </div>
@@ -1137,14 +1225,51 @@
 
 <div class="container">
 
+<!-- 검색바 -->
+<div class="search-bar" id="searchBar">
+  <span class="search-icon">🔍</span>
+  <input type="text" class="search-input" id="searchInput" placeholder="스팟 검색 (예: 라멘, 온천, PORTER, 朝ラー...)" autocomplete="off">
+  <button class="search-clear" id="searchClear" onclick="clearSearch()">✕</button>
+  <div class="search-results" id="searchResults"></div>
+</div>
+
 <!-- ===== 개요 ===== -->
 <div id="overview" class="tab-content active">
 
   <!-- 스팟 지도 -->
-  <div class="card" id="spotMapCard">
-    <h2>🗺 아오모리 스팟 지도</h2>
-    <p style="font-size:0.85em;color:var(--text-light);margin:-4px 0 12px;">여행 중 발굴한 전체 컨텐츠의 지리적 위치를 한눈에. 각 스팟을 탭하면 상세 정보가 열립니다.</p>
-    <div id="spotMapContainer" style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
+  <div class="card" id="spotMapCard" style="padding:0;overflow:hidden;">
+    <div style="padding:24px 28px 16px;border-bottom:1px solid rgba(0,0,0,0.05);">
+      <h2 style="margin-bottom:6px;">🗺 아오모리 스팟 지도</h2>
+      <p style="font-size:0.82em;color:var(--text-light);margin:0;line-height:1.5;">여행 중 발굴한 <strong>52개 스팟</strong>의 지리적 위치를 한눈에. 각 스팟을 탭하면 상세 정보가 열립니다.</p>
+      <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;">
+        <span style="font-size:0.7em;padding:3px 10px;border-radius:12px;background:rgba(198,40,40,0.1);color:#c62828;">● 식당</span>
+        <span style="font-size:0.7em;padding:3px 10px;border-radius:12px;background:rgba(21,101,192,0.1);color:#1565c0;">● 쇼핑</span>
+        <span style="font-size:0.7em;padding:3px 10px;border-radius:12px;background:rgba(46,125,50,0.1);color:#2e7d32;">● 관광</span>
+        <span style="font-size:0.7em;padding:3px 10px;border-radius:12px;background:rgba(106,27,154,0.1);color:#6a1b9a;">● 바/클럽</span>
+        <span style="font-size:0.7em;padding:3px 10px;border-radius:12px;background:rgba(0,137,123,0.1);color:#00897b;">● 온천</span>
+        <span style="font-size:0.7em;padding:3px 10px;border-radius:12px;background:rgba(109,76,65,0.1);color:#6d4c41;">● 카페</span>
+        <span style="font-size:0.7em;padding:3px 10px;border-radius:12px;background:rgba(74,122,53,0.1);color:#4a7a35;">● 공원/신사</span>
+        <span style="font-size:0.7em;padding:3px 10px;border-radius:12px;background:rgba(96,125,139,0.1);color:#607d8b;">● 교통</span>
+      </div>
+    </div>
+    <div id="spotMapContainer" style="overflow-x:auto;-webkit-overflow-scrolling:touch;padding:16px;background:linear-gradient(135deg,#f8f6f1 0%,#f0ece4 100%);">
+      <style>
+        [data-theme="premium"] #spotMapContainer { background:linear-gradient(135deg,#1e1e1e 0%,#252520 100%); }
+        [data-theme="premium"] #spotMapContainer svg text { fill: #ccc; }
+        [data-theme="premium"] #spotMapContainer .map-bg { fill: #1e1e1e; }
+        [data-theme="premium"] #spotMapContainer .map-bay { fill: #1a3040; }
+        [data-theme="premium"] #spotMapContainer .map-shore { fill: #3a3020; }
+        [data-theme="premium"] #spotMapContainer .map-road { stroke: #3a3628; }
+        [data-theme="premium"] #spotMapContainer .map-label-bg { fill: rgba(30,30,30,0.9); }
+        [data-theme="premium"] #spotMapContainer .map-label { fill: #ddd; }
+        [data-theme="premium"] #spotMapContainer .map-zone { opacity: 0.15; }
+        [data-theme="premium"] #spotMapContainer .map-zone-label { opacity: 0.8; }
+        [data-theme="premium"] #spotMapContainer .map-legend { fill: rgba(30,30,30,0.9); stroke: rgba(255,255,255,0.08); }
+        [data-theme="premium"] #spotMapContainer .map-walk-bg { fill: rgba(255,255,255,0.06); }
+        .map-spot { cursor:pointer; transition: transform 0.15s, filter 0.15s; }
+        .map-spot:hover { transform: scale(1.15); filter: brightness(1.1) drop-shadow(0 2px 6px rgba(0,0,0,0.25)); }
+        @media (max-width:600px) { #spotMapContainer { padding:8px; } }
+      </style>
 <svg viewBox="0 0 800 700" xmlns="http://www.w3.org/2000/svg" style="width:100%;min-width:600px;max-width:800px;display:block;font-family:'Noto Sans KR','Noto Sans JP',sans-serif;">
   <defs>
     <filter id="mapShadow" x="-20%" y="-20%" width="140%" height="140%">
@@ -1153,18 +1278,18 @@
   </defs>
 
   <!-- Background -->
-  <rect x="0" y="0" width="800" height="700" rx="12" fill="#f4f1eb"/>
+  <rect class="map-bg" x="0" y="0" width="800" height="700" rx="12" fill="#f4f1eb"/>
 
   <!-- 陸奥湾 (Mutsu Bay) -->
-  <path d="M 0 0 L 800 0 L 800 115 Q 640 95 480 105 Q 320 115 160 100 Q 80 95 0 108 Z" fill="#b8d4e8" opacity="0.85"/>
+  <path class="map-bay" d="M 0 0 L 800 0 L 800 115 Q 640 95 480 105 Q 320 115 160 100 Q 80 95 0 108 Z" fill="#b8d4e8" opacity="0.85"/>
   <path d="M 20 55 Q 80 48 140 55 Q 200 62 260 52 Q 320 42 380 50" fill="none" stroke="#89b8d4" stroke-width="1.2" opacity="0.5"/>
   <path d="M 420 45 Q 490 38 560 45 Q 630 52 700 44 Q 740 40 780 46" fill="none" stroke="#89b8d4" stroke-width="1.2" opacity="0.5"/>
   <text x="400" y="60" text-anchor="middle" font-size="14" font-weight="600" fill="#4a7fa0" letter-spacing="3" opacity="0.8">陸 奥 湾</text>
   <text x="400" y="78" text-anchor="middle" font-size="10" fill="#6899b5" letter-spacing="1" opacity="0.7">M U T S U   B A Y</text>
 
   <!-- Shoreline -->
-  <path d="M 0 108 Q 80 95 160 100 Q 320 115 480 105 Q 640 95 800 115 L 800 135 Q 640 120 480 128 Q 320 138 160 124 Q 80 118 0 130 Z" fill="#e8d5b0" opacity="0.4"/>
-  <rect x="110" y="116" width="490" height="14" rx="4" fill="#d4c4a0" opacity="0.5"/>
+  <path class="map-shore" d="M 0 108 Q 80 95 160 100 Q 320 115 480 105 Q 640 95 800 115 L 800 135 Q 640 120 480 128 Q 320 138 160 124 Q 80 118 0 130 Z" fill="#e8d5b0" opacity="0.4"/>
+  <rect class="map-shore" x="110" y="116" width="490" height="14" rx="4" fill="#d4c4a0" opacity="0.5"/>
   <text x="355" y="127" text-anchor="middle" font-size="7" fill="#8b7355" opacity="0.8">워터프론트 산책로</text>
 
   <!-- ===== ZONES ===== -->
@@ -1203,9 +1328,9 @@
   <text x="218" y="458" text-anchor="middle" font-size="8" fill="#8b7355">숙소 주변</text>
 
   <!-- ===== ROADS ===== -->
-  <line x1="265" y1="140" x2="265" y2="550" stroke="#d4c4a0" stroke-width="4" opacity="0.5"/>
-  <line x1="185" y1="180" x2="185" y2="510" stroke="#e0d4c0" stroke-width="3" opacity="0.45"/>
-  <line x1="155" y1="238" x2="485" y2="238" stroke="#e0d4c0" stroke-width="2.5" opacity="0.5"/>
+  <line class="map-road" x1="265" y1="140" x2="265" y2="550" stroke="#d4c4a0" stroke-width="4" opacity="0.5"/>
+  <line class="map-road" x1="185" y1="180" x2="185" y2="510" stroke="#e0d4c0" stroke-width="3" opacity="0.45"/>
+  <line class="map-road" x1="155" y1="238" x2="485" y2="238" stroke="#e0d4c0" stroke-width="2.5" opacity="0.5"/>
 
   <!-- Bus/train routes -->
   <path d="M 310 265 Q 450 320 540 390" fill="none" stroke="#1565c0" stroke-width="1.5" stroke-dasharray="7,4" opacity="0.4"/>
@@ -1217,207 +1342,207 @@
   <text x="530" y="102" font-size="7" fill="#00897b" opacity="0.7">아오이모리 철도 25분</text>
 
   <!-- Walk distances -->
-  <rect x="112" y="163" width="48" height="13" rx="6" fill="rgba(90,114,71,0.15)"/>
+  <rect class="map-walk-bg" x="112" y="163" width="48" height="13" rx="6" fill="rgba(90,114,71,0.15)"/>
   <text x="136" y="173" text-anchor="middle" font-size="7.5" fill="#5a7247">도보 10분</text>
-  <rect x="116" y="278" width="48" height="13" rx="6" fill="rgba(200,134,11,0.12)"/>
+  <rect class="map-walk-bg" x="116" y="278" width="48" height="13" rx="6" fill="rgba(200,134,11,0.12)"/>
   <text x="140" y="288" text-anchor="middle" font-size="7.5" fill="#c8860b">도보 8분</text>
-  <rect x="116" y="366" width="48" height="13" rx="6" fill="rgba(198,40,40,0.12)"/>
+  <rect class="map-walk-bg" x="116" y="366" width="48" height="13" rx="6" fill="rgba(198,40,40,0.12)"/>
   <text x="140" y="376" text-anchor="middle" font-size="7.5" fill="#c62828">도보 5분</text>
 
   <!-- ===== SPOTS ===== -->
 
   <!-- 공항 -->
-  <g onclick="showDetail('aoj_airport')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('aoj_airport')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="110" cy="580" r="14" fill="#607d8b" stroke="white" stroke-width="2"/>
     <text x="110" y="584" text-anchor="middle" font-size="12">✈️</text>
-    <rect x="128" y="573" width="56" height="14" rx="4" fill="rgba(255,255,255,0.88)"/>
+    <rect x="128" y="573" width="56" height="14" rx="4" class="map-label-bg" fill="rgba(255,255,255,0.88)"/>
     <text x="132" y="584" font-size="8.5" fill="#333" font-weight="500">공항 AOJ</text>
   </g>
 
   <!-- 아오모리역 -->
-  <g onclick="showDetail('aomori_station')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('aomori_station')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="265" cy="255" r="16" fill="#3e6b3a" stroke="white" stroke-width="2.5"/>
     <text x="265" y="259" text-anchor="middle" font-size="13">🚉</text>
-    <rect x="284" y="246" width="66" height="16" rx="4" fill="rgba(255,255,255,0.9)"/>
+    <rect x="284" y="246" width="66" height="16" rx="4" class="map-label-bg" fill="rgba(255,255,255,0.9)"/>
     <text x="288" y="258" font-size="9.5" fill="#1d4d40" font-weight="700">아오모리역</text>
   </g>
-  <g onclick="showDetail('coin_locker')" style="cursor:pointer"><circle cx="245" cy="240" r="8" fill="#78909c" stroke="white" stroke-width="1.5"/><text x="245" y="244" text-anchor="middle" font-size="7">🔒</text></g>
-  <g onclick="showDetail('acure_vending')" style="cursor:pointer"><circle cx="290" cy="240" r="8" fill="#78909c" stroke="white" stroke-width="1.5"/><text x="290" y="244" text-anchor="middle" font-size="7">🧃</text></g>
+  <g class="map-spot" onclick="showDetail('coin_locker')" style="cursor:pointer"><circle cx="245" cy="240" r="8" fill="#78909c" stroke="white" stroke-width="1.5"/><text x="245" y="244" text-anchor="middle" font-size="7">🔒</text></g>
+  <g class="map-spot" onclick="showDetail('acure_vending')" style="cursor:pointer"><circle cx="290" cy="240" r="8" fill="#78909c" stroke="white" stroke-width="1.5"/><text x="290" y="244" text-anchor="middle" font-size="7">🧃</text></g>
 
   <!-- LOVINA -->
-  <g onclick="showDetail('lovina')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('lovina')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="295" cy="262" r="12" fill="#5a7247" stroke="white" stroke-width="2"/>
     <text x="295" y="266" text-anchor="middle" font-size="10">🏢</text>
-    <rect x="310" y="255" width="52" height="14" rx="3" fill="rgba(255,255,255,0.88)"/>
+    <rect x="310" y="255" width="52" height="14" rx="3" class="map-label-bg" fill="rgba(255,255,255,0.88)"/>
     <text x="313" y="265" font-size="8.5" fill="#333">LOVINA</text>
   </g>
 
   <!-- ベイエリア -->
-  <g onclick="showDetail('warasse')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('warasse')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="175" cy="148" r="13" fill="#2e7d32" stroke="white" stroke-width="2"/><text x="175" y="152" text-anchor="middle" font-size="11">🎭</text>
-    <rect x="128" y="136" width="46" height="22" rx="4" fill="rgba(255,255,255,0.88)"/><text x="132" y="147" font-size="7.5" fill="#333">ワ・ラッセ</text><text x="132" y="156" font-size="7" fill="#888">620엔</text>
+    <rect x="128" y="136" width="46" height="22" rx="4" class="map-label-bg" fill="rgba(255,255,255,0.88)"/><text x="132" y="147" font-size="7.5" fill="#333">ワ・ラッセ</text><text x="132" y="156" font-size="7" fill="#888">620엔</text>
   </g>
-  <g onclick="showDetail('a_factory')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('a_factory')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="230" cy="143" r="13" fill="#2e7d32" stroke="white" stroke-width="2"/><text x="230" y="147" text-anchor="middle" font-size="11">🍎</text>
-    <rect x="246" y="136" width="55" height="14" rx="3" fill="rgba(255,255,255,0.88)"/><text x="249" y="146" font-size="8.5" fill="#333">A-FACTORY</text>
+    <rect x="246" y="136" width="55" height="14" rx="3" class="map-label-bg" fill="rgba(255,255,255,0.88)"/><text x="249" y="146" font-size="8.5" fill="#333">A-FACTORY</text>
   </g>
-  <g onclick="showDetail('hakkodamaru')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('hakkodamaru')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="300" cy="140" r="13" fill="#2e7d32" stroke="white" stroke-width="2"/><text x="300" y="144" text-anchor="middle" font-size="11">🚢</text>
-    <rect x="316" y="132" width="52" height="14" rx="3" fill="rgba(255,255,255,0.88)"/><text x="319" y="142" font-size="8.5" fill="#333">八甲田丸</text>
+    <rect x="316" y="132" width="52" height="14" rx="3" class="map-label-bg" fill="rgba(255,255,255,0.88)"/><text x="319" y="142" font-size="8.5" fill="#333">八甲田丸</text>
   </g>
-  <g onclick="showDetail('aspam')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('aspam')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="365" cy="143" r="13" fill="#2e7d32" stroke="white" stroke-width="2"/><text x="365" y="147" text-anchor="middle" font-size="11">🔺</text>
-    <rect x="380" y="136" width="42" height="14" rx="3" fill="rgba(255,255,255,0.88)"/><text x="383" y="146" font-size="8.5" fill="#333">ASPAM</text>
+    <rect x="380" y="136" width="42" height="14" rx="3" class="map-label-bg" fill="rgba(255,255,255,0.88)"/><text x="383" y="146" font-size="8.5" fill="#333">ASPAM</text>
   </g>
-  <g onclick="showDetail('daifukumaru')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('daifukumaru')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="430" cy="148" r="12" fill="#c62828" stroke="white" stroke-width="2"/><text x="430" y="152" text-anchor="middle" font-size="10">🦑</text>
-    <rect x="444" y="140" width="44" height="14" rx="3" fill="rgba(255,255,255,0.88)"/><text x="447" y="150" font-size="8" fill="#333">大福丸</text>
+    <rect x="444" y="140" width="44" height="14" rx="3" class="map-label-bg" fill="rgba(255,255,255,0.88)"/><text x="447" y="150" font-size="8" fill="#333">大福丸</text>
   </g>
-  <g onclick="showDetail('nishimura')" style="cursor:pointer"><circle cx="367" cy="168" r="10" fill="#c62828" stroke="white" stroke-width="1.5"/><text x="367" y="172" text-anchor="middle" font-size="9">🍱</text><text x="380" y="172" font-size="7" fill="#c62828">西むら</text></g>
-  <g onclick="showDetail('kissaten_maron')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('nishimura')" style="cursor:pointer"><circle cx="367" cy="168" r="10" fill="#c62828" stroke="white" stroke-width="1.5"/><text x="367" y="172" text-anchor="middle" font-size="9">🍱</text><text x="380" y="172" font-size="7" fill="#c62828">西むら</text></g>
+  <g class="map-spot" onclick="showDetail('kissaten_maron')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="208" cy="175" r="11" fill="#6d4c41" stroke="white" stroke-width="2"/><text x="208" y="179" text-anchor="middle" font-size="9">☕</text>
-    <rect x="222" y="168" width="36" height="14" rx="3" fill="rgba(255,255,255,0.88)"/><text x="225" y="178" font-size="7.5" fill="#333">マロン</text>
+    <rect x="222" y="168" width="36" height="14" rx="3" class="map-label-bg" fill="rgba(255,255,255,0.88)"/><text x="225" y="178" font-size="7.5" fill="#333">マロン</text>
   </g>
-  <g onclick="showDetail('aomori_brew_pub')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('aomori_brew_pub')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="168" cy="178" r="12" fill="#6a1b9a" stroke="white" stroke-width="2"/><text x="168" y="182" text-anchor="middle" font-size="10">🍺</text>
-    <rect x="123" y="170" width="43" height="14" rx="3" fill="rgba(255,255,255,0.85)"/><text x="126" y="180" font-size="7.5" fill="#333">BrewPub</text>
+    <rect x="123" y="170" width="43" height="14" rx="3" class="map-label-bg" fill="rgba(255,255,255,0.85)"/><text x="126" y="180" font-size="7.5" fill="#333">BrewPub</text>
   </g>
 
   <!-- 역 주변 -->
-  <g onclick="showDetail('osanai')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('osanai')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="200" cy="220" r="13" fill="#c62828" stroke="white" stroke-width="2"/><text x="200" y="224" text-anchor="middle" font-size="11">🐚</text>
-    <rect x="156" y="212" width="42" height="14" rx="3" fill="rgba(255,255,255,0.88)"/><text x="159" y="222" font-size="8" fill="#333">おさない</text>
+    <rect x="156" y="212" width="42" height="14" rx="3" class="map-label-bg" fill="rgba(255,255,255,0.88)"/><text x="159" y="222" font-size="8" fill="#333">おさない</text>
   </g>
-  <g onclick="showDetail('nagao_ekimae')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('nagao_ekimae')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="237" cy="220" r="12" fill="#c62828" stroke="white" stroke-width="2"/><text x="237" y="224" text-anchor="middle" font-size="10">🍜</text>
-    <rect x="251" y="213" width="28" height="13" rx="3" fill="rgba(255,255,255,0.88)"/><text x="253" y="222" font-size="7.5" fill="#333">長尾</text>
+    <rect x="251" y="213" width="28" height="13" rx="3" class="map-label-bg" fill="rgba(255,255,255,0.88)"/><text x="253" y="222" font-size="7.5" fill="#333">長尾</text>
   </g>
-  <g onclick="showDetail('be_easy')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('be_easy')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="168" cy="220" r="12" fill="#6a1b9a" stroke="white" stroke-width="2"/><text x="168" y="224" text-anchor="middle" font-size="10">🍺</text>
-    <rect x="122" y="213" width="44" height="13" rx="3" fill="rgba(255,255,255,0.85)"/><text x="125" y="223" font-size="7.5" fill="#333">Be Easy</text>
+    <rect x="122" y="213" width="44" height="13" rx="3" class="map-label-bg" fill="rgba(255,255,255,0.85)"/><text x="125" y="223" font-size="7.5" fill="#333">Be Easy</text>
   </g>
-  <g onclick="showDetail('marukai_ramen')" style="cursor:pointer"><circle cx="155" cy="205" r="10" fill="#c62828" stroke="white" stroke-width="1.5"/><text x="155" y="209" text-anchor="middle" font-size="8">🍜</text><text x="115" y="207" font-size="7" fill="#c62828" text-anchor="middle">丸海</text></g>
+  <g class="map-spot" onclick="showDetail('marukai_ramen')" style="cursor:pointer"><circle cx="155" cy="205" r="10" fill="#c62828" stroke="white" stroke-width="1.5"/><text x="155" y="209" text-anchor="middle" font-size="8">🍜</text><text x="115" y="207" font-size="7" fill="#c62828" text-anchor="middle">丸海</text></g>
 
   <!-- 新町商店街 -->
-  <g onclick="showDetail('auga')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('auga')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="320" cy="220" r="12" fill="#1565c0" stroke="white" stroke-width="2"/><text x="320" y="224" text-anchor="middle" font-size="10">🥬</text>
-    <rect x="334" y="212" width="36" height="14" rx="3" fill="rgba(255,255,255,0.88)"/><text x="337" y="222" font-size="8" fill="#333">AUGA</text>
+    <rect x="334" y="212" width="36" height="14" rx="3" class="map-label-bg" fill="rgba(255,255,255,0.88)"/><text x="337" y="222" font-size="8" fill="#333">AUGA</text>
   </g>
-  <g onclick="showDetail('kissaten_cleopatra')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('kissaten_cleopatra')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="360" cy="220" r="12" fill="#6d4c41" stroke="white" stroke-width="2"/><text x="360" y="224" text-anchor="middle" font-size="10">☕</text>
-    <rect x="374" y="213" width="60" height="13" rx="3" fill="rgba(255,255,255,0.88)"/><text x="377" y="222" font-size="7.5" fill="#333">クレオパトラ</text>
+    <rect x="374" y="213" width="60" height="13" rx="3" class="map-label-bg" fill="rgba(255,255,255,0.88)"/><text x="377" y="222" font-size="7.5" fill="#333">クレオパトラ</text>
   </g>
-  <g onclick="showDetail('uguisu_cafe')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('uguisu_cafe')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="410" cy="228" r="12" fill="#6d4c41" stroke="white" stroke-width="2"/><text x="410" y="232" text-anchor="middle" font-size="10">🍵</text>
-    <rect x="424" y="221" width="44" height="13" rx="3" fill="rgba(255,255,255,0.88)"/><text x="427" y="230" font-size="7.5" fill="#333">UGUISU</text>
+    <rect x="424" y="221" width="44" height="13" rx="3" class="map-label-bg" fill="rgba(255,255,255,0.88)"/><text x="427" y="230" font-size="7.5" fill="#333">UGUISU</text>
   </g>
-  <g onclick="showDetail('sm_okinaya')" style="cursor:pointer"><circle cx="338" cy="247" r="10" fill="#1565c0" stroke="white" stroke-width="1.5"/><text x="338" y="251" text-anchor="middle" font-size="8">🎁</text><text x="352" y="251" font-size="7" fill="#1565c0">おきな屋</text></g>
-  <g onclick="showDetail('daikoku_sushi')" style="cursor:pointer"><circle cx="344" cy="208" r="10" fill="#c62828" stroke="white" stroke-width="1.5"/><text x="344" y="212" text-anchor="middle" font-size="8">🍣</text><text x="309" y="210" font-size="7" fill="#c62828">大黒寿司</text></g>
-  <g onclick="showDetail('kakigen')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('sm_okinaya')" style="cursor:pointer"><circle cx="338" cy="247" r="10" fill="#1565c0" stroke="white" stroke-width="1.5"/><text x="338" y="251" text-anchor="middle" font-size="8">🎁</text><text x="352" y="251" font-size="7" fill="#1565c0">おきな屋</text></g>
+  <g class="map-spot" onclick="showDetail('daikoku_sushi')" style="cursor:pointer"><circle cx="344" cy="208" r="10" fill="#c62828" stroke="white" stroke-width="1.5"/><text x="344" y="212" text-anchor="middle" font-size="8">🍣</text><text x="309" y="210" font-size="7" fill="#c62828">大黒寿司</text></g>
+  <g class="map-spot" onclick="showDetail('kakigen')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="390" cy="208" r="11" fill="#c62828" stroke="white" stroke-width="2"/><text x="390" y="212" text-anchor="middle" font-size="9">🍶</text>
-    <rect x="403" y="201" width="34" height="13" rx="3" fill="rgba(255,255,255,0.88)"/><text x="406" y="211" font-size="7.5" fill="#333">柿源</text>
+    <rect x="403" y="201" width="34" height="13" rx="3" class="map-label-bg" fill="rgba(255,255,255,0.88)"/><text x="406" y="211" font-size="7.5" fill="#333">柿源</text>
   </g>
-  <g onclick="showDetail('sm_ajisapporo_asari')" style="cursor:pointer"><circle cx="425" cy="248" r="10" fill="#c62828" stroke="white" stroke-width="1.5"/><text x="425" y="252" text-anchor="middle" font-size="8">🍛</text><text x="438" y="251" font-size="7" fill="#c62828">浅利</text></g>
-  <g onclick="showDetail('demo_beer')" style="cursor:pointer"><circle cx="460" cy="215" r="10" fill="#6a1b9a" stroke="white" stroke-width="1.5"/><text x="460" y="219" text-anchor="middle" font-size="8">🍺</text><text x="472" y="218" font-size="7" fill="#6a1b9a">Demo🍺</text></g>
-  <g onclick="showDetail('kissaten_bankamu')" style="cursor:pointer"><circle cx="450" cy="248" r="10" fill="#6d4c41" stroke="white" stroke-width="1.5"/><text x="450" y="252" text-anchor="middle" font-size="8">☕</text><text x="462" y="251" font-size="7" fill="#6d4c41">ばんかむ</text></g>
+  <g class="map-spot" onclick="showDetail('sm_ajisapporo_asari')" style="cursor:pointer"><circle cx="425" cy="248" r="10" fill="#c62828" stroke="white" stroke-width="1.5"/><text x="425" y="252" text-anchor="middle" font-size="8">🍛</text><text x="438" y="251" font-size="7" fill="#c62828">浅利</text></g>
+  <g class="map-spot" onclick="showDetail('demo_beer')" style="cursor:pointer"><circle cx="460" cy="215" r="10" fill="#6a1b9a" stroke="white" stroke-width="1.5"/><text x="460" y="219" text-anchor="middle" font-size="8">🍺</text><text x="472" y="218" font-size="7" fill="#6a1b9a">Demo🍺</text></g>
+  <g class="map-spot" onclick="showDetail('kissaten_bankamu')" style="cursor:pointer"><circle cx="450" cy="248" r="10" fill="#6d4c41" stroke="white" stroke-width="1.5"/><text x="450" y="252" text-anchor="middle" font-size="8">☕</text><text x="462" y="251" font-size="7" fill="#6d4c41">ばんかむ</text></g>
 
   <!-- 古川 -->
-  <g onclick="showDetail('nokkedon')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('nokkedon')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="228" cy="320" r="14" fill="#c62828" stroke="white" stroke-width="2"/><text x="228" y="324" text-anchor="middle" font-size="12">🐟</text>
-    <rect x="178" y="311" width="48" height="22" rx="4" fill="rgba(255,255,255,0.9)"/><text x="182" y="321" font-size="7.5" fill="#333">古川市場</text><text x="182" y="330" font-size="7" fill="#888">のっけ丼</text>
+    <rect x="178" y="311" width="48" height="22" rx="4" class="map-label-bg" fill="rgba(255,255,255,0.9)"/><text x="182" y="321" font-size="7.5" fill="#333">古川市場</text><text x="182" y="330" font-size="7" fill="#888">のっけ丼</text>
   </g>
-  <g onclick="showDetail('machinaka_onsen')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('machinaka_onsen')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="272" cy="320" r="13" fill="#00897b" stroke="white" stroke-width="2"/><text x="272" y="324" text-anchor="middle" font-size="11">♨️</text>
-    <rect x="288" y="312" width="72" height="14" rx="3" fill="rgba(255,255,255,0.88)"/><text x="291" y="322" font-size="8" fill="#333">まちなか温泉</text>
+    <rect x="288" y="312" width="72" height="14" rx="3" class="map-label-bg" fill="rgba(255,255,255,0.88)"/><text x="291" y="322" font-size="8" fill="#333">まちなか温泉</text>
   </g>
-  <g onclick="showDetail('coffeeman_good')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('coffeeman_good')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="225" cy="352" r="12" fill="#6d4c41" stroke="white" stroke-width="2"/><text x="225" y="356" text-anchor="middle" font-size="10">☕</text>
-    <rect x="239" y="344" width="72" height="14" rx="3" fill="rgba(255,255,255,0.88)"/><text x="242" y="354" font-size="8" fill="#333">COFFEEMAN</text>
+    <rect x="239" y="344" width="72" height="14" rx="3" class="map-label-bg" fill="rgba(255,255,255,0.88)"/><text x="242" y="354" font-size="8" fill="#333">COFFEEMAN</text>
   </g>
-  <g onclick="showDetail('kudo_ramen')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('kudo_ramen')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="350" cy="325" r="11" fill="#c62828" stroke="white" stroke-width="2"/><text x="350" y="329" text-anchor="middle" font-size="9">🍜</text>
-    <rect x="363" y="318" width="56" height="14" rx="3" fill="rgba(255,255,255,0.85)"/><text x="366" y="328" font-size="7.5" fill="#333">くどう朝ラー</text>
+    <rect x="363" y="318" width="56" height="14" rx="3" class="map-label-bg" fill="rgba(255,255,255,0.85)"/><text x="366" y="328" font-size="7.5" fill="#333">くどう朝ラー</text>
   </g>
-  <g onclick="showDetail('ajikou')" style="cursor:pointer"><circle cx="295" cy="346" r="10" fill="#c62828" stroke="white" stroke-width="1.5"/><text x="295" y="350" text-anchor="middle" font-size="8">🍚</text><text x="307" y="349" font-size="7" fill="#c62828">味工房</text></g>
-  <g onclick="showDetail('tachinomi_17')" style="cursor:pointer"><circle cx="364" cy="346" r="10" fill="#6a1b9a" stroke="white" stroke-width="1.5"/><text x="364" y="350" text-anchor="middle" font-size="8">🍺</text><text x="376" y="349" font-size="7" fill="#6a1b9a">17番</text></g>
+  <g class="map-spot" onclick="showDetail('ajikou')" style="cursor:pointer"><circle cx="295" cy="346" r="10" fill="#c62828" stroke="white" stroke-width="1.5"/><text x="295" y="350" text-anchor="middle" font-size="8">🍚</text><text x="307" y="349" font-size="7" fill="#c62828">味工房</text></g>
+  <g class="map-spot" onclick="showDetail('tachinomi_17')" style="cursor:pointer"><circle cx="364" cy="346" r="10" fill="#6a1b9a" stroke="white" stroke-width="1.5"/><text x="364" y="350" text-anchor="middle" font-size="8">🍺</text><text x="376" y="349" font-size="7" fill="#6a1b9a">17番</text></g>
 
   <!-- 本町 이자카야 -->
-  <g onclick="showDetail('sanfuri')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('sanfuri')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="200" cy="408" r="14" fill="#c62828" stroke="white" stroke-width="2"/><text x="200" y="412" text-anchor="middle" font-size="12">🏮</text>
-    <rect x="156" y="399" width="43" height="22" rx="4" fill="rgba(255,255,255,0.9)"/><text x="159" y="408" font-size="7.5" fill="#333">さんふり</text><text x="159" y="418" font-size="7" fill="#888">横丁</text>
+    <rect x="156" y="399" width="43" height="22" rx="4" class="map-label-bg" fill="rgba(255,255,255,0.9)"/><text x="159" y="408" font-size="7.5" fill="#333">さんふり</text><text x="159" y="418" font-size="7" fill="#888">横丁</text>
   </g>
-  <g onclick="showDetail('honmachi_area')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('honmachi_area')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="258" cy="408" r="13" fill="#c62828" stroke="white" stroke-width="2"/><text x="258" y="412" text-anchor="middle" font-size="11">🏮</text>
-    <rect x="273" y="400" width="36" height="14" rx="3" fill="rgba(255,255,255,0.88)"/><text x="276" y="410" font-size="8" fill="#333">本町</text>
+    <rect x="273" y="400" width="36" height="14" rx="3" class="map-label-bg" fill="rgba(255,255,255,0.88)"/><text x="276" y="410" font-size="8" fill="#333">本町</text>
   </g>
-  <g onclick="showDetail('joppari')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('joppari')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="174" cy="435" r="12" fill="#c62828" stroke="white" stroke-width="2"/><text x="174" y="439" text-anchor="middle" font-size="10">🎵</text>
-    <rect x="188" y="428" width="50" height="13" rx="3" fill="rgba(255,255,255,0.88)"/><text x="191" y="437" font-size="8" fill="#333">じょっぱり</text>
+    <rect x="188" y="428" width="50" height="13" rx="3" class="map-label-bg" fill="rgba(255,255,255,0.88)"/><text x="191" y="437" font-size="8" fill="#333">じょっぱり</text>
   </g>
-  <g onclick="showDetail('hideka')" style="cursor:pointer"><circle cx="225" cy="435" r="11" fill="#c62828" stroke="white" stroke-width="1.5"/><text x="225" y="439" text-anchor="middle" font-size="9">🍶</text><text x="238" y="438" font-size="7" fill="#c62828">ひでか</text></g>
-  <g onclick="showDetail('zenigata')" style="cursor:pointer"><circle cx="270" cy="435" r="11" fill="#c62828" stroke="white" stroke-width="1.5"/><text x="270" y="439" text-anchor="middle" font-size="9">🥢</text><text x="283" y="438" font-size="7" fill="#c62828">銭形</text></g>
-  <g onclick="showDetail('tsugaru_sengyo')" style="cursor:pointer"><circle cx="315" cy="420" r="11" fill="#c62828" stroke="white" stroke-width="1.5"/><text x="315" y="424" text-anchor="middle" font-size="9">🐟</text><text x="328" y="423" font-size="7" fill="#c62828">鮮魚店</text></g>
-  <g onclick="showDetail('motsu_koshiken')" style="cursor:pointer"><circle cx="315" cy="445" r="11" fill="#c62828" stroke="white" stroke-width="1.5"/><text x="315" y="449" text-anchor="middle" font-size="9">🍖</text><text x="328" y="448" font-size="7" fill="#c62828">こしけん</text></g>
-  <g onclick="showDetail('kajitsu_bar')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('hideka')" style="cursor:pointer"><circle cx="225" cy="435" r="11" fill="#c62828" stroke="white" stroke-width="1.5"/><text x="225" y="439" text-anchor="middle" font-size="9">🍶</text><text x="238" y="438" font-size="7" fill="#c62828">ひでか</text></g>
+  <g class="map-spot" onclick="showDetail('zenigata')" style="cursor:pointer"><circle cx="270" cy="435" r="11" fill="#c62828" stroke="white" stroke-width="1.5"/><text x="270" y="439" text-anchor="middle" font-size="9">🥢</text><text x="283" y="438" font-size="7" fill="#c62828">銭形</text></g>
+  <g class="map-spot" onclick="showDetail('tsugaru_sengyo')" style="cursor:pointer"><circle cx="315" cy="420" r="11" fill="#c62828" stroke="white" stroke-width="1.5"/><text x="315" y="424" text-anchor="middle" font-size="9">🐟</text><text x="328" y="423" font-size="7" fill="#c62828">鮮魚店</text></g>
+  <g class="map-spot" onclick="showDetail('motsu_koshiken')" style="cursor:pointer"><circle cx="315" cy="445" r="11" fill="#c62828" stroke="white" stroke-width="1.5"/><text x="315" y="449" text-anchor="middle" font-size="9">🍖</text><text x="328" y="448" font-size="7" fill="#c62828">こしけん</text></g>
+  <g class="map-spot" onclick="showDetail('kajitsu_bar')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="248" cy="458" r="11" fill="#6a1b9a" stroke="white" stroke-width="2"/><text x="248" y="462" text-anchor="middle" font-size="9">🍹</text>
-    <rect x="261" y="451" width="46" height="13" rx="3" fill="rgba(255,255,255,0.88)"/><text x="264" y="461" font-size="7.5" fill="#333">KAJITSU</text>
+    <rect x="261" y="451" width="46" height="13" rx="3" class="map-label-bg" fill="rgba(255,255,255,0.88)"/><text x="264" y="461" font-size="7.5" fill="#333">KAJITSU</text>
   </g>
-  <g onclick="showDetail('bar_ludens')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('bar_ludens')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="165" cy="455" r="11" fill="#6a1b9a" stroke="white" stroke-width="2"/><text x="165" y="459" text-anchor="middle" font-size="9">🥃</text>
-    <rect x="119" y="448" width="44" height="13" rx="3" fill="rgba(255,255,255,0.88)"/><text x="122" y="458" font-size="7.5" fill="#333">Ludens</text>
+    <rect x="119" y="448" width="44" height="13" rx="3" class="map-label-bg" fill="rgba(255,255,255,0.88)"/><text x="122" y="458" font-size="7.5" fill="#333">Ludens</text>
   </g>
-  <g onclick="showDetail('yokoyama_ramen')" style="cursor:pointer"><circle cx="230" cy="477" r="10" fill="#c62828" stroke="white" stroke-width="1.5"/><text x="230" y="481" text-anchor="middle" font-size="8">🍜</text><text x="243" y="480" font-size="7" fill="#c62828">横山シメ</text></g>
-  <g onclick="showDetail('kukai_ramen')" style="cursor:pointer"><circle cx="268" cy="477" r="10" fill="#c62828" stroke="white" stroke-width="1.5"/><text x="268" y="481" text-anchor="middle" font-size="8">🍜</text><text x="280" y="480" font-size="7" fill="#c62828">空海</text></g>
+  <g class="map-spot" onclick="showDetail('yokoyama_ramen')" style="cursor:pointer"><circle cx="230" cy="477" r="10" fill="#c62828" stroke="white" stroke-width="1.5"/><text x="230" y="481" text-anchor="middle" font-size="8">🍜</text><text x="243" y="480" font-size="7" fill="#c62828">横山シメ</text></g>
+  <g class="map-spot" onclick="showDetail('kukai_ramen')" style="cursor:pointer"><circle cx="268" cy="477" r="10" fill="#c62828" stroke="white" stroke-width="1.5"/><text x="268" y="481" text-anchor="middle" font-size="8">🍜</text><text x="280" y="480" font-size="7" fill="#c62828">空海</text></g>
 
   <!-- 공원/신사 -->
-  <g onclick="showDetail('aoimori_park')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('aoimori_park')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="420" cy="315" r="13" fill="#4a7a35" stroke="white" stroke-width="2"/><text x="420" y="319" text-anchor="middle" font-size="11">🌳</text>
-    <rect x="435" y="307" width="68" height="14" rx="3" fill="rgba(255,255,255,0.88)"/><text x="438" y="317" font-size="8" fill="#333">青い森公園</text>
+    <rect x="435" y="307" width="68" height="14" rx="3" class="map-label-bg" fill="rgba(255,255,255,0.88)"/><text x="438" y="317" font-size="8" fill="#333">青い森公園</text>
   </g>
-  <g onclick="showDetail('utou_shrine')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('utou_shrine')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="455" cy="340" r="13" fill="#4a7a35" stroke="white" stroke-width="2"/><text x="455" y="344" text-anchor="middle" font-size="11">⛩️</text>
-    <rect x="469" y="332" width="52" height="14" rx="3" fill="rgba(255,255,255,0.88)"/><text x="472" y="342" font-size="8" fill="#333">善知鳥神社</text>
+    <rect x="469" y="332" width="52" height="14" rx="3" class="map-label-bg" fill="rgba(255,255,255,0.88)"/><text x="472" y="342" font-size="8" fill="#333">善知鳥神社</text>
   </g>
-  <g onclick="showDetail('hirota_shrine')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('hirota_shrine')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="500" cy="368" r="12" fill="#4a7a35" stroke="white" stroke-width="2"/><text x="500" y="372" text-anchor="middle" font-size="10">⛩️</text>
-    <rect x="514" y="361" width="50" height="14" rx="3" fill="rgba(255,255,255,0.88)"/><text x="517" y="371" font-size="8" fill="#333">廣田神社</text>
+    <rect x="514" y="361" width="50" height="14" rx="3" class="map-label-bg" fill="rgba(255,255,255,0.88)"/><text x="517" y="371" font-size="8" fill="#333">廣田神社</text>
   </g>
-  <g onclick="showDetail('okidate_onsen')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('okidate_onsen')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="420" cy="395" r="12" fill="#00897b" stroke="white" stroke-width="2"/><text x="420" y="399" text-anchor="middle" font-size="10">♨️</text>
-    <rect x="434" y="388" width="52" height="14" rx="3" fill="rgba(255,255,255,0.88)"/><text x="437" y="398" font-size="7.5" fill="#333">沖館温泉</text>
+    <rect x="434" y="388" width="52" height="14" rx="3" class="map-label-bg" fill="rgba(255,255,255,0.88)"/><text x="437" y="398" font-size="7.5" fill="#333">沖館温泉</text>
   </g>
 
   <!-- 교외 쇼핑 -->
-  <g onclick="showDetail('sunroad')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('sunroad')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="585" cy="385" r="14" fill="#1565c0" stroke="white" stroke-width="2"/><text x="585" y="389" text-anchor="middle" font-size="12">🛍️</text>
-    <rect x="601" y="377" width="78" height="16" rx="4" fill="rgba(255,255,255,0.9)"/><text x="605" y="384" font-size="8" fill="#333">サンロード青森</text><text x="605" y="393" font-size="7" fill="#888">PORTER入店</text>
+    <rect x="601" y="377" width="78" height="16" rx="4" class="map-label-bg" fill="rgba(255,255,255,0.9)"/><text x="605" y="384" font-size="8" fill="#333">サンロード青森</text><text x="605" y="393" font-size="7" fill="#888">PORTER入店</text>
   </g>
-  <g onclick="showDetail('galatown')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('galatown')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="618" cy="415" r="13" fill="#1565c0" stroke="white" stroke-width="2"/><text x="618" y="419" text-anchor="middle" font-size="11">🏪</text>
-    <rect x="633" y="408" width="72" height="14" rx="3" fill="rgba(255,255,255,0.88)"/><text x="636" y="418" font-size="8" fill="#333">ガーラタウン</text>
+    <rect x="633" y="408" width="72" height="14" rx="3" class="map-label-bg" fill="rgba(255,255,255,0.88)"/><text x="636" y="418" font-size="8" fill="#333">ガーラタウン</text>
   </g>
-  <g onclick="showDetail('uniqlo_bypass')" style="cursor:pointer"><circle cx="560" cy="415" r="11" fill="#1565c0" stroke="white" stroke-width="1.5"/><text x="560" y="419" text-anchor="middle" font-size="9">👕</text><rect x="519" y="409" width="40" height="13" rx="3" fill="rgba(255,255,255,0.85)"/><text x="522" y="418" font-size="7" fill="#333">UNIQLO</text></g>
+  <g class="map-spot" onclick="showDetail('uniqlo_bypass')" style="cursor:pointer"><circle cx="560" cy="415" r="11" fill="#1565c0" stroke="white" stroke-width="1.5"/><text x="560" y="419" text-anchor="middle" font-size="9">👕</text><rect x="519" y="409" width="40" height="13" rx="3" class="map-label-bg" fill="rgba(255,255,255,0.85)"/><text x="522" y="418" font-size="7" fill="#333">UNIQLO</text></g>
 
   <!-- Dream Town ALi -->
-  <g onclick="showDetail('dreamtown')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('dreamtown')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="610" cy="488" r="14" fill="#6a1b9a" stroke="white" stroke-width="2"/><text x="610" y="492" text-anchor="middle" font-size="12">🏬</text>
-    <rect x="626" y="480" width="88" height="16" rx="4" fill="rgba(255,255,255,0.9)"/><text x="629" y="487" font-size="8" fill="#333">Dream Town ALi</text><text x="629" y="496" font-size="7" fill="#888">UNIQLO+GU</text>
+    <rect x="626" y="480" width="88" height="16" rx="4" class="map-label-bg" fill="rgba(255,255,255,0.9)"/><text x="629" y="487" font-size="8" fill="#333">Dream Town ALi</text><text x="629" y="496" font-size="7" fill="#888">UNIQLO+GU</text>
   </g>
 
   <!-- 浅虫温泉 -->
-  <g onclick="showDetail('manhole_card')" style="cursor:pointer" filter="url(#mapShadow)">
+  <g class="map-spot" onclick="showDetail('manhole_card')" style="cursor:pointer" filter="url(#mapShadow)">
     <circle cx="720" cy="120" r="13" fill="#00897b" stroke="white" stroke-width="2"/><text x="720" y="124" text-anchor="middle" font-size="11">♨️</text>
-    <rect x="680" y="133" width="75" height="13" rx="3" fill="rgba(255,255,255,0.88)"/><text x="683" y="142" font-size="7.5" fill="#333">浅虫温泉+水族館</text>
+    <rect x="680" y="133" width="75" height="13" rx="3" class="map-label-bg" fill="rgba(255,255,255,0.88)"/><text x="683" y="142" font-size="7.5" fill="#333">浅虫温泉+水族館</text>
   </g>
 
   <!-- 숙소 marker -->
   <g style="pointer-events:none">
     <circle cx="218" cy="488" r="12" fill="#8b7355" stroke="white" stroke-width="2"/><text x="218" y="492" text-anchor="middle" font-size="10">🏠</text>
-    <rect x="232" y="481" width="52" height="14" rx="3" fill="rgba(255,255,255,0.9)"/><text x="235" y="491" font-size="8" fill="#333" font-weight="600">숙소🏠</text>
+    <rect x="232" y="481" width="52" height="14" rx="3" class="map-label-bg" fill="rgba(255,255,255,0.9)"/><text x="235" y="491" font-size="8" fill="#333" font-weight="600">숙소🏠</text>
   </g>
 
   <!-- ===== LEGEND ===== -->
-  <rect x="10" y="520" width="780" height="55" rx="10" fill="rgba(255,255,255,0.92)" stroke="#e0d8cc" stroke-width="1"/>
+  <rect class="map-legend" x="10" y="520" width="780" height="55" rx="10" fill="rgba(255,255,255,0.92)" stroke="#e0d8cc" stroke-width="1"/>
   <text x="400" y="535" text-anchor="middle" font-size="9" font-weight="600" fill="#333">범례</text>
   <circle cx="40" cy="553" r="7" fill="#c62828"/><text x="52" y="557" font-size="8" fill="#333">식당</text>
   <circle cx="92" cy="553" r="7" fill="#1565c0"/><text x="104" y="557" font-size="8" fill="#333">쇼핑</text>
@@ -3436,6 +3561,8 @@
     slides[current].classList.add('active');
     dotsContainer.children[current].classList.add('active');
     captionEl.textContent = slides[current].dataset.caption || '';
+    // Toggle map mode (hide overlay/content when map slide is active)
+    hero.classList.toggle('hero-map-active', slides[current].classList.contains('hero-slide-map'));
     resetAuto();
   }
 
@@ -4690,6 +4817,123 @@ function mapsSearchUrl(query) {
 function imageSearchUrl(query) {
   return 'https://www.google.com/search?tbm=isch&q=' + encodeURIComponent(query);
 }
+
+// ===== SEARCH ENGINE =====
+(function() {
+  const searchInput = document.getElementById('searchInput');
+  const searchResults = document.getElementById('searchResults');
+  const searchClear = document.getElementById('searchClear');
+  if (!searchInput) return;
+
+  // Build search index from SPOTS
+  function buildIndex() {
+    const idx = [];
+    for (const [id, s] of Object.entries(SPOTS)) {
+      if (!s.name && !s.desc) continue;
+      // Concatenate all searchable fields
+      const fields = [
+        s.name || '', s.nameJa || '', s.desc || '', s.menu || '',
+        s.tips || '', s.order || '', s.address || '', s.category || '',
+        (s.tags || []).join(' '), s.hours || '', s.price || '', s.query || ''
+      ];
+      // Strip HTML tags for search text
+      const text = fields.join(' ').replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').toLowerCase();
+      idx.push({ id, name: s.name, icon: s.icon || '📍', category: s.category || '', text });
+    }
+    return idx;
+  }
+  const index = buildIndex();
+
+  function doSearch(q) {
+    q = q.trim().toLowerCase();
+    if (q.length < 1) { hideResults(); return; }
+    const terms = q.split(/\s+/).filter(t => t.length > 0);
+    const matches = [];
+    for (const item of index) {
+      let allMatch = true;
+      let matchSnippets = [];
+      for (const term of terms) {
+        const pos = item.text.indexOf(term);
+        if (pos === -1) { allMatch = false; break; }
+        // Extract snippet around match
+        const start = Math.max(0, pos - 15);
+        const end = Math.min(item.text.length, pos + term.length + 25);
+        let snippet = (start > 0 ? '…' : '') + item.text.substring(start, end) + (end < item.text.length ? '…' : '');
+        matchSnippets.push(snippet);
+      }
+      if (allMatch) {
+        matches.push({ ...item, snippet: matchSnippets[0] || '' });
+      }
+    }
+    showResults(matches, q);
+  }
+
+  function showResults(matches, q) {
+    if (matches.length === 0) {
+      searchResults.innerHTML = '<div class="search-result-count">검색 결과 없음</div>';
+      searchResults.classList.add('show');
+      return;
+    }
+    let html = '<div class="search-result-count">' + matches.length + '개 결과</div>';
+    const shown = matches.slice(0, 20);
+    for (const m of shown) {
+      // Highlight matched term in snippet
+      let snippet = m.snippet;
+      const terms = q.split(/\s+/).filter(t => t.length > 0);
+      for (const t of terms) {
+        const re = new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+        snippet = snippet.replace(re, '<strong>$1</strong>');
+      }
+      html += '<div class="search-result-item" onclick="showDetail(\'' + m.id + '\');clearSearch();">'
+        + '<div class="search-result-icon">' + m.icon + '</div>'
+        + '<div class="search-result-info">'
+        + '<div class="search-result-name">' + m.name + '</div>'
+        + '<div class="search-result-category">' + m.category + '</div>'
+        + (snippet ? '<div class="search-result-match">' + snippet + '</div>' : '')
+        + '</div></div>';
+    }
+    if (matches.length > 20) {
+      html += '<div class="search-result-count">외 ' + (matches.length - 20) + '개 더…</div>';
+    }
+    searchResults.innerHTML = html;
+    searchResults.classList.add('show');
+  }
+
+  function hideResults() {
+    searchResults.classList.remove('show');
+    searchResults.innerHTML = '';
+  }
+
+  let debounce;
+  searchInput.addEventListener('input', function() {
+    const v = this.value;
+    searchClear.style.display = v.length > 0 ? 'block' : 'none';
+    clearTimeout(debounce);
+    debounce = setTimeout(() => doSearch(v), 150);
+  });
+
+  searchInput.addEventListener('focus', function() {
+    if (this.value.trim().length > 0) doSearch(this.value);
+  });
+
+  // Close on outside click
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('#searchBar')) hideResults();
+  });
+
+  // Close on Escape
+  searchInput.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') { hideResults(); this.blur(); }
+  });
+})();
+
+window.clearSearch = function() {
+  const input = document.getElementById('searchInput');
+  input.value = '';
+  document.getElementById('searchClear').style.display = 'none';
+  document.getElementById('searchResults').classList.remove('show');
+  document.getElementById('searchResults').innerHTML = '';
+};
 
 // ===== MAP FUNCTIONS =====
 function mapEmbedUrl(spot) {
