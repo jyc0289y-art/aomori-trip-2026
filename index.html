@@ -1250,7 +1250,7 @@
 <div id="overview" class="tab-content active">
 
   <!-- 스팟 지도 -->
-  <div class="card" id="spotMapCard" style="padding:0;overflow:hidden;">
+  <div class="card" id="spotMapCard" style="padding:0;overflow:hidden;position:relative;">
     <div style="padding:24px 28px 16px;border-bottom:1px solid rgba(0,0,0,0.05);">
       <h2 style="margin-bottom:6px;">🗺 아오모리 스팟 지도</h2>
       <p style="font-size:0.82em;color:var(--text-light);margin:0;line-height:1.5;">여행 중 발굴한 <strong>52개 스팟</strong>의 지리적 위치를 한눈에. 각 스팟을 탭하면 상세 정보가 열립니다.</p>
@@ -1273,19 +1273,12 @@
         /* 지도는 항상 라이트 모드 유지 (구글맵/애플맵과 동일 방식) */
         .map-spot { cursor:pointer; }
         @media (max-width:600px) { #spotMapContainer { padding:8px; } }
-        /* Zoom controls */
-        .map-zoom-controls { position:absolute; top:12px; right:12px; display:flex; flex-direction:column; gap:4px; z-index:5; }
-        .map-zoom-btn { width:32px; height:32px; border-radius:8px; border:1px solid var(--border); background:var(--card); color:var(--text); font-size:1.1em; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 6px rgba(0,0,0,0.1); transition:background 0.15s; }
-        .map-zoom-btn:hover { background:var(--accent-light); }
+        /* Zoom controls — 카드 기준 고정 (스크롤 영향 없음) */
+        .map-zoom-controls { position:absolute; bottom:20px; right:20px; display:flex; flex-direction:column; gap:4px; z-index:10; }
+        .map-zoom-btn { width:34px; height:34px; border-radius:8px; border:1px solid rgba(0,0,0,0.12); background:rgba(255,255,255,0.92); color:#333; font-size:1.1em; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(0,0,0,0.15); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); transition:background 0.15s; }
+        .map-zoom-btn:hover { background:rgba(255,255,255,1); }
         .map-zoom-btn:active { transform:scale(0.92); }
-        [data-theme="premium"] .map-zoom-btn { background:#3a3730; border-color:rgba(255,255,255,0.1); color:#ddd; }
-        [data-theme="premium"] .map-zoom-btn:hover { background:#4a4740; }
       </style>
-      <div class="map-zoom-controls">
-        <button class="map-zoom-btn" onclick="mapZoom(1)" title="확대">+</button>
-        <button class="map-zoom-btn" onclick="mapZoom(-1)" title="축소">−</button>
-        <button class="map-zoom-btn" onclick="mapZoom(0)" title="리셋" style="font-size:0.8em;">↺</button>
-      </div>
 <svg viewBox="0 0 800 700" xmlns="http://www.w3.org/2000/svg" style="width:100%;min-width:600px;max-width:800px;display:block;font-family:'Noto Sans KR','Noto Sans JP',sans-serif;">
   <defs>
     <filter id="mapShadow" x="-20%" y="-20%" width="140%" height="140%">
@@ -1571,6 +1564,11 @@
   <circle cx="492" cy="553" r="7" fill="#8b7355"/><text x="504" y="557" font-size="8" fill="#333">숙소</text>
   <text x="600" y="557" font-size="7.5" fill="#999">※ 탭하면 상세 정보 열기 · 위치는 개략도</text>
 </svg>
+    </div>
+    <div class="map-zoom-controls">
+      <button class="map-zoom-btn" onclick="mapZoom(1)" title="확대">+</button>
+      <button class="map-zoom-btn" onclick="mapZoom(-1)" title="축소">−</button>
+      <button class="map-zoom-btn" onclick="mapZoom(0)" title="리셋" style="font-size:0.8em;">↺</button>
     </div>
   </div>
 
