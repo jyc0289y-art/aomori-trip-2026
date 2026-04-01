@@ -260,6 +260,16 @@
   .budget-table tr:last-child td { border-bottom: 2px solid var(--accent); font-weight: 700; }
   .budget-table td:nth-child(2) { text-align: right; font-variant-numeric: tabular-nums; }
 
+  /* Transport list (mobile-friendly alternative to table) */
+  .transport-list { margin: 4px 0; }
+  .transport-item {
+    padding: 10px 12px; border-bottom: 1px solid var(--border);
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .transport-item:last-child { border-bottom: none; }
+  .transport-route { font-weight: 500; font-size: 0.95em; }
+  .transport-detail { font-size: 0.85em; color: var(--text-light); line-height: 1.5; }
+
   /* Checklist */
   .checklist { list-style: none; }
   .checklist li {
@@ -1176,7 +1186,42 @@
       <p style="font-size:0.9em; color:var(--text-light);">1일 약 15편 운행 (약 1시간 간격, 피크 시 30분 간격). 항공편 스케줄 연동. 아오모리역에서 숙소까지 도보 10분.</p>
       <div class="spot-tap-hint">탭하여 공항 지도 보기</div>
     </div>
-    <div class="tip">약 1시간 간격으로 운행하므로 여유 있지만, 출발 전 최신 시간표 확인 권장. IC카드 사용 시 120엔 할인.</div>
+    <div class="tip">약 1시간 간격으로 운행하므로 여유 있지만, 출발 전 최신 시간표 확인 권장. IC카드 사용 시 120엔 할인.<br>※ 공항 주변에 철도역은 없음 — 대중교통은 연락버스가 유일한 수단.</div>
+  </div>
+
+  <div class="card">
+    <h2>🚃 아오모리시 철도 교통</h2>
+    <p>아오모리시에는 <strong>3개 철도 노선</strong>이 운행 중이며, 아오모리역이 허브 역할을 한다.</p>
+    <div style="margin-top:12px;">
+      <div style="padding:12px;background:var(--accent-light);border-radius:8px;margin-bottom:8px;">
+        <strong>아오이모리 철도</strong> <span style="font-size:0.82em;color:var(--text-light);">青い森鉄道</span><br>
+        <span style="font-size:0.9em;">아오모리 → 쓰쓰이 → 히가시아오모리 → … → <strong>아사무시온천</strong> (20분, 540엔)</span><br>
+        <span style="font-size:0.82em;color:var(--text-light);">하치노헤 방면. 아사무시 온천 직행 가능</span>
+      </div>
+      <div style="padding:12px;background:var(--accent-light);border-radius:8px;margin-bottom:8px;">
+        <strong>JR 오우본선</strong> <span style="font-size:0.82em;color:var(--text-light);">奥羽本線</span><br>
+        <span style="font-size:0.9em;">아오모리 → <strong>신아오모리</strong>(신칸센 환승) → 히로사키 → 아키타</span><br>
+        <span style="font-size:0.82em;color:var(--text-light);">하루 약 38편. 히로사키 성 벚꽃 시즌에 활용</span>
+      </div>
+      <div style="padding:12px;background:var(--accent-light);border-radius:8px;">
+        <strong>JR 쓰가루선</strong> <span style="font-size:0.82em;color:var(--text-light);">津軽線</span><br>
+        <span style="font-size:0.9em;">아오모리 → 아부라카와(油川) → 카니타 방면</span><br>
+        <span style="font-size:0.82em;color:var(--text-light);">카니타 이북 2027년 폐지 예정</span>
+      </div>
+    </div>
+    <h3 style="margin-top:16px;">철도가 유용한 경우</h3>
+    <div class="distance-tree" style="margin-top:8px;">
+      아오모리역 기점<br>
+      ├── 아사무시온천(浅虫温泉) ·· <span class="dist">아오이모리 철도 20분, 540엔</span> ← <strong>반나절 코스 추천</strong><br>
+      ├── 쓰쓰이역(筒井) ········ <span class="dist">아오이모리 철도 5분, 300엔</span> → 선로드 도보 20분 (버스가 편리)<br>
+      ├── 신아오모리역(新青森) ···· <span class="dist">JR 오우본선 6분, 200엔</span> → 신칸센 환승<br>
+      └── 히로사키(弘前) ········ <span class="dist">JR 오우본선 약 45분, 680엔</span> → 히로사키 성 벚꽃<br>
+    </div>
+    <div class="tip" style="margin-top:12px;">
+      시내 중심부(베이 에리어, 시장, 이자카야)는 모두 아오모리역 도보 15분 이내 → <strong>철도 불필요</strong>.<br>
+      교외(선로드/가라타운)는 <strong>버스가 더 편리</strong> (정류장이 입구 앞).<br>
+      철도는 <strong>아사무시 온천·히로사키</strong> 등 교외 관광에 활용.
+    </div>
   </div>
 
   <div class="card">
@@ -1407,6 +1452,11 @@
         <span class="tl-time">17:00</span>
         <span class="tl-title">숙소 휴식</span>
       </div>
+    </div>
+    <div class="tip" style="background:var(--accent-light);border-left:3px solid var(--accent);margin:12px 0;">
+      <strong>🚃 옵션: 아사무시온천 반나절 코스</strong><br>
+      오후 여유가 있다면 베이에리어 산책 대신 아오모리역에서 <strong>아오이모리 철도(青い森鉄道)로 20분 (540엔)</strong> → 浅虫温泉역 하차. 온천 마을 산책 + 浅虫水族館 + 맨홀카드 수령(道の駅 ゆ~さ浅虫). 16~17시대 열차로 복귀.<br>
+      <span style="font-size:0.88em;color:var(--text-light);">⚠️ 낮 시간대 1시간 0~1편 — <a href="https://aoimorirailway.com" target="_blank">아오이모리 철도 시각표</a> 확인 필수. IC카드 사용 가능.</span>
     </div>
 
     <div class="section-title">저녁: 本町 환락가 탐험</div>
@@ -2780,7 +2830,7 @@
         <div class="tl-item" onclick="showDetail('nagao_ekimae')">
           <div class="tl-time">12:00</div>
           <div class="tl-dot"></div>
-          <div class="tl-desc">점심: 長尾中華そば 역전점 (LOVINA 지하)<br><span class="tl-note">쓰가루 니보시 라멘. 쇼핑 전 든든하게</span></div>
+          <div class="tl-desc">점심: 長尾中華そば 역전점 (LOVINA 1F)<br><span class="tl-note">쓰가루 니보시 라멘. 쇼핑 전 든든하게</span></div>
         </div>
         <div class="tl-item" onclick="showDetail('dreamtown')">
           <div class="tl-time">13:00</div>
@@ -2862,20 +2912,32 @@
 
   <!-- 교통 요약 -->
   <div class="card">
-    <h2>🚌 쇼핑 에리어 교통</h2>
-    <table class="budget-table">
-      <thead><tr><th>구간</th><th>소요</th><th>요금</th><th>비고</th></tr></thead>
-      <tbody>
-        <tr><td>역 → サンロード</td><td>버스 15분</td><td>~260엔</td><td>시영버스</td></tr>
-        <tr><td>역 → ガーラタウン/ユニクロ</td><td>버스 16분</td><td>~260엔</td><td>サンロード 근처</td></tr>
-        <tr><td>역 → Dream Town ALi</td><td>버스 20~25분</td><td>~300엔</td><td>UNIQLO+GU</td></tr>
-        <tr><td>サンロード ↔ ガーラタウン</td><td>도보 10분</td><td>무료</td><td>같은 에리어</td></tr>
-        <tr><td>ALi → サンロード</td><td>택시 5분</td><td>~1,000엔</td><td>버스 환승보다 편리</td></tr>
-        <tr><td>공항 → サンロード</td><td>택시 20분</td><td>정액 4,720엔</td><td>직행 버스 없음. 2명 1인 2,360엔</td></tr>
-        <tr><td>공항 → 역 → サンロード</td><td>버스 50분+</td><td>~1,100엔</td><td>공항버스+환승 (경제적)</td></tr>
-      </tbody>
-    </table>
-    <div class="tip" style="margin-top:12px;">버스 요금은 현금(동전) 준비. 교통IC카드 사용 가능 여부는 노선별 상이.</div>
+    <h2>🚌🚃 쇼핑·교외 교통</h2>
+    <div style="font-weight:600;color:var(--accent);padding:8px 0 4px;font-size:0.95em;">🚌 버스</div>
+    <div class="transport-list">
+      <div class="transport-item"><span class="transport-route">역 → サンロード</span><span class="transport-detail">시영버스 4번 · <strong>15분</strong> · ~260엔</span></div>
+      <div class="transport-item"><span class="transport-route">역 → ガーラタウン/ユニクロ</span><span class="transport-detail">시영버스 · <strong>16분</strong> · ~260엔 (サンロード 근처)</span></div>
+      <div class="transport-item"><span class="transport-route">역 → Dream Town ALi</span><span class="transport-detail">시영버스 · <strong>20~25분</strong> · ~300엔 (UNIQLO+GU)</span></div>
+      <div class="transport-item"><span class="transport-route">공항 → 역</span><span class="transport-detail">공항연락버스 · <strong>35분</strong> · 860~980엔 (약 1시간 간격)</span></div>
+      <div class="transport-item"><span class="transport-route">공항 → 역 → サンロード</span><span class="transport-detail">버스 환승 · <strong>50분+</strong> · ~1,100엔 (11번→4번 승강장)</span></div>
+    </div>
+    <div style="font-weight:600;color:var(--accent);padding:8px 0 4px;font-size:0.95em;margin-top:12px;">🚃 철도 (아오이모리 철도 · JR)</div>
+    <div class="transport-list">
+      <div class="transport-item" style="background:var(--accent-light);"><span class="transport-route"><strong>역 → 아사무시온천 ★</strong></span><span class="transport-detail">아오이모리 철도 · <strong>20분</strong> · 540엔 — 온천+수족관 반나절 코스</span></div>
+      <div class="transport-item"><span class="transport-route">역 → 쓰쓰이역 (→선로드)</span><span class="transport-detail">아오이모리 철도 · <strong>5분</strong>+도보20분 · 300엔 (버스가 더 편리)</span></div>
+      <div class="transport-item"><span class="transport-route">역 → 신아오모리 (신칸센)</span><span class="transport-detail">JR 오우본선 · <strong>6분</strong> · 200엔</span></div>
+      <div class="transport-item"><span class="transport-route">역 → 히로사키</span><span class="transport-detail">JR 오우본선 · <strong>~45분</strong> · 680엔 (벚꽃 4월 하순~)</span></div>
+    </div>
+    <div style="font-weight:600;color:var(--accent);padding:8px 0 4px;font-size:0.95em;margin-top:12px;">🚕 택시 · 도보</div>
+    <div class="transport-list">
+      <div class="transport-item"><span class="transport-route">공항 → サンロード 직행</span><span class="transport-detail">택시 · <strong>20분</strong> · 정액 4,720엔 (2명 1인 2,360엔)</span></div>
+      <div class="transport-item"><span class="transport-route">ALi → サンロード</span><span class="transport-detail">택시 · <strong>5분</strong> · ~1,000엔</span></div>
+      <div class="transport-item"><span class="transport-route">サンロード ↔ ガーラタウン</span><span class="transport-detail">도보 · <strong>10분</strong> · 무료 (같은 에리어)</span></div>
+    </div>
+    <div class="tip" style="margin-top:12px;">
+      시내 = 도보, 교외 쇼핑몰 = 버스, 아사무시 온천 = 철도. IC카드(Suica/PASMO) 사용 가능.<br>
+      아오이모리 철도 낮 시간대 1시간 0~1편 → <strong>시각표 필수 확인</strong>.
+    </div>
   </div>
 
 </div>
@@ -2887,7 +2949,9 @@
     <table class="budget-table">
       <thead><tr><th>항목</th><th>예상 금액</th><th>비고</th></tr></thead>
       <tbody>
-        <tr><td>공항버스 (왕복)</td><td>~2,000엔</td><td>860~980엔 x 2</td></tr>
+        <tr><td>공항연락버스 (왕복)</td><td>~2,000엔</td><td>860~980엔 x 2</td></tr>
+        <tr><td>시내버스 (선로드 등)</td><td>~1,000엔</td><td>~260엔 x 3~4회</td></tr>
+        <tr><td>철도 (아사무시온천 등)</td><td>~1,100엔</td><td>540엔 x 왕복 (옵션)</td></tr>
         <tr><td>온천 (3회)</td><td>~1,440엔</td><td>480엔 x 3</td></tr>
         <tr><td>시장 のっけ丼 (3회)</td><td>~6,600엔</td><td>2,200엔 x 3</td></tr>
         <tr><td>라멘 (2회)</td><td>~2,000엔</td><td>~1,000엔 x 2</td></tr>
@@ -2896,7 +2960,7 @@
         <tr><td>시드르/비어</td><td>~2,000엔</td><td></td></tr>
         <tr><td>토산물/기념품</td><td>~5,000엔</td><td></td></tr>
         <tr><td>기타</td><td>~3,000엔</td><td></td></tr>
-        <tr><td><strong>합계</strong></td><td><strong>~39,000엔</strong></td><td><strong>약 35~45만원</strong></td></tr>
+        <tr><td><strong>합계</strong></td><td><strong>~41,000엔</strong></td><td><strong>약 37~47만원</strong></td></tr>
       </tbody>
     </table>
     <div class="tip" style="margin-top:20px;">현금 4~5만엔 준비 권장. 시장, 센토, 소규모 이자카야 대부분 현금 전용.</div>
@@ -2927,7 +2991,9 @@
     <h3>현금이 핵심</h3>
     <p>시장, 센토, 요코초 대부분 현금 전용. 편의점 ATM 이용 가능.</p>
     <h3>공항연락버스 약 1시간 간격</h3>
-    <p>1일 약 15편 (06:00~19:20). 항공편 연동으로 시간표 변동 가능 — 출발 전 공항 HP에서 확인.</p>
+    <p>1일 약 15편 (06:00~19:20). 항공편 연동으로 시간표 변동 가능 — 출발 전 공항 HP에서 확인. ※ 공항 주변에 철도역 없음, 버스가 유일한 대중교통.</p>
+    <h3>아오이모리 철도 (青い森鉄道)</h3>
+    <p>아오모리역에서 아사무시온천(20분/540엔) 직행. 낮 시간대는 1시간 0~1편으로 <strong>시각표 필수 확인</strong>. IC카드 사용 가능.</p>
     <h3>이자카야 라스트오더</h3>
     <p>대부분 22:00~23:00. 18:00~18:30 시작 권장.</p>
     <h3>津軽弁 (쓰가루 사투리)</h3>
@@ -3280,7 +3346,7 @@ const SPOTS = {
   // --- Shopping spots ---
   sunroad: {
     name: 'サンロード青森', nameJa: '선로드 아오모리',
-    query: 'サンロード青森', address: '青森市緑3-9-2', walk: '역에서 버스 15분',
+    query: 'サンロード青森', address: '青森市緑3-9-2', walk: '역에서 버스 15분 (또는 아오이모리 철도 쓰쓰이역 도보 20분)',
     icon: '🛍️', category: '대형 쇼핑몰',
     hours: '10:00~20:00 (3F 식당가 ~21:00)', price: '입장 무료',
     linkedSpots: ['sr_azuma','sr_taishoken','sr_haveli','sr_sajitokoh','sr_matahari','sr_satokagura','uniqlo_bypass','galatown'],
@@ -3318,7 +3384,7 @@ const SPOTS = {
   },
   galatown: {
     name: 'ガーラタウン', nameJa: '가라타운',
-    query: 'ガーラタウン 青森', address: '青森市三好2-3-19', walk: '역에서 버스 16분',
+    query: 'ガーラタウン 青森', address: '青森市三好2-3-19', walk: '역에서 버스 16분 (쓰쓰이역 도보 25분)',
     icon: '🏪', category: '쇼핑 복합시설',
     hours: '10:00~20:00 (焼肉 ~22:00)', price: '입장 무료',
     linkedSpots: ['gt_donkichi','gt_sumiya','uniqlo_bypass','sunroad'],
@@ -3359,11 +3425,11 @@ const SPOTS = {
   },
   nagao_ekimae: {
     name: '長尾中華そば 駅前店', nameJa: '나가오 츄카소바 역전점',
-    query: '長尾中華そば 青森駅前店', address: 'LOVINA 지하1F', walk: '역 직결',
+    query: '長尾中華そば 青森駅前店', address: 'ラビナ(LOVINA) 1F', walk: '역 직결',
     icon: '🍜', category: '니보시 라멘 명가',
     hours: '07:00~20:00', price: '라멘 750~950엔',
     placeId: 'ChIJs6Sn6R6fm1-ZgzX4kH2gng',
-    desc: '1949년 창업 쓰가루 니보시 라멘의 원조 중 하나. LOVINA 지하에 역전점이 있어 접근성 최고. 아침 7시부터 영업하여 朝ラー(아침 라멘)도 가능.',
+    desc: '1949년 창업 쓰가루 니보시 라멘의 원조 중 하나. ラビナ(LOVINA) 1F에 역전점이 있어 접근성 최고. 아침 7시부터 영업하여 朝ラー(아침 라멘)도 가능.',
     menu: '<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:-4px 0 16px;"><img src=\"img/nagao_ekimae_menu_1.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"><img src=\"img/nagao_ekimae_menu_2.jpg\" style=\"width:100%;border-radius:8px;margin:8px 0 12px;\" loading=\"lazy\"></div><strong>あっさり(깔끔)</strong> — 투명한 니보시 국물. 처음이면 이것부터.<br><strong>こってり(진한)</strong> — 걸쭉한 니보시 국물. 니보시 매니아용.<br><strong>朝ラーメン</strong> — 아침 한정 소사이즈(650엔). 朝風呂 후 딱.',
     tips: '아침 온천(朝風呂) → 長尾 아침 라멘은 현지인 루틴. 처음이면 あっさり를 추천. 멸치 향이 은은하고 깔끔.',
     order: '"あっさりください" (앗사리 쿠다사이) 또는 "こってりください" (콧테리 쿠다사이)',
@@ -4759,7 +4825,11 @@ const jwDict = {
   '提灯': { r: '초친', m: '등롱 — ねぶた提灯은 네부타 등롱' },
   'マンホールカード': { r: '만호루 카도', m: '맨홀 뚜껑 디자인 수집 카드. 전국 900종+' },
   '道の駅': { r: '미치노에키', m: '도로 휴게소 — 지역 특산물·관광 정보' },
-  '浅虫温泉': { r: '아사무시 온센', m: '아오모리역에서 25분. 온천+수족관 관광지' },
+  '浅虫温泉': { r: '아사무시 온센', m: '아오이모리 철도로 20분(540엔). 온천+수족관 관광지' },
+  '青い森鉄道': { r: '아오이모리 텟도', m: '아오모리~하치노헤 간 제3섹터 철도. 아사무시온천 직행' },
+  '筒井駅': { r: '쓰쓰이에키', m: '아오이모리 철도. 선로드 아오모리 최근접역 (도보 20분)' },
+  '新青森駅': { r: '신아오모리에키', m: '도호쿠 신칸센 종착역. 아오모리역에서 JR 오우본선 6분' },
+  '奥羽本線': { r: '오우혼센', m: '아오모리~아키타~후쿠시마 JR 노선. 히로사키 방면' },
   // 딥다이브 추가
   'ガチャガチャ': { r: '가챠가챠', m: '캡슐토이 자판기. 200~500엔으로 미니어처·피규어 랜덤 구매' },
   'ドリームカプセル': { r: '도리무 캡슐', m: '대형 가챠 전문점 체인' },
