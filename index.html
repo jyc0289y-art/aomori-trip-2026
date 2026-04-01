@@ -408,19 +408,16 @@
     width: 40px; height: 4px; background: var(--border);
     border-radius: 2px; margin: 12px auto;
   }
-  .detail-close-btn {
-    position: sticky; top: 0; z-index: 20;
-    display: flex; justify-content: flex-end; padding: 0 12px 0 0;
-    pointer-events: none; margin-top: -8px; margin-bottom: -28px;
+  .detail-close-fixed {
+    position: fixed; top: 16px; right: 16px; z-index: 9999;
+    width: 40px; height: 40px; border-radius: 50%; border: none;
+    background: rgba(0,0,0,0.55); color: white; font-size: 1.2em;
+    cursor: pointer; display: none; align-items: center; justify-content: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
   }
-  .detail-close-btn button {
-    pointer-events: auto;
-    width: 36px; height: 36px; border-radius: 50%; border: none;
-    background: rgba(0,0,0,0.45); color: white; font-size: 1.15em;
-    cursor: pointer; display: flex; align-items: center; justify-content: center;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
-  }
+  .detail-overlay.show ~ .detail-close-fixed,
+  .detail-close-fixed.show { display: flex; }
   .detail-content { padding: 0 24px 32px; }
   .detail-content h2 { font-size: 1.3em; margin-bottom: 4px; color: var(--text); }
   .detail-content .detail-ja { font-size: 0.95em; color: var(--text-light); margin-bottom: 16px; }
@@ -3541,11 +3538,11 @@
 <div class="detail-overlay" id="detailOverlay" onclick="if(event.target===this)closeDetail()">
   <div class="detail-sheet" id="detailSheet">
     <div class="detail-handle"></div>
-    <div class="detail-close-btn"><button onclick="closeDetail()" aria-label="닫기">✕</button></div>
     <button class="btn-wide-toggle" id="btnWide" onclick="event.stopPropagation();toggleWide()" title="넓게/좁게 보기">⛶</button>
     <div class="detail-content" id="detailContent"></div>
   </div>
 </div>
+<button class="detail-close-fixed" id="detailCloseFixed" onclick="closeDetail()" aria-label="닫기">✕</button>
 
 <!-- Tooltip popup (must be direct body child, not inside transform containers) -->
 <div id="jw-popup"></div>
@@ -5188,6 +5185,7 @@ function showDetail(spotId, pushHistory) {
 
   document.getElementById('detailContent').innerHTML = h;
   overlay.classList.add('show');
+  document.getElementById('detailCloseFixed').classList.add('show');
   document.getElementById('detailSheet').scrollTop = 0;
   document.body.style.overflow = 'hidden';
 }
@@ -5204,6 +5202,7 @@ function detailGoBack() {
 
 function closeDetail() {
   document.getElementById('detailOverlay').classList.remove('show');
+  document.getElementById('detailCloseFixed').classList.remove('show');
   document.body.style.overflow = '';
   const iframes = document.getElementById('detailContent').querySelectorAll('iframe');
   iframes.forEach(f => f.src = '');
